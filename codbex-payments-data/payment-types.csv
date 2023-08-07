@@ -1,3 +1,4 @@
 PAYMENTTYPE_ID,PAYMENTTYPE_NAME
-1,Sales Payment
-2,Purchase Payment
+1,Receive
+2,Pay
+3,Internal Transfer
