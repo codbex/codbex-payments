@@ -154,54 +154,6 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idDiscount" dg-required="false" dg-colon="true">Discount</fd-form-label>
-                        <fd-form-input-message-group dg-inactive="{{ formErrors.Discount ? false : true }}">
-                            <fd-input id="idDiscount"
-                                name="Discount"
-                                state="{{ formErrors.Discount ? 'error' : '' }}"
-								ng-required="false"
-                                ng-change="isValid(formFieldset['Discount'].$valid, 'Discount')"
-                                ng-model="entity.Discount"
-                                ng-readonly="action === 'select'"
-                                type="number"
-                                placeholder="Enter Discount">
-                            </fd-input>
-                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-                        </fd-form-input-message-group>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
-                        <fd-form-input-message-group dg-inactive="{{ formErrors.VAT ? false : true }}">
-                            <fd-input id="idVAT"
-                                name="VAT"
-                                state="{{ formErrors.VAT ? 'error' : '' }}"
-								ng-required="false"
-                                ng-change="isValid(formFieldset['VAT'].$valid, 'VAT')"
-                                ng-model="entity.VAT"
-                                ng-readonly="action === 'select'"
-                                type="number"
-                                placeholder="Enter VAT">
-                            </fd-input>
-                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-                        </fd-form-input-message-group>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idTotal" dg-required="false" dg-colon="true">Total</fd-form-label>
-                        <fd-form-input-message-group dg-inactive="{{ formErrors.Total ? false : true }}">
-                            <fd-input id="idTotal"
-                                name="Total"
-                                state="{{ formErrors.Total ? 'error' : '' }}"
-								ng-required="false"
-                                ng-change="isValid(formFieldset['Total'].$valid, 'Total')"
-                                ng-model="entity.Total"
-                                ng-readonly="action === 'select'"
-                                type="number"
-                                placeholder="Enter Total">
-                            </fd-input>
-                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-                        </fd-form-input-message-group>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
                         <fd-form-label for="idValueDate" dg-required="false" dg-colon="true">ValueDate</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.ValueDate ? false : true }}">
                             <fd-input id="idValueDate"

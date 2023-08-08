@@ -84,30 +84,6 @@
                         "name": "PAYMENT_AMOUNT"
                     },
                     {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PAYMENT_DISCOUNT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PAYMENT_VAT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PAYMENT_TOTAL"
-                    },
-                    {
                         "type": "DATE",
                         "length": 20,
                         "precision": "NaN",

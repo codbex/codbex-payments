@@ -59,21 +59,6 @@ let dao = daoApi.create({
 			type: "DOUBLE",
 		},
  {
-			name: "Discount",
-			column: "PAYMENT_DISCOUNT",
-			type: "DOUBLE",
-		},
- {
-			name: "VAT",
-			column: "PAYMENT_VAT",
-			type: "DOUBLE",
-		},
- {
-			name: "Total",
-			column: "PAYMENT_TOTAL",
-			type: "DOUBLE",
-		},
- {
 			name: "ValueDate",
 			column: "PAYMENT_VALUEDATE",
 			type: "DATE",
