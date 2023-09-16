@@ -13,12 +13,12 @@ let dao = daoApi.create({
 			autoIncrement: true,
 		},
  {
-			name: "PurchaseInvoiceId",
+			name: "PurchaseInvoice",
 			column: "PAYMENTSENT_PURCHASEINVOICEID",
 			type: "INTEGER",
 		},
  {
-			name: "PaymentId",
+			name: "Payment",
 			column: "PAYMENTSENT_PAYMENTID",
 			type: "INTEGER",
 		}
