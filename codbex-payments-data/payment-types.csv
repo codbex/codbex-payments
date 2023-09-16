@@ -1,4 +1,4 @@
-PAYMENTTYPE_ID,PAYMENTTYPE_NAME
-1,Receive
-2,Pay
-3,Internal Transfer
+"PAYMENTTYPE_ID","PAYMENTTYPE_NAME"
+"1","Received"
+"2","Sent"
+"3","Internal Transfer"
