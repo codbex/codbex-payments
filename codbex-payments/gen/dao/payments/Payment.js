@@ -19,6 +19,11 @@ let dao = daoApi.create({
 			type: "DATE",
 		},
  {
+			name: "Reason",
+			column: "PAYMENT_REASON",
+			type: "VARCHAR",
+		},
+ {
 			name: "Operator",
 			column: "PAYMENT_OPERATOR",
 			type: "INTEGER",
@@ -62,11 +67,6 @@ let dao = daoApi.create({
 			name: "ValueDate",
 			column: "PAYMENT_VALUEDATE",
 			type: "DATE",
-		},
- {
-			name: "ReasonForPayment",
-			column: "PAYMENT_REASONFORPAYMENT",
-			type: "VARCHAR",
 		}
 ]
 });

@@ -22,6 +22,14 @@
                         "name": "PAYMENT_DATE"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_REASON"
+                    },
+                    {
                         "type": "INTEGER",
                         "length": 0,
                         "precision": "NaN",
@@ -55,7 +63,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 50,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -63,7 +71,9 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 50,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "PAYMENT_ACCOUNTTO"
                     },
@@ -90,14 +100,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PAYMENT_VALUEDATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PAYMENT_REASONFORPAYMENT"
                     }
                 ]
             },
