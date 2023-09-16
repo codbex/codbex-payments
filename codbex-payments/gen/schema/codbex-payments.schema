@@ -98,12 +98,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PAYMENT_REASONFORPAYMENT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "PAYMENT_INVOICEID"
                     }
                 ]
             },
@@ -305,7 +299,7 @@
                 ]
             },
             {
-                "name": "CODBEX_INVOICE",
+                "name": "CODBEX_SALESINVOICE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -314,15 +308,13 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "INVOICE_ID"
+                        "name": "SALESINVOICE_ID"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_NUMBER"
+                        "name": "SALESINVOICE_NUMBER"
                     },
                     {
                         "type": "DATE",
@@ -330,7 +322,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_DATE"
+                        "name": "SALESINVOICE_DATE"
                     },
                     {
                         "type": "DATE",
@@ -338,7 +330,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_DUE"
+                        "name": "SALESINVOICE_DUE"
                     },
                     {
                         "type": "VARCHAR",
@@ -346,7 +338,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_CONDITIONS"
+                        "name": "SALESINVOICE_CONDITIONS"
                     },
                     {
                         "type": "INTEGER",
@@ -354,7 +346,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_OPERATOR"
+                        "name": "SALESINVOICE_OPERATOR"
                     },
                     {
                         "type": "INTEGER",
@@ -362,23 +354,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_BUYER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "INVOICE_SELLER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "INVOICE_TYPE"
+                        "name": "SALESINVOICE_SELLER"
                     },
                     {
                         "type": "VARCHAR",
@@ -386,7 +362,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_CURRENCY"
+                        "name": "SALESINVOICE_CURRENCY"
                     },
                     {
                         "type": "DOUBLE",
@@ -394,7 +370,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_AMOUNT"
+                        "name": "SALESINVOICE_AMOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -402,7 +378,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_DISCOUNT"
+                        "name": "SALESINVOICE_DISCOUNT"
                     },
                     {
                         "type": "DOUBLE",
@@ -410,7 +386,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_VAT"
+                        "name": "SALESINVOICE_VAT"
                     },
                     {
                         "type": "DOUBLE",
@@ -418,7 +394,195 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "INVOICE_TOTAL"
+                        "name": "SALESINVOICE_TOTAL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESINVOICE_STATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "SALESINVOICE_SALESORDER"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PURCHASEINVOICE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_NUMBER"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_DUE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_CONDITIONS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_OPERATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_BUYER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_CURRENCY"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_AMOUNT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_DISCOUNT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_VAT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_TOTAL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_STATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PURCHASEINVOICE_PURCHASEORDER"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTRECEIVED",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTRECEIVED_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "PAYMENTRECEIVED_SALESINVOICEID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENTRECEIVED_PAYMENTID"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTSENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTSENT_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENTSENT_PURCHASEINVOICEID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "PAYMENTSENT_PAYMENTID"
                     }
                 ]
             },
@@ -468,13 +632,40 @@
                 "referencedColumns": "CURRENCY_CODE"
             },
             {
-                "name": "Payment_Invoice",
+                "name": "PaymentReceived_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_Invoice",
-                "columns": "PAYMENT_INVOICEID",
-                "referencedTable": "CODBEX_INVOICE",
-                "referencedColumns": "INVOICE_ID"
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_SalesInvoice",
+                "columns": "PAYMENTRECEIVED_SALESINVOICEID",
+                "referencedTable": "CODBEX_SALESINVOICE",
+                "referencedColumns": "SALESINVOICE_ID"
+            },
+            {
+                "name": "PaymentReceived_Payment",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_Payment",
+                "columns": "PAYMENTRECEIVED_PAYMENTID",
+                "referencedTable": "CODBEX_PAYMENT",
+                "referencedColumns": "PAYMENT_ID"
+            },
+            {
+                "name": "PaymentSent_PurchaseInvoice",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTSENT",
+                "constraintName": "PaymentSent_PurchaseInvoice",
+                "columns": "PAYMENTSENT_PURCHASEINVOICEID",
+                "referencedTable": "CODBEX_PURCHASEINVOICE",
+                "referencedColumns": "PURCHASEINVOICE_ID"
+            },
+            {
+                "name": "PaymentSent_Payment",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTSENT",
+                "constraintName": "PaymentSent_Payment",
+                "columns": "PAYMENTSENT_PAYMENTID",
+                "referencedTable": "CODBEX_PAYMENT",
+                "referencedColumns": "PAYMENT_ID"
             }
         ]
     }

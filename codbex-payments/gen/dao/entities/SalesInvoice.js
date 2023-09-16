@@ -4,69 +4,79 @@ const daoApi = require("db/dao");
 const EntityUtils = require("codbex-payments/gen/dao/utils/EntityUtils");
 
 let dao = daoApi.create({
-	table: "CODBEX_PAYMENT",
+	table: "CODBEX_SALESINVOICE",
 	properties: [
 		{
-			name: "Id",
-			column: "PAYMENT_ID",
+			name: "id",
+			column: "SALESINVOICE_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
+			name: "Number",
+			column: "SALESINVOICE_NUMBER",
+			type: "VARCHAR",
+		},
+ {
 			name: "Date",
-			column: "PAYMENT_DATE",
+			column: "SALESINVOICE_DATE",
 			type: "DATE",
 		},
  {
+			name: "Due",
+			column: "SALESINVOICE_DUE",
+			type: "DATE",
+		},
+ {
+			name: "Conditions",
+			column: "SALESINVOICE_CONDITIONS",
+			type: "VARCHAR",
+		},
+ {
 			name: "Operator",
-			column: "PAYMENT_OPERATOR",
+			column: "SALESINVOICE_OPERATOR",
 			type: "INTEGER",
 		},
  {
-			name: "Receiver",
-			column: "PAYMENT_BUYER",
+			name: "Seller",
+			column: "SALESINVOICE_SELLER",
 			type: "INTEGER",
-		},
- {
-			name: "Sender",
-			column: "PAYMENT_SELLER",
-			type: "INTEGER",
-		},
- {
-			name: "Type",
-			column: "PAYMENT_TYPE",
-			type: "INTEGER",
-		},
- {
-			name: "AccountFrom",
-			column: "PAYMENT_ACCOUNTFROM",
-			type: "VARCHAR",
-		},
- {
-			name: "AccountTo",
-			column: "PAYMENT_ACCOUNTTO",
-			type: "VARCHAR",
 		},
  {
 			name: "Currency",
-			column: "PAYMENT_CURRENCY",
+			column: "SALESINVOICE_CURRENCY",
 			type: "VARCHAR",
 		},
  {
 			name: "Amount",
-			column: "PAYMENT_AMOUNT",
+			column: "SALESINVOICE_AMOUNT",
 			type: "DOUBLE",
 		},
  {
-			name: "ValueDate",
-			column: "PAYMENT_VALUEDATE",
-			type: "DATE",
+			name: "Discount",
+			column: "SALESINVOICE_DISCOUNT",
+			type: "DOUBLE",
 		},
  {
-			name: "ReasonForPayment",
-			column: "PAYMENT_REASONFORPAYMENT",
-			type: "VARCHAR",
+			name: "VAT",
+			column: "SALESINVOICE_VAT",
+			type: "DOUBLE",
+		},
+ {
+			name: "Total",
+			column: "SALESINVOICE_TOTAL",
+			type: "DOUBLE",
+		},
+ {
+			name: "Status",
+			column: "SALESINVOICE_STATUS",
+			type: "INTEGER",
+		},
+ {
+			name: "SalesOrder",
+			column: "SALESINVOICE_SALESORDER",
+			type: "INTEGER",
 		}
 ]
 });
@@ -74,7 +84,7 @@ let dao = daoApi.create({
 exports.list = function(settings) {
 	return dao.list(settings).map(function(e) {
 		EntityUtils.setDate(e, "Date");
-		EntityUtils.setDate(e, "ValueDate");
+		EntityUtils.setDate(e, "Due");
 		return e;
 	});
 };
@@ -82,19 +92,19 @@ exports.list = function(settings) {
 exports.get = function(id) {
 	let entity = dao.find(id);
 	EntityUtils.setDate(entity, "Date");
-	EntityUtils.setDate(entity, "ValueDate");
+	EntityUtils.setDate(entity, "Due");
 	return entity;
 };
 
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
-	EntityUtils.setLocalDate(entity, "ValueDate");
+	EntityUtils.setLocalDate(entity, "Due");
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_PAYMENT",
+		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "Id",
-			column: "PAYMENT_ID",
+			name: "id",
+			column: "SALESINVOICE_ID",
 			value: id
 		}
 	});
@@ -103,14 +113,14 @@ exports.create = function(entity) {
 
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
-	// EntityUtils.setLocalDate(entity, "ValueDate");
+	// EntityUtils.setLocalDate(entity, "Due");
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_PAYMENT",
+		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "Id",
-			column: "PAYMENT_ID",
-			value: entity.Id
+			name: "id",
+			column: "SALESINVOICE_ID",
+			value: entity.id
 		}
 	});
 };
@@ -118,10 +128,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_PAYMENT",
+		table: "CODBEX_SALESINVOICE",
 		key: {
-			name: "Id",
-			column: "PAYMENT_ID",
+			name: "id",
+			column: "SALESINVOICE_ID",
 			value: id
 		}
 	});
@@ -132,7 +142,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PAYMENT"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESINVOICE"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -144,5 +154,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-payments/payments/Payment/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-payments/entities/SalesInvoice/" + operation).send(JSON.stringify(data));
 }

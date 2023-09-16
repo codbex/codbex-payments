@@ -1373,7 +1373,7 @@
                 "perspectiveOrder": "100",
                 "title": "PaymentReceived",
                 "tooltip": "PaymentReceived",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -1451,7 +1451,7 @@
                 "perspectiveOrder": "100",
                 "title": "PaymentSent",
                 "tooltip": "PaymentSent",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [
