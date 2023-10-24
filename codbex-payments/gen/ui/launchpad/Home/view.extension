@@ -1,1 +1,5 @@
-{"module":"codbex-payments/gen/ui/launchpad/Home/view.js","extensionPoint":"codbex-payments-view","description":"codbex-payments - Application View"}
+{
+    "module": "codbex-payments/gen/ui/launchpad/Home/view.js",
+    "extensionPoint": "codbex-payments-view",
+    "description": "codbex-payments - Application View"
+}

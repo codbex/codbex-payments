@@ -2,7 +2,7 @@
     "schema": {
         "structures": [
             {
-                "name": "CODBEX_PAYMENT",
+                "name": "CODBEX_PAYMENTRECEIVED",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -52,14 +52,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PAYMENT_SELLER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PAYMENT_TYPE"
                     },
                     {
                         "type": "VARCHAR",
@@ -236,26 +228,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PARTNER_COUNTRYID"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTTYPE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTTYPE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PAYMENTTYPE_NAME"
                     }
                 ]
             },
@@ -533,7 +505,7 @@
                 ]
             },
             {
-                "name": "CODBEX_PAYMENTRECEIVED",
+                "name": "CODBEX_SALESINVOICELINK",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -547,6 +519,8 @@
                     {
                         "type": "INTEGER",
                         "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "PAYMENTRECEIVED_SALESINVOICEID"
                     },
@@ -561,7 +535,7 @@
                 ]
             },
             {
-                "name": "CODBEX_PAYMENTSENT",
+                "name": "CODBEX_PURCHASEINVOICELINK",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -584,90 +558,203 @@
                         "type": "INTEGER",
                         "length": 0,
                         "nullable": true,
-                        "name": "PAYMENTSENT_PAYMENTID"
+                        "name": "PAYMENTSENT_PAYMENT"
                     }
                 ]
             },
             {
-                "name": "Payment_Employee",
+                "name": "CODBEX_PAYMENTSENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENT_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_DATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_REASON"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "PAYMENT_OPERATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "PAYMENT_RECEIVER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "PAYMENT_SENDER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_ACCOUNTFROM"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_ACCOUNTTO"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "nullable": true,
+                        "name": "PAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PAYMENT_VALUEDATE"
+                    }
+                ]
+            },
+            {
+                "name": "PaymentReceived_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_Employee",
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_Employee",
                 "columns": "PAYMENT_OPERATOR",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "Payment_Partner",
+                "name": "PaymentReceived_Partner",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_Partner",
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_Partner",
                 "columns": "PAYMENT_BUYER",
                 "referencedTable": "CODBEX_PARTNER",
                 "referencedColumns": "PARTNER_ID"
             },
             {
-                "name": "Payment_Partner",
+                "name": "PaymentReceived_Partner",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_Partner",
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_Partner",
                 "columns": "PAYMENT_SELLER",
                 "referencedTable": "CODBEX_PARTNER",
                 "referencedColumns": "PARTNER_ID"
             },
             {
-                "name": "Payment_PaymentType",
+                "name": "PaymentReceived_Currency",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_PaymentType",
-                "columns": "PAYMENT_TYPE",
-                "referencedTable": "CODBEX_PAYMENTTYPE",
-                "referencedColumns": "PAYMENTTYPE_ID"
-            },
-            {
-                "name": "Payment_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_PAYMENT",
-                "constraintName": "Payment_Currency",
+                "table": "CODBEX_PAYMENTRECEIVED",
+                "constraintName": "PaymentReceived_Currency",
                 "columns": "PAYMENT_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_CODE"
             },
             {
-                "name": "PaymentReceived_SalesInvoice",
+                "name": "SalesInvoiceLink_SalesInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENTRECEIVED",
-                "constraintName": "PaymentReceived_SalesInvoice",
+                "table": "CODBEX_SALESINVOICELINK",
+                "constraintName": "SalesInvoiceLink_SalesInvoice",
                 "columns": "PAYMENTRECEIVED_SALESINVOICEID",
                 "referencedTable": "CODBEX_SALESINVOICE",
                 "referencedColumns": "SALESINVOICE_ID"
             },
             {
-                "name": "PaymentReceived_Payment",
+                "name": "SalesInvoiceLink_PaymentReceived",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENTRECEIVED",
-                "constraintName": "PaymentReceived_Payment",
+                "table": "CODBEX_SALESINVOICELINK",
+                "constraintName": "SalesInvoiceLink_PaymentReceived",
                 "columns": "PAYMENTRECEIVED_PAYMENTID",
-                "referencedTable": "CODBEX_PAYMENT",
+                "referencedTable": "CODBEX_PAYMENTRECEIVED",
                 "referencedColumns": "PAYMENT_ID"
             },
             {
-                "name": "PaymentSent_PurchaseInvoice",
+                "name": "PurchaseInvoiceLink_PurchaseInvoice",
                 "type": "foreignKey",
-                "table": "CODBEX_PAYMENTSENT",
-                "constraintName": "PaymentSent_PurchaseInvoice",
+                "table": "CODBEX_PURCHASEINVOICELINK",
+                "constraintName": "PurchaseInvoiceLink_PurchaseInvoice",
                 "columns": "PAYMENTSENT_PURCHASEINVOICEID",
                 "referencedTable": "CODBEX_PURCHASEINVOICE",
                 "referencedColumns": "PURCHASEINVOICE_ID"
             },
             {
-                "name": "PaymentSent_Payment",
+                "name": "PurchaseInvoiceLink_PaymentSent",
+                "type": "foreignKey",
+                "table": "CODBEX_PURCHASEINVOICELINK",
+                "constraintName": "PurchaseInvoiceLink_PaymentSent",
+                "columns": "PAYMENTSENT_PAYMENT",
+                "referencedTable": "CODBEX_PAYMENTSENT",
+                "referencedColumns": "PAYMENT_ID"
+            },
+            {
+                "name": "PaymentSent_Employee",
                 "type": "foreignKey",
                 "table": "CODBEX_PAYMENTSENT",
-                "constraintName": "PaymentSent_Payment",
-                "columns": "PAYMENTSENT_PAYMENTID",
-                "referencedTable": "CODBEX_PAYMENT",
-                "referencedColumns": "PAYMENT_ID"
+                "constraintName": "PaymentSent_Employee",
+                "columns": "PAYMENT_OPERATOR",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "PaymentSent_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTSENT",
+                "constraintName": "PaymentSent_Partner",
+                "columns": "PAYMENT_RECEIVER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "PaymentSent_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTSENT",
+                "constraintName": "PaymentSent_Partner",
+                "columns": "PAYMENT_SENDER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "PaymentSent_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTSENT",
+                "constraintName": "PaymentSent_Currency",
+                "columns": "PAYMENT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
             }
         ]
     }

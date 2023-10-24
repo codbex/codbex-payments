@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "codbex-payments-home-launchpad",
-    label: "Home Launchpad",
+    id: "SalesInvoiceLink",
+    label: "SalesInvoiceLink",
     factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-payments/gen/ui/launchpad/Home/index.html",
-    isLaunchpad: true,
+    region: "bottom",
+    link: "/services/web/codbex-payments/gen/ui/paymentsreceived/PaymentReceived/SalesInvoiceLink/index.html",
+    perspectiveName: "paymentsreceived"
 };
 
 if (typeof exports !== 'undefined') {
