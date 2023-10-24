@@ -133,7 +133,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsPurchaseInvoice = [];
 
-		$http.get("/services/js/codbex-payments/gen/api/entities/PurchaseInvoice.js").then(function (response) {
+		$http.get("/services/js/codbex-payments/gen/api/purchaseinvoice/PurchaseInvoice.js").then(function (response) {
 			$scope.optionsPurchaseInvoice = response.data.map(e => {
 				return {
 					value: e.Id,

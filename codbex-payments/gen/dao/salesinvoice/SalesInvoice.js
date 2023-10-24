@@ -4,79 +4,84 @@ const daoApi = require("db/dao");
 const EntityUtils = require("codbex-payments/gen/dao/utils/EntityUtils");
 
 let dao = daoApi.create({
-	table: "CODBEX_PURCHASEINVOICE",
+	table: "CODBEX_SALESINVOICE",
 	properties: [
 		{
 			name: "Id",
-			column: "PURCHASEINVOICE_ID",
+			column: "SALESINVOICE_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
 			name: "Number",
-			column: "PURCHASEINVOICE_NUMBER",
+			column: "SALESINVOICE_NUMBER",
 			type: "VARCHAR",
 		},
  {
 			name: "Date",
-			column: "PURCHASEINVOICE_DATE",
+			column: "SALESINVOICE_DATE",
 			type: "DATE",
 		},
  {
 			name: "Due",
-			column: "PURCHASEINVOICE_DUE",
+			column: "SALESINVOICE_DUE",
 			type: "DATE",
 		},
  {
 			name: "Conditions",
-			column: "PURCHASEINVOICE_CONDITIONS",
+			column: "SALESINVOICE_CONDITIONS",
 			type: "VARCHAR",
 		},
  {
 			name: "Operator",
-			column: "PURCHASEINVOICE_OPERATOR",
+			column: "SALESINVOICE_OPERATOR",
 			type: "INTEGER",
 		},
  {
-			name: "Buyer",
-			column: "PURCHASEINVOICE_BUYER",
+			name: "Seller",
+			column: "SALESINVOICE_SELLER",
 			type: "INTEGER",
 		},
  {
 			name: "Currency",
-			column: "PURCHASEINVOICE_CURRENCY",
+			column: "SALESINVOICE_CURRENCY",
 			type: "VARCHAR",
 		},
  {
 			name: "Amount",
-			column: "PURCHASEINVOICE_AMOUNT",
+			column: "SALESINVOICE_AMOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "Discount",
-			column: "PURCHASEINVOICE_DISCOUNT",
+			column: "SALESINVOICE_DISCOUNT",
 			type: "DOUBLE",
 		},
  {
 			name: "VAT",
-			column: "PURCHASEINVOICE_VAT",
+			column: "SALESINVOICE_VAT",
 			type: "DOUBLE",
 		},
  {
 			name: "Total",
-			column: "PURCHASEINVOICE_TOTAL",
+			column: "SALESINVOICE_TOTAL",
 			type: "DOUBLE",
 		},
  {
 			name: "Status",
-			column: "PURCHASEINVOICE_STATUS",
+			column: "SALESINVOICE_STATUS",
 			type: "INTEGER",
 		},
  {
-			name: "PurchaseOrder",
-			column: "PURCHASEINVOICE_PURCHASEORDER",
+			name: "SalesOrder",
+			column: "SALESINVOICE_SALESORDER",
 			type: "INTEGER",
+		},
+ {
+			name: "Name",
+			column: "SALESINVOICE_NAME",
+			type: "VARCHAR",
 		}
 ]
 });
@@ -99,12 +104,13 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
 	EntityUtils.setLocalDate(entity, "Due");
+	entity["Name"] = entity['Number'] + '/' + entity['Date'];;
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_PURCHASEINVOICE",
+		table: "CODBEX_SALESINVOICE",
 		key: {
 			name: "Id",
-			column: "PURCHASEINVOICE_ID",
+			column: "SALESINVOICE_ID",
 			value: id
 		}
 	});
@@ -114,12 +120,13 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
 	// EntityUtils.setLocalDate(entity, "Due");
+	entity["Name"] = entity['Number'] + '/' + entity['Date'];
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_PURCHASEINVOICE",
+		table: "CODBEX_SALESINVOICE",
 		key: {
 			name: "Id",
-			column: "PURCHASEINVOICE_ID",
+			column: "SALESINVOICE_ID",
 			value: entity.Id
 		}
 	});
@@ -128,10 +135,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_PURCHASEINVOICE",
+		table: "CODBEX_SALESINVOICE",
 		key: {
 			name: "Id",
-			column: "PURCHASEINVOICE_ID",
+			column: "SALESINVOICE_ID",
 			value: id
 		}
 	});
@@ -142,7 +149,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEINVOICE"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SALESINVOICE"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -154,5 +161,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-payments/entities/PurchaseInvoice/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-payments/salesinvoice/SalesInvoice/" + operation).send(JSON.stringify(data));
 }

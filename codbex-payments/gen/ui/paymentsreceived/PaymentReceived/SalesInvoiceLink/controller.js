@@ -76,8 +76,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("SalesInvoiceLink-details", {
 				action: "select",
 				entity: entity,
-				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsPayment: $scope.optionsPayment,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			});
 		};
 
@@ -88,8 +88,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Payment",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsPayment: $scope.optionsPayment,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			}, null, false);
 		};
 
@@ -99,8 +99,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Payment",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsSalesInvoice: $scope.optionsSalesInvoice,
 				optionsPayment: $scope.optionsPayment,
+				optionsSalesInvoice: $scope.optionsSalesInvoice,
 			}, null, false);
 		};
 
@@ -134,17 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsSalesInvoice = [];
 		$scope.optionsPayment = [];
-
-		$http.get("/services/js/codbex-payments/gen/api/entities/SalesInvoice.js").then(function (response) {
-			$scope.optionsSalesInvoice = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
+		$scope.optionsSalesInvoice = [];
 
 		$http.get("/services/js/codbex-payments/gen/api/paymentsreceived/PaymentReceived.js").then(function (response) {
 			$scope.optionsPayment = response.data.map(e => {
@@ -154,18 +145,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
-		$scope.optionsSalesInvoiceValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsSalesInvoice.length; i++) {
-				if ($scope.optionsSalesInvoice[i].value === optionKey) {
-					return $scope.optionsSalesInvoice[i].text;
+
+		$http.get("/services/js/codbex-payments/gen/api/salesinvoice/SalesInvoice.js").then(function (response) {
+			$scope.optionsSalesInvoice = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
 				}
-			}
-			return null;
-		};
+			});
+		});
 		$scope.optionsPaymentValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsPayment.length; i++) {
 				if ($scope.optionsPayment[i].value === optionKey) {
 					return $scope.optionsPayment[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsSalesInvoiceValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSalesInvoice.length; i++) {
+				if ($scope.optionsSalesInvoice[i].value === optionKey) {
+					return $scope.optionsSalesInvoice[i].text;
 				}
 			}
 			return null;
