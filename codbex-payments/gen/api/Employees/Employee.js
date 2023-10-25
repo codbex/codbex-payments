@@ -1,5 +1,5 @@
 const rs = require("http/rs");
-const dao = require("codbex-payments/gen/dao/entities/Employee");
+const dao = require("codbex-payments/gen/dao/Employees/Employee");
 const http = require("codbex-payments/gen/api/utils/http");
 
 rs.service()

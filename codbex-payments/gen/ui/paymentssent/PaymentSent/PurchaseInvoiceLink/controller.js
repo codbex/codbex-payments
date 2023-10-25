@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/js/codbex-payments/gen/api/paymentssent/PurchaseInvoiceLink.js";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -76,7 +76,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("PurchaseInvoiceLink-details", {
 				action: "select",
 				entity: entity,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			});
 		};
 
@@ -87,7 +86,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Payment",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			}, null, false);
 		};
 
@@ -97,7 +95,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Payment",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsPurchaseInvoice: $scope.optionsPurchaseInvoice,
 			}, null, false);
 		};
 
@@ -129,26 +126,5 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsPurchaseInvoice = [];
-
-		$http.get("/services/js/codbex-payments/gen/api/purchaseinvoice/PurchaseInvoice.js").then(function (response) {
-			$scope.optionsPurchaseInvoice = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-		$scope.optionsPurchaseInvoiceValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsPurchaseInvoice.length; i++) {
-				if ($scope.optionsPurchaseInvoice[i].value === optionKey) {
-					return $scope.optionsPurchaseInvoice[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

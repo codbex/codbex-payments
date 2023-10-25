@@ -3,23 +3,53 @@ const producer = require("messaging/producer");
 const daoApi = require("db/dao");
 
 let dao = daoApi.create({
-	table: "CODBEX_PURCHASEINVOICELINK",
+	table: "CODBEX_SUPPLIER",
 	properties: [
 		{
 			name: "Id",
-			column: "PAYMENTSENT_ID",
+			column: "SUPPLIER_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
-			name: "Payment",
-			column: "PAYMENTSENT_PAYMENT",
-			type: "INTEGER",
+			name: "Name",
+			column: "SUPPLIER_NAME",
+			type: "VARCHAR",
 		},
  {
-			name: "PurchaseInvoiceId",
-			column: "PURCHASEINVOICELINK_PURCHASEINVOICEID",
+			name: "Address",
+			column: "SUPPLIER_ADDRESS",
+			type: "VARCHAR",
+		},
+ {
+			name: "City",
+			column: "SUPPLIER_CITY",
+			type: "VARCHAR",
+		},
+ {
+			name: "PostalCode",
+			column: "SUPPLIER_POSTALCODE",
+			type: "VARCHAR",
+		},
+ {
+			name: "Email",
+			column: "SUPPLIER_EMAIL",
+			type: "VARCHAR",
+		},
+ {
+			name: "Phone",
+			column: "SUPPLIER_PHONE",
+			type: "VARCHAR",
+		},
+ {
+			name: "Fax",
+			column: "SUPPLIER_FAX",
+			type: "VARCHAR",
+		},
+ {
+			name: "Country",
+			column: "SUPPLIER_COUNTRY",
 			type: "INTEGER",
 		}
 ]
@@ -36,10 +66,10 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_PURCHASEINVOICELINK",
+		table: "CODBEX_SUPPLIER",
 		key: {
 			name: "Id",
-			column: "PAYMENTSENT_ID",
+			column: "SUPPLIER_ID",
 			value: id
 		}
 	});
@@ -49,10 +79,10 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_PURCHASEINVOICELINK",
+		table: "CODBEX_SUPPLIER",
 		key: {
 			name: "Id",
-			column: "PAYMENTSENT_ID",
+			column: "SUPPLIER_ID",
 			value: entity.Id
 		}
 	});
@@ -61,29 +91,21 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_PURCHASEINVOICELINK",
+		table: "CODBEX_SUPPLIER",
 		key: {
 			name: "Id",
-			column: "PAYMENTSENT_ID",
+			column: "SUPPLIER_ID",
 			value: id
 		}
 	});
 };
 
-exports.count = function (Payment) {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEINVOICELINK" WHERE "PAYMENTSENT_PAYMENT" = ?', [Payment]);
-	if (resultSet !== null && resultSet[0] !== null) {
-		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
-			return resultSet[0].COUNT;
-		} else if (resultSet[0].count !== undefined && resultSet[0].count !== null) {
-			return resultSet[0].count;
-		}
-	}
-	return 0;
+exports.count = function() {
+	return dao.count();
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PURCHASEINVOICELINK"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SUPPLIER"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -95,5 +117,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-payments/paymentssent/PurchaseInvoiceLink/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-payments/partners/Supplier/" + operation).send(JSON.stringify(data));
 }

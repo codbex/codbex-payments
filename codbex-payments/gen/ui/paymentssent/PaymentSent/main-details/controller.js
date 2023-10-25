@@ -21,6 +21,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
+				$scope.optionsSupplier = [];
+				$scope.optionsOperator = [];
 				$scope.action = 'select';
 			});
 		});
@@ -34,6 +36,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.ValueDate = new Date(msg.data.entity.ValueDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'select';
 			});
 		});
@@ -41,6 +45,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsSupplier = msg.data.optionsSupplier;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -57,6 +63,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.ValueDate = new Date(msg.data.entity.ValueDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'update';
 			});
 		});

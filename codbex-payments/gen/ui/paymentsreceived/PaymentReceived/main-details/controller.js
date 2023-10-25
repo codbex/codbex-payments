@@ -21,10 +21,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
-				$scope.optionsOperator = [];
-				$scope.optionsReceiver = [];
-				$scope.optionsSender = [];
+				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
+				$scope.optionsOperator = [];
 				$scope.action = 'select';
 			});
 		});
@@ -38,10 +37,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.ValueDate = new Date(msg.data.entity.ValueDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsReceiver = msg.data.optionsReceiver;
-				$scope.optionsSender = msg.data.optionsSender;
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'select';
 			});
 		});
@@ -49,10 +47,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsReceiver = msg.data.optionsReceiver;
-				$scope.optionsSender = msg.data.optionsSender;
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -69,10 +66,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.ValueDate = new Date(msg.data.entity.ValueDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsOperator = msg.data.optionsOperator;
-				$scope.optionsReceiver = msg.data.optionsReceiver;
-				$scope.optionsSender = msg.data.optionsSender;
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
+				$scope.optionsOperator = msg.data.optionsOperator;
 				$scope.action = 'update';
 			});
 		});

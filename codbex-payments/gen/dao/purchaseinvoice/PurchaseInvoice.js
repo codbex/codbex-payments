@@ -14,6 +14,11 @@ let dao = daoApi.create({
 			autoIncrement: true,
 		},
  {
+			name: "Name",
+			column: "PURCHASEINVOICE_NAME",
+			type: "VARCHAR",
+		},
+ {
 			name: "Number",
 			column: "PURCHASEINVOICE_NUMBER",
 			type: "VARCHAR",
@@ -22,6 +27,11 @@ let dao = daoApi.create({
 			name: "Date",
 			column: "PURCHASEINVOICE_DATE",
 			type: "DATE",
+		},
+ {
+			name: "Supplier",
+			column: "PURCHASEINVOICE_SUPPLIER",
+			type: "INTEGER",
 		},
  {
 			name: "Due",
@@ -36,11 +46,6 @@ let dao = daoApi.create({
  {
 			name: "Operator",
 			column: "PURCHASEINVOICE_OPERATOR",
-			type: "INTEGER",
-		},
- {
-			name: "Buyer",
-			column: "PURCHASEINVOICE_BUYER",
 			type: "INTEGER",
 		},
  {
@@ -77,11 +82,6 @@ let dao = daoApi.create({
 			name: "PurchaseOrder",
 			column: "PURCHASEINVOICE_PURCHASEORDER",
 			type: "INTEGER",
-		},
- {
-			name: "Name",
-			column: "PURCHASEINVOICE_NAME",
-			type: "VARCHAR",
 		}
 ]
 });
@@ -104,7 +104,6 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	EntityUtils.setLocalDate(entity, "Date");
 	EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date'];;
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
 		table: "CODBEX_PURCHASEINVOICE",
@@ -120,7 +119,6 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	// EntityUtils.setLocalDate(entity, "Date");
 	// EntityUtils.setLocalDate(entity, "Due");
-	entity["Name"] = entity['Number'] + '/' + entity['Date'];
 	dao.update(entity);
 	triggerEvent("Update", {
 		table: "CODBEX_PURCHASEINVOICE",

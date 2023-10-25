@@ -37,14 +37,13 @@
 							item-title="{{next.Date | date: 'dd/MMM/yyyy'}}">
 							<fd-list-byline dg-align="left">
 								{{next.Reason}} |
-								{{next.Operator}} |
-								{{next.Receiver}} |
-								{{next.Sender}} |
+								{{optionsSupplierValue(next.Supplier)}} |
 								{{next.AccountFrom}} |
 								{{next.AccountTo}} |
 								{{next.Currency}} |
 								{{next.Amount}} |
-								{{next.ValueDate | date: "dd/MMM/yyyy"}}
+								{{next.ValueDate | date: "dd/MMM/yyyy"}} |
+								{{optionsOperatorValue(next.Operator)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

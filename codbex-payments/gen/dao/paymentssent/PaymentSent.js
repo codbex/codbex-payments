@@ -24,18 +24,8 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
-			name: "Operator",
-			column: "PAYMENT_OPERATOR",
-			type: "INTEGER",
-		},
- {
-			name: "Receiver",
-			column: "PAYMENT_RECEIVER",
-			type: "INTEGER",
-		},
- {
-			name: "Sender",
-			column: "PAYMENT_SENDER",
+			name: "Supplier",
+			column: "PAYMENTSENT_SUPPLIER",
 			type: "INTEGER",
 		},
  {
@@ -62,6 +52,11 @@ let dao = daoApi.create({
 			name: "ValueDate",
 			column: "PAYMENT_VALUEDATE",
 			type: "DATE",
+		},
+ {
+			name: "Operator",
+			column: "PAYMENTSENT_OPERATOR",
+			type: "INTEGER",
 		}
 ]
 });
