@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payments/gen/ui/paymentsreceived/PaymentReceived/SalesInvoiceLink/view.js",
-    "extensionPoint": "codbex-payments-view",
-    "description": "codbex-payments - Application View - Details"
-}
