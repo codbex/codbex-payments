@@ -9,7 +9,7 @@
   "filePath": "codbex-payments.model",
   "templateId": "template-application-angular/template/template.js",
   "perspectives": {
-    "paymentsreceived": {
+    "PaymentsReceived": {
       "views": [
         "PaymentReceived",
         "SalesInvoiceLink",
@@ -29,8 +29,8 @@
         "PaymentReceived-details",
         "PaymentReceived-details"
       ],
-      "name": "paymentsreceived",
-      "label": "paymentsreceived",
+      "name": "PaymentsReceived",
+      "label": "PaymentsReceived",
       "order": "700",
       "icon": "/services/web/resources/unicons/usd-square.svg"
     },
@@ -43,7 +43,7 @@
       "order": "100",
       "icon": "/services/web/resources/unicons/copy.svg"
     },
-    "paymentssent": {
+    "PaymentsSent": {
       "views": [
         "PurchaseInvoiceLink",
         "PaymentSent",
@@ -63,8 +63,8 @@
         "PaymentSent-details",
         "PaymentSent-details"
       ],
-      "name": "paymentssent",
-      "label": "paymentssent",
+      "name": "PaymentsSent",
+      "label": "PaymentsSent",
       "order": "710",
       "icon": "/services/web/resources/unicons/usd-circle.svg"
     },
@@ -345,7 +345,7 @@
       "name": "PaymentReceived",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
-      "perspectiveName": "paymentsreceived",
+      "perspectiveName": "PaymentsReceived",
       "perspectiveOrder": "700",
       "title": "PaymentReceived",
       "tooltip": "PaymentReceived",
@@ -735,7 +735,7 @@
           "widgetLength": "20",
           "widgetType": "DROPDOWN",
           "relationshipEntityName": "PaymentReceived",
-          "relationshipEntityPerspectiveName": "paymentsreceived",
+          "relationshipEntityPerspectiveName": "PaymentsReceived",
           "dataNotNull": false,
           "widgetLabel": "Payment",
           "inputRule": ""
@@ -780,7 +780,7 @@
       "name": "SalesInvoiceLink",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
-      "perspectiveName": "paymentsreceived",
+      "perspectiveName": "PaymentsReceived",
       "perspectiveOrder": "700",
       "title": "SalesInvoiceLink",
       "tooltip": "SalesInvoiceLink",
@@ -831,7 +831,7 @@
           "widgetLength": "20",
           "widgetType": "TEXTBOX",
           "relationshipEntityName": "PaymentSent",
-          "relationshipEntityPerspectiveName": "paymentssent",
+          "relationshipEntityPerspectiveName": "PaymentsSent",
           "dataNotNull": false,
           "widgetLabel": "Payment",
           "inputRule": ""
@@ -872,7 +872,7 @@
       "name": "PurchaseInvoiceLink",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/usd-circle.svg",
-      "perspectiveName": "paymentssent",
+      "perspectiveName": "PaymentsSent",
       "perspectiveOrder": "710",
       "title": "PurchaseInvoiceLink",
       "tooltip": "PurchaseInvoiceLink",
@@ -1118,7 +1118,7 @@
       "name": "PaymentSent",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/usd-circle.svg",
-      "perspectiveName": "paymentssent",
+      "perspectiveName": "PaymentsSent",
       "perspectiveOrder": "710",
       "title": "PaymentSent",
       "tooltip": "PaymentSent",

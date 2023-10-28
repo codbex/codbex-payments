@@ -199,7 +199,7 @@
                 "name": "PaymentReceived",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
-                "perspectiveName": "paymentsreceived",
+                "perspectiveName": "PaymentsReceived",
                 "perspectiveOrder": "700",
                 "title": "PaymentReceived",
                 "tooltip": "PaymentReceived",
@@ -346,7 +346,7 @@
                         "widgetLength": "20",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "PaymentReceived",
-                        "relationshipEntityPerspectiveName": "paymentsreceived"
+                        "relationshipEntityPerspectiveName": "PaymentsReceived"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -385,7 +385,7 @@
                 "name": "SalesInvoiceLink",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
-                "perspectiveName": "paymentsreceived",
+                "perspectiveName": "PaymentsReceived",
                 "perspectiveOrder": "700",
                 "title": "SalesInvoiceLink",
                 "tooltip": "SalesInvoiceLink",
@@ -426,7 +426,7 @@
                         "widgetLength": "20",
                         "widgetType": "TEXTBOX",
                         "relationshipEntityName": "PaymentSent",
-                        "relationshipEntityPerspectiveName": "paymentssent"
+                        "relationshipEntityPerspectiveName": "PaymentsSent"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -461,7 +461,7 @@
                 "name": "PurchaseInvoiceLink",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-circle.svg",
-                "perspectiveName": "paymentssent",
+                "perspectiveName": "PaymentsSent",
                 "perspectiveOrder": "710",
                 "title": "PurchaseInvoiceLink",
                 "tooltip": "PurchaseInvoiceLink",
@@ -661,7 +661,7 @@
                 "name": "PaymentSent",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-circle.svg",
-                "perspectiveName": "paymentssent",
+                "perspectiveName": "PaymentsSent",
                 "perspectiveOrder": "710",
                 "title": "PaymentSent",
                 "tooltip": "PaymentSent",
@@ -1791,13 +1791,13 @@
         ],
         "perspectives": [
             {
-                "name": "paymentsreceived",
+                "name": "PaymentsReceived",
                 "label": "Payments Received",
                 "icon": "/services/web/resources/unicons/usd-square.svg",
                 "order": "700"
             },
             {
-                "name": "paymentssent",
+                "name": "PaymentsSent",
                 "label": "Payments Sent",
                 "icon": "/services/web/resources/unicons/usd-circle.svg",
                 "order": "710"
