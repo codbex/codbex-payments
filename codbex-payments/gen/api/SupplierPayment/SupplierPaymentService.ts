@@ -3,6 +3,8 @@ import { Extensions } from "sdk/extensions"
 import { SupplierPaymentRepository, SupplierPaymentEntityOptions } from "../../dao/SupplierPayment/SupplierPaymentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-payments-SupplierPayment-SupplierPayment", ["validate"]);
 
@@ -125,6 +127,15 @@ class SupplierPaymentService {
         if (entity.Valor === null || entity.Valor === undefined) {
             throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
         }
+        if (entity.CompanyIBAN?.length > 22) {
+            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [22] characters`);
+        }
+        if (entity.CounterpartyIBAN?.length > 22) {
+            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [22] characters`);
+        }
+        if (entity.CounterpartyName?.length > 100) {
+            throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
+        }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
@@ -139,6 +150,9 @@ class SupplierPaymentService {
         }
         if (entity.Description?.length > 100) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
         if (entity.UUID?.length > 36) {
             throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);

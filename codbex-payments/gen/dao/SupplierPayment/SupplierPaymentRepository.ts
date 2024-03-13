@@ -3,16 +3,22 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface SupplierPaymentEntity {
     readonly Id: number;
     Date: Date;
     Valor: Date;
+    CompanyIBAN?: string;
+    CounterpartyIBAN?: string;
+    CounterpartyName?: string;
     Amount: number;
     Currency: number;
     Reason: string;
     Description?: string;
     Company?: number;
+    Name?: string;
     UUID: string;
     Reference?: string;
 }
@@ -20,6 +26,9 @@ export interface SupplierPaymentEntity {
 export interface SupplierPaymentCreateEntity {
     readonly Date: Date;
     readonly Valor: Date;
+    readonly CompanyIBAN?: string;
+    readonly CounterpartyIBAN?: string;
+    readonly CounterpartyName?: string;
     readonly Amount: number;
     readonly Currency: number;
     readonly Reason: string;
@@ -38,11 +47,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
+            CompanyIBAN?: string | string[];
+            CounterpartyIBAN?: string | string[];
+            CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
+            Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
         };
@@ -50,11 +63,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
+            CompanyIBAN?: string | string[];
+            CounterpartyIBAN?: string | string[];
+            CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
+            Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
         };
@@ -62,11 +79,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -74,11 +95,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -86,11 +111,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -98,11 +127,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -110,11 +143,15 @@ export interface SupplierPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -162,6 +199,21 @@ export class SupplierPaymentRepository {
                 required: true
             },
             {
+                name: "CompanyIBAN",
+                column: "SUPPLIERPAYMENT_COMPANYIBAN",
+                type: "VARCHAR",
+            },
+            {
+                name: "CounterpartyIBAN",
+                column: "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
+                type: "VARCHAR",
+            },
+            {
+                name: "CounterpartyName",
+                column: "SUPPLIERPAYMENT_COUNTERPARTYNAME",
+                type: "VARCHAR",
+            },
+            {
                 name: "Amount",
                 column: "SUPPLIERPAYMENT_AMOUNT",
                 type: "DECIMAL",
@@ -188,6 +240,11 @@ export class SupplierPaymentRepository {
                 name: "Company",
                 column: "SUPPLIERPAYMENT_COMPANY",
                 type: "INTEGER",
+            },
+            {
+                name: "Name",
+                column: "SUPPLIERPAYMENT_NAME",
+                type: "VARCHAR",
             },
             {
                 name: "UUID",
@@ -227,6 +284,8 @@ export class SupplierPaymentRepository {
     public create(entity: SupplierPaymentCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Valor");
+        // @ts-ignore
+        (entity as SupplierPaymentEntity).Name = new NumberGeneratorService().generate(21);
         // @ts-ignore
         (entity as SupplierPaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);

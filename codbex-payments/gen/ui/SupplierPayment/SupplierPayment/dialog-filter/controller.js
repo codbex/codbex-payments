@@ -71,6 +71,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.ValorTo) {
 				filter.$filter.lessThanOrEqual.Valor = entity.ValorTo;
 			}
+			if (entity.CompanyIBAN) {
+				filter.$filter.contains.CompanyIBAN = entity.CompanyIBAN;
+			}
+			if (entity.CounterpartyIBAN) {
+				filter.$filter.contains.CounterpartyIBAN = entity.CounterpartyIBAN;
+			}
+			if (entity.CounterpartyName) {
+				filter.$filter.contains.CounterpartyName = entity.CounterpartyName;
+			}
 			if (entity.Amount) {
 				filter.$filter.equals.Amount = entity.Amount;
 			}
@@ -85,6 +94,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			if (entity.Company) {
 				filter.$filter.equals.Company = entity.Company;
+			}
+			if (entity.Name) {
+				filter.$filter.contains.Name = entity.Name;
 			}
 			if (entity.UUID) {
 				filter.$filter.contains.UUID = entity.UUID;

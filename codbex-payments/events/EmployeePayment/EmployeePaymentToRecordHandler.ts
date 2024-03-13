@@ -9,6 +9,9 @@ export const trigger = (event) => {
         const record = {
             Date: item.Date,
             Valor: item.Valor,
+            CompanyIBAN: item.CompanyIBAN,
+            CounterpartyIBAN: item.CounterpartyIBAN,
+            CounterpartyName: item.CounterpartyName,
             Amount: item.Amount,
             Currency: item.Currency,
             Reason: item.Reason,

@@ -30,11 +30,15 @@
 					<tr fd-table-row>
 						<th fd-table-header-cell>Date</th>
 						<th fd-table-header-cell>Valor</th>
+						<th fd-table-header-cell>CompanyIBAN</th>
+						<th fd-table-header-cell>CounterpartyIBAN</th>
+						<th fd-table-header-cell>CounterpartyName</th>
 						<th fd-table-header-cell>Amount</th>
 						<th fd-table-header-cell>Currency</th>
 						<th fd-table-header-cell>Reason</th>
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Company</th>
+						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>UUID</th>
 						<th fd-table-header-cell>Reference</th>
 						<th fd-table-header-cell></th>
@@ -52,6 +56,9 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next.Valor" ng-readonly="true"></fd-input>
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CompanyIBAN}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CounterpartyIBAN}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CounterpartyName}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Amount}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsCurrencyValue(next.Currency)}}
@@ -61,6 +68,7 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsCompanyValue(next.Company)}}
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UUID}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Reference}}</td>
 						<td fd-table-cell fit-content="true">

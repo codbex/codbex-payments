@@ -3,16 +3,22 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface CustomerPaymentEntity {
     readonly Id: number;
     Date: Date;
     Valor: Date;
+    CompanyIBAN?: string;
+    CounterpartyIBAN?: string;
+    CounterpartyName?: string;
     Amount: number;
     Currency: number;
     Reason: string;
     Description?: string;
     Company?: number;
+    Name?: string;
     UUID: string;
     Reference?: string;
 }
@@ -20,6 +26,9 @@ export interface CustomerPaymentEntity {
 export interface CustomerPaymentCreateEntity {
     readonly Date: Date;
     readonly Valor: Date;
+    readonly CompanyIBAN?: string;
+    readonly CounterpartyIBAN?: string;
+    readonly CounterpartyName?: string;
     readonly Amount: number;
     readonly Currency: number;
     readonly Reason: string;
@@ -38,11 +47,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
+            CompanyIBAN?: string | string[];
+            CounterpartyIBAN?: string | string[];
+            CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
+            Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
         };
@@ -50,11 +63,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
+            CompanyIBAN?: string | string[];
+            CounterpartyIBAN?: string | string[];
+            CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
+            Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
         };
@@ -62,11 +79,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -74,11 +95,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -86,11 +111,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -98,11 +127,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -110,11 +143,15 @@ export interface CustomerPaymentEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
+            CompanyIBAN?: string;
+            CounterpartyIBAN?: string;
+            CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
+            Name?: string;
             UUID?: string;
             Reference?: string;
         };
@@ -162,6 +199,21 @@ export class CustomerPaymentRepository {
                 required: true
             },
             {
+                name: "CompanyIBAN",
+                column: "CUSTOMERPAYMENT_COMPANYIBAN",
+                type: "VARCHAR",
+            },
+            {
+                name: "CounterpartyIBAN",
+                column: "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
+                type: "VARCHAR",
+            },
+            {
+                name: "CounterpartyName",
+                column: "CUSTOMERPAYMENT_COUNTERPARTYNAME",
+                type: "VARCHAR",
+            },
+            {
                 name: "Amount",
                 column: "CUSTOMERPAYMENT_AMOUNT",
                 type: "DECIMAL",
@@ -188,6 +240,11 @@ export class CustomerPaymentRepository {
                 name: "Company",
                 column: "CUSTOMERPAYMENT_COMPANY",
                 type: "INTEGER",
+            },
+            {
+                name: "Name",
+                column: "CUSTOMERPAYMENT_NAME",
+                type: "VARCHAR",
             },
             {
                 name: "UUID",
@@ -227,6 +284,8 @@ export class CustomerPaymentRepository {
     public create(entity: CustomerPaymentCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Valor");
+        // @ts-ignore
+        (entity as CustomerPaymentEntity).Name = new NumberGeneratorService().generate(20);
         // @ts-ignore
         (entity as CustomerPaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
