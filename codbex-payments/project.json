@@ -23,12 +23,22 @@
             "type": "git",
             "url": "https://github.com/codbex/codbex-currencies.git",
             "branch": "main"
-        },
+        }
+    ],
+    "actions": [
         {
-            "guid": "codbex-invoices",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-invoices.git",
-            "branch": "main"
+            "name": "Build TypeScript",
+            "commands": [
+                {
+                    "os": "unix",
+                    "command": "tsc"
+                },
+                {
+                    "os": "windows",
+                    "command": "cmd /c tsc"
+                }
+            ],
+            "registry": "true"
         }
     ]
 }

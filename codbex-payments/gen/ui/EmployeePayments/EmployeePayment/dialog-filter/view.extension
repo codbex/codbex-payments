@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/gen/ui/EmployeePayments/EmployeePayment/dialog-filter/view.js",
+    "extensionPoint": "codbex-payments-dialog-window",
+    "description": "codbex-payments - Application Dialog Window"
+}

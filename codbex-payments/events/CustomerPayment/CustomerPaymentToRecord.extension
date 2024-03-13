@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-payments-CustomerPayment-CustomerPayment",
+    "module": "codbex-payments/events/CustomerPayment/CustomerPaymentToRecordHandler.ts",
+    "description": "CustomerPayment Extension"
+}
