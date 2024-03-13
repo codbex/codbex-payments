@@ -94,21 +94,24 @@
                         "name": "SUPPLIERPAYMENT_ID"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DATE",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "SUPPLIERPAYMENT_DATE"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DATE",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "SUPPLIERPAYMENT_VALOR"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "16",
+                        "scale": "2",
                         "name": "SUPPLIERPAYMENT_AMOUNT"
                     },
                     {
@@ -116,7 +119,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SUPPLIERPAYMENT_CURRENCY"
                     },
                     {
@@ -124,7 +126,6 @@
                         "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "SUPPLIERPAYMENT_REASON"
                     },
                     {
@@ -173,21 +174,24 @@
                         "name": "EMPLOYEEPAYMENT_ID"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DATE",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "EMPLOYEEPAYMENT_DATE"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DATE",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "EMPLOYEEPAYMENT_VALOR"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "nullable": true,
+                        "precision": "16",
+                        "scale": "2",
                         "name": "EMPLOYEEPAYMENT_AMOUNT"
                     },
                     {
@@ -195,7 +199,6 @@
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEEPAYMENT_CURRENCY"
                     },
                     {
@@ -203,7 +206,6 @@
                         "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "EMPLOYEEPAYMENT_REASON"
                     },
                     {
@@ -362,7 +364,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 36,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,

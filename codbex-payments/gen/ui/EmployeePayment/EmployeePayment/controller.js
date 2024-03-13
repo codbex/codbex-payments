@@ -1,16 +1,16 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.EmployeePayments.EmployeePayment';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.EmployeePayment.EmployeePayment';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/api/EmployeePayments/EmployeePaymentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/api/EmployeePayment/EmployeePaymentService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
 		//-----------------Custom Actions-------------------//
 		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-payments-custom-action").then(function (response) {
-			$scope.pageActions = response.data.filter(e => e.perspective === "EmployeePayments" && e.view === "EmployeePayment" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === "EmployeePayments" && e.view === "EmployeePayment" && e.type === "entity");
+			$scope.pageActions = response.data.filter(e => e.perspective === "EmployeePayment" && e.view === "EmployeePayment" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === "EmployeePayment" && e.view === "EmployeePayment" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (actionId) {
@@ -86,6 +86,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("EmployeePayment", `Unable to list/filter EmployeePayment: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.Date) {
+							e.Date = new Date(e.Date);
+						}
+						if (e.Valor) {
+							e.Valor = new Date(e.Valor);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});

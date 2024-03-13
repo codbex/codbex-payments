@@ -143,8 +143,8 @@ class PaymentRecordService {
         if (entity.UUID?.length > 36) {
             throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);
         }
-        if (entity.Reference?.length > 20) {
-            throw new ValidationError(`The 'Reference' exceeds the maximum length of [20] characters`);
+        if (entity.Reference?.length > 36) {
+            throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -119,14 +119,20 @@ class SupplierPaymentService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Date?.length > 20) {
-            throw new ValidationError(`The 'Date' exceeds the maximum length of [20] characters`);
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
-        if (entity.Valor?.length > 20) {
-            throw new ValidationError(`The 'Valor' exceeds the maximum length of [20] characters`);
+        if (entity.Valor === null || entity.Valor === undefined) {
+            throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
         }
-        if (entity.Amount?.length > 20) {
-            throw new ValidationError(`The 'Amount' exceeds the maximum length of [20] characters`);
+        if (entity.Amount === null || entity.Amount === undefined) {
+            throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
+        }
+        if (entity.Currency === null || entity.Currency === undefined) {
+            throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
+        if (entity.Reason === null || entity.Reason === undefined) {
+            throw new ValidationError(`The 'Reason' property is required, provide a valid value`);
         }
         if (entity.Reason?.length > 100) {
             throw new ValidationError(`The 'Reason' exceeds the maximum length of [100] characters`);

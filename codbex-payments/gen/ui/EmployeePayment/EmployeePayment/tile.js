@@ -5,12 +5,12 @@
  */
 exports.getTile = function () {
     return {
-        group: "EmployeePayments",
+        group: "EmployeePayment",
         name: "EmployeePayment",
         caption: "Manage entity EmployeePayment",
         tooltip: "EmployeePayment",
         // icon: "file-o",
-        location: "/services/web/codbex-payments/gen/ui/EmployeePayments/index.html",
+        location: "/services/web/codbex-payments/gen/ui/EmployeePayment/index.html",
         order: "100",
         groupOrder: "30",
     };

@@ -6,8 +6,8 @@
 const viewData = {
     id: "EmployeePayment-filter",
     label: "EmployeePayment Filter",
-    link: "/services/web/codbex-payments/gen/ui/EmployeePayments/EmployeePayment/dialog-filter/index.html",
-    perspectiveName: "EmployeePayments",
+    link: "/services/web/codbex-payments/gen/ui/EmployeePayment/EmployeePayment/dialog-filter/index.html",
+    perspectiveName: "EmployeePayment",
 };
 
 if (typeof exports !== 'undefined') {

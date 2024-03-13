@@ -2,14 +2,15 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface EmployeePaymentEntity {
     readonly Id: number;
-    Date?: string;
-    Valor?: string;
-    Amount?: string;
-    Currency?: number;
-    Reason?: string;
+    Date: Date;
+    Valor: Date;
+    Amount: number;
+    Currency: number;
+    Reason: string;
     Description?: string;
     Company?: number;
     UUID: string;
@@ -17,11 +18,11 @@ export interface EmployeePaymentEntity {
 }
 
 export interface EmployeePaymentCreateEntity {
-    readonly Date?: string;
-    readonly Valor?: string;
-    readonly Amount?: string;
-    readonly Currency?: number;
-    readonly Reason?: string;
+    readonly Date: Date;
+    readonly Valor: Date;
+    readonly Amount: number;
+    readonly Currency: number;
+    readonly Reason: string;
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
@@ -35,9 +36,9 @@ export interface EmployeePaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Date?: string | string[];
-            Valor?: string | string[];
-            Amount?: string | string[];
+            Date?: Date | Date[];
+            Valor?: Date | Date[];
+            Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
@@ -47,9 +48,9 @@ export interface EmployeePaymentEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Date?: string | string[];
-            Valor?: string | string[];
-            Amount?: string | string[];
+            Date?: Date | Date[];
+            Valor?: Date | Date[];
+            Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
@@ -59,9 +60,9 @@ export interface EmployeePaymentEntityOptions {
         };
         contains?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -71,9 +72,9 @@ export interface EmployeePaymentEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -83,9 +84,9 @@ export interface EmployeePaymentEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -95,9 +96,9 @@ export interface EmployeePaymentEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -107,9 +108,9 @@ export interface EmployeePaymentEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -151,27 +152,32 @@ export class EmployeePaymentRepository {
             {
                 name: "Date",
                 column: "EMPLOYEEPAYMENT_DATE",
-                type: "VARCHAR",
+                type: "DATE",
+                required: true
             },
             {
                 name: "Valor",
                 column: "EMPLOYEEPAYMENT_VALOR",
-                type: "VARCHAR",
+                type: "DATE",
+                required: true
             },
             {
                 name: "Amount",
                 column: "EMPLOYEEPAYMENT_AMOUNT",
-                type: "VARCHAR",
+                type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
                 column: "EMPLOYEEPAYMENT_CURRENCY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Reason",
                 column: "EMPLOYEEPAYMENT_REASON",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Description",
@@ -204,15 +210,23 @@ export class EmployeePaymentRepository {
     }
 
     public findAll(options?: EmployeePaymentEntityOptions): EmployeePaymentEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: EmployeePaymentEntity) => {
+            EntityUtils.setDate(e, "Date");
+            EntityUtils.setDate(e, "Valor");
+            return e;
+        });
     }
 
     public findById(id: number): EmployeePaymentEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "Date");
+        EntityUtils.setDate(entity, "Valor");
         return entity ?? undefined;
     }
 
     public create(entity: EmployeePaymentCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "Date");
+        EntityUtils.setLocalDate(entity, "Valor");
         // @ts-ignore
         (entity as EmployeePaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
@@ -230,6 +244,8 @@ export class EmployeePaymentRepository {
     }
 
     public update(entity: EmployeePaymentUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "Date");
+        // EntityUtils.setLocalDate(entity, "Valor");
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
@@ -290,7 +306,7 @@ export class EmployeePaymentRepository {
     }
 
     private async triggerEvent(data: EmployeePaymentEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-EmployeePayments-EmployeePayment", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-EmployeePayment-EmployeePayment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -298,6 +314,6 @@ export class EmployeePaymentRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-payments-EmployeePayments-EmployeePayment").send(JSON.stringify(data));
+        producer.topic("codbex-payments-EmployeePayment-EmployeePayment").send(JSON.stringify(data));
     }
 }

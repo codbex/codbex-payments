@@ -2,14 +2,15 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface SupplierPaymentEntity {
     readonly Id: number;
-    Date?: string;
-    Valor?: string;
-    Amount?: string;
-    Currency?: number;
-    Reason?: string;
+    Date: Date;
+    Valor: Date;
+    Amount: number;
+    Currency: number;
+    Reason: string;
     Description?: string;
     Company?: number;
     UUID: string;
@@ -17,11 +18,11 @@ export interface SupplierPaymentEntity {
 }
 
 export interface SupplierPaymentCreateEntity {
-    readonly Date?: string;
-    readonly Valor?: string;
-    readonly Amount?: string;
-    readonly Currency?: number;
-    readonly Reason?: string;
+    readonly Date: Date;
+    readonly Valor: Date;
+    readonly Amount: number;
+    readonly Currency: number;
+    readonly Reason: string;
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
@@ -35,9 +36,9 @@ export interface SupplierPaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Date?: string | string[];
-            Valor?: string | string[];
-            Amount?: string | string[];
+            Date?: Date | Date[];
+            Valor?: Date | Date[];
+            Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
@@ -47,9 +48,9 @@ export interface SupplierPaymentEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Date?: string | string[];
-            Valor?: string | string[];
-            Amount?: string | string[];
+            Date?: Date | Date[];
+            Valor?: Date | Date[];
+            Amount?: number | number[];
             Currency?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
@@ -59,9 +60,9 @@ export interface SupplierPaymentEntityOptions {
         };
         contains?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -71,9 +72,9 @@ export interface SupplierPaymentEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -83,9 +84,9 @@ export interface SupplierPaymentEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -95,9 +96,9 @@ export interface SupplierPaymentEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -107,9 +108,9 @@ export interface SupplierPaymentEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Date?: string;
-            Valor?: string;
-            Amount?: string;
+            Date?: Date;
+            Valor?: Date;
+            Amount?: number;
             Currency?: number;
             Reason?: string;
             Description?: string;
@@ -151,27 +152,32 @@ export class SupplierPaymentRepository {
             {
                 name: "Date",
                 column: "SUPPLIERPAYMENT_DATE",
-                type: "VARCHAR",
+                type: "DATE",
+                required: true
             },
             {
                 name: "Valor",
                 column: "SUPPLIERPAYMENT_VALOR",
-                type: "VARCHAR",
+                type: "DATE",
+                required: true
             },
             {
                 name: "Amount",
                 column: "SUPPLIERPAYMENT_AMOUNT",
-                type: "VARCHAR",
+                type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
                 column: "SUPPLIERPAYMENT_CURRENCY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Reason",
                 column: "SUPPLIERPAYMENT_REASON",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Description",
@@ -204,15 +210,23 @@ export class SupplierPaymentRepository {
     }
 
     public findAll(options?: SupplierPaymentEntityOptions): SupplierPaymentEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: SupplierPaymentEntity) => {
+            EntityUtils.setDate(e, "Date");
+            EntityUtils.setDate(e, "Valor");
+            return e;
+        });
     }
 
     public findById(id: number): SupplierPaymentEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "Date");
+        EntityUtils.setDate(entity, "Valor");
         return entity ?? undefined;
     }
 
     public create(entity: SupplierPaymentCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "Date");
+        EntityUtils.setLocalDate(entity, "Valor");
         // @ts-ignore
         (entity as SupplierPaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
@@ -230,6 +244,8 @@ export class SupplierPaymentRepository {
     }
 
     public update(entity: SupplierPaymentUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "Date");
+        // EntityUtils.setLocalDate(entity, "Valor");
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

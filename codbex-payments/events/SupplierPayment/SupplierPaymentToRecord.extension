@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/events/SupplierPayment/SupplierPaymentToRecordHandler.ts",
+    "extensionPoint": "codbex-payments-SupplierPayment-SupplierPayment",
+    "description": "SupplierPayment extension"
+}

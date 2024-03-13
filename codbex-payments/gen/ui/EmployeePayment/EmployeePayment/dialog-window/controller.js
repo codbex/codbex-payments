@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.EmployeePayments.EmployeePayment';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.EmployeePayment.EmployeePayment';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/api/EmployeePayments/EmployeePaymentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/api/EmployeePayment/EmployeePaymentService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 
@@ -23,6 +23,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (dataParameters) {
 				let params = JSON.parse(dataParameters);
 				$scope.action = params.action;
+				if (params.entity.Date) {
+					params.entity.Date = new Date(params.entity.Date);
+				}
+				if (params.entity.Valor) {
+					params.entity.Valor = new Date(params.entity.Valor);
+				}
 				$scope.entity = params.entity;
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;

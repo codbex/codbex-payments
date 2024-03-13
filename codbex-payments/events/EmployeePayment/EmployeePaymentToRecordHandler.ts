@@ -14,7 +14,7 @@ export const trigger = (event) => {
             Reason: item.Reason,
             Description: item.Description,
             Reference: item.UUID,
-            Direction: 1,
+            Direction: -1,
             Deleted: false,
         }
         PaymentRecordDao.create(record);

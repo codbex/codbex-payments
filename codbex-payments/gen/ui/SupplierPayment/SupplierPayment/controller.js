@@ -86,6 +86,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("SupplierPayment", `Unable to list/filter SupplierPayment: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.Date) {
+							e.Date = new Date(e.Date);
+						}
+						if (e.Valor) {
+							e.Valor = new Date(e.Valor);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});

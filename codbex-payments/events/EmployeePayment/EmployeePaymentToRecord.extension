@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-payments-EmployeePayment-EmployeePayment",
+    "module": "codbex-payments/events/EmployeePayment/EmployeePaymentToRecordHandler.ts",
+    "description": "EmployeePayment extension"
+}
