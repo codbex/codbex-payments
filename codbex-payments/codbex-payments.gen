@@ -8,6 +8,7 @@
   "workspaceName": "workspace",
   "filePath": "codbex-payments.model",
   "templateId": "template-application-angular/template/template.js",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "CustomerPayment": {
       "views": [
@@ -496,6 +497,7 @@
       "title": "CustomerPayment",
       "tooltip": "CustomerPayment",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [
         {
           "name": "Currency",
@@ -926,6 +928,7 @@
       "title": "SupplierPayment",
       "tooltip": "SupplierPayment",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [
         {
           "name": "Currency",
@@ -1356,6 +1359,7 @@
       "title": "EmployeePayment",
       "tooltip": "EmployeePayment",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [
         {
           "name": "Currency",
@@ -1876,6 +1880,7 @@
       "title": "PaymentRecord",
       "tooltip": "PaymentRecord",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [
         {
           "name": "Currency",
@@ -2103,6 +2108,7 @@
       "title": "Currency",
       "tooltip": "Currency",
       "type": "PROJECTION",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2441,6 +2447,7 @@
       "title": "Company",
       "tooltip": "Company",
       "type": "PROJECTION",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2520,6 +2527,7 @@
       "title": "PaymentRecordDirection",
       "tooltip": "PaymentRecordDirection",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2598,6 +2606,7 @@
       "title": "PaymentStatus",
       "tooltip": "PaymentStatus",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2676,6 +2685,7 @@
       "title": "PaymentType",
       "tooltip": "PaymentType",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"

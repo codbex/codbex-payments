@@ -87,7 +87,7 @@ export class PaymentTypeRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(PaymentTypeRepository.DEFINITION, null, dataSource);
     }
 

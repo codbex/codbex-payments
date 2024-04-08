@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: "PaymentRecord",
-	name: "PaymentRecord",
-	link: "/services/web/codbex-payments/gen/ui/PaymentRecord/index.html",
-	order: "40",
-	icon: "/services/web/resources/unicons/align-justify.svg",
+	id: 'PaymentRecord',
+	name: 'PaymentRecord',
+	link: '/services/web/codbex-payments/gen/ui/PaymentRecord/index.html',
+	order: 40,
+	icon: '/services/web/resources/unicons/align-justify.svg',
 };
 
 if (typeof exports !== 'undefined') {

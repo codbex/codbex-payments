@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payments/gen/ui/custom-action-dialog/view.js",
-    "extensionPoint": "codbex-payments-dialog-window",
-    "description": "codbex-payments - Custom Action Dialog Window"
-}
