@@ -9,10 +9,14 @@
 
 #### Launchpad
 
-![model](images/payments-launchpad.png)
+![launchpad](images/payments-launchpad.png)
 
 #### Management
 
-![model](images/payments-management.png)
+![customer](images/payments-customer-payment.png)
 
-![model](images/payments-payment-type.png)
+![supplier](images/payments-supplier-payment.png)
+
+![employee](images/payments-employee-payment.png)
+
+![settings](images/payments-settings.png)
