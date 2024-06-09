@@ -174,6 +174,10 @@ interface EmployeePaymentEntityEvent {
     }
 }
 
+interface EmployeePaymentUpdateEntityEvent extends EmployeePaymentEntityEvent {
+    readonly previousEntity: EmployeePaymentEntity;
+}
+
 export class EmployeePaymentRepository {
 
     private static readonly DEFINITION = {
@@ -305,11 +309,13 @@ export class EmployeePaymentRepository {
     public update(entity: EmployeePaymentUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Valor");
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_EMPLOYEEPAYMENT",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "EMPLOYEEPAYMENT_ID",
@@ -364,7 +370,7 @@ export class EmployeePaymentRepository {
         return 0;
     }
 
-    private async triggerEvent(data: EmployeePaymentEntityEvent) {
+    private async triggerEvent(data: EmployeePaymentEntityEvent | EmployeePaymentUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-EmployeePayment-EmployeePayment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

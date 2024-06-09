@@ -164,7 +164,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "CustomerPayment_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -229,7 +230,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "CustomerPayment_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
@@ -244,7 +246,7 @@
                         "dataType": "VARCHAR",
                         "dataUnique": "false",
                         "isCalculatedProperty": "true",
-                        "isRequiredProperty": "",
+                        "isRequiredProperty": "false",
                         "name": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
@@ -296,7 +298,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CUSTOMERPAYMENT\"",
                 "dataName": "CUSTOMERPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE",
@@ -306,6 +308,7 @@
                 "name": "CustomerPayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
+                "perspectiveLabel": "CustomerPayment",
                 "perspectiveName": "CustomerPayment",
                 "perspectiveOrder": "10",
                 "perspectiveRole": "",
@@ -476,7 +479,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SupplierPayment_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -541,7 +545,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "SupplierPayment_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
@@ -608,7 +613,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}SUPPLIERPAYMENT\"",
                 "dataName": "SUPPLIERPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE",
@@ -618,6 +623,7 @@
                 "name": "SupplierPayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/box.svg",
+                "perspectiveLabel": "SupplierPayment",
                 "perspectiveName": "SupplierPayment",
                 "perspectiveOrder": "20",
                 "perspectiveRole": "",
@@ -788,7 +794,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "EmployeePayment_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -853,7 +860,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "EmployeePayment_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
@@ -920,7 +928,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}EMPLOYEEPAYMENT\"",
                 "dataName": "EMPLOYEEPAYMENT",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE",
@@ -930,6 +938,7 @@
                 "name": "EmployeePayment",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/folder-check.svg",
+                "perspectiveLabel": "EmployeePayment",
                 "perspectiveName": "EmployeePayment",
                 "perspectiveOrder": "30",
                 "perspectiveRole": "",
@@ -1100,7 +1109,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentRecord_Currency",
                         "relationshipEntityName": "Currency",
-                        "relationshipEntityPerspectiveName": "Currencies"
+                        "relationshipEntityPerspectiveName": "Currencies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1165,7 +1175,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentRecord_Company",
                         "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies"
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1190,7 +1201,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentRecord_PaymentRecordDirection",
                         "relationshipEntityName": "PaymentRecordDirection",
-                        "relationshipEntityPerspectiveName": "Settings"
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1215,7 +1227,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentRecord_PaymentStatus",
                         "relationshipEntityName": "PaymentStatus",
-                        "relationshipEntityPerspectiveName": "Settings"
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -1240,7 +1253,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentRecord_PaymentType",
                         "relationshipEntityName": "PaymentType",
-                        "relationshipEntityPerspectiveName": "Settings"
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
@@ -1307,7 +1321,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTRECORD\"",
                 "dataName": "PAYMENTRECORD",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "true",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1316,6 +1330,7 @@
                 "name": "PaymentRecord",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/align-justify.svg",
+                "perspectiveLabel": "PaymentRecord",
                 "perspectiveName": "PaymentRecord",
                 "perspectiveOrder": "40",
                 "perspectiveRole": "",
@@ -1468,7 +1483,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CURRENCY\"",
                 "dataName": "CURRENCY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1477,6 +1492,7 @@
                 "name": "Currency",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/dollar-alt.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Currencies",
                 "perspectiveOrder": "990",
                 "perspectiveRole": "",
@@ -1719,7 +1735,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COMPANY\"",
                 "dataName": "COMPANY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1728,6 +1744,7 @@
                 "name": "Company",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Companies",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -1780,7 +1797,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTRECORDDIRECTION\"",
                 "dataName": "PAYMENTRECORDDIRECTION",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1789,6 +1806,7 @@
                 "name": "PaymentRecordDirection",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
@@ -1839,7 +1857,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTSTATUS\"",
                 "dataName": "PAYMENTSTATUS",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1848,6 +1866,7 @@
                 "name": "PaymentStatus",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
@@ -1898,7 +1917,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTTYPE\"",
                 "dataName": "PAYMENTTYPE",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -1907,6 +1926,7 @@
                 "name": "PaymentType",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",

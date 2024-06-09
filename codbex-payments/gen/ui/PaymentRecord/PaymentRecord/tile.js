@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "PaymentRecord",
+        group: "codbex-payments",
         name: "PaymentRecord",
         caption: "Manage entity PaymentRecord",
         tooltip: "PaymentRecord",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "true",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-payments/gen/ui/PaymentRecord/index.html",
         order: "100",
         groupOrder: "40",

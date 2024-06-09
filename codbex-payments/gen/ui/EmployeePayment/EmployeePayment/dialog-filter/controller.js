@@ -50,7 +50,7 @@ angular.module('page', ["ideUI", "ideView"])
 					}
 				},
 			};
-			if (entity.Id) {
+			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
 			if (entity.DateFrom) {
@@ -74,10 +74,10 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CounterpartyName) {
 				filter.$filter.contains.CounterpartyName = entity.CounterpartyName;
 			}
-			if (entity.Amount) {
+			if (entity.Amount !== undefined) {
 				filter.$filter.equals.Amount = entity.Amount;
 			}
-			if (entity.Currency) {
+			if (entity.Currency !== undefined) {
 				filter.$filter.equals.Currency = entity.Currency;
 			}
 			if (entity.Reason) {
@@ -86,7 +86,7 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
 			}
-			if (entity.Company) {
+			if (entity.Company !== undefined) {
 				filter.$filter.equals.Company = entity.Company;
 			}
 			if (entity.Name) {

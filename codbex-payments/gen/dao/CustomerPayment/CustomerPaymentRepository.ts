@@ -174,6 +174,10 @@ interface CustomerPaymentEntityEvent {
     }
 }
 
+interface CustomerPaymentUpdateEntityEvent extends CustomerPaymentEntityEvent {
+    readonly previousEntity: CustomerPaymentEntity;
+}
+
 export class CustomerPaymentRepository {
 
     private static readonly DEFINITION = {
@@ -305,11 +309,13 @@ export class CustomerPaymentRepository {
     public update(entity: CustomerPaymentUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         // EntityUtils.setLocalDate(entity, "Valor");
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_CUSTOMERPAYMENT",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "CUSTOMERPAYMENT_ID",
@@ -364,7 +370,7 @@ export class CustomerPaymentRepository {
         return 0;
     }
 
-    private async triggerEvent(data: CustomerPaymentEntityEvent) {
+    private async triggerEvent(data: CustomerPaymentEntityEvent | CustomerPaymentUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-CustomerPayment-CustomerPayment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

@@ -309,10 +309,7 @@
 	                    <div class="fd-col fd-col-md--8">
 							<fd-checkbox id="idDeleted"
 	                            compact="false"
-								ng-init="entity.isDeletedIndeterminate=true"
-								ng-model="entity.Deleted"
-								dg-indeterminate="entity.isDeletedIndeterminate"
-								ng-click="entity.isDeletedIndeterminate=false">
+								ng-model="entity.Deleted">
 	                        </fd-checkbox>
                         	<fd-checkbox-label for="idDeleted">Deleted</fd-checkbox-label>
                         </div>
@@ -321,7 +318,7 @@
             </fd-fieldset>
         </fd-scrollbar>
 
-		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+		<fd-bar bar-design="footer" ng-show="action !== 'select'" compact="true">
 			<fd-bar-right>
 				<fd-bar-element>
 					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>

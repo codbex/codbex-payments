@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "SupplierPayment",
+        group: "codbex-payments",
         name: "SupplierPayment",
         caption: "Manage entity SupplierPayment",
         tooltip: "SupplierPayment",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-payments/gen/ui/SupplierPayment/index.html",
         order: "100",
         groupOrder: "20",

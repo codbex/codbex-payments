@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.PaymentRecord.PaymentRecord';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.Reports.PaymentRecord';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -53,7 +53,7 @@ angular.module('page', ["ideUI", "ideView"])
 					}
 				},
 			};
-			if (entity.Id !== undefined) {
+			if (entity.Id) {
 				filter.$filter.equals.Id = entity.Id;
 			}
 			if (entity.DateFrom) {
@@ -77,10 +77,10 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CounterpartyName) {
 				filter.$filter.contains.CounterpartyName = entity.CounterpartyName;
 			}
-			if (entity.Amount !== undefined) {
+			if (entity.Amount) {
 				filter.$filter.equals.Amount = entity.Amount;
 			}
-			if (entity.Currency !== undefined) {
+			if (entity.Currency) {
 				filter.$filter.equals.Currency = entity.Currency;
 			}
 			if (entity.Reason) {
@@ -89,16 +89,16 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
 			}
-			if (entity.Company !== undefined) {
+			if (entity.Company) {
 				filter.$filter.equals.Company = entity.Company;
 			}
-			if (entity.PaymentRecordDirection !== undefined) {
+			if (entity.PaymentRecordDirection) {
 				filter.$filter.equals.PaymentRecordDirection = entity.PaymentRecordDirection;
 			}
-			if (entity.PaymentStatus !== undefined) {
+			if (entity.PaymentStatus) {
 				filter.$filter.equals.PaymentStatus = entity.PaymentStatus;
 			}
-			if (entity.PaymentType !== undefined) {
+			if (entity.PaymentType) {
 				filter.$filter.equals.PaymentType = entity.PaymentType;
 			}
 			if (entity.UUID) {
@@ -107,7 +107,7 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Reference) {
 				filter.$filter.contains.Reference = entity.Reference;
 			}
-			if (entity.Deleted !== undefined && entity.isDeletedIndeterminate === false) {
+			if (entity.Deleted) {
 				filter.$filter.equals.Deleted = entity.Deleted;
 			}
 			messageHub.postMessage("entitySearch", {
@@ -123,7 +123,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("PaymentRecord-filter");
+			messageHub.closeDialogWindow("PaymentRecord-Report-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

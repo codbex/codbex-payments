@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Settings",
+        group: "codbex-payments",
         name: "PaymentRecordDirection",
         caption: "Manage entity PaymentRecordDirection",
         tooltip: "PaymentRecordDirection",
-        // icon: "file-o",
+        type: "SETTING",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-payments/gen/ui/Settings/index.html",
         order: "100",
         groupOrder: "999",

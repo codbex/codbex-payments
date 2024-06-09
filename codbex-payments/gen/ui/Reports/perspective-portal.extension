@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/gen/ui/Reports/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-payments - Perspective - Reports"
+}
