@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payments/gen/ui/Reports/PaymentRecord/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-payments - Application Tile"
-}

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-payments-menu",
+    "description": "codbex-payments - Application Menu"
+}
