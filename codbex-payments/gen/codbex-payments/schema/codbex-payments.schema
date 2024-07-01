@@ -1,0 +1,508 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_CUSTOMERPAYMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "CUSTOMERPAYMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "CUSTOMERPAYMENT_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "CUSTOMERPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "CUSTOMERPAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "CUSTOMERPAYMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "name": "CUSTOMERPAYMENT_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_REFERENCE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SUPPLIERPAYMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "SUPPLIERPAYMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "SUPPLIERPAYMENT_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SUPPLIERPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "SUPPLIERPAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "SUPPLIERPAYMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "name": "SUPPLIERPAYMENT_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_REFERENCE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_EMPLOYEEPAYMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "EMPLOYEEPAYMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "EMPLOYEEPAYMENT_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "EMPLOYEEPAYMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEEPAYMENT_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "EMPLOYEEPAYMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "name": "EMPLOYEEPAYMENT_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_REFERENCE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTRECORD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "PAYMENTRECORD_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "PAYMENTRECORD_VALOR"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_COMPANYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_COUNTERPARTYIBAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_COUNTERPARTYNAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_CURRENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_COMPANY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_PAYMENTRECORDDIRECTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_PAYMENTSTATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_PAYMENTTYPE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "name": "PAYMENTRECORD_UUID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_REFERENCE"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_DELETED"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTRECORDDIRECTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTRECORDDIRECTION_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTRECORDDIRECTION_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYMENTTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CustomerPayment_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_CUSTOMERPAYMENT",
+                "constraintName": "CustomerPayment_Currency",
+                "columns": "CUSTOMERPAYMENT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "CustomerPayment_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_CUSTOMERPAYMENT",
+                "constraintName": "CustomerPayment_Company",
+                "columns": "CUSTOMERPAYMENT_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "SupplierPayment_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_SUPPLIERPAYMENT",
+                "constraintName": "SupplierPayment_Currency",
+                "columns": "SUPPLIERPAYMENT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "SupplierPayment_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_SUPPLIERPAYMENT",
+                "constraintName": "SupplierPayment_Company",
+                "columns": "SUPPLIERPAYMENT_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "EmployeePayment_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEPAYMENT",
+                "constraintName": "EmployeePayment_Currency",
+                "columns": "EMPLOYEEPAYMENT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "EmployeePayment_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEPAYMENT",
+                "constraintName": "EmployeePayment_Company",
+                "columns": "EMPLOYEEPAYMENT_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "PaymentRecord_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_Currency",
+                "columns": "PAYMENTRECORD_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "PaymentRecord_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_Company",
+                "columns": "PAYMENTRECORD_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "PaymentRecord_PaymentRecordDirection",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_PaymentRecordDirection",
+                "columns": "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
+                "referencedTable": "CODBEX_PAYMENTRECORDDIRECTION",
+                "referencedColumns": "PAYMENTRECORDDIRECTION_ID"
+            },
+            {
+                "name": "PaymentRecord_PaymentStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_PaymentStatus",
+                "columns": "PAYMENTRECORD_PAYMENTSTATUS",
+                "referencedTable": "CODBEX_PAYMENTSTATUS",
+                "referencedColumns": "PAYMENTSTATUS_ID"
+            },
+            {
+                "name": "PaymentRecord_PaymentType",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_PaymentType",
+                "columns": "PAYMENTRECORD_PAYMENTTYPE",
+                "referencedTable": "CODBEX_PAYMENTTYPE",
+                "referencedColumns": "PAYMENTTYPE_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}

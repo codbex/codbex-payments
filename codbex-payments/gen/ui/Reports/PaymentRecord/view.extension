@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payments/gen/ui/Reports/PaymentRecord/view.js",
-    "extensionPoint": "codbex-payments-view",
-    "description": "codbex-payments - Application View"
-}

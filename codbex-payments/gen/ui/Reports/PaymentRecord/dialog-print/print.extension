@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "codbex-payments-custom-action",
-    "module": "codbex-payments/gen/ui/Reports/PaymentRecord/dialog-print/print.js",
-    "description": "Print PaymentRecord Report"
-}
