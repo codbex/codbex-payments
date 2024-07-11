@@ -6,11 +6,11 @@
   "description": "Managing payments data",
   "dataSource": "DefaultDB",
   "fileName": "codbex-payments",
+  "genFolderName": "codbex-payments",
   "projectName": "codbex-payments",
   "workspaceName": "workspace",
   "filePath": "codbex-payments.model",
   "templateId": "template-application-angular/template/template.js",
-  "genFolderName": "codbex-payments",
   "perspectives": {
     "CustomerPayment": {
       "views": [
