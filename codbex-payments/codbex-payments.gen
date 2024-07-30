@@ -83,6 +83,16 @@
       "order": "999",
       "icon": "/services/web/resources/unicons/wrench.svg",
       "role": ""
+    },
+    "Methods": {
+      "views": [
+        "PaymentMethod"
+      ],
+      "name": "Methods",
+      "label": "Methods",
+      "order": "100",
+      "icon": "/services/web/resources/unicons/archive.svg",
+      "role": ""
     }
   },
   "models": [
@@ -423,6 +433,33 @@
           "minLength": 0,
           "maxLength": 20,
           "inputRule": ""
+        },
+        {
+          "dataName": "CUSTOMERPAYMENT_PAYMENTMETHOD",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "name": "PaymentMethod",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DROPDOWN",
+          "relationshipName": "CustomerPayment_PaymentMethod",
+          "relationshipEntityName": "PaymentMethod",
+          "relationshipEntityPerspectiveName": "Methods",
+          "relationshipEntityPerspectiveLabel": "methods",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "PaymentMethod",
+          "widgetDropdownUrl": "/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity CustomerPayment",
@@ -457,6 +494,11 @@
           "name": "Company",
           "project": "codbex-companies",
           "genFolderName": "codbex-companies"
+        },
+        {
+          "name": "PaymentMethod",
+          "project": "codbex-methods",
+          "genFolderName": "codbex-methods"
         }
       ],
       "primaryKeys": [
@@ -2420,6 +2462,83 @@
       "title": "PaymentType",
       "tooltip": "PaymentType",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
+      "referencedProjections": [],
+      "primaryKeys": [
+        "Id"
+      ],
+      "primaryKeysString": "Id"
+    },
+    {
+      "properties": [
+        {
+          "dataAutoIncrement": true,
+          "dataName": "PAYMENTMETHOD_ID",
+          "dataNullable": true,
+          "dataPrimaryKey": true,
+          "dataType": "INTEGER",
+          "name": "Id",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Id",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
+        },
+        {
+          "dataLength": "20",
+          "dataName": "PAYMENTMETHOD_NAME",
+          "dataNullable": true,
+          "dataType": "VARCHAR",
+          "name": "Name",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Name",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
+          "inputRule": ""
+        }
+      ],
+      "caption": "Manage entity PaymentMethod",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_PAYMENTMETHOD\"",
+      "dataName": "PAYMENTMETHOD",
+      "dataQuery": "",
+      "generateReport": "false",
+      "icon": "/services/web/resources/unicons/file.svg",
+      "layoutType": "MANAGE",
+      "menuIndex": "100",
+      "menuKey": "paymentmethod",
+      "menuLabel": "PaymentMethod",
+      "name": "PaymentMethod",
+      "navigationPath": "/Home",
+      "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
+      "perspectiveLabel": "methods",
+      "perspectiveName": "Methods",
+      "perspectiveOrder": "100",
+      "perspectiveRole": "",
+      "projectionReferencedEntity": "PaymentMethod",
+      "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
+      "title": "PaymentMethod",
+      "tooltip": "PaymentMethod",
+      "type": "PROJECTION",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [

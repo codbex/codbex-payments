@@ -21,6 +21,7 @@ export interface CustomerPaymentEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
+    PaymentMethod?: number;
 }
 
 export interface CustomerPaymentCreateEntity {
@@ -35,6 +36,7 @@ export interface CustomerPaymentCreateEntity {
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
+    readonly PaymentMethod?: number;
 }
 
 export interface CustomerPaymentUpdateEntity extends CustomerPaymentCreateEntity {
@@ -58,6 +60,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -74,6 +77,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -90,6 +94,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -106,6 +111,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -122,6 +128,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThan?: {
             Id?: number;
@@ -138,6 +145,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -154,6 +162,7 @@ export interface CustomerPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
     },
     $select?: (keyof CustomerPaymentEntity)[],
@@ -260,6 +269,11 @@ export class CustomerPaymentRepository {
                 name: "Reference",
                 column: "CUSTOMERPAYMENT_REFERENCE",
                 type: "VARCHAR",
+            },
+            {
+                name: "PaymentMethod",
+                column: "CUSTOMERPAYMENT_PAYMENTMETHOD",
+                type: "INTEGER",
             }
         ]
     };

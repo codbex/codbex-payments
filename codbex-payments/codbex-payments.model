@@ -176,6 +176,22 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "CUSTOMERPAYMENT_PAYMENTMETHOD",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "PaymentMethod",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "CustomerPayment_PaymentMethod",
+                        "relationshipEntityName": "PaymentMethod",
+                        "relationshipEntityPerspectiveName": "Methods",
+                        "relationshipEntityPerspectiveLabel": "methods"
                     }
                 ],
                 "caption": "Manage entity CustomerPayment",
@@ -1275,6 +1291,55 @@
                 "title": "PaymentType",
                 "tooltip": "PaymentType",
                 "type": "SETTING"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "PAYMENTMETHOD_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "PAYMENTMETHOD_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity PaymentMethod",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYMENTMETHOD\"",
+                "dataName": "PAYMENTMETHOD",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "paymentmethod",
+                "menuLabel": "PaymentMethod",
+                "name": "PaymentMethod",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
+                "perspectiveLabel": "methods",
+                "perspectiveName": "Methods",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "projectionReferencedEntity": "PaymentMethod",
+                "projectionReferencedModel": "/workspace/codbex-methods/codbex-methods.model",
+                "title": "PaymentMethod",
+                "tooltip": "PaymentMethod",
+                "type": "PROJECTION"
             }
         ],
         "perspectives": [

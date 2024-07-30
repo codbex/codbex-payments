@@ -119,6 +119,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			});
 		};
 
@@ -127,6 +128,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			});
 		};
 
@@ -137,6 +139,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			}, null, false);
 		};
 
@@ -146,6 +149,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			}, null, false);
 		};
 
@@ -181,6 +185,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsCurrency = [];
 		$scope.optionsCompany = [];
+		$scope.optionsPaymentMethod = [];
 
 
 		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
@@ -201,6 +206,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts").then(function (response) {
+			$scope.optionsPaymentMethod = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsCurrencyValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
@@ -213,6 +227,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCompany.length; i++) {
 				if ($scope.optionsCompany[i].value === optionKey) {
 					return $scope.optionsCompany[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsPaymentMethodValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPaymentMethod.length; i++) {
+				if ($scope.optionsPaymentMethod[i].value === optionKey) {
+					return $scope.optionsPaymentMethod[i].text;
 				}
 			}
 			return null;

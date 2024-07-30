@@ -80,6 +80,11 @@
                         "length": 36,
                         "nullable": true,
                         "name": "CUSTOMERPAYMENT_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
                     }
                 ]
             },
@@ -420,6 +425,15 @@
                 "columns": "CUSTOMERPAYMENT_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "CustomerPayment_PaymentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_CUSTOMERPAYMENT",
+                "constraintName": "CustomerPayment_PaymentMethod",
+                "columns": "CUSTOMERPAYMENT_PAYMENTMETHOD",
+                "referencedTable": "CODBEX_PAYMENTMETHOD",
+                "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
                 "name": "SupplierPayment_Currency",
