@@ -164,7 +164,7 @@
           "inputRule": ""
         },
         {
-          "dataLength": "22",
+          "dataLength": "34",
           "dataName": "CUSTOMERPAYMENT_COMPANYIBAN",
           "dataNullable": true,
           "dataType": "VARCHAR",
@@ -394,7 +394,7 @@
           "dataUnique": true,
           "isCalculatedProperty": true,
           "name": "UUID",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
@@ -416,7 +416,7 @@
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "Reference",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "TEXTBOX",

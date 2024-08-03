@@ -39,8 +39,6 @@
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Company</th>
 						<th fd-table-header-cell>Name</th>
-						<th fd-table-header-cell>UUID</th>
-						<th fd-table-header-cell>Reference</th>
 						<th fd-table-header-cell>PaymentMethod</th>
 						<th fd-table-header-cell></th>
 					</tr>
@@ -70,8 +68,6 @@
 							{{optionsCompanyValue(next.Company)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UUID}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Reference}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsPaymentMethodValue(next.PaymentMethod)}}
 						</td>
