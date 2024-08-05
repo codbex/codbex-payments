@@ -2944,7 +2944,7 @@ components:
         CompanyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyIBAN:
           type: string
           minLength: 0
@@ -2984,6 +2984,9 @@ components:
           type: string
           minLength: 0
           maxLength: 36
+        PaymentMethod:
+          type: integer
+          format: int32
     CustomerPaymentFilterOptions:
       type: object
       properties:
@@ -3009,13 +3012,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
@@ -3117,6 +3120,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -3136,13 +3147,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
@@ -3244,6 +3255,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 36
+                PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -3253,7 +3272,7 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
@@ -3285,6 +3304,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                PaymentMethod:
             greaterThan:
               type: object
               properties:
@@ -3296,7 +3316,7 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
@@ -3334,6 +3354,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -3345,7 +3368,7 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
@@ -3383,6 +3406,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -3394,7 +3420,7 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
@@ -3432,6 +3458,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -3443,7 +3472,7 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
@@ -3481,14 +3510,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 36
+                PaymentMethod:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference"]
+          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference"
+            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
         $order:
           type: string
           enum: ["asc", "desc"]

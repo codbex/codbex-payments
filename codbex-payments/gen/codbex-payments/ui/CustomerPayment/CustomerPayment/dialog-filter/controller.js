@@ -28,6 +28,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsCompany = params.optionsCompany;
+			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
 		}
 
 		$scope.filter = function () {
@@ -97,6 +98,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Reference) {
 				filter.$filter.contains.Reference = entity.Reference;
+			}
+			if (entity.PaymentMethod !== undefined) {
+				filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
