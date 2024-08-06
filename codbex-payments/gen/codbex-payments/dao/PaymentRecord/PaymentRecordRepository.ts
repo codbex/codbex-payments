@@ -309,6 +309,15 @@ export class PaymentRecordRepository {
     }
 
     public findAll(options?: PaymentRecordEntityOptions): PaymentRecordEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Date,";
+        // @ts-ignore
+        options.$order = "DESC";
         return this.dao.list(options).map((e: PaymentRecordEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");
