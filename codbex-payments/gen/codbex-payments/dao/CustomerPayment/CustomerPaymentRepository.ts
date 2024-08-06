@@ -285,6 +285,15 @@ export class CustomerPaymentRepository {
     }
 
     public findAll(options?: CustomerPaymentEntityOptions): CustomerPaymentEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Date,";
+        // @ts-ignore
+        options.$order = "DESC";
         return this.dao.list(options).map((e: CustomerPaymentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");
