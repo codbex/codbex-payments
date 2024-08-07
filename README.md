@@ -20,3 +20,5 @@
 ![employee](images/payments-employee-payment.png)
 
 ![settings](images/payments-settings.png)
+
+![report](images/payments-payment-record-report.png)
