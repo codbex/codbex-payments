@@ -122,6 +122,7 @@
         {
           "dataName": "CUSTOMERPAYMENT_DATE",
           "dataNullable": false,
+          "dataOrderBy": "DESC",
           "dataType": "DATE",
           "isRequiredProperty": true,
           "name": "Date",
@@ -534,6 +535,7 @@
         {
           "dataName": "SUPPLIERPAYMENT_DATE",
           "dataNullable": false,
+          "dataOrderBy": "DESC",
           "dataType": "DATE",
           "isRequiredProperty": true,
           "name": "Date",
@@ -914,6 +916,7 @@
         {
           "dataName": "EMPLOYEEPAYMENT_DATE",
           "dataNullable": false,
+          "dataOrderBy": "DESC",
           "dataType": "DATE",
           "isRequiredProperty": true,
           "name": "Date",
@@ -1294,6 +1297,7 @@
         {
           "dataName": "PAYMENTRECORD_DATE",
           "dataNullable": false,
+          "dataOrderBy": "DESC",
           "dataType": "DATE",
           "isRequiredProperty": true,
           "name": "Date",
