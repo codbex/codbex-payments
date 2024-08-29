@@ -2987,6 +2987,9 @@ components:
         PaymentMethod:
           type: integer
           format: int32
+        Customer:
+          type: integer
+          format: int32
     CustomerPaymentFilterOptions:
       type: object
       properties:
@@ -3121,6 +3124,14 @@ components:
                         minLength: 0
                         maxLength: 36
                 PaymentMethod:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Customer:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3263,6 +3274,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -3305,6 +3324,7 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
+                Customer:
             greaterThan:
               type: object
               properties:
@@ -3355,6 +3375,9 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
+                  type: integer
+                  format: int32
+                Customer:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -3409,6 +3432,9 @@ components:
                 PaymentMethod:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -3459,6 +3485,9 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
+                  type: integer
+                  format: int32
+                Customer:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -3513,14 +3542,17 @@ components:
                 PaymentMethod:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
+          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod", "Customer"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
+            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod,Customer"
         $order:
           type: string
           enum: ["asc", "desc"]

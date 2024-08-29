@@ -102,6 +102,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.PaymentMethod !== undefined) {
 				filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
 			}
+			if (entity.Customer !== undefined) {
+				filter.$filter.equals.Customer = entity.Customer;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
