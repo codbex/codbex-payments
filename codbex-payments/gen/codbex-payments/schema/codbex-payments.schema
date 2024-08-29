@@ -13,6 +13,11 @@
                         "name": "CUSTOMERPAYMENT_ID"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CUSTOMER"
+                    },
+                    {
                         "type": "DATE",
                         "name": "CUSTOMERPAYMENT_DATE"
                     },
@@ -85,11 +90,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_CUSTOMER"
                     }
                 ]
             },
@@ -414,6 +414,15 @@
                 ]
             },
             {
+                "name": "CustomerPayment_Customer",
+                "type": "foreignKey",
+                "table": "CODBEX_CUSTOMERPAYMENT",
+                "constraintName": "CustomerPayment_Customer",
+                "columns": "CUSTOMERPAYMENT_CUSTOMER",
+                "referencedTable": "CODBEX_CUSTOMER",
+                "referencedColumns": "CUSTOMER_ID"
+            },
+            {
                 "name": "CustomerPayment_Currency",
                 "type": "foreignKey",
                 "table": "CODBEX_CUSTOMERPAYMENT",
@@ -439,15 +448,6 @@
                 "columns": "CUSTOMERPAYMENT_PAYMENTMETHOD",
                 "referencedTable": "CODBEX_PAYMENTMETHOD",
                 "referencedColumns": "PAYMENTMETHOD_ID"
-            },
-            {
-                "name": "CustomerPayment_Customer",
-                "type": "foreignKey",
-                "table": "CODBEX_CUSTOMERPAYMENT",
-                "constraintName": "CustomerPayment_Customer",
-                "columns": "CUSTOMERPAYMENT_CUSTOMER",
-                "referencedTable": "CODBEX_CUSTOMER",
-                "referencedColumns": "CUSTOMER_ID"
             },
             {
                 "name": "SupplierPayment_Currency",

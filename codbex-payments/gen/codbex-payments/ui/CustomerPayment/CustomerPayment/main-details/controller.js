@@ -40,6 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsCompany = [];
 				$scope.optionsPaymentMethod = [];
@@ -56,6 +57,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Valor = new Date(msg.data.entity.Valor);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
@@ -66,6 +68,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;
@@ -82,6 +85,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Valor = new Date(msg.data.entity.Valor);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsPaymentMethod = msg.data.optionsPaymentMethod;

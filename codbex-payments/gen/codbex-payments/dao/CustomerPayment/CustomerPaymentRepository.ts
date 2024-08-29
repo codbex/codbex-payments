@@ -8,6 +8,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface CustomerPaymentEntity {
     readonly Id: number;
+    Customer?: number;
     Date: Date;
     Valor: Date;
     CompanyIBAN?: string;
@@ -22,10 +23,10 @@ export interface CustomerPaymentEntity {
     UUID: string;
     Reference?: string;
     PaymentMethod?: number;
-    Customer?: number;
 }
 
 export interface CustomerPaymentCreateEntity {
+    readonly Customer?: number;
     readonly Date: Date;
     readonly Valor: Date;
     readonly CompanyIBAN?: string;
@@ -38,7 +39,6 @@ export interface CustomerPaymentCreateEntity {
     readonly Company?: number;
     readonly Reference?: string;
     readonly PaymentMethod?: number;
-    readonly Customer?: number;
 }
 
 export interface CustomerPaymentUpdateEntity extends CustomerPaymentCreateEntity {
@@ -49,6 +49,7 @@ export interface CustomerPaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -63,10 +64,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string | string[];
             Reference?: string | string[];
             PaymentMethod?: number | number[];
-            Customer?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
+            Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -81,10 +82,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string | string[];
             Reference?: string | string[];
             PaymentMethod?: number | number[];
-            Customer?: number | number[];
         };
         contains?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -99,10 +100,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string;
             Reference?: string;
             PaymentMethod?: number;
-            Customer?: number;
         };
         greaterThan?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -117,10 +118,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string;
             Reference?: string;
             PaymentMethod?: number;
-            Customer?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -135,10 +136,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string;
             Reference?: string;
             PaymentMethod?: number;
-            Customer?: number;
         };
         lessThan?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -153,10 +154,10 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string;
             Reference?: string;
             PaymentMethod?: number;
-            Customer?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -171,7 +172,6 @@ export interface CustomerPaymentEntityOptions {
             UUID?: string;
             Reference?: string;
             PaymentMethod?: number;
-            Customer?: number;
         };
     },
     $select?: (keyof CustomerPaymentEntity)[],
@@ -207,6 +207,11 @@ export class CustomerPaymentRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Customer",
+                column: "CUSTOMERPAYMENT_CUSTOMER",
+                type: "INTEGER",
             },
             {
                 name: "Date",
@@ -282,11 +287,6 @@ export class CustomerPaymentRepository {
             {
                 name: "PaymentMethod",
                 column: "CUSTOMERPAYMENT_PAYMENTMETHOD",
-                type: "INTEGER",
-            },
-            {
-                name: "Customer",
-                column: "CUSTOMERPAYMENT_CUSTOMER",
                 type: "INTEGER",
             }
         ]

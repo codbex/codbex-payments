@@ -26,6 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsCustomer = params.optionsCustomer;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsPaymentMethod = params.optionsPaymentMethod;
@@ -53,6 +54,9 @@ angular.module('page', ["ideUI", "ideView"])
 			};
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
+			}
+			if (entity.Customer !== undefined) {
+				filter.$filter.equals.Customer = entity.Customer;
 			}
 			if (entity.DateFrom) {
 				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
@@ -101,9 +105,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.PaymentMethod !== undefined) {
 				filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
-			}
-			if (entity.Customer !== undefined) {
-				filter.$filter.equals.Customer = entity.Customer;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

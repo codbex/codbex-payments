@@ -2930,6 +2930,7 @@ components:
     CustomerPayment:
       type: object
       required:
+        - Customer
         - Date
         - Valor
         - Amount
@@ -2937,6 +2938,9 @@ components:
         - Reason
       properties:
         Id:
+          type: integer
+          format: int32
+        Customer:
           type: integer
           format: int32
         Date:
@@ -2987,9 +2991,6 @@ components:
         PaymentMethod:
           type: integer
           format: int32
-        Customer:
-          type: integer
-          format: int32
     CustomerPaymentFilterOptions:
       type: object
       properties:
@@ -3000,6 +3001,14 @@ components:
               type: object
               properties:
                 Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Customer:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3124,14 +3133,6 @@ components:
                         minLength: 0
                         maxLength: 36
                 PaymentMethod:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Customer:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3150,6 +3151,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Valor:
@@ -3274,18 +3283,11 @@ components:
                       items:
                         type: integer
                         format: int32
-                Customer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             contains:
               type: object
               properties:
                 Id:
+                Customer:
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3324,11 +3326,13 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
-                Customer:
             greaterThan:
               type: object
               properties:
                 Id:
+                  type: integer
+                  format: int32
+                Customer:
                   type: integer
                   format: int32
                 Date:
@@ -3375,9 +3379,6 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
-                  type: integer
-                  format: int32
-                Customer:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -3386,6 +3387,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3430,9 +3434,6 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
-                  type: integer
-                  format: int32
-                Customer:
                   type: integer
                   format: int32
             lessThan:
@@ -3441,6 +3442,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3485,9 +3489,6 @@ components:
                   minLength: 0
                   maxLength: 36
                 PaymentMethod:
-                  type: integer
-                  format: int32
-                Customer:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -3496,6 +3497,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3542,17 +3546,14 @@ components:
                 PaymentMethod:
                   type: integer
                   format: int32
-                Customer:
-                  type: integer
-                  format: int32
         $select:
           type: array
-          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod", "Customer"]
+          example: ["Id", "Customer", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod,Customer"
+            example: "Id,Customer,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
         $order:
           type: string
           enum: ["asc", "desc"]

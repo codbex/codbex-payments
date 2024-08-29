@@ -122,6 +122,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
@@ -134,6 +135,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
@@ -144,6 +146,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
@@ -183,6 +186,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("CustomerPayment-filter", {
 				entity: $scope.filterEntity,
+				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 				optionsPaymentMethod: $scope.optionsPaymentMethod,
@@ -190,10 +194,20 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsCustomer = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsCompany = [];
 		$scope.optionsPaymentMethod = [];
 
+
+		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts").then(function (response) {
+			$scope.optionsCustomer = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
 			$scope.optionsCurrency = response.data.map(e => {
@@ -222,6 +236,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsCustomerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
+				if ($scope.optionsCustomer[i].value === optionKey) {
+					return $scope.optionsCustomer[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsCurrencyValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
