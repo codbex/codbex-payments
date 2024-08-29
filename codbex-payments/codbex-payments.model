@@ -202,7 +202,7 @@
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "customerpayment",
                 "menuLabel": "CustomerPayment",

@@ -6,12 +6,14 @@
 const viewData = {
     id: "CustomerPayment-details",
     label: "CustomerPayment",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-window/index.html",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/main-details/index.html",
     perspectiveName: "CustomerPayment",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

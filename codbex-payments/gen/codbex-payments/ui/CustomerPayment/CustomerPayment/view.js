@@ -7,7 +7,7 @@ const viewData = {
     id: "CustomerPayment",
     label: "CustomerPayment",
     factory: "frame",
-    region: "center",
+    region: "left",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/index.html",
     perspectiveName: "CustomerPayment",
 };
