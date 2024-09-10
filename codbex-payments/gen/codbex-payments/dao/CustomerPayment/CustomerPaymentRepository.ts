@@ -8,6 +8,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface CustomerPaymentEntity {
     readonly Id: number;
+    Customer?: number;
     Date: Date;
     Valor: Date;
     CompanyIBAN?: string;
@@ -25,6 +26,7 @@ export interface CustomerPaymentEntity {
 }
 
 export interface CustomerPaymentCreateEntity {
+    readonly Customer?: number;
     readonly Date: Date;
     readonly Valor: Date;
     readonly CompanyIBAN?: string;
@@ -47,6 +49,7 @@ export interface CustomerPaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -64,6 +67,7 @@ export interface CustomerPaymentEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -81,6 +85,7 @@ export interface CustomerPaymentEntityOptions {
         };
         contains?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -98,6 +103,7 @@ export interface CustomerPaymentEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -115,6 +121,7 @@ export interface CustomerPaymentEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -132,6 +139,7 @@ export interface CustomerPaymentEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -149,6 +157,7 @@ export interface CustomerPaymentEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            Customer?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -198,6 +207,11 @@ export class CustomerPaymentRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Customer",
+                column: "CUSTOMERPAYMENT_CUSTOMER",
+                type: "INTEGER",
             },
             {
                 name: "Date",

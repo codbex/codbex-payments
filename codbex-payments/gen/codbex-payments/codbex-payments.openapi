@@ -2930,6 +2930,7 @@ components:
     CustomerPayment:
       type: object
       required:
+        - Customer
         - Date
         - Valor
         - Amount
@@ -2937,6 +2938,9 @@ components:
         - Reason
       properties:
         Id:
+          type: integer
+          format: int32
+        Customer:
           type: integer
           format: int32
         Date:
@@ -2997,6 +3001,14 @@ components:
               type: object
               properties:
                 Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Customer:
                   oneOf:
                     - type: integer
                       format: int32
@@ -3139,6 +3151,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Customer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Valor:
@@ -3267,6 +3287,7 @@ components:
               type: object
               properties:
                 Id:
+                Customer:
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3309,6 +3330,9 @@ components:
               type: object
               properties:
                 Id:
+                  type: integer
+                  format: int32
+                Customer:
                   type: integer
                   format: int32
                 Date:
@@ -3363,6 +3387,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3413,6 +3440,9 @@ components:
               type: object
               properties:
                 Id:
+                  type: integer
+                  format: int32
+                Customer:
                   type: integer
                   format: int32
                 Date:
@@ -3467,6 +3497,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Customer:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -3515,12 +3548,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
+          example: ["Id", "Customer", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference", "PaymentMethod"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
+            example: "Id,Customer,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference,PaymentMethod"
         $order:
           type: string
           enum: ["asc", "desc"]

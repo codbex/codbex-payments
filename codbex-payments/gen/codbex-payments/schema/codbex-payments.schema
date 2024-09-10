@@ -13,6 +13,11 @@
                         "name": "CUSTOMERPAYMENT_ID"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CUSTOMER"
+                    },
+                    {
                         "type": "DATE",
                         "name": "CUSTOMERPAYMENT_DATE"
                     },
@@ -407,6 +412,15 @@
                         "name": "PAYMENTTYPE_NAME"
                     }
                 ]
+            },
+            {
+                "name": "CustomerPayment_Customer",
+                "type": "foreignKey",
+                "table": "CODBEX_CUSTOMERPAYMENT",
+                "constraintName": "CustomerPayment_Customer",
+                "columns": "CUSTOMERPAYMENT_CUSTOMER",
+                "referencedTable": "CODBEX_CUSTOMER",
+                "referencedColumns": "CUSTOMER_ID"
             },
             {
                 "name": "CustomerPayment_Currency",
