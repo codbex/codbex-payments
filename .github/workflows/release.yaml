@@ -14,7 +14,7 @@ jobs:
   main:
     uses: codbex/codbex-infra/.github/workflows/module-release.yaml@main
     with:
-      packages: codbex-payments,codbex-payments-data
+      packages: codbex-payments
       packages-build: codbex-payments
       release-version: ${{ inputs.release-version }}
       release-content: |
@@ -26,7 +26,6 @@ jobs:
   
         ```
         npm install @codbex/codbex-payments@${{ inputs.release-version }}
-        npm install @codbex/codbex-payments-data@${{ inputs.release-version }}
         ```
   
         ## Access points:
