@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/navigations/services/supplier-payments.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Supplier Payments Navigation"
+}

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/navigations/services/customer-payments.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Customer Payments Navigation"
+}
