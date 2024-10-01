@@ -1,8 +1,0 @@
-{
-    "guid": "codbex-payments-data",
-    "repository": {
-        "type": "git",
-        "branch": "main",
-        "url": "https://github.com/codbex/codbex-payments.git"
-    }
-}
