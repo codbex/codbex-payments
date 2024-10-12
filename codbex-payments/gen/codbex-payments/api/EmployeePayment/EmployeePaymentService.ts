@@ -127,11 +127,11 @@ class EmployeePaymentService {
         if (entity.Valor === null || entity.Valor === undefined) {
             throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
         }
-        if (entity.CompanyIBAN?.length > 22) {
-            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [22] characters`);
+        if (entity.CompanyIBAN?.length > 50) {
+            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [50] characters`);
         }
-        if (entity.CounterpartyIBAN?.length > 22) {
-            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [22] characters`);
+        if (entity.CounterpartyIBAN?.length > 50) {
+            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [50] characters`);
         }
         if (entity.CounterpartyName?.length > 100) {
             throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
