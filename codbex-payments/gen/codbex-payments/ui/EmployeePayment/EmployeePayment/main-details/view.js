@@ -6,12 +6,14 @@
 const viewData = {
     id: "EmployeePayment-details",
     label: "EmployeePayment",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/dialog-window/index.html",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/main-details/index.html",
     perspectiveName: "EmployeePayment",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }
