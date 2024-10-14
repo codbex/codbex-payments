@@ -45,6 +45,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "CUSTOMERPAYMENT_AMOUNT"
@@ -132,6 +133,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "SUPPLIERPAYMENT_AMOUNT"
@@ -196,13 +198,13 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 50,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_COMPANYIBAN"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 50,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN"
                     },
@@ -214,6 +216,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "name": "EMPLOYEEPAYMENT_AMOUNT"
@@ -296,6 +299,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
