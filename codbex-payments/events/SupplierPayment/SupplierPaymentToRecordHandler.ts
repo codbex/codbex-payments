@@ -1,4 +1,4 @@
-import { PaymentRecordRepository } from "../../gen/codbex-payment/dao/PaymentRecord/PaymentRecordRepository";
+import { PaymentRecordRepository } from "../../gen/codbex-payments/dao/PaymentRecord/PaymentRecordRepository";
 
 export const trigger = (event) => {
     const PaymentRecordDao = new PaymentRecordRepository();
