@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/navigations/services/employee-payments.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Employee Payments Navigation"
+}
