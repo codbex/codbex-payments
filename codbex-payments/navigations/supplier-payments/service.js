@@ -1,10 +1,8 @@
 const navigationData = {
     id: 'supplier-payments-navigation',
     label: "Supplier Payments",
-    view: "supplier-payments",
     group: "purchasing",
-    orderNumber: 1000,
-    lazyLoad: true,
+    order: 1000,
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/index.html?embedded"
 };
 
