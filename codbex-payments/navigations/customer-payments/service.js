@@ -2,7 +2,7 @@ const navigationData = {
     id: 'customer-payments-navigation',
     label: "Customer Payments",
     group: "sales",
-    order: 1000,
+    order: 300,
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/index.html?embedded"
 };
 
