@@ -2,7 +2,7 @@ const navigationData = {
     id: 'employee-payments-navigation',
     label: "Employee Payments",
     group: "salaries",
-    order: 1000,
+    order: 300,
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/index.html?embedded"
 };
 
