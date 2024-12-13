@@ -298,7 +298,7 @@ export class SupplierPaymentRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Valor");
         // @ts-ignore
-        (entity as SupplierPaymentEntity).Name = new NumberGeneratorService().generate(21);
+        (entity as SupplierPaymentEntity).Name = new NumberGeneratorService().generate(19);
         // @ts-ignore
         (entity as SupplierPaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
