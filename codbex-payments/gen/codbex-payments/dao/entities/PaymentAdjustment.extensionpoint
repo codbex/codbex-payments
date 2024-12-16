@@ -1,0 +1,4 @@
+{
+    "name": "codbex-payments-entities-PaymentAdjustment",
+    "description": "Extension Point for the codbex-payments-entities-PaymentAdjustment entity"
+}

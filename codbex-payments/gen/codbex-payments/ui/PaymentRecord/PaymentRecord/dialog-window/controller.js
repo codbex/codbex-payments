@@ -66,6 +66,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		$scope.servicePaymentRecordDirection = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts";
+		$scope.servicePaymentStatus = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts";
+		$scope.servicePaymentType = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts";
+
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
