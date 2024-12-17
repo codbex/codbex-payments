@@ -8,8 +8,8 @@ const viewData = {
     label: "PaymentAdjustment",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/entities/PaymentAdjustment/index.html",
-    perspectiveName: "entities",
+    link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/index.html",
+    perspectiveName: "PaymentAdjustment",
 };
 
 if (typeof exports !== 'undefined') {

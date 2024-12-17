@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PaymentAdjustment-filter",
-    label: "PaymentAdjustment Filter",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/entities/PaymentAdjustment/dialog-filter/index.html",
-    perspectiveName: "entities",
+    id: "PaymentAdjustment-details",
+    label: "PaymentAdjustment",
+    link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/dialog-window/index.html",
+    perspectiveName: "PaymentAdjustment",
 };
 
 if (typeof exports !== 'undefined') {

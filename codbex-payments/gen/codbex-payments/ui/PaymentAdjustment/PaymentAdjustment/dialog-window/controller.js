@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.entities.PaymentAdjustment';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.PaymentAdjustment.PaymentAdjustment';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -23,6 +23,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = params.action;
 			if (params.entity.Date) {
 				params.entity.Date = new Date(params.entity.Date);
+			}
+			if (params.entity.Valor) {
+				params.entity.Valor = new Date(params.entity.Valor);
 			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;

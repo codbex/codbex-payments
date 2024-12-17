@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PaymentAdjustmentRepository, PaymentAdjustmentEntityOptions } from "../../dao/entities/PaymentAdjustmentRepository";
+import { PaymentAdjustmentRepository, PaymentAdjustmentEntityOptions } from "../../dao/PaymentAdjustment/PaymentAdjustmentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-payments-entities-PaymentAdjustment", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-payments-PaymentAdjustment-PaymentAdjustment", ["validate"]);
 
 @Controller
 class PaymentAdjustmentService {
@@ -30,7 +30,7 @@ class PaymentAdjustmentService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -122,11 +122,17 @@ class PaymentAdjustmentService {
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
+        if (entity.Valor === null || entity.Valor === undefined) {
+            throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
+        }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
         if (entity.Reason?.length > 100) {
             throw new ValidationError(`The 'Reason' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.UUID?.length > 36) {
+            throw new ValidationError(`The 'UUID' exceeds the maximum length of [36] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

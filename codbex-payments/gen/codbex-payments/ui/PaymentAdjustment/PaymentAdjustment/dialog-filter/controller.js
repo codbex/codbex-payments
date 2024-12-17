@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.entities.PaymentAdjustment';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.PaymentAdjustment.PaymentAdjustment';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -16,6 +16,12 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (params?.entity?.DateTo) {
 				params.entity.DateTo = new Date(params.entity.DateTo);
+			}
+			if (params?.entity?.ValorFrom) {
+				params.entity.ValorFrom = new Date(params.entity.ValorFrom);
+			}
+			if (params?.entity?.ValorTo) {
+				params.entity.ValorTo = new Date(params.entity.ValorTo);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
@@ -51,6 +57,12 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
 			}
+			if (entity.ValorFrom) {
+				filter.$filter.greaterThanOrEqual.Valor = entity.ValorFrom;
+			}
+			if (entity.ValorTo) {
+				filter.$filter.lessThanOrEqual.Valor = entity.ValorTo;
+			}
 			if (entity.Amount !== undefined) {
 				filter.$filter.equals.Amount = entity.Amount;
 			}
@@ -62,6 +74,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Reason) {
 				filter.$filter.contains.Reason = entity.Reason;
+			}
+			if (entity.UUID) {
+				filter.$filter.contains.UUID = entity.UUID;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

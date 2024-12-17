@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.entities.PaymentAdjustment';
+		messageHubProvider.eventIdPrefix = 'codbex-payments.PaymentAdjustment.PaymentAdjustment';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-payments-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "PaymentAdjustment" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "PaymentAdjustment" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "PaymentAdjustment" && e.view === "PaymentAdjustment" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "PaymentAdjustment" && e.view === "PaymentAdjustment" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -96,6 +96,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					response.data.forEach(e => {
 						if (e.Date) {
 							e.Date = new Date(e.Date);
+						}
+						if (e.Valor) {
+							e.Valor = new Date(e.Valor);
 						}
 					});
 

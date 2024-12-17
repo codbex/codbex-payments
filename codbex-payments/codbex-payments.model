@@ -1764,6 +1764,19 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "PAYMENTADJUSTMENT_VALOR",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Valor",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataLength": "18",
                         "dataName": "PAYMENTADJUSTMENT_AMOUNT",
                         "dataNullable": "true",
@@ -1823,6 +1836,21 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+                        "dataLength": "36",
+                        "dataName": "PAYMENTADJUSTMENT_UUID",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isCalculatedProperty": "true",
+                        "name": "UUID",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity PaymentAdjustment",
@@ -1838,10 +1866,10 @@
                 "menuLabel": "PaymentAdjustment",
                 "name": "PaymentAdjustment",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/paypal.svg",
+                "perspectiveLabel": "PaymentAdjustment",
+                "perspectiveName": "PaymentAdjustment",
+                "perspectiveOrder": "110",
                 "perspectiveRole": "",
                 "title": "PaymentAdjustment",
                 "tooltip": "PaymentAdjustment",
@@ -1882,6 +1910,13 @@
                 "label": "EmployeePayment",
                 "icon": "/services/web/resources/unicons/folder-check.svg",
                 "order": "30",
+                "role": {}
+            },
+            {
+                "name": "PaymentAdjustment",
+                "label": "PaymentAdjustment",
+                "icon": "/services/web/resources/unicons/paypal.svg",
+                "order": "110",
                 "role": {}
             }
         ],

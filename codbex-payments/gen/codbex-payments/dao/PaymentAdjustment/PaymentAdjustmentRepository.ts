@@ -7,14 +7,17 @@ import { EntityUtils } from "../utils/EntityUtils";
 export interface PaymentAdjustmentEntity {
     readonly Id: number;
     Date?: Date;
+    Valor?: Date;
     Amount?: number;
     Currency?: number;
     Company?: number;
     Reason?: string;
+    UUID?: string;
 }
 
 export interface PaymentAdjustmentCreateEntity {
     readonly Date?: Date;
+    readonly Valor?: Date;
     readonly Amount?: number;
     readonly Currency?: number;
     readonly Company?: number;
@@ -30,58 +33,72 @@ export interface PaymentAdjustmentEntityOptions {
         equals?: {
             Id?: number | number[];
             Date?: Date | Date[];
+            Valor?: Date | Date[];
             Amount?: number | number[];
             Currency?: number | number[];
             Company?: number | number[];
             Reason?: string | string[];
+            UUID?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Date?: Date | Date[];
+            Valor?: Date | Date[];
             Amount?: number | number[];
             Currency?: number | number[];
             Company?: number | number[];
             Reason?: string | string[];
+            UUID?: string | string[];
         };
         contains?: {
             Id?: number;
             Date?: Date;
+            Valor?: Date;
             Amount?: number;
             Currency?: number;
             Company?: number;
             Reason?: string;
+            UUID?: string;
         };
         greaterThan?: {
             Id?: number;
             Date?: Date;
+            Valor?: Date;
             Amount?: number;
             Currency?: number;
             Company?: number;
             Reason?: string;
+            UUID?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Date?: Date;
+            Valor?: Date;
             Amount?: number;
             Currency?: number;
             Company?: number;
             Reason?: string;
+            UUID?: string;
         };
         lessThan?: {
             Id?: number;
             Date?: Date;
+            Valor?: Date;
             Amount?: number;
             Currency?: number;
             Company?: number;
             Reason?: string;
+            UUID?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Date?: Date;
+            Valor?: Date;
             Amount?: number;
             Currency?: number;
             Company?: number;
             Reason?: string;
+            UUID?: string;
         };
     },
     $select?: (keyof PaymentAdjustmentEntity)[],
@@ -124,6 +141,11 @@ export class PaymentAdjustmentRepository {
                 type: "DATE",
             },
             {
+                name: "Valor",
+                column: "PAYMENTADJUSTMENT_VALOR",
+                type: "DATE",
+            },
+            {
                 name: "Amount",
                 column: "PAYMENTADJUSTMENT_AMOUNT",
                 type: "DECIMAL",
@@ -142,6 +164,11 @@ export class PaymentAdjustmentRepository {
                 name: "Reason",
                 column: "PAYMENTADJUSTMENT_REASON",
                 type: "VARCHAR",
+            },
+            {
+                name: "UUID",
+                column: "PAYMENTADJUSTMENT_UUID",
+                type: "VARCHAR",
             }
         ]
     };
@@ -155,6 +182,7 @@ export class PaymentAdjustmentRepository {
     public findAll(options?: PaymentAdjustmentEntityOptions): PaymentAdjustmentEntity[] {
         return this.dao.list(options).map((e: PaymentAdjustmentEntity) => {
             EntityUtils.setDate(e, "Date");
+            EntityUtils.setDate(e, "Valor");
             return e;
         });
     }
@@ -162,11 +190,15 @@ export class PaymentAdjustmentRepository {
     public findById(id: number): PaymentAdjustmentEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
+        EntityUtils.setDate(entity, "Valor");
         return entity ?? undefined;
     }
 
     public create(entity: PaymentAdjustmentCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
+        EntityUtils.setLocalDate(entity, "Valor");
+        // @ts-ignore
+        (entity as PaymentAdjustmentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -183,6 +215,7 @@ export class PaymentAdjustmentRepository {
 
     public update(entity: PaymentAdjustmentUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
+        // EntityUtils.setLocalDate(entity, "Valor");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
@@ -245,7 +278,7 @@ export class PaymentAdjustmentRepository {
     }
 
     private async triggerEvent(data: PaymentAdjustmentEntityEvent | PaymentAdjustmentUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-entities-PaymentAdjustment", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-payments-PaymentAdjustment-PaymentAdjustment", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -253,6 +286,6 @@ export class PaymentAdjustmentRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-payments-entities-PaymentAdjustment").send(JSON.stringify(data));
+        producer.topic("codbex-payments-PaymentAdjustment-PaymentAdjustment").send(JSON.stringify(data));
     }
 }

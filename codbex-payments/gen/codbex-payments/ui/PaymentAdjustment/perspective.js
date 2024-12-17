@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'entities',
-	name: 'Entities',
-	link: '/services/web/codbex-payments/gen/codbex-payments/ui/entities/index.html',
-	order: 100,
-	icon: '/services/web/resources/unicons/copy.svg',
+	id: 'PaymentAdjustment',
+	name: 'PaymentAdjustment',
+	link: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/index.html',
+	order: 110,
+	icon: '/services/web/resources/unicons/paypal.svg',
 };
 
 if (typeof exports !== 'undefined') {

@@ -16,7 +16,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: Settings
-  - name: entities
+  - name: PaymentAdjustment
 paths:
   /codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts:
     get:
@@ -2926,7 +2926,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts:
+  /codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts:
     get:
       summary: List PaymentAdjustment
       parameters:
@@ -2947,7 +2947,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - PaymentAdjustment
       responses:
         200:
           description: Successful Request
@@ -2978,7 +2978,7 @@ paths:
     post:
       summary: Create PaymentAdjustment
       tags:
-        - entities
+        - PaymentAdjustment
       requestBody:
         content:
           application/json:
@@ -3010,7 +3010,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts/{id}:
+  /codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts/{id}:
     get:
       summary: Get PaymentAdjustment by Id
       parameters:
@@ -3021,7 +3021,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - PaymentAdjustment
       responses:
         200:
           description: Successful Request
@@ -3059,7 +3059,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - PaymentAdjustment
       requestBody:
         content:
           application/json:
@@ -3107,7 +3107,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - PaymentAdjustment
       responses:
         204:
           description: Successful Request
@@ -3129,11 +3129,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts/count:
+  /codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts/count:
     get:
       summary: Count the number of PaymentAdjustment
       tags:
-        - entities
+        - PaymentAdjustment
       responses:
         200:
           description: Successful Request
@@ -3157,7 +3157,7 @@ paths:
     post:
       summary: Count the number of PaymentAdjustment by PaymentAdjustmentFilterOptions
       tags:
-        - entities
+        - PaymentAdjustment
       requestBody:
         content:
           application/json:
@@ -3172,6 +3172,7 @@ paths:
                       Id: 33
                     contains:
                       Reason: "abcd"
+                      UUID: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3194,6 +3195,7 @@ paths:
                   $filter:
                     contains:
                       Reason: "abcd"
+                      UUID: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -3239,11 +3241,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-payments/gen/codbex-payments/api/entities/PaymentAdjustmentService.ts/search:
+  /codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentService.ts/search:
     post:
       summary: Search PaymentAdjustment by PaymentAdjustmentFilterOptions
       tags:
-        - entities
+        - PaymentAdjustment
       requestBody:
         content:
           application/json:
@@ -3258,6 +3260,7 @@ paths:
                       Id: 33
                     contains:
                       Reason: "abcd"
+                      UUID: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3280,6 +3283,7 @@ paths:
                   $filter:
                     contains:
                       Reason: "abcd"
+                      UUID: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -6131,12 +6135,14 @@ components:
       type: object
       required:
         - Date
+        - Valor
         - Amount
       properties:
         Id:
           type: integer
           format: int32
         Date:
+        Valor:
         Amount:
           type: number
           format: double
@@ -6150,6 +6156,11 @@ components:
           type: string
           minLength: 0
           maxLength: 100
+        UUID:
+          type: string
+          minLength: 0
+          maxLength: 36
+          readOnly: true
     PaymentAdjustmentFilterOptions:
       type: object
       properties:
@@ -6169,6 +6180,8 @@ components:
                         format: int32
                 Date:
                   oneOf:
+                Valor:
+                  oneOf:
                 Amount:
                   oneOf:
                     - type: number
@@ -6204,6 +6217,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
             notEquals:
               type: object
               properties:
@@ -6217,6 +6241,8 @@ components:
                         format: int32
                 Date:
                   oneOf:
+                Valor:
+                  oneOf:
                 Amount:
                   oneOf:
                     - type: number
@@ -6252,11 +6278,23 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
+                UUID:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
             contains:
               type: object
               properties:
                 Id:
                 Date:
+                Valor:
                 Amount:
                 Currency:
                 Company:
@@ -6264,6 +6302,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
             greaterThan:
               type: object
               properties:
@@ -6271,6 +6313,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Valor:
                 Amount:
                   type: number
                   format: double
@@ -6284,6 +6327,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
             greaterThanOrEqual:
               type: object
               properties:
@@ -6291,6 +6338,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Valor:
                 Amount:
                   type: number
                   format: double
@@ -6304,6 +6352,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
             lessThan:
               type: object
               properties:
@@ -6311,6 +6363,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Valor:
                 Amount:
                   type: number
                   format: double
@@ -6324,6 +6377,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
             lessThanOrEqual:
               type: object
               properties:
@@ -6331,6 +6388,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Valor:
                 Amount:
                   type: number
                   format: double
@@ -6344,14 +6402,18 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
+                UUID:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
         $select:
           type: array
-          example: ["Id", "Date", "Amount", "Currency", "Company", "Reason"]
+          example: ["Id", "Date", "Valor", "Amount", "Currency", "Company", "Reason", "UUID"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Amount,Currency,Company,Reason"
+            example: "Id,Date,Valor,Amount,Currency,Company,Reason,UUID"
         $order:
           type: string
           enum: ["asc", "desc"]

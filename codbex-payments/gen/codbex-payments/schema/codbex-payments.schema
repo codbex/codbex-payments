@@ -434,6 +434,11 @@
                         "name": "PAYMENTADJUSTMENT_DATE"
                     },
                     {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_VALOR"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
@@ -456,6 +461,12 @@
                         "length": 100,
                         "nullable": true,
                         "name": "PAYMENTADJUSTMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_UUID"
                     }
                 ]
             },
