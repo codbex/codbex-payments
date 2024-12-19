@@ -128,6 +128,12 @@ class PaymentAdjustmentService {
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
+        if (entity.Currency === null || entity.Currency === undefined) {
+            throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
+        if (entity.Company === null || entity.Company === undefined) {
+            throw new ValidationError(`The 'Company' property is required, provide a valid value`);
+        }
         if (entity.Reason?.length > 100) {
             throw new ValidationError(`The 'Reason' exceeds the maximum length of [100] characters`);
         }

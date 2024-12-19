@@ -472,7 +472,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
           "dataNullable": true,
@@ -925,7 +925,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
             "dataLength": "20",
             "dataName": "CUSTOMERPAYMENT_NAME",
             "dataNullable": true,
@@ -1274,7 +1274,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
           "dataNullable": true,
@@ -1685,7 +1685,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
           "dataLength": "20",
           "dataName": "EMPLOYEEPAYMENT_NAME",
           "dataNullable": true,
@@ -2070,7 +2070,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
             "dataLength": "20",
             "dataName": "EMPLOYEEPAYMENT_NAME",
             "dataNullable": true,
@@ -3884,7 +3884,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DATE",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -3908,7 +3908,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DATE",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -3935,7 +3935,7 @@
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "NUMBER",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -3952,12 +3952,15 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
+          "isRequiredProperty": true,
           "name": "Currency",
           "tooltip": "",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "PaymentAdjustment_Currency",
           "relationshipEntityName": "Currency",
           "relationshipEntityPerspectiveName": "Currencies",
@@ -3966,10 +3969,9 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "dataUnique": false,
-          "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Currency",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -3979,12 +3981,15 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
+          "isRequiredProperty": true,
           "name": "Company",
           "tooltip": "",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "PaymentAdjustment_Company",
           "relationshipEntityName": "Company",
           "relationshipEntityPerspectiveName": "Companies",
@@ -3993,10 +3998,9 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "dataUnique": false,
-          "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Company",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -4093,7 +4097,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDates": true
+      "hasDates": true,
+      "hasDropdowns": true
     }
   ]
 }

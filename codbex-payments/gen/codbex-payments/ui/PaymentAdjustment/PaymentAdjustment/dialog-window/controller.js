@@ -30,6 +30,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsCurrency = params.optionsCurrency;
+			$scope.optionsCompany = params.optionsCompany;
 		}
 
 		$scope.create = function () {
@@ -61,6 +63,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
 
 		$scope.cancel = function () {
 			$scope.entity = {};

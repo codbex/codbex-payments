@@ -183,7 +183,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
                         "dataLength": "20",
                         "dataName": "CUSTOMERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -431,7 +431,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
                         "dataLength": "20",
                         "dataName": "SUPPLIERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -661,7 +661,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
                         "dataLength": "20",
                         "dataName": "EMPLOYEEPAYMENT_NAME",
                         "dataNullable": "true",
@@ -1761,7 +1761,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DATE"
                     },
                     {
                         "dataName": "PAYMENTADJUSTMENT_VALOR",
@@ -1774,7 +1774,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DATE"
                     },
                     {
                         "dataLength": "18",
@@ -1790,19 +1790,22 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     },
                     {
                         "dataName": "PAYMENTADJUSTMENT_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Currency",
                         "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
+                        "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentAdjustment_Currency",
                         "relationshipEntityName": "Currency",
                         "relationshipEntityPerspectiveName": "Currencies",
@@ -1813,12 +1816,15 @@
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
+                        "isRequiredProperty": "true",
                         "name": "Company",
                         "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
+                        "widgetType": "DROPDOWN",
                         "relationshipName": "PaymentAdjustment_Company",
                         "relationshipEntityName": "Company",
                         "relationshipEntityPerspectiveName": "Companies",

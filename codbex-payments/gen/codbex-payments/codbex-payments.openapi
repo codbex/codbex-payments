@@ -6137,6 +6137,8 @@ components:
         - Date
         - Valor
         - Amount
+        - Currency
+        - Company
       properties:
         Id:
           type: integer
