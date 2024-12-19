@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/navigations/payment-adjustments/service.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Payment Adjustments Navigation"
+}
