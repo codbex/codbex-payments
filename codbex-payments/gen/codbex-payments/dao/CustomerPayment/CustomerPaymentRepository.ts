@@ -326,7 +326,7 @@ export class CustomerPaymentRepository {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Valor");
         // @ts-ignore
-        (entity as CustomerPaymentEntity).Name = new NumberGeneratorService().generate(18);
+        (entity as CustomerPaymentEntity).Name = new NumberGeneratorService().generate(20);
         // @ts-ignore
         (entity as CustomerPaymentEntity).UUID = require("sdk/utils/uuid").random();
         const id = this.dao.insert(entity);

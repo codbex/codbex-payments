@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-payments-PaymentAdjustment-PaymentAdjustment",
+    "module": "codbex-payments/events/PaymentAdjustment/PaymentAdjustmentToRecordHandler.ts",
+    "description": "PaymentAdjustment Extension"
+}

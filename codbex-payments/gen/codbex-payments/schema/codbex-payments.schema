@@ -418,6 +418,59 @@
                 ]
             },
             {
+                "name": "CODBEX_PAYMENTADJUSTMENT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_VALOR"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_REASON"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 36,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_UUID"
+                    }
+                ]
+            },
+            {
                 "name": "CustomerPayment_Customer",
                 "type": "foreignKey",
                 "table": "CODBEX_CUSTOMERPAYMENT",
@@ -533,6 +586,24 @@
                 "columns": "PAYMENTRECORD_PAYMENTTYPE",
                 "referencedTable": "CODBEX_PAYMENTTYPE",
                 "referencedColumns": "PAYMENTTYPE_ID"
+            },
+            {
+                "name": "PaymentAdjustment_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTADJUSTMENT",
+                "constraintName": "PaymentAdjustment_Currency",
+                "columns": "PAYMENTADJUSTMENT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
+            },
+            {
+                "name": "PaymentAdjustment_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTADJUSTMENT",
+                "constraintName": "PaymentAdjustment_Company",
+                "columns": "PAYMENTADJUSTMENT_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
             }
         ]
     },
