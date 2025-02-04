@@ -33,7 +33,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "nullable": true,
                         "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
                     },
@@ -115,13 +115,13 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "nullable": true,
                         "name": "SUPPLIERPAYMENT_COMPANYIBAN"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "nullable": true,
                         "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
                     },
@@ -198,13 +198,13 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 50,
+                        "length": 34,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_COMPANYIBAN"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 50,
+                        "length": 34,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN"
                     },
@@ -281,13 +281,13 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "nullable": true,
                         "name": "PAYMENTRECORD_COMPANYIBAN"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "nullable": true,
                         "name": "PAYMENTRECORD_COUNTERPARTYIBAN"
                     },

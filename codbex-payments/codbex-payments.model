@@ -72,12 +72,12 @@
                         "name": "CompanyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "22",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -85,7 +85,7 @@
                         "name": "CounterpartyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "22",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
@@ -312,7 +312,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "SUPPLIERPAYMENT_COMPANYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -320,12 +320,12 @@
                         "name": "CompanyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "22",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -333,7 +333,7 @@
                         "name": "CounterpartyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "22",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
@@ -542,7 +542,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataLength": "50",
+                        "dataLength": "34",
                         "dataName": "EMPLOYEEPAYMENT_COMPANYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -550,12 +550,12 @@
                         "name": "CompanyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "50",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "50",
+                        "dataLength": "34",
                         "dataName": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -563,7 +563,7 @@
                         "name": "CounterpartyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "50",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
@@ -772,7 +772,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "PAYMENTRECORD_COMPANYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -780,12 +780,12 @@
                         "name": "CompanyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "PAYMENTRECORD_COUNTERPARTYIBAN",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -793,7 +793,7 @@
                         "name": "CounterpartyIBAN",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "34",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
