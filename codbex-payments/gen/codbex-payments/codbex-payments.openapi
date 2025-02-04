@@ -3357,7 +3357,7 @@ components:
         CounterpartyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyName:
           type: string
           minLength: 0
@@ -3440,13 +3440,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -3583,13 +3583,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -3702,7 +3702,7 @@ components:
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -3749,7 +3749,7 @@ components:
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -3804,7 +3804,7 @@ components:
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -3859,7 +3859,7 @@ components:
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -3914,7 +3914,7 @@ components:
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -3986,11 +3986,11 @@ components:
         CompanyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyName:
           type: string
           minLength: 0
@@ -4051,24 +4051,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -4178,24 +4178,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -4295,11 +4295,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4338,11 +4338,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4387,11 +4387,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4436,11 +4436,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4485,11 +4485,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4558,11 +4558,11 @@ components:
         CompanyIBAN:
           type: string
           minLength: 0
-          maxLength: 50
+          maxLength: 34
         CounterpartyIBAN:
           type: string
           minLength: 0
-          maxLength: 50
+          maxLength: 34
         CounterpartyName:
           type: string
           minLength: 0
@@ -4623,24 +4623,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -4750,24 +4750,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -4867,11 +4867,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4910,11 +4910,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -4959,11 +4959,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5008,11 +5008,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5057,11 +5057,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5127,11 +5127,11 @@ components:
         CompanyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyIBAN:
           type: string
           minLength: 0
-          maxLength: 22
+          maxLength: 34
         CounterpartyName:
           type: string
           minLength: 0
@@ -5198,24 +5198,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -5344,24 +5344,24 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyIBAN:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 22
+                      maxLength: 34
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 22
+                        maxLength: 34
                 CounterpartyName:
                   oneOf:
                     - type: string
@@ -5480,11 +5480,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5523,11 +5523,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5578,11 +5578,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5633,11 +5633,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0
@@ -5688,11 +5688,11 @@ components:
                 CompanyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyIBAN:
                   type: string
                   minLength: 0
-                  maxLength: 22
+                  maxLength: 34
                 CounterpartyName:
                   type: string
                   minLength: 0

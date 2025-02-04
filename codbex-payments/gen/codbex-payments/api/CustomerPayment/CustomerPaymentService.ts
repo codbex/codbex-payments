@@ -133,8 +133,8 @@ class CustomerPaymentService {
         if (entity.CompanyIBAN?.length > 34) {
             throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [34] characters`);
         }
-        if (entity.CounterpartyIBAN?.length > 22) {
-            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [22] characters`);
+        if (entity.CounterpartyIBAN?.length > 34) {
+            throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [34] characters`);
         }
         if (entity.CounterpartyName?.length > 100) {
             throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
