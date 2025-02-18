@@ -9,12 +9,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
-		$scope.dataLimit = 20;
+		$scope.dataOffset = 0;
+		$scope.dataLimit = 10;
+		$scope.action = "select";
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-payments-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "SupplierPayment" && e.view === "SupplierPayment" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "SupplierPayment" && e.view === "SupplierPayment" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -26,33 +27,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action
 			);
 		};
-
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
-					id: $scope.entity.Id
-				},
-				null,
-				true,
-				action
-			);
-		};
 		//-----------------Custom Actions-------------------//
 
+		function refreshData() {
+			$scope.dataReset = true;
+			$scope.dataPage--;
+		}
+
 		function resetPagination() {
+			$scope.dataReset = true;
 			$scope.dataPage = 1;
 			$scope.dataCount = 0;
-			$scope.dataLimit = 20;
+			$scope.dataLimit = 10;
 		}
-		resetPagination();
 
 		//-----------------Events-------------------//
+		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
+			$scope.$apply(function () {
+				$scope.selectedEntity = null;
+				$scope.action = "select";
+			});
+		});
+
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
@@ -68,7 +71,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
-			$scope.dataPage = pageNumber;
+			if (!filter) {
+				filter = {};
+			}
+			$scope.selectedEntity = null;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("SupplierPayment", `Unable to count SupplierPayment: '${response.message}'`);
@@ -77,20 +83,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (response.data) {
 					$scope.dataCount = response.data;
 				}
-				let offset = (pageNumber - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				let request;
-				if (filter) {
-					filter.$offset = offset;
-					filter.$limit = limit;
-					request = entityApi.search(filter);
-				} else {
-					request = entityApi.list(offset, limit);
+				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
+				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				if ($scope.dataReset) {
+					filter.$offset = 0;
+					filter.$limit = $scope.dataPage * $scope.dataLimit;
 				}
-				request.then(function (response) {
+
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
 						messageHub.showAlertError("SupplierPayment", `Unable to list/filter SupplierPayment: '${response.message}'`);
 						return;
+					}
+					if ($scope.data == null || $scope.dataReset) {
+						$scope.data = [];
+						$scope.dataReset = false;
 					}
 
 					response.data.forEach(e => {
@@ -102,7 +110,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						}
 					});
 
-					$scope.data = response.data;
+					$scope.data = $scope.data.concat(response.data);
+					$scope.dataPage++;
 				});
 			});
 		};
@@ -110,21 +119,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
-		};
-
-		$scope.openDetails = function (entity) {
-			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("SupplierPayment-details", {
-				action: "select",
+			messageHub.postMessage("entitySelected", {
 				entity: entity,
-				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("SupplierPayment-filter", {
-				entity: $scope.filterEntity,
+				selectedMainEntityId: entity.Id,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 			});
@@ -132,25 +129,26 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("SupplierPayment-details", {
-				action: "create",
+			$scope.action = "create";
+
+			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
-			}, null, false);
+			});
 		};
 
-		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("SupplierPayment-details", {
-				action: "update",
-				entity: entity,
+		$scope.updateEntity = function () {
+			$scope.action = "update";
+			messageHub.postMessage("updateEntity", {
+				entity: $scope.selectedEntity,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
-			}, null, false);
+			});
 		};
 
-		$scope.deleteEntity = function (entity) {
-			let id = entity.Id;
+		$scope.deleteEntity = function () {
+			let id = $scope.selectedEntity.Id;
 			messageHub.showDialogAsync(
 				'Delete SupplierPayment?',
 				`Are you sure you want to delete SupplierPayment? This action cannot be undone.`,
@@ -171,10 +169,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							messageHub.showAlertError("SupplierPayment", `Unable to delete SupplierPayment: '${response.message}'`);
 							return;
 						}
+						refreshData();
 						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("SupplierPayment-filter", {
+				entity: $scope.filterEntity,
+				optionsCurrency: $scope.optionsCurrency,
+				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
