@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -127,5 +127,86 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createCustomer = function () {
+			messageHub.showDialogWindow("Customer-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCurrency = function () {
+			messageHub.showDialogWindow("Currency-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCompany = function () {
+			messageHub.showDialogWindow("Company-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createPaymentMethod = function () {
+			messageHub.showDialogWindow("PaymentMethod-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshCustomer = function () {
+			$scope.optionsCustomer = [];
+			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts").then(function (response) {
+				$scope.optionsCustomer = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCurrency = function () {
+			$scope.optionsCurrency = [];
+			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+				$scope.optionsCurrency = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Code
+					}
+				});
+			});
+		};
+		$scope.refreshCompany = function () {
+			$scope.optionsCompany = [];
+			$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
+				$scope.optionsCompany = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshPaymentMethod = function () {
+			$scope.optionsPaymentMethod = [];
+			$http.get("/services/ts/codbex-methods/gen/codbex-methods/api/Methods/PaymentMethodService.ts").then(function (response) {
+				$scope.optionsPaymentMethod = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);

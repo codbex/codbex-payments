@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'messageHub', 'ViewParameters', 'entityApi', function ($scope,  $http, messageHub, ViewParameters, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -67,10 +67,65 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		
+		$scope.optionsCurrency = [];
+		
+		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Code
+				}
+			});
+		});
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		
+		$scope.optionsCompany = [];
+		
+		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
+			$scope.optionsCompany = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 		$scope.servicePaymentRecordDirection = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts";
+		
+		$scope.optionsPaymentRecordDirection = [];
+		
+		$http.get("/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts").then(function (response) {
+			$scope.optionsPaymentRecordDirection = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 		$scope.servicePaymentStatus = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts";
+		
+		$scope.optionsPaymentStatus = [];
+		
+		$http.get("/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts").then(function (response) {
+			$scope.optionsPaymentStatus = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 		$scope.servicePaymentType = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts";
+		
+		$scope.optionsPaymentType = [];
+		
+		$http.get("/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts").then(function (response) {
+			$scope.optionsPaymentType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$scope.cancel = function () {
 			$scope.entity = {};
