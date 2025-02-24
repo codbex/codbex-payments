@@ -1,5 +1,5 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentType/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "codbex-payments-dialog-window",
     "description": "codbex-payments - Application Dialog Window"
 }

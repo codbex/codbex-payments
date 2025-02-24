@@ -7,7 +7,7 @@ const viewData = {
     id: "CustomerPayment-filter",
     label: "CustomerPayment Filter",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-filter/index.html",
-    perspectiveName: "CustomerPayment",
+    perspectiveName: "CustomerPayment"
 };
 
 if (typeof exports !== 'undefined') {

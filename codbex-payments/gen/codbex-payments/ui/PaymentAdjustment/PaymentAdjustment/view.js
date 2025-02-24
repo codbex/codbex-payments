@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "left",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/index.html",
-    perspectiveName: "PaymentAdjustment",
+    perspectiveName: "PaymentAdjustment"
 };
 
 if (typeof exports !== 'undefined') {

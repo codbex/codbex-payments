@@ -40,6 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsSupplier = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsCompany = [];
 				$scope.action = 'select';
@@ -55,6 +56,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Valor = new Date(msg.data.entity.Valor);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'select';
@@ -64,6 +66,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
@@ -79,12 +82,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Valor = new Date(msg.data.entity.Valor);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsSupplier = msg.data.optionsSupplier;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'update';
 			});
 		});
 
+		$scope.serviceSupplier = "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts";
 		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
 
@@ -120,6 +125,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		
 		//-----------------Dialogs-------------------//
 		
+		$scope.createSupplier = function () {
+			messageHub.showDialogWindow("Supplier-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
 		$scope.createCurrency = function () {
 			messageHub.showDialogWindow("Currency-details", {
 				action: "create",
@@ -139,6 +150,17 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
+		$scope.refreshSupplier = function () {
+			$scope.optionsSupplier = [];
+			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts").then(function (response) {
+				$scope.optionsSupplier = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
 		$scope.refreshCurrency = function () {
 			$scope.optionsCurrency = [];
 			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
