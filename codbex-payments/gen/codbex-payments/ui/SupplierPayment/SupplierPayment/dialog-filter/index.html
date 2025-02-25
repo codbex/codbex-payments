@@ -29,6 +29,20 @@
                 <fd-form-group dg-header="SupplierPayment Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idSupplier" dg-colon="true">Supplier</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idSupplier"
+	                            name="Supplier"
+	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Supplier"
+	                            dropdown-items="optionsSupplier"
+	                            dg-placeholder="Search Supplier ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDateFrom" dg-colon="true">From Date</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--2">

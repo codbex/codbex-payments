@@ -8,6 +8,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface SupplierPaymentEntity {
     readonly Id: number;
+    Supplier?: number;
     Date: Date;
     Valor: Date;
     CompanyIBAN?: string;
@@ -24,6 +25,7 @@ export interface SupplierPaymentEntity {
 }
 
 export interface SupplierPaymentCreateEntity {
+    readonly Supplier?: number;
     readonly Date: Date;
     readonly Valor: Date;
     readonly CompanyIBAN?: string;
@@ -45,6 +47,7 @@ export interface SupplierPaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Supplier?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -61,6 +64,7 @@ export interface SupplierPaymentEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            Supplier?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -77,6 +81,7 @@ export interface SupplierPaymentEntityOptions {
         };
         contains?: {
             Id?: number;
+            Supplier?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -93,6 +98,7 @@ export interface SupplierPaymentEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            Supplier?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -109,6 +115,7 @@ export interface SupplierPaymentEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Supplier?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -125,6 +132,7 @@ export interface SupplierPaymentEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            Supplier?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -141,6 +149,7 @@ export interface SupplierPaymentEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            Supplier?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -189,6 +198,11 @@ export class SupplierPaymentRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Supplier",
+                column: "SUPPLIERPAYMENT_SUPPLIER",
+                type: "INTEGER",
             },
             {
                 name: "Date",

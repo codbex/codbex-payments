@@ -1,1 +1,5 @@
-{"module":"codbex-payments/gen/codbex-payments/ui/EmployeePayment/perspective.js","extensionPoint":"portal","description":"codbex-payments - Perspective - EmployeePayment"}
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/EmployeePayment/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-payments - Perspective - EmployeePayment"
+}

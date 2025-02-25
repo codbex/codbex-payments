@@ -7,7 +7,7 @@ const viewData = {
     id: "PaymentStatus-filter",
     label: "PaymentStatus Filter",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/dialog-filter/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

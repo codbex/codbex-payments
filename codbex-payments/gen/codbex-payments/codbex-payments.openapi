@@ -17,6 +17,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: PaymentAdjustment
+  - name: Suppliers
 paths:
   /codbex-payments/gen/codbex-payments/api/CustomerPayment/CustomerPaymentService.ts:
     get:
@@ -3330,6 +3331,434 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts:
+    get:
+      summary: List Supplier
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Suppliers
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Supplier'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Supplier
+      tags:
+        - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts/{id}:
+    get:
+      summary: Get Supplier by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Suppliers
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Supplier'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Supplier by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Supplier by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Suppliers
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts/count:
+    get:
+      summary: Count the number of Supplier
+      tags:
+        - Suppliers
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Supplier by SupplierFilterOptions
+      tags:
+        - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
+                      Fax: "abcd"
+                      TIN: "abcd"
+                      IBAN: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
+                      Fax: "abcd"
+                      TIN: "abcd"
+                      IBAN: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts/search:
+    post:
+      summary: Search Supplier by SupplierFilterOptions
+      tags:
+        - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupplierFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
+                      Fax: "abcd"
+                      TIN: "abcd"
+                      IBAN: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Address: "abcd"
+                      PostalCode: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
+                      Fax: "abcd"
+                      TIN: "abcd"
+                      IBAN: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Supplier'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     CustomerPayment:
@@ -3981,6 +4410,9 @@ components:
         Id:
           type: integer
           format: int32
+        Supplier:
+          type: integer
+          format: int32
         Date:
         Valor:
         CompanyIBAN:
@@ -4036,6 +4468,14 @@ components:
               type: object
               properties:
                 Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Supplier:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4170,6 +4610,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Supplier:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Date:
                   oneOf:
                 Valor:
@@ -4290,6 +4738,7 @@ components:
               type: object
               properties:
                 Id:
+                Supplier:
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -4331,6 +4780,9 @@ components:
               type: object
               properties:
                 Id:
+                  type: integer
+                  format: int32
+                Supplier:
                   type: integer
                   format: int32
                 Date:
@@ -4382,6 +4834,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Supplier:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -4429,6 +4884,9 @@ components:
               type: object
               properties:
                 Id:
+                  type: integer
+                  format: int32
+                Supplier:
                   type: integer
                   format: int32
                 Date:
@@ -4480,6 +4938,9 @@ components:
                 Id:
                   type: integer
                   format: int32
+                Supplier:
+                  type: integer
+                  format: int32
                 Date:
                 Valor:
                 CompanyIBAN:
@@ -4525,12 +4986,12 @@ components:
                   maxLength: 36
         $select:
           type: array
-          example: ["Id", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference"]
+          example: ["Id", "Supplier", "Date", "Valor", "CompanyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Reason", "Description", "Company", "Name", "UUID", "Reference"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference"
+            example: "Id,Supplier,Date,Valor,CompanyIBAN,CounterpartyIBAN,CounterpartyName,Amount,Currency,Reason,Description,Company,Name,UUID,Reference"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -6416,6 +6877,524 @@ components:
         $sort:
           - type: string
             example: "Id,Date,Valor,Amount,Currency,Company,Reason,UUID"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Supplier:
+      type: object
+      required:
+        - Name
+        - Address
+        - Email
+        - Country
+        - City
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Address:
+          type: string
+          minLength: 0
+          maxLength: 200
+        PostalCode:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Email:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Phone:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Fax:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Country:
+          type: integer
+          format: int32
+        City:
+          type: integer
+          format: int32
+        TIN:
+          type: string
+          minLength: 0
+          maxLength: 20
+        IBAN:
+          type: string
+          minLength: 0
+          maxLength: 36
+    SupplierFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Address:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                PostalCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Phone:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Fax:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                TIN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Address:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                PostalCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Email:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Phone:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Fax:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                TIN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IBAN:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 36
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 36
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Phone:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Fax:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                City:
+                TIN:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Phone:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Fax:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                TIN:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Phone:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Fax:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                TIN:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Phone:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Fax:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                TIN:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Address:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                PostalCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Email:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Phone:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Fax:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
+                TIN:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IBAN:
+                  type: string
+                  minLength: 0
+                  maxLength: 36
+        $select:
+          type: array
+          example: ["Id", "Name", "Address", "PostalCode", "Email", "Phone", "Fax", "Country", "City", "TIN", "IBAN"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,Address,PostalCode,Email,Phone,Fax,Country,City,TIN,IBAN"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -14,6 +14,6 @@ exports.getTile = function () {
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-payments/gen/codbex-payments/ui/Settings/index.html",
         order: "100",
-        groupOrder: "999",
+        groupOrder: "999"
     };
-};
+}

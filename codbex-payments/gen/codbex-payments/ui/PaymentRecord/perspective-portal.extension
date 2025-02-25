@@ -1,1 +1,5 @@
-{"module":"codbex-payments/gen/codbex-payments/ui/PaymentRecord/perspective.js","extensionPoint":"portal","description":"codbex-payments - Perspective - PaymentRecord"}
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/PaymentRecord/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-payments - Perspective - PaymentRecord"
+}
