@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-payments - Application Tile"
+    "description": "codbex-payments - Application Tile",
+    "role": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly,codbex-payments.EmployeePayment.EmployeePaymentFullAccess"
 }

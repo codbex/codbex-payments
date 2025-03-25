@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/view.js",
     "extensionPoint": "codbex-payments-view",
-    "description": "codbex-payments - Application View"
+    "description": "codbex-payments - Application View",
+    "role": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly,codbex-payments.EmployeePayment.EmployeePaymentFullAccess"
 }

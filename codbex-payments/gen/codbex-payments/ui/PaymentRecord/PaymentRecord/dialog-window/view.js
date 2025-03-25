@@ -8,6 +8,9 @@ const viewData = {
     label: "PaymentRecord",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-window/index.html",
     perspectiveName: "PaymentRecord",
+    roles: [
+        "codbex-payments.PaymentRecord.PaymentRecordReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

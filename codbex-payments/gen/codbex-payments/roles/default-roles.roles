@@ -1,2 +1,66 @@
 [
+    {
+        "name": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly",
+        "description": "A role that grants read only permission for CustomerPayment."
+    },
+    {
+        "name": "codbex-payments.CustomerPayment.CustomerPaymentFullAccess",
+        "description": "A role that grants full access for CustomerPayment."
+    },
+    {
+        "name": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly",
+        "description": "A role that grants read only permission for SupplierPayment."
+    },
+    {
+        "name": "codbex-payments.SupplierPayment.SupplierPaymentFullAccess",
+        "description": "A role that grants full access for SupplierPayment."
+    },
+    {
+        "name": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly",
+        "description": "A role that grants read only permission for EmployeePayment."
+    },
+    {
+        "name": "codbex-payments.EmployeePayment.EmployeePaymentFullAccess",
+        "description": "A role that grants full access for EmployeePayment."
+    },
+    {
+        "name": "codbex-payments.PaymentRecord.PaymentRecordReadOnly",
+        "description": "A role that grants read only permission for PaymentRecord."
+    },
+    {
+        "name": "codbex-payments.PaymentRecord.PaymentRecordFullAccess",
+        "description": "A role that grants full access for PaymentRecord."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentRecordDirectionReadOnly",
+        "description": "A role that grants read only permission for PaymentRecordDirection."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentRecordDirectionFullAccess",
+        "description": "A role that grants full access for PaymentRecordDirection."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentStatusReadOnly",
+        "description": "A role that grants read only permission for PaymentStatus."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentStatusFullAccess",
+        "description": "A role that grants full access for PaymentStatus."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentTypeReadOnly",
+        "description": "A role that grants read only permission for PaymentType."
+    },
+    {
+        "name": "codbex-payments.Settings.PaymentTypeFullAccess",
+        "description": "A role that grants full access for PaymentType."
+    },
+    {
+        "name": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly",
+        "description": "A role that grants read only permission for PaymentAdjustment."
+    },
+    {
+        "name": "codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess",
+        "description": "A role that grants full access for PaymentAdjustment."
+    }
 ]

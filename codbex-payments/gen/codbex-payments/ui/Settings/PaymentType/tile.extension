@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentType/tile.js",
     "extensionPoint": "codbex-payments-tile",
-    "description": "codbex-payments - Application Tile"
+    "description": "codbex-payments - Application Tile",
+    "role": "codbex-payments.Settings.PaymentTypeReadOnly,codbex-payments.Settings.PaymentTypeFullAccess"
 }

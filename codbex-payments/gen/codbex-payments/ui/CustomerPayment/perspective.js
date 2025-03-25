@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'CustomerPayment',
 	name: 'CustomerPayment',
 	link: '/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/index.html',
-	order: 10,
-	icon: '/services/web/resources/unicons/usd-square.svg',
+	order: '10',
+	icon: '/services/web/resources/unicons/usd-square.svg'
 };
 
 if (typeof exports !== 'undefined') {

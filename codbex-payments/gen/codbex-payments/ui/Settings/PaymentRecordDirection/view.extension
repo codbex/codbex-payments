@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentRecordDirection/view.js",
     "extensionPoint": "codbex-payments-view",
-    "description": "codbex-payments - Application View"
+    "description": "codbex-payments - Application View",
+    "role": "codbex-payments.Settings.PaymentRecordDirectionReadOnly,codbex-payments.Settings.PaymentRecordDirectionFullAccess"
 }

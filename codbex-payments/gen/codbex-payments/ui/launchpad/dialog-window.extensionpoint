@@ -1,4 +1,4 @@
 {
-    "name": "codbex-payments-dialog-window",
+    "name": "dialog-window",
     "description": "codbex-payments - Extension Point for the Application Dialog Window Providers"
 }
