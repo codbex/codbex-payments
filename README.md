@@ -3,7 +3,7 @@
 
 ### Model
 
-![model](images/payments-model.png)
+<img width="972" alt="image" src="https://github.com/user-attachments/assets/cbcd95c9-4ae5-4c1a-b367-2211ed5f38aa" />
 
 ### Application
 
