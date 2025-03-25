@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/dialog-filter/view.js",
     "extensionPoint": "dialog-window",
-    "description": "codbex-payments - Application Dialog Window"
+    "description": "codbex-payments - Application Dialog Window",
+    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly"
 }

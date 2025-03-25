@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-payments-custom-action",
     "module": "codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/dialog-print/print.js",
-    "description": "Print PaymentRecord Report"
+    "description": "Print PaymentRecord Report",
+    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly"
 }

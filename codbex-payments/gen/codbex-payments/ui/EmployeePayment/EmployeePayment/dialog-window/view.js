@@ -8,6 +8,9 @@ const viewData = {
     label: "EmployeePayment",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/dialog-window/index.html",
     perspectiveName: "EmployeePayment",
+    roles: [
+        "codbex-payments.EmployeePayment.EmployeePaymentReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

@@ -8,6 +8,9 @@ const viewData = {
     label: "PaymentAdjustment",
     link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/dialog-window/index.html",
     perspectiveName: "PaymentAdjustment",
+    roles: [
+        "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

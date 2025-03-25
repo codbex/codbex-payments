@@ -3,8 +3,7 @@
 
 ### Model
 
-![model](images/payments-model.png)
-
+![payments](images/payments-model.png)
 ### Application
 
 #### Launchpad

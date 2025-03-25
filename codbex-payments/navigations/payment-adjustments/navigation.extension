@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/navigations/payment-adjustments/service.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Payment Adjustments Navigation"
+    "description": "Payment Adjustments Navigation",
+    "role": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly,codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess"
 }

@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'SupplierPayment',
 	name: 'SupplierPayment',
 	link: '/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/index.html',
-	order: 20,
-	icon: '/services/web/resources/unicons/box.svg',
+	order: '20',
+	icon: '/services/web/resources/unicons/box.svg'
 };
 
 if (typeof exports !== 'undefined') {

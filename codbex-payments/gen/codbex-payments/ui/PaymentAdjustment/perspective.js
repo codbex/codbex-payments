@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'PaymentAdjustment',
 	name: 'PaymentAdjustment',
 	link: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/index.html',
-	order: 110,
-	icon: '/services/web/resources/unicons/paypal.svg',
+	order: '110',
+	icon: '/services/web/resources/unicons/paypal.svg'
 };
 
 if (typeof exports !== 'undefined') {
