@@ -601,7 +601,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
           "dataNullable": true,
@@ -1059,7 +1059,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
             "dataLength": "20",
             "dataName": "CUSTOMERPAYMENT_NAME",
             "dataNullable": true,
@@ -1437,7 +1437,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
           "dataNullable": true,
@@ -1861,7 +1861,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(21)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
             "dataLength": "20",
             "dataName": "SUPPLIERPAYMENT_NAME",
             "dataNullable": true,
@@ -2234,7 +2234,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
           "dataLength": "20",
           "dataName": "EMPLOYEEPAYMENT_NAME",
           "dataNullable": true,
@@ -2624,7 +2624,7 @@
             "inputRule": ""
           },
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(22)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
             "dataLength": "20",
             "dataName": "EMPLOYEEPAYMENT_NAME",
             "dataNullable": true,
