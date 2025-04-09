@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PaymentType-filter",
-    label: "PaymentType Filter",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentType/dialog-filter/index.html",
-    perspectiveName: "Settings"
+    id: 'PaymentType-filter',
+    label: 'PaymentType Filter',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentType/dialog-filter/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

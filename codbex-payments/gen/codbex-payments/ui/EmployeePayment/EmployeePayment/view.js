@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "EmployeePayment",
-    label: "EmployeePayment",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/index.html",
-    perspectiveName: "EmployeePayment"
+    id: 'EmployeePayment',
+    label: 'EmployeePayment',
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/index.html',
+    perspectiveName: 'EmployeePayment'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

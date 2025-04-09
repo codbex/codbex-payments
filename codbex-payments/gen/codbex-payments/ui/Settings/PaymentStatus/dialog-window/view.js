@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PaymentStatus-details",
-    label: "PaymentStatus",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'PaymentStatus-details',
+    label: 'PaymentStatus',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

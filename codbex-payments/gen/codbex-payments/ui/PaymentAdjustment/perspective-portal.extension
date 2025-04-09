@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/perspective.js",
-    "extensionPoint": "portal",
-    "description": "codbex-payments - Perspective - PaymentAdjustment"
-}

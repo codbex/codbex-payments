@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/tile.js",
-    "extensionPoint": "codbex-payments-tile",
-    "description": "codbex-payments - Application Tile",
-    "role": "codbex-payments.Settings.PaymentStatusReadOnly,codbex-payments.Settings.PaymentStatusFullAccess"
-}

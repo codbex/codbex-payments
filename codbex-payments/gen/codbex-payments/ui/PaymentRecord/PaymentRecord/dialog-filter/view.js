@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PaymentRecord-filter",
-    label: "PaymentRecord Filter",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-filter/index.html",
-    perspectiveName: "PaymentRecord"
+    id: 'PaymentRecord-Report-filter',
+    label: 'PaymentRecord Report Filter',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-filter/index.html',
+    perspectiveName: 'PaymentRecord'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

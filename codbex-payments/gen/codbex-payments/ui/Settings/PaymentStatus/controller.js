@@ -1,42 +1,38 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payments.Settings.PaymentStatus';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
-
+	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
+		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataLimit = 20;
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-payments-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Settings" && e.view === "PaymentStatus" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Settings" && e.view === "PaymentStatus" && e.type === "entity");
+		Extensions.getWindows(['codbex-payments-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentStatus' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentStatus' && e.type === 'entity');
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				closeButton: true
+			});
 		};
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -48,34 +44,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
 			$scope.dataPage = pageNumber;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("PaymentStatus", `Unable to count PaymentStatus: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
@@ -83,81 +73,109 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (filter) {
 					filter.$offset = offset;
 					filter.$limit = limit;
-					request = entityApi.search(filter);
+					request = EntityService.search(filter);
 				} else {
-					request = entityApi.list(offset, limit);
+					request = EntityService.list(offset, limit);
 				}
-				request.then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("PaymentStatus", `Unable to list/filter PaymentStatus: '${response.message}'`);
-						return;
-					}
+				request.then((response) => {
 					$scope.data = response.data;
+				}, (error) => {
+					Dialogs.showAlert({
+						title: 'PaymentStatus',
+						message: `Unable to list/filter PaymentStatus: '${error.message}'`,
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				Dialogs.showAlert({
+					title: 'PaymentStatus',
+					message: `Unable to count PaymentStatus: '${error.message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 		$scope.loadPage($scope.dataPage, $scope.filter);
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
 		};
 
-		$scope.openDetails = function (entity) {
+		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("PaymentStatus-details", {
-				action: "select",
-				entity: entity,
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("PaymentStatus-filter", {
-				entity: $scope.filterEntity,
-			});
-		};
-
-		$scope.createEntity = function () {
-			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("PaymentStatus-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
-		};
-
-		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("PaymentStatus-details", {
-				action: "update",
-				entity: entity,
-			}, null, false);
-		};
-
-		$scope.deleteEntity = function (entity) {
-			let id = entity.Id;
-			messageHub.showDialogAsync(
-				'Delete PaymentStatus?',
-				`Are you sure you want to delete PaymentStatus? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
+			Dialogs.showWindow({
+				id: 'PaymentStatus-details',
+				params: {
+					action: 'select',
+					entity: entity,
 				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
-				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("PaymentStatus", `Unable to delete PaymentStatus: '${response.message}'`);
-							return;
-						}
+				closeButton: true,
+			});
+		};
+
+		$scope.openFilter = (entity) => {
+			Dialogs.showWindow({
+				id: '${property.relationshipEntityName}-details',
+				params: {
+					entity: $scope.filterEntity,
+				},
+				closeButton: true,
+			});
+		};
+
+		$scope.createEntity = () => {
+			$scope.selectedEntity = null;
+			Dialogs.showWindow({
+				id: 'PaymentStatus-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false,
+			});
+		};
+
+		$scope.updateEntity = (entity) => {
+			Dialogs.showWindow({
+				id: '${property.relationshipEntityName}-details',
+				params: {
+					action: 'update',
+					entity: entity,
+				},
+				closeButton: false,
+			});
+		};
+
+		$scope.deleteEntity = (entity) => {
+			let id = entity.Id;
+			Dialog.showDialog({
+				title: 'Delete PaymentStatus?',
+				message: `Are you sure you want to delete PaymentStatus? This action cannot be undone.`,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: 'Yes',
+				}, {
+					id: 'delete-btn-no',
+					label: 'No',
+				}]
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then((response) => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-payments.Settings.PaymentStatus.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'PaymentStatus',
+							message: `Unable to delete PaymentStatus: '${message}'`,
+							type: AlertTypes.Error
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
 		};
 
-	}]);
+	});

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="page" ng-controller="PageController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title config-title></title>
+        <script type="text/javascript" src="print.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
+		<script type="text/javascript" src="/services/web/dashboard/services/entity.js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script type="text/javascript" src="controller.js"></script>
+    </head>
+
+    <body>
+		<bk-toolbar has-title="true">
+			<bk-toolbar-title>PaymentRecord Report</bk-toolbar-title>
+		</bk-toolbar>
+        <bk-scrollbar ng-hide="data == null">
+            <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
+                <thead bk-table-header sticky="true">
+                    <tr bk-table-row>
+						<th bk-table-header-cell>Date</th>
+						<th bk-table-header-cell>Valor</th>
+						<th bk-table-header-cell>CompanyIBAN</th>
+						<th bk-table-header-cell>CounterpartyIBAN</th>
+						<th bk-table-header-cell>CounterpartyName</th>
+						<th bk-table-header-cell>Amount</th>
+						<th bk-table-header-cell>Currency</th>
+						<th bk-table-header-cell>Reason</th>
+						<th bk-table-header-cell>Description</th>
+						<th bk-table-header-cell>Company</th>
+						<th bk-table-header-cell>PaymentRecordDirection</th>
+						<th bk-table-header-cell>PaymentStatus</th>
+						<th bk-table-header-cell>PaymentType</th>
+						<th bk-table-header-cell>UUID</th>
+						<th bk-table-header-cell>Reference</th>
+						<th bk-table-header-cell>Deleted</th>
+                    </tr>
+                </thead>
+                <tbody bk-table-body>
+                    <tr bk-table-row hoverable="true" ng-show="data.length == 0">
+                        <td bk-table-cell no-data="true">No data available.</td>
+                    </tr>
+                    <tr bk-table-row hoverable="true" ng-repeat="next in data">
+						<td bk-table-cell hoverable="true" activable="true">
+							<bk-input type="date" ng-model="next.Date" ng-readonly="true"></bk-input>
+						</td>
+						<td bk-table-cell hoverable="true" activable="true">
+							<bk-input type="date" ng-model="next.Valor" ng-readonly="true"></bk-input>
+						</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.CompanyIBAN}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.CounterpartyIBAN}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.CounterpartyName}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.Amount}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{optionsCurrencyValue(next.Currency)}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.Reason}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.Description}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{optionsCompanyValue(next.Company)}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentRecordDirectionValue(next.PaymentRecordDirection)}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentStatusValue(next.PaymentStatus)}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentTypeValue(next.PaymentType)}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.UUID}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.Reference}}</td>
+						<td bk-table-cell hoverable="true" activable="true">
+							<bk-checkbox id="idDeleted" compact="false" ng-readonly="true" ng-model="next.Deleted"></bk-checkbox>
+							<bk-checkbox-label for="idDeleted" empty="true"></bk-checkbox-label>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+        </bk-scrollbar>
+        <theme></theme>
+    </body>
+
+</html>

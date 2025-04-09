@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'SupplierPayment',
-	name: 'SupplierPayment',
-	link: '/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/index.html',
-	order: '20',
+	label: 'SupplierPayment',
+	path: '/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/index.html',
+	groupId: 'purchasing-navigation-group',
+	order: 300,
 	icon: '/services/web/resources/unicons/box.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

@@ -6,15 +6,12 @@
 const viewData = {
     id: "CustomerPayment-details",
     label: "CustomerPayment",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-window/index.html",
+    path: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-window/index.html",
     perspectiveName: "CustomerPayment",
     roles: [
         "codbex-payments.CustomerPayment.CustomerPaymentReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }
