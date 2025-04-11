@@ -2,5 +2,5 @@
     "module": "codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-window/view.js",
     "extensionPoint": "application-windows",
     "description": "codbex-payments - Application Dialog Window",
-    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly"
+    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly,codbex-payments.PaymentRecord.PaymentRecordFullAccess"
 }

@@ -16,94 +16,55 @@
 	<body class="bk-vbox">
 		<bk-toolbar has-title="true">
 			<bk-toolbar-title>Items <span bk-object-status text="{{dataCount}}" inverted="true"></bk-toolbar-title>
-			<bk-button compact="true" state="transparent" label="Filter" ng-click="openFilter()"></bk-button>
-			<bk-button ng-repeat="action in pageActions track by $index" compact="true" state="transparent" label="{{action.label}}" ng-click="triggerPageAction(action)"></bk-button>
 			<bk-toolbar-spacer></bk-toolbar-spacer>
+			<bk-button compact="true" state="transparent" glyph="sap-icon--add" aria-label="add entity" ng-disabled="action == 'update'" ng-click="createEntity()"></bk-button>
+			<bk-button compact="true" state="transparent" glyph="sap-icon--edit" aria-label="edit entity" ng-disabled="selectedEntity == null" ng-click="updateEntity()"></bk-button>
+			<bk-button compact="true" state="transparent" glyph="sap-icon--delete" aria-label="delete entity" ng-disabled="selectedEntity == null || action == 'update'" ng-click="deleteEntity()"></bk-button>
+			<bk-popover>
+				<bk-popover-control>
+					<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="toolbar menu button"></bk-button>
+				</bk-popover-control>
+				<bk-popover-body align="bottom-right">
+					<bk-menu aria-label="Header Menu" no-backdrop="true" no-shadow="true">
+						<bk-menu-item title="Filter" ng-click="openFilter()"></bk-menu-item>
+						<bk-menu-item ng-repeat="action in pageActions track by $index" title="{{action.label}}" ng-click="triggerPageAction(action)"></bk-menu-item>
+					</bk-menu>
+				</bk-popover-body>
+			</bk-popover>
 		</bk-toolbar>
-
-		<bk-scrollbar class="bk-full-height" ng-hide="data == null">
-			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
-				<thead bk-table-header sticky="true">
-					<tr bk-table-row>
-						<th bk-table-header-cell>Date</th>
-						<th bk-table-header-cell>Valor</th>
-						<th bk-table-header-cell>CompanyIBAN</th>
-						<th bk-table-header-cell>CounterpartyIBAN</th>
-						<th bk-table-header-cell>CounterpartyName</th>
-						<th bk-table-header-cell>Amount</th>
-						<th bk-table-header-cell>Currency</th>
-						<th bk-table-header-cell>Reason</th>
-						<th bk-table-header-cell>Description</th>
-						<th bk-table-header-cell>Company</th>
-						<th bk-table-header-cell>PaymentRecordDirection</th>
-						<th bk-table-header-cell>PaymentStatus</th>
-						<th bk-table-header-cell>PaymentType</th>
-						<th bk-table-header-cell>UUID</th>
-						<th bk-table-header-cell>Reference</th>
-						<th bk-table-header-cell>Deleted</th>
-						<th bk-table-header-cell></th>
-					</tr>
-				</thead>
-				<tbody bk-table-body>
-					<tr bk-table-row hoverable="true" ng-show="data.length == 0">
-						<td bk-table-cell no-data="true">No data available.</td>
-					</tr>
-					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index"
-						selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<bk-input type="date" ng-model="next.Date" ng-readonly="true"></bk-input>
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<bk-input type="date" ng-model="next.Valor" ng-readonly="true"></bk-input>
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CompanyIBAN}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CounterpartyIBAN}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CounterpartyName}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Amount}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCurrencyValue(next.Currency)}}
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Reason}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Description}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCompanyValue(next.Company)}}
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsPaymentRecordDirectionValue(next.PaymentRecordDirection)}}
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsPaymentStatusValue(next.PaymentStatus)}}
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsPaymentTypeValue(next.PaymentType)}}
-						</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UUID}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Reference}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<bk-checkbox id="idDeleted" compact="false" ng-readonly="true" ng-model="next.Deleted"></bk-checkbox>
-							<bk-checkbox-label for="idDeleted" empty="true"></bk-checkbox-label>
-						</td>
-						<td bk-table-cell fit-content="true">
-							<bk-popover>
-								<bk-popover-control>
-									<bk-button compact="true" glyph="sap-icon--overflow" state="transparent" aria-label="Table Row Menu Button" ng-click="setTristate()"></bk-button>
-								</bk-popover-control>
-								<bk-popover-body align="bottom-right">
-									<bk-menu aria-label="Table Row Menu" no-backdrop="true" no-shadow="true">
-										<bk-menu-item ng-repeat="action in entityActions track by $index" title="{{action.label}}" ng-click="triggerEntityAction(action)"></bk-menu-item>
-										<bk-menu-item title="View Details" ng-click="openDetails(next)"></bk-menu-item>
-									</bk-menu>
-								</bk-popover-body>
-							</bk-popover>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<bk-scrollbar>
+			<bk-list list-type="navigation-indication" byline="true" state="disabled">
+				<bk-list-item ng-repeat="next in data track by $index">
+					<bk-list-link navigation-indicator="true" selected="next.Id === selectedEntity.Id"
+						navigated="next.Id === selectedEntity.Id"
+						ng-click="action == 'select' ? selectEntity(next) : ''">
+						<bk-list-content
+							item-title="{{next.Date | date: 'dd/MMM/yyyy'}}">
+							<bk-list-byline align="left">
+								{{next.Valor | date: "dd/MMM/yyyy"}} |
+								{{next.CompanyIBAN}} |
+								{{next.CounterpartyIBAN}} |
+								{{next.CounterpartyName}} |
+								{{next.Amount}} |
+								{{optionsCurrencyValue(next.Currency)}} |
+								{{next.Reason}} |
+								{{next.Description}} |
+								{{optionsCompanyValue(next.Company)}} |
+								{{optionsPaymentRecordDirectionValue(next.PaymentRecordDirection)}} |
+								{{optionsPaymentStatusValue(next.PaymentStatus)}} |
+								{{optionsPaymentTypeValue(next.PaymentType)}} |
+								{{next.UUID}} |
+								{{next.Reference}} |
+								{{next.Deleted}}
+							</bk-list-byline>
+						</bk-list-content>
+					</bk-list-link>
+				</bk-list-item>
+			</bk-list>
+			<bk-list-action-item ng-show="dataPage <= dataPages && dataCount > dataLimit" ng-click="loadPage()">
+				Load More ...
+			</bk-list-action-item>
 		</bk-scrollbar>
-
-		<bk-pagination total-items="dataCount" items-per-page="dataLimit" items-per-page-options="[10, 20, 50]" page-change="loadPage(pageNumber)"
-			items-per-page-change="loadPage(pageNumber)" items-per-page-placement="top-start" compact="true" display-total-items="true" ng-hide="dataCount == 0">
-		</bk-pagination>
 		<theme></theme>
 	</body>
 

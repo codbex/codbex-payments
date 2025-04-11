@@ -4,13 +4,13 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'PaymentRecord',
-    label: 'PaymentRecord',
-    region: 'left',
-    lazyLoad: false,
+    id: 'PaymentRecordReport',
+    label: 'PaymentRecord Report',
+    region: 'center',
+    lazyLoad: true,
 	autoFocusTab: false,
-    path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/index.html',
-    perspectiveName: 'PaymentRecord'
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/index.html',
+    perspectiveName: 'Reports'
 };
 if (typeof exports !== 'undefined') {
 	exports.getView = () => viewData;

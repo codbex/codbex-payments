@@ -2,17 +2,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordService.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, $http, EntityService, Extensions) => {
 		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
-		$scope.dataOffset = 0;
-		$scope.dataLimit = 10;
-		$scope.action = 'select';
+		$scope.dataLimit = 20;
 
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-payments-custom-action']).then((response) => {
 			$scope.pageActions = response.data.filter(e => e.perspective === 'PaymentRecord' && e.view === 'PaymentRecord' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'PaymentRecord' && e.view === 'PaymentRecord' && e.type === 'entity');
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -20,39 +19,40 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				hasHeader: true,
         		title: action.label,
 				path: action.path,
-				closeButton: true
+				params: {
+					filterEntity: $scope.filterEntity,
+					optionsCurrency: $scope.optionsCurrency,
+					optionsCompany: $scope.optionsCompany,
+					optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
+					optionsPaymentStatus: $scope.optionsPaymentStatus,
+					optionsPaymentType: $scope.optionsPaymentType,
+				},
+				closeButton: true,
+			});
+		};
+
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
+					id: $scope.entity.Id
+				},
+				closeButton: true,
 			});
 		};
 		//-----------------Custom Actions-------------------//
 
-		function refreshData() {
-			$scope.dataReset = true;
-			$scope.dataPage--;
-		}
-
 		function resetPagination() {
-			$scope.dataReset = true;
 			$scope.dataPage = 1;
 			$scope.dataCount = 0;
-			$scope.dataLimit = 10;
+			$scope.dataLimit = 20;
 		}
+		resetPagination();
 
 		//-----------------Events-------------------//
-		Dialogs.addMessageListener({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.clearDetails', handler: () => {
-			$scope.$evalAsync(() => {
-				$scope.selectedEntity = null;
-				$scope.action = 'select';
-			});
-		}});
-		Dialogs.addMessageListener({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entityCreated', handler: () => {
-			refreshData();
-			$scope.loadPage($scope.dataPage, $scope.filter);
-		}});
-		Dialogs.addMessageListener({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entityUpdated', handler: () => {
-			refreshData();
-			$scope.loadPage($scope.dataPage, $scope.filter);
-		}});
-		Dialogs.addMessageListener({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entitySearch', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -64,27 +64,22 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
-			if (!filter) {
-				filter = {};
-			}
-			$scope.selectedEntity = null;
+			$scope.dataPage = pageNumber;
 			EntityService.count(filter).then((resp) => {
 				if (resp.data) {
 					$scope.dataCount = resp.data.count;
 				}
-				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
-				filter.$limit = $scope.dataLimit;
-				if ($scope.dataReset) {
-					filter.$offset = 0;
-					filter.$limit = $scope.dataPage * $scope.dataLimit;
+				let offset = (pageNumber - 1) * $scope.dataLimit;
+				let limit = $scope.dataLimit;
+				let request;
+				if (filter) {
+					filter.$offset = offset;
+					filter.$limit = limit;
+					request = EntityService.search(filter);
+				} else {
+					request = EntityService.list(offset, limit);
 				}
-
-				EntityService.search(filter).then((response) => {
-					if ($scope.data == null || $scope.dataReset) {
-						$scope.data = [];
-						$scope.dataReset = false;
-					}
+				request.then((response) => {
 					response.data.forEach(e => {
 						if (e.Date) {
 							e.Date = new Date(e.Date);
@@ -94,12 +89,11 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 						}
 					});
 
-					$scope.data = $scope.data.concat(response.data);
-					$scope.dataPage++;
+					$scope.data = response.data;
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'PaymentRecord',
+						title: "PaymentRecord",
 						message: `Unable to list/filter PaymentRecord: '${message}'`,
 						type: AlertTypes.Error
 					});
@@ -108,7 +102,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'PaymentRecord',
+					title: "PaymentRecord",
 					message: `Unable to count PaymentRecord: '${message}'`,
 					type: AlertTypes.Error
 				});
@@ -119,79 +113,27 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
-			Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entitySelected', data: {
-				entity: entity,
-				selectedMainEntityId: entity.Id,
-				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
-				optionsPaymentType: $scope.optionsPaymentType,
-			}});
 		};
 
-		$scope.createEntity = () => {
-			$scope.selectedEntity = null;
-			$scope.action = 'create';
-
-			Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.createEntity', data: {
-				entity: {},
-				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
-				optionsPaymentType: $scope.optionsPaymentType,
-			}});
-		};
-
-		$scope.updateEntity = () => {
-			$scope.action = 'update';
-			Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.updateEntity', data: {
-				entity: $scope.selectedEntity,
-				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
-				optionsPaymentType: $scope.optionsPaymentType,
-			}});
-		};
-
-		$scope.deleteEntity = () => {
-			let id = $scope.selectedEntity.Id;
-			Dialogs.showDialog({
-				title: 'Delete PaymentRecord?',
-				message: `Are you sure you want to delete PaymentRecord? This action cannot be undone.`,
-				buttons: [{
-					id: 'delete-btn-yes',
-					state: ButtonStates.Emphasized,
-					label: 'Yes',
-				}, {
-					id: 'delete-btn-no',
-					label: 'No',
-				}],
-				closeButton: false
-			}).then((buttonId) => {
-				if (buttonId === 'delete-btn-yes') {
-					EntityService.delete(id).then(() => {
-						refreshData();
-						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-payments.PaymentRecord.PaymentRecord.clearDetails');
-					}, (error) => {
-						const message = error.data ? error.data.message : '';
-						Dialogs.showAlert({
-							title: 'PaymentRecord',
-							message: `Unable to delete PaymentRecord: '${message}'`,
-							type: AlertTypes.Error
-						});
-						console.error('EntityService:', error);
-					});
-				}
+		$scope.openDetails = (entity) => {
+			$scope.selectedEntity = entity;
+			Dialogs.showWindow({
+				id: 'PaymentRecord-Report-details',
+				params: {
+					action: "select",
+					entity: entity,
+					optionsCurrency: $scope.optionsCurrency,
+					optionsCompany: $scope.optionsCompany,
+					optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
+					optionsPaymentStatus: $scope.optionsPaymentStatus,
+					optionsPaymentType: $scope.optionsPaymentType,
+				},
 			});
 		};
 
 		$scope.openFilter = () => {
 			Dialogs.showWindow({
-				id: 'PaymentRecord-filter',
+				id: 'PaymentRecord-Report-filter',
 				params: {
 					entity: $scope.filterEntity,
 					optionsCurrency: $scope.optionsCurrency,
@@ -209,7 +151,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.optionsPaymentRecordDirection = [];
 		$scope.optionsPaymentStatus = [];
 		$scope.optionsPaymentType = [];
-
 
 		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
@@ -285,7 +226,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				type: AlertTypes.Error
 			});
 		});
-
 		$scope.optionsCurrencyValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {

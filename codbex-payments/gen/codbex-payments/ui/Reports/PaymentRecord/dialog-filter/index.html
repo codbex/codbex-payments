@@ -15,22 +15,33 @@
 
     <body class="bk-vbox">
         <bk-scrollbar class="bk-full-height">
-			<bk-message-strip class="fd-margin--md" ng-show="errorMessage" glyph="sap-icon--message-error" state="error" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
+			<bk-message-strip class="fd-margin--md" glyph="sap-icon--message-error" state="error" ng-show="errorMessage" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
 
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
-                <bk-form-group label="{{formHeaders[action]}}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                <bk-form-group label="PaymentRecord Filter" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idDate" ng-required="true" colon="true">Date</bk-form-label>
+                        	<bk-form-label for="idDateFrom" colon="true">From Date</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--2 ">
+                        <div class="fd-col fd-col-md--2">
 							<bk-form-input-message state="{{ forms.details['Date'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
-								<bk-input id="idDate"
+								<bk-input id="idDateFrom"
 	                                name="Date"
 	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.Date"
-	                                ng-readonly="action === 'select'"
+	                                ng-model="entity.DateFrom"
+	                                type="date">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idDateTo" colon="true">To Date</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+							<bk-form-input-message state="{{ forms.details['Date'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
+								<bk-input id="idDateTo"
+	                                name="Date"
+	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DateTo"
 	                                type="date">
 	                            </bk-input>
 							</bk-form-input-message>
@@ -38,16 +49,27 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idValor" ng-required="true" colon="true">Valor</bk-form-label>
+                        	<bk-form-label for="idValorFrom" colon="true">From Valor</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--2 ">
+                        <div class="fd-col fd-col-md--2">
 							<bk-form-input-message state="{{ forms.details['Valor'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
-								<bk-input id="idValor"
+								<bk-input id="idValorFrom"
 	                                name="Valor"
 	                                state="{{ forms.details['Valor'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.Valor"
-	                                ng-readonly="action === 'select'"
+	                                ng-model="entity.ValorFrom"
+	                                type="date">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idValorTo" colon="true">To Valor</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+							<bk-form-input-message state="{{ forms.details['Valor'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
+								<bk-input id="idValorTo"
+	                                name="Valor"
+	                                state="{{ forms.details['Valor'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.ValorTo"
 	                                type="date">
 	                            </bk-input>
 							</bk-form-input-message>
@@ -55,18 +77,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">CompanyIBAN</bk-form-label>
+                        	<bk-form-label for="idCompanyIBAN" colon="true">CompanyIBAN</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idCompanyIBAN"
 	                                name="CompanyIBAN"
 	                                state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.CompanyIBAN"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter CompanyIBAN">
 	                            </bk-input>
@@ -75,18 +94,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">CounterpartyIBAN</bk-form-label>
+                        	<bk-form-label for="idCounterpartyIBAN" colon="true">CounterpartyIBAN</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idCounterpartyIBAN"
 	                                name="CounterpartyIBAN"
 	                                state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.CounterpartyIBAN"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter CounterpartyIBAN">
 	                            </bk-input>
@@ -95,18 +111,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyName" ng-required="false" colon="true">CounterpartyName</bk-form-label>
+                        	<bk-form-label for="idCounterpartyName" colon="true">CounterpartyName</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idCounterpartyName"
 	                                name="CounterpartyName"
 	                                state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.CounterpartyName"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter CounterpartyName">
 	                            </bk-input>
@@ -115,30 +128,26 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idAmount" ng-required="false" colon="true">Amount</bk-form-label>
+                        	<bk-form-label for="idAmount" colon="true">Amount</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--4 ">
+                        <div class="fd-col fd-col-md--4">
 	                        <bk-step-input input-id="idAmount"
 								name="Amount"
 								state="{{ forms.details['Amount'].$valid ? '' : 'error' }}"
-								is-required="false"
 								ng-model="entity.Amount"
-								is-readonly="action === 'select'"
 								placeholder="Enter Amount">
 							</bk-step-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCurrency" ng-required="false" colon="true">Currency</bk-form-label>
+                        	<bk-form-label for="idCurrency" colon="true">Currency</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idCurrency"
 	                            name="Currency"
 	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.Currency"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCurrency"
 	                            placeholder="Search Currency ..."
 								btn-aria-label="show/hide Currency options" list-aria-label="Currency options">
@@ -147,18 +156,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idReason" ng-required="false" colon="true">Reason</bk-form-label>
+                        	<bk-form-label for="idReason" colon="true">Reason</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Reason'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Reason'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idReason"
 	                                name="Reason"
 	                                state="{{ forms.details['Reason'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Reason"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Reason">
 	                            </bk-input>
@@ -167,18 +173,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idDescription" ng-required="false" colon="true">Description</bk-form-label>
+                        	<bk-form-label for="idDescription" colon="true">Description</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Description'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Description'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idDescription"
 	                                name="Description"
 	                                state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Description"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Description">
 	                            </bk-input>
@@ -187,15 +190,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompany" ng-required="false" colon="true">Company</bk-form-label>
+                        	<bk-form-label for="idCompany" colon="true">Company</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idCompany"
 	                            name="Company"
 	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.Company"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCompany"
 	                            placeholder="Search Company ..."
 								btn-aria-label="show/hide Company options" list-aria-label="Company options">
@@ -204,15 +205,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentRecordDirection" ng-required="false" colon="true">PaymentRecordDirection</bk-form-label>
+                        	<bk-form-label for="idPaymentRecordDirection" colon="true">PaymentRecordDirection</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idPaymentRecordDirection"
 	                            name="PaymentRecordDirection"
 	                            state="{{ forms.details['PaymentRecordDirection'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.PaymentRecordDirection"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentRecordDirection"
 	                            placeholder="Search PaymentRecordDirection ..."
 								btn-aria-label="show/hide PaymentRecordDirection options" list-aria-label="PaymentRecordDirection options">
@@ -221,15 +220,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentStatus" ng-required="false" colon="true">PaymentStatus</bk-form-label>
+                        	<bk-form-label for="idPaymentStatus" colon="true">PaymentStatus</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idPaymentStatus"
 	                            name="PaymentStatus"
 	                            state="{{ forms.details['PaymentStatus'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.PaymentStatus"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentStatus"
 	                            placeholder="Search PaymentStatus ..."
 								btn-aria-label="show/hide PaymentStatus options" list-aria-label="PaymentStatus options">
@@ -238,15 +235,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentType" ng-required="false" colon="true">PaymentType</bk-form-label>
+                        	<bk-form-label for="idPaymentType" colon="true">PaymentType</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idPaymentType"
 	                            name="PaymentType"
 	                            state="{{ forms.details['PaymentType'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.PaymentType"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentType"
 	                            placeholder="Search PaymentType ..."
 								btn-aria-label="show/hide PaymentType options" list-aria-label="PaymentType options">
@@ -255,18 +250,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idUUID" ng-required="false" colon="true">UUID</bk-form-label>
+                        	<bk-form-label for="idUUID" colon="true">UUID</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['UUID'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['UUID'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idUUID"
 	                                name="UUID"
 	                                state="{{ forms.details['UUID'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.UUID"
-	                                ng-readonly="true"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter UUID">
 	                            </bk-input>
@@ -275,18 +267,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idReference" ng-required="false" colon="true">Reference</bk-form-label>
+                        	<bk-form-label for="idReference" colon="true">Reference</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Reference'].$valid ? '' : 'error' }}" message="'The value doesn\'t match the required pattern: '">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Reference'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
 								<bk-input id="idReference"
 	                                name="Reference"
 	                                state="{{ forms.details['Reference'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Reference"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="36.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Reference">
 	                            </bk-input>
@@ -295,24 +284,22 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2"></div>
-	                    <div class="fd-col  bk-col--fit ">
-	                        <bk-checkbox id="idDeleted"
-	                            compact="false"
-	                            ng-required="false"
-	                            ng-readonly="action === 'select'"
-	                            ng-model="entity.Deleted">
-	                        </bk-checkbox>
-                        	<bk-checkbox-label for="idDeleted" ng-required="false">Deleted</bk-checkbox-label>
+	                    <div class="fd-col fd-col-md--8">
+							<bk-checkbox id="idDeleted" compact="false" ng-model="entity.Deleted"></bk-checkbox>
+                        	<bk-checkbox-label for="idDeleted">Deleted</bk-checkbox-label>
                         </div>
                     </bk-form-item>
                 </bk-form-group>
             </bk-fieldset>
         </bk-scrollbar>
 
-		<bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+		<bk-bar bar-design="footer" ng-show="action !== 'select'" compact="true">
 			<bk-bar-right>
 				<bk-bar-element>
-					<bk-button label="{{action === 'create' ? 'Create' : 'Update'}}" state="emphasized" ng-click="action === 'create' ? create() : update()" ng-disabled="!forms.details.$valid"></bk-button>
+					<bk-button label="Filter" state="emphasized" ng-click="filter()"></bk-button>
+				</bk-bar-element>
+				<bk-bar-element>
+					<bk-button label="Reset" ng-click="resetFilter()"></bk-button>
 				</bk-bar-element>
 				<bk-bar-element>
 					<bk-button label="Cancel" ng-click="cancel()"></bk-button>

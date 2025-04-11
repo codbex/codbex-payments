@@ -8,14 +8,13 @@
         <title config-title></title>
         <script type="text/javascript" src="view.js"></script>
         <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
-		<script type="text/javascript" src="/services/web/dashboard/services/entity.js"></script>
         <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
     <body class="bk-vbox">
         <bk-scrollbar class="bk-full-height">
-			<bk-message-strip class="fd-margin--md" glyph="sap-icon--message-error" state="error" ng-show="errorMessage" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
+			<bk-message-strip class="fd-margin--md" ng-show="errorMessage" glyph="sap-icon--message-error" state="error" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
 
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
                 <bk-form-group label="PaymentRecord Filter" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
@@ -285,7 +284,13 @@
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2"></div>
 	                    <div class="fd-col fd-col-md--8">
-							<bk-checkbox id="idDeleted" compact="false" ng-model="entity.Deleted"></bk-checkbox>
+							<bk-checkbox id="idDeleted"
+	                            compact="false"
+								ng-init="entity.isDeletedIndeterminate=true"
+								ng-model="entity.Deleted"
+								indeterminate="entity.isDeletedIndeterminate"
+								ng-click="entity.isDeletedIndeterminate=false">
+	                        </bk-checkbox>
                         	<bk-checkbox-label for="idDeleted">Deleted</bk-checkbox-label>
                         </div>
                     </bk-form-item>
@@ -293,7 +298,7 @@
             </bk-fieldset>
         </bk-scrollbar>
 
-		<bk-bar bar-design="footer" ng-show="action !== 'select'" compact="true">
+        <bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<bk-bar-right>
 				<bk-bar-element>
 					<bk-button label="Filter" state="emphasized" ng-click="filter()"></bk-button>

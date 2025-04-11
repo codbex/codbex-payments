@@ -1,0 +1,6 @@
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/view.js",
+    "extensionPoint": "application-reports",
+    "description": "codbex-payments - Application View",
+    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly"
+}
