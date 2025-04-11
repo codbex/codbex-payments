@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/navigations/customer-payments/service.js",
-    "extensionPoint": "dashboard-navigations",
-    "description": "Customer Payments Navigation",
-    "role": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly,codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
-}

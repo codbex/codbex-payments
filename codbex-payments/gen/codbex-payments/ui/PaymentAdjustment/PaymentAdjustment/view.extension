@@ -1,6 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/view.js",
-    "extensionPoint": "codbex-payments-view",
+    "extensionPoint": "application-views",
     "description": "codbex-payments - Application View",
     "role": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly,codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess"
 }

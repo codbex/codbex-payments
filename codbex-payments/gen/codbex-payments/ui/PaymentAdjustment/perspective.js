@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'PaymentAdjustment',
-	name: 'PaymentAdjustment',
-	link: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/index.html',
-	order: '110',
+	label: 'PaymentAdjustment',
+	path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/index.html',
+	groupId: 'sales-navigation-group',
+	order: 700,
 	icon: '/services/web/resources/unicons/paypal.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

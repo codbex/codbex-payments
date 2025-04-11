@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "CustomerPayment",
-    label: "CustomerPayment",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/index.html",
-    perspectiveName: "CustomerPayment"
+    id: 'CustomerPayment',
+    label: 'CustomerPayment',
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/index.html',
+    perspectiveName: 'CustomerPayment'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

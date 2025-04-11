@@ -1,5 +1,5 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/SupplierPayment/perspective.js",
-    "extensionPoint": "codbex-payments",
+    "extensionPoint": "application-perspectives",
     "description": "codbex-payments - Perspective - SupplierPayment"
 }

@@ -6,15 +6,12 @@
 const viewData = {
     id: "SupplierPayment-details",
     label: "SupplierPayment",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/dialog-window/index.html",
+    path: "/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/dialog-window/index.html",
     perspectiveName: "SupplierPayment",
     roles: [
         "codbex-payments.SupplierPayment.SupplierPaymentReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

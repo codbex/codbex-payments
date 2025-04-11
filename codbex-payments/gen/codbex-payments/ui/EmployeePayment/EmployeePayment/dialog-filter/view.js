@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "EmployeePayment-filter",
-    label: "EmployeePayment Filter",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/dialog-filter/index.html",
-    perspectiveName: "EmployeePayment"
+    id: 'EmployeePayment-filter',
+    label: 'EmployeePayment Filter',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/dialog-filter/index.html',
+    perspectiveName: 'EmployeePayment'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

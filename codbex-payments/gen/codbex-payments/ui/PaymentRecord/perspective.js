@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'PaymentRecord',
-	name: 'PaymentRecord',
-	link: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/index.html',
-	order: '40',
+	label: 'PaymentRecord',
+	path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/index.html',
+	groupId: 'accounting-navigation-group',
+	order: 40,
 	icon: '/services/web/resources/unicons/align-justify.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

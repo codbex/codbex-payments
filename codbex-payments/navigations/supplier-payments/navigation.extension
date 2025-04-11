@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/navigations/supplier-payments/service.js",
-    "extensionPoint": "dashboard-navigations",
-    "description": "Supplier Payments Navigation",
-    "role": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly,codbex-payments.SupplierPayment.SupplierPaymentFullAccess"
-}

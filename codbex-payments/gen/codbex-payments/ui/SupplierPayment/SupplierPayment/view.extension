@@ -1,6 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/view.js",
-    "extensionPoint": "codbex-payments-view",
+    "extensionPoint": "application-views",
     "description": "codbex-payments - Application View",
     "role": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly,codbex-payments.SupplierPayment.SupplierPaymentFullAccess"
 }

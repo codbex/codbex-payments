@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/navigations/employee-payments/service.js",
-    "extensionPoint": "dashboard-navigations",
-    "description": "Employee Payments Navigation",
-    "role": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly,codbex-payments.EmployeePayment.EmployeePaymentFullAcces"
-}
