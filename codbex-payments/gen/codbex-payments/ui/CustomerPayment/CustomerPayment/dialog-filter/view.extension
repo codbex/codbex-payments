@@ -1,6 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-payments - Application Dialog Window",
     "role": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly,codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
 }

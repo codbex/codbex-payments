@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/tile.js",
-    "extensionPoint": "codbex-payments-tile",
-    "description": "codbex-payments - Application Tile",
-    "role": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly,codbex-payments.SupplierPayment.SupplierPaymentFullAccess"
-}

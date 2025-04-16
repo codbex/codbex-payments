@@ -6,15 +6,12 @@
 const viewData = {
     id: "PaymentRecord-details",
     label: "PaymentRecord",
-    link: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-window/index.html",
+    path: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/PaymentRecord/dialog-window/index.html",
     perspectiveName: "PaymentRecord",
     roles: [
         "codbex-payments.PaymentRecord.PaymentRecordReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }
