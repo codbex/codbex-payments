@@ -49,7 +49,7 @@ export interface PaymentRecordDirectionEntityOptions {
     },
     $select?: (keyof PaymentRecordDirectionEntity)[],
     $sort?: string | (keyof PaymentRecordDirectionEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class PaymentRecordDirectionRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PaymentRecordDirectionRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PaymentRecordDirectionRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PaymentRecordDirectionEntityOptions): PaymentRecordDirectionEntity[] {
+    public findAll(options: PaymentRecordDirectionEntityOptions = {}): PaymentRecordDirectionEntity[] {
         return this.dao.list(options);
     }
 

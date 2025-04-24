@@ -103,7 +103,7 @@ export interface PaymentAdjustmentEntityOptions {
     },
     $select?: (keyof PaymentAdjustmentEntity)[],
     $sort?: string | (keyof PaymentAdjustmentEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -176,10 +176,10 @@ export class PaymentAdjustmentRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PaymentAdjustmentRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PaymentAdjustmentRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PaymentAdjustmentEntityOptions): PaymentAdjustmentEntity[] {
+    public findAll(options: PaymentAdjustmentEntityOptions = {}): PaymentAdjustmentEntity[] {
         return this.dao.list(options).map((e: PaymentAdjustmentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");

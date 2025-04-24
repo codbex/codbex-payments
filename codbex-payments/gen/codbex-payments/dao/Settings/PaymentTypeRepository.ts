@@ -49,7 +49,7 @@ export interface PaymentTypeEntityOptions {
     },
     $select?: (keyof PaymentTypeEntity)[],
     $sort?: string | (keyof PaymentTypeEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class PaymentTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PaymentTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PaymentTypeRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PaymentTypeEntityOptions): PaymentTypeEntity[] {
+    public findAll(options: PaymentTypeEntityOptions = {}): PaymentTypeEntity[] {
         return this.dao.list(options);
     }
 

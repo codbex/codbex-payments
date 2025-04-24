@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-payments - Perspective - PaymentAdjustment"
+    "description": "codbex-payments - Perspective - PaymentAdjustment",
+    "role": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly,codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess"
 }

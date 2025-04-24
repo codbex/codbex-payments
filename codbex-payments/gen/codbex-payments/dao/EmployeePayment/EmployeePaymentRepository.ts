@@ -158,7 +158,7 @@ export interface EmployeePaymentEntityOptions {
     },
     $select?: (keyof EmployeePaymentEntity)[],
     $sort?: string | (keyof EmployeePaymentEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -267,19 +267,14 @@ export class EmployeePaymentRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(EmployeePaymentRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(EmployeePaymentRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: EmployeePaymentEntityOptions): EmployeePaymentEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
+    public findAll(options: EmployeePaymentEntityOptions = {}): EmployeePaymentEntity[] {
+        if (options.$sort === undefined && options.$order === undefined) {
+            options.$sort = "Date";
+            options.$order = "DESC";
         }
-        // @ts-ignore
-        options.$sort += "Date,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: EmployeePaymentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");

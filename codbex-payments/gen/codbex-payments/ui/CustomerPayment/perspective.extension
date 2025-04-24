@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/CustomerPayment/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-payments - Perspective - CustomerPayment"
+    "description": "codbex-payments - Perspective - CustomerPayment",
+    "role": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly,codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
 }

@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/PaymentRecord/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-payments - Perspective - PaymentRecord"
+    "description": "codbex-payments - Perspective - PaymentRecord",
+    "role": "codbex-payments.PaymentRecord.PaymentRecordReadOnly,codbex-payments.PaymentRecord.PaymentRecordFullAccess"
 }
