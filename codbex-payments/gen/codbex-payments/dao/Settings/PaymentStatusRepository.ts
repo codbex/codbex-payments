@@ -49,7 +49,7 @@ export interface PaymentStatusEntityOptions {
     },
     $select?: (keyof PaymentStatusEntity)[],
     $sort?: string | (keyof PaymentStatusEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class PaymentStatusRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PaymentStatusRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PaymentStatusRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PaymentStatusEntityOptions): PaymentStatusEntity[] {
+    public findAll(options: PaymentStatusEntityOptions = {}): PaymentStatusEntity[] {
         return this.dao.list(options);
     }
 

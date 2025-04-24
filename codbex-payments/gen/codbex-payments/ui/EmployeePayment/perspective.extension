@@ -1,5 +1,6 @@
 {
     "module": "codbex-payments/gen/codbex-payments/ui/EmployeePayment/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-payments - Perspective - EmployeePayment"
+    "description": "codbex-payments - Perspective - EmployeePayment",
+    "role": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly,codbex-payments.EmployeePayment.EmployeePaymentFullAccess"
 }

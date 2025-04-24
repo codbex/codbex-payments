@@ -103,7 +103,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "CUSTOMERPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -375,7 +375,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SUPPLIERPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -611,7 +611,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "EMPLOYEEPAYMENT_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -847,7 +847,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PAYMENTRECORD_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1845,7 +1845,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PAYMENTADJUSTMENT_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
