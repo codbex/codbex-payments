@@ -1,5 +1,7 @@
 import { PaymentRecordRepository } from "../../gen/codbex-payments/dao/PaymentRecord/PaymentRecordRepository";
 
+const validate = () => { }
+
 export const trigger = (event) => {
     const PaymentRecordDao = new PaymentRecordRepository();
     const item = event.entity;
