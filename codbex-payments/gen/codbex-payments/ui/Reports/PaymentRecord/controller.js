@@ -1,8 +1,8 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordController.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions) => {
+	.controller('PageController', ($scope, $http, EntityService, LocaleService, Extensions) => {
 		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -17,7 +17,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
 				params: {
 					filterEntity: $scope.filterEntity,
@@ -27,6 +27,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					optionsPaymentStatus: $scope.optionsPaymentStatus,
 					optionsPaymentType: $scope.optionsPaymentType,
 				},
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true,
 			});
 		};
@@ -34,7 +36,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerEntityAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
 				params: {
 					id: $scope.entity.Id
@@ -73,8 +75,11 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				let limit = $scope.dataLimit;
 				let request;
 				if (filter) {
-					filter.$offset = offset;
-					filter.$limit = limit;
+					if (!filter.$filter) {
+						filter.$filter = {};
+					}
+					filter.$filter.offset = offset;
+					filter.$filter.limit = limit;
 					request = EntityService.search(filter);
 				} else {
 					request = EntityService.list(offset, limit);
@@ -93,8 +98,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: "PaymentRecord",
-						message: `Unable to list/filter PaymentRecord: '${message}'`,
+						title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTRECORD'),
+						message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLF', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -102,8 +107,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: "PaymentRecord",
-					message: `Unable to count PaymentRecord: '${message}'`,
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTRECORD'),
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToCount', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -152,7 +157,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.optionsPaymentStatus = [];
 		$scope.optionsPaymentType = [];
 
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
 				value: e.Id,
 				text: e.Code
@@ -162,12 +167,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Currency',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
 			$scope.optionsCompany = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -177,12 +182,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Company',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts').then((response) => {
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts').then((response) => {
 			$scope.optionsPaymentRecordDirection = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -192,12 +197,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PaymentRecordDirection',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts').then((response) => {
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts').then((response) => {
 			$scope.optionsPaymentStatus = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -207,12 +212,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PaymentStatus',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts').then((response) => {
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts').then((response) => {
 			$scope.optionsPaymentType = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -222,7 +227,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PaymentType',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});

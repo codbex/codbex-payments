@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface PaymentTypeEntity {
     readonly Id: number;
@@ -52,9 +52,10 @@ export interface PaymentTypeEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface PaymentTypeEntityEvent {
+export interface PaymentTypeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PaymentTypeEntity>;
@@ -65,7 +66,7 @@ interface PaymentTypeEntityEvent {
     }
 }
 
-interface PaymentTypeUpdateEntityEvent extends PaymentTypeEntityEvent {
+export interface PaymentTypeUpdateEntityEvent extends PaymentTypeEntityEvent {
     readonly previousEntity: PaymentTypeEntity;
 }
 
@@ -96,10 +97,11 @@ export class PaymentTypeRepository {
     }
 
     public findAll(options: PaymentTypeEntityOptions = {}): PaymentTypeEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): PaymentTypeEntity | undefined {
+    public findById(id: number, options: PaymentTypeEntityOptions = {}): PaymentTypeEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

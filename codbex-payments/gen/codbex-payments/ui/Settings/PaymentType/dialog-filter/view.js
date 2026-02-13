@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PaymentType-filter',
     label: 'PaymentType Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTTYPE) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentType/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PaymentAdjustment-filter',
     label: 'PaymentAdjustment Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/dialog-filter/index.html',
     perspectiveName: 'PaymentAdjustment'
 };

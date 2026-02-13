@@ -1,0 +1,4 @@
+{
+    "name": "codbex-payments-Settings-PaymentRecordDirection",
+    "description": "Extension Point for the codbex-payments-Settings-PaymentRecordDirection entity"
+}

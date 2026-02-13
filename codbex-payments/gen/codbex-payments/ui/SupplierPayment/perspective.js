@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'SupplierPayment',
 	label: 'SupplierPayment',
+	translation: {
+        key: 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT',
+    },
 	path: '/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/index.html',
 	groupId: 'purchasing-navigation-group',
 	order: 300,

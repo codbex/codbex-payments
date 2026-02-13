@@ -6,6 +6,9 @@
 const viewData = {
     id: 'PaymentRecord-details',
     label: 'PaymentRecord',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD',
+    },
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,

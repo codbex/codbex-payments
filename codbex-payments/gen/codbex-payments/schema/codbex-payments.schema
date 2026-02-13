@@ -45,7 +45,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "CUSTOMERPAYMENT_AMOUNT"
@@ -79,6 +79,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 36,
+                        "unique": true,
                         "name": "CUSTOMERPAYMENT_UUID"
                     },
                     {
@@ -138,7 +139,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "SUPPLIERPAYMENT_AMOUNT"
@@ -172,6 +173,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 36,
+                        "unique": true,
                         "name": "SUPPLIERPAYMENT_UUID"
                     },
                     {
@@ -221,7 +223,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "EMPLOYEEPAYMENT_AMOUNT"
@@ -255,6 +257,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 36,
+                        "unique": true,
                         "name": "EMPLOYEEPAYMENT_UUID"
                     },
                     {
@@ -304,7 +307,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -350,6 +353,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 36,
+                        "unique": true,
                         "name": "PAYMENTRECORD_UUID"
                     },
                     {
@@ -445,7 +449,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,

@@ -6,6 +6,12 @@
 const viewData = {
     id: 'CustomerPayment-filter',
     label: 'CustomerPayment Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-filter/index.html',
     perspectiveName: 'CustomerPayment'
 };

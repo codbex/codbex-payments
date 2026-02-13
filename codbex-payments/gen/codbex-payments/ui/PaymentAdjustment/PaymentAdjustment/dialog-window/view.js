@@ -6,6 +6,9 @@
 const viewData = {
     id: "PaymentAdjustment-details",
     label: "PaymentAdjustment",
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT',
+    },
     path: "/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/PaymentAdjustment/dialog-window/index.html",
     perspectiveName: "PaymentAdjustment",
     roles: [

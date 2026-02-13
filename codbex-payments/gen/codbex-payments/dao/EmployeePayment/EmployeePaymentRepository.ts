@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
@@ -161,9 +161,10 @@ export interface EmployeePaymentEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface EmployeePaymentEntityEvent {
+export interface EmployeePaymentEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<EmployeePaymentEntity>;
@@ -174,7 +175,7 @@ interface EmployeePaymentEntityEvent {
     }
 }
 
-interface EmployeePaymentUpdateEntityEvent extends EmployeePaymentEntityEvent {
+export interface EmployeePaymentUpdateEntityEvent extends EmployeePaymentEntityEvent {
     readonly previousEntity: EmployeePaymentEntity;
 }
 
@@ -275,14 +276,15 @@ export class EmployeePaymentRepository {
             options.$sort = "Date";
             options.$order = "DESC";
         }
-        return this.dao.list(options).map((e: EmployeePaymentEntity) => {
+        let list = this.dao.list(options).map((e: EmployeePaymentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): EmployeePaymentEntity | undefined {
+    public findById(id: number, options: EmployeePaymentEntityOptions = {}): EmployeePaymentEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         EntityUtils.setDate(entity, "Valor");

@@ -6,6 +6,9 @@
 const viewData = {
     id: 'EmployeePayment-details',
     label: 'EmployeePayment',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT',
+    },
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,

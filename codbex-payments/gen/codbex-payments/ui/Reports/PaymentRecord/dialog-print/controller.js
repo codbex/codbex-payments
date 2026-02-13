@@ -1,8 +1,8 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
     .config(['EntityServiceProvider', (EntityServiceProvider) => {
-        EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordService.ts';
+        EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordController.ts';
     }])
-    .controller('PageController', ($scope, EntityService, ViewParameters) => {
+    .controller('PageController', ($scope, EntityService, LocaleService, ViewParameters) => {
         const Dialogs = new DialogHub();
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {         
@@ -10,71 +10,87 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 			const filter = {
 				$filter: {
-					equals: {},
-					notEquals: {},
-					contains: {},
-					greaterThan: {},
-					greaterThanOrEqual: {},
-					lessThan: {},
-					lessThanOrEqual: {}
-				},
+					conditions: [],
+					sorts: [],
+					limit: 20,
+					offset: 0
+				}
 			};
-			if (filterEntity.Id) {
-				filter.$filter.equals.Id = filterEntity.Id;
+			if (entity.Id !== undefined) {
+				const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.DateFrom) {
-				filter.$filter.greaterThanOrEqual.Date = filterEntity.DateFrom;
+			if (entity.DateFrom) {
+				const condition = { propertyName: 'Date', operator: 'GE', value: entity.DateFrom };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.DateTo) {
-				filter.$filter.lessThanOrEqual.Date = filterEntity.DateTo;
+			if (entity.DateTo) {
+				const condition = { propertyName: 'Date', operator: 'LE', value: entity.DateTo };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.ValorFrom) {
-				filter.$filter.greaterThanOrEqual.Valor = filterEntity.ValorFrom;
+			if (entity.ValorFrom) {
+				const condition = { propertyName: 'Valor', operator: 'GE', value: entity.ValorFrom };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.ValorTo) {
-				filter.$filter.lessThanOrEqual.Valor = filterEntity.ValorTo;
+			if (entity.ValorTo) {
+				const condition = { propertyName: 'Valor', operator: 'LE', value: entity.ValorTo };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.CompanyIBAN) {
-				filter.$filter.contains.CompanyIBAN = filterEntity.CompanyIBAN;
+			if (entity.CompanyIBAN) {
+				const condition = { propertyName: 'CompanyIBAN', operator: 'LIKE', value: `%${entity.CompanyIBAN}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.CounterpartyIBAN) {
-				filter.$filter.contains.CounterpartyIBAN = filterEntity.CounterpartyIBAN;
+			if (entity.CounterpartyIBAN) {
+				const condition = { propertyName: 'CounterpartyIBAN', operator: 'LIKE', value: `%${entity.CounterpartyIBAN}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.CounterpartyName) {
-				filter.$filter.contains.CounterpartyName = filterEntity.CounterpartyName;
+			if (entity.CounterpartyName) {
+				const condition = { propertyName: 'CounterpartyName', operator: 'LIKE', value: `%${entity.CounterpartyName}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Amount) {
-				filter.$filter.equals.Amount = filterEntity.Amount;
+			if (entity.Amount !== undefined) {
+				const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Currency) {
-				filter.$filter.equals.Currency = filterEntity.Currency;
+			if (entity.Currency !== undefined) {
+				const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Reason) {
-				filter.$filter.contains.Reason = filterEntity.Reason;
+			if (entity.Reason) {
+				const condition = { propertyName: 'Reason', operator: 'LIKE', value: `%${entity.Reason}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Description) {
-				filter.$filter.contains.Description = filterEntity.Description;
+			if (entity.Description) {
+				const condition = { propertyName: 'Description', operator: 'LIKE', value: `%${entity.Description}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Company) {
-				filter.$filter.equals.Company = filterEntity.Company;
+			if (entity.Company !== undefined) {
+				const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.PaymentRecordDirection) {
-				filter.$filter.equals.PaymentRecordDirection = filterEntity.PaymentRecordDirection;
+			if (entity.PaymentRecordDirection !== undefined) {
+				const condition = { propertyName: 'PaymentRecordDirection', operator: 'EQ', value: entity.PaymentRecordDirection };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.PaymentStatus) {
-				filter.$filter.equals.PaymentStatus = filterEntity.PaymentStatus;
+			if (entity.PaymentStatus !== undefined) {
+				const condition = { propertyName: 'PaymentStatus', operator: 'EQ', value: entity.PaymentStatus };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.PaymentType) {
-				filter.$filter.equals.PaymentType = filterEntity.PaymentType;
+			if (entity.PaymentType !== undefined) {
+				const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.UUID) {
-				filter.$filter.contains.UUID = filterEntity.UUID;
+			if (entity.UUID) {
+				const condition = { propertyName: 'UUID', operator: 'LIKE', value: `%${entity.UUID}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Reference) {
-				filter.$filter.contains.Reference = filterEntity.Reference;
+			if (entity.Reference) {
+				const condition = { propertyName: 'Reference', operator: 'LIKE', value: `%${entity.Reference}%` };
+				filter.$filter.conditions.push(condition);
 			}
-			if (filterEntity.Deleted) {
-				filter.$filter.equals.Deleted = filterEntity.Deleted;
+			if (entity.Deleted !== undefined && entity.isDeletedIndeterminate === false) {
+				const condition = { propertyName: 'Deleted', operator: 'EQ', value: entity.Deleted };
+				filter.$filter.conditions.push(condition);
 			}
 
             $scope.filter = filter;
@@ -113,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
             }, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'PaymentRecord',
-					message: `Unable to list/filter PaymentRecord: '${message}'`,
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTRECORD'),
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLF', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);

@@ -1,0 +1,127 @@
+import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+
+@Entity('EmployeePaymentEntity')
+@Table('CODBEX_EMPLOYEEPAYMENT')
+@Documentation('EmployeePayment entity mapping')
+export class EmployeePaymentEntity {
+
+    @Id()
+    @Generated('sequence')
+    @Documentation('Id')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_ID',
+        type: 'integer',
+    })
+    public Id?: number;
+
+    @Documentation('Date')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_DATE',
+        type: 'date',
+    })
+    public Date!: Date;
+
+    @Documentation('Valor')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_VALOR',
+        type: 'date',
+    })
+    public Valor!: Date;
+
+    @Documentation('CompanyIBAN')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_COMPANYIBAN',
+        type: 'string',
+        length: 34,
+        nullable: true,
+    })
+    public CompanyIBAN?: string;
+
+    @Documentation('CounterpartyIBAN')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_COUNTERPARTYIBAN',
+        type: 'string',
+        length: 34,
+        nullable: true,
+    })
+    public CounterpartyIBAN?: string;
+
+    @Documentation('CounterpartyName')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_COUNTERPARTYNAME',
+        type: 'string',
+        length: 100,
+        nullable: true,
+    })
+    public CounterpartyName?: string;
+
+    @Documentation('Amount')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_AMOUNT',
+        type: 'big_decimal',
+        precision: 16,
+        scale: 2,
+    })
+    public Amount!: number;
+
+    @Documentation('Currency')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_CURRENCY',
+        type: 'integer',
+    })
+    public Currency!: number;
+
+    @Documentation('Reason')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_REASON',
+        type: 'string',
+        length: 100,
+    })
+    public Reason!: string;
+
+    @Documentation('Description')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_DESCRIPTION',
+        type: 'string',
+        length: 100,
+        nullable: true,
+    })
+    public Description?: string;
+
+    @Documentation('Company')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_COMPANY',
+        type: 'integer',
+        nullable: true,
+    })
+    public Company?: number;
+
+    @Documentation('Name')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_NAME',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    public Name?: string;
+
+    @Documentation('UUID')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_UUID',
+        type: 'string',
+        length: 36,
+    })
+    public UUID?: string;
+
+    @Documentation('Reference')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_REFERENCE',
+        type: 'string',
+        length: 36,
+        nullable: true,
+    })
+    public Reference?: string;
+
+}
+
+(new EmployeePaymentEntity());

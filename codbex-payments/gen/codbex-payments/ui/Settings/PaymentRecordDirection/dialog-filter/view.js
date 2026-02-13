@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PaymentRecordDirection-filter',
     label: 'PaymentRecordDirection Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORDDIRECTION) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentRecordDirection/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };

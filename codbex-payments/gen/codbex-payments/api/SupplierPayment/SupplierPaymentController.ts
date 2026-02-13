@@ -1,119 +1,145 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
-import { EmployeePaymentRepository, EmployeePaymentEntityOptions } from "../../dao/EmployeePayment/EmployeePaymentRepository";
-import { user } from "sdk/security"
-import { ForbiddenError } from "../utils/ForbiddenError";
-import { ValidationError } from "../utils/ValidationError";
-import { HttpUtils } from "../utils/HttpUtils";
+import { Controller, Get, Post, Put, Delete, Documentation, request, response } from '@aerokit/sdk/http'
+import { HttpUtils } from "@aerokit/sdk/http/utils";
+import { ValidationError } from '@aerokit/sdk/http/errors'
+import { ForbiddenError } from '@aerokit/sdk/http/errors'
+import { user } from '@aerokit/sdk/security'
+import { Options } from '@aerokit/sdk/db'
+import { Extensions } from "@aerokit/sdk/extensions"
+import { Injected, Inject } from '@aerokit/sdk/component'
+import { SupplierPaymentRepository } from '../../data/SupplierPayment/SupplierPaymentRepository'
+import { SupplierPaymentEntity } from '../../data/SupplierPayment/SupplierPaymentEntity'
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-payments-EmployeePayment-EmployeePayment", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules('codbex-payments-SupplierPayment-SupplierPayment', ['validate']);
 
 @Controller
-class EmployeePaymentService {
+@Documentation('codbex-payments - SupplierPayment Controller')
+@Injected()
+class SupplierPaymentController {
 
-    private readonly repository = new EmployeePaymentRepository();
+    @Inject('SupplierPaymentRepository')
+    private readonly repository!: SupplierPaymentRepository;
 
-    @Get("/")
-    public getAll(_: any, ctx: any) {
+    @Get('/')
+    @Documentation('Get All SupplierPayment')
+    public getAll(_: any, ctx: any): SupplierPaymentEntity[] {
         try {
-            this.checkPermissions("read");
-            const options: EmployeePaymentEntityOptions = {
-                $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+            this.checkPermissions('read');
+            const options: Options = {
+                limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
+                offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
+                language: request.getLocale().slice(0, 2)
             };
 
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/")
-    public create(entity: any) {
+    @Post('/')
+    @Documentation('Create SupplierPayment')
+    public create(entity: SupplierPaymentEntity): SupplierPaymentEntity {
         try {
-            this.checkPermissions("write");
+            this.checkPermissions('write');
             this.validateEntity(entity);
-            entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-payments/gen/codbex-payments/api/EmployeePayment/EmployeePaymentService.ts/" + entity.Id);
+            entity.Id = this.repository.create(entity) as any;
+            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentService.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/count")
-    public count() {
+    @Get('/count')
+    @Documentation('Count SupplierPayment')
+    public count(): { count: number } {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/count")
-    public countWithFilter(filter: any) {
+    @Post('/count')
+    @Documentation('Count SupplierPayment with filter')
+    public countWithFilter(filter: any): { count: number } {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/search")
-    public search(filter: any) {
+    @Post('/search')
+    @Documentation('Search SupplierPayment')
+    public search(filter: any): SupplierPaymentEntity[] {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/:id")
-    public getById(_: any, ctx: any) {
+    @Get('/:id')
+    @Documentation('Get SupplierPayment by id')
+    public getById(_: any, ctx: any): SupplierPaymentEntity {
         try {
-            this.checkPermissions("read");
+            this.checkPermissions('read');
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: Options = {
+                language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("EmployeePayment not found");
+                HttpUtils.sendResponseNotFound('SupplierPayment not found');
             }
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Put("/:id")
-    public update(entity: any, ctx: any) {
+    @Put('/:id')
+    @Documentation('Update SupplierPayment by id')
+    public update(entity: SupplierPaymentEntity, ctx: any): SupplierPaymentEntity {
         try {
-            this.checkPermissions("write");
-            entity.Id = ctx.pathParameters.id;
+            this.checkPermissions('write');
+            const id = parseInt(ctx.pathParameters.id);
+            entity.Id = id;
             this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Delete("/:id")
-    public deleteById(_: any, ctx: any) {
+    @Delete('/:id')
+    @Documentation('Delete SupplierPayment by id')
+    public deleteById(_: any, ctx: any): void {
         try {
-            this.checkPermissions("write");
-            const id = ctx.pathParameters.id;
+            this.checkPermissions('write');
+            const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("EmployeePayment not found");
+                HttpUtils.sendResponseNotFound('SupplierPayment not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -121,9 +147,9 @@ class EmployeePaymentService {
     }
 
     private handleError(error: any) {
-        if (error.name === "ForbiddenError") {
+        if (error.name === 'ForbiddenError') {
             HttpUtils.sendForbiddenRequest(error.message);
-        } else if (error.name === "ValidationError") {
+        } else if (error.name === 'ValidationError') {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
@@ -131,10 +157,10 @@ class EmployeePaymentService {
     }
 
     private checkPermissions(operationType: string) {
-        if (operationType === "read" && !(user.isInRole("codbex-payments.EmployeePayment.EmployeePaymentReadOnly") || user.isInRole("codbex-payments.EmployeePayment.EmployeePaymentFullAccess"))) {
+        if (operationType === 'read' && !(user.isInRole('codbex-payments.SupplierPayment.SupplierPaymentReadOnly') || user.isInRole('codbex-payments.SupplierPayment.SupplierPaymentFullAccess'))) {
             throw new ForbiddenError();
         }
-        if (operationType === "write" && !user.isInRole("codbex-payments.EmployeePayment.EmployeePaymentFullAccess")) {
+        if (operationType === 'write' && !user.isInRole('codbex-payments.SupplierPayment.SupplierPaymentFullAccess')) {
             throw new ForbiddenError();
         }
     }

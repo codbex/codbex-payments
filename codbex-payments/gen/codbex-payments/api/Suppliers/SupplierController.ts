@@ -1,107 +1,133 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
-import { SupplierRepository, SupplierEntityOptions } from "../../dao/Suppliers/SupplierRepository";
-import { ValidationError } from "../utils/ValidationError";
-import { HttpUtils } from "../utils/HttpUtils";
+import { Controller, Get, Post, Put, Delete, Documentation, request, response } from '@aerokit/sdk/http'
+import { HttpUtils } from "@aerokit/sdk/http/utils";
+import { ValidationError } from '@aerokit/sdk/http/errors'
+import { Options } from '@aerokit/sdk/db'
+import { Extensions } from "@aerokit/sdk/extensions"
+import { Injected, Inject } from '@aerokit/sdk/component'
+import { SupplierRepository } from '../../data/Suppliers/SupplierRepository'
+import { SupplierEntity } from '../../data/Suppliers/SupplierEntity'
 
-const validationModules = await Extensions.loadExtensionModules("codbex-payments-Suppliers-Supplier", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules('codbex-payments-Suppliers-Supplier', ['validate']);
 
 @Controller
-class SupplierService {
+@Documentation('codbex-payments - Supplier Controller')
+@Injected()
+class SupplierController {
 
-    private readonly repository = new SupplierRepository();
+    @Inject('SupplierRepository')
+    private readonly repository!: SupplierRepository;
 
-    @Get("/")
-    public getAll(_: any, ctx: any) {
+    @Get('/')
+    @Documentation('Get All Supplier')
+    public getAll(_: any, ctx: any): SupplierEntity[] {
         try {
-            const options: SupplierEntityOptions = {
-                $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+            const options: Options = {
+                limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
+                offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
+                language: request.getLocale().slice(0, 2)
             };
 
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/")
-    public create(entity: any) {
+    @Post('/')
+    @Documentation('Create Supplier')
+    public create(entity: SupplierEntity): SupplierEntity {
         try {
             this.validateEntity(entity);
-            entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts/" + entity.Id);
+            entity.Id = this.repository.create(entity) as any;
+            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/Suppliers/SupplierService.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/count")
-    public count() {
+    @Get('/count')
+    @Documentation('Count Supplier')
+    public count(): { count: number } {
         try {
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/count")
-    public countWithFilter(filter: any) {
+    @Post('/count')
+    @Documentation('Count Supplier with filter')
+    public countWithFilter(filter: any): { count: number } {
         try {
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Post("/search")
-    public search(filter: any) {
+    @Post('/search')
+    @Documentation('Search Supplier')
+    public search(filter: any): SupplierEntity[] {
         try {
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Get("/:id")
-    public getById(_: any, ctx: any) {
+    @Get('/:id')
+    @Documentation('Get Supplier by id')
+    public getById(_: any, ctx: any): SupplierEntity {
         try {
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: Options = {
+                language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Supplier not found");
+                HttpUtils.sendResponseNotFound('Supplier not found');
             }
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Put("/:id")
-    public update(entity: any, ctx: any) {
+    @Put('/:id')
+    @Documentation('Update Supplier by id')
+    public update(entity: SupplierEntity, ctx: any): SupplierEntity {
         try {
-            entity.Id = ctx.pathParameters.id;
+            const id = parseInt(ctx.pathParameters.id);
+            entity.Id = id;
             this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
             this.handleError(error);
         }
+        return undefined as any;
     }
 
-    @Delete("/:id")
-    public deleteById(_: any, ctx: any) {
+    @Delete('/:id')
+    @Documentation('Delete Supplier by id')
+    public deleteById(_: any, ctx: any): void {
         try {
-            const id = ctx.pathParameters.id;
+            const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Supplier not found");
+                HttpUtils.sendResponseNotFound('Supplier not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -109,9 +135,9 @@ class SupplierService {
     }
 
     private handleError(error: any) {
-        if (error.name === "ForbiddenError") {
+        if (error.name === 'ForbiddenError') {
             HttpUtils.sendForbiddenRequest(error.message);
-        } else if (error.name === "ValidationError") {
+        } else if (error.name === 'ValidationError') {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);

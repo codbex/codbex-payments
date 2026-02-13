@@ -6,6 +6,9 @@
 const viewData = {
     id: 'SupplierPayment-details',
     label: 'SupplierPayment',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT',
+    },
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,

@@ -6,6 +6,9 @@
 const viewData = {
     id: 'PaymentAdjustment',
     label: 'PaymentAdjustment',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT',
+    },
     region: 'left',
     lazyLoad: false,
 	autoFocusTab: false,

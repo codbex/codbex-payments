@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PaymentRecord-Report-details',
     label: 'PaymentRecord Report',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.defaults.reportTitle',
+        options: {
+            name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/dialog-window/index.html',
     perspectiveName: 'Reports'
 };

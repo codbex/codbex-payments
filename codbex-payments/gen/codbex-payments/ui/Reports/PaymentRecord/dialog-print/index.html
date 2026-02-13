@@ -15,35 +15,35 @@
 
     <body>
 		<bk-toolbar has-title="true">
-			<bk-toolbar-title>PaymentRecord Report</bk-toolbar-title>
+			<bk-toolbar-title>{{ 'codbex-payments:codbex-payments-model.defaults.reportTitle' | t:{'name':'PaymentRecord'} }}</bk-toolbar-title>
 		</bk-toolbar>
         <bk-scrollbar ng-hide="data == null">
             <table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead bk-table-header sticky="true">
                     <tr bk-table-row>
-						<th bk-table-header-cell>Date</th>
-						<th bk-table-header-cell>Valor</th>
-						<th bk-table-header-cell>CompanyIBAN</th>
-						<th bk-table-header-cell>CounterpartyIBAN</th>
-						<th bk-table-header-cell>CounterpartyName</th>
-						<th bk-table-header-cell>Amount</th>
-						<th bk-table-header-cell>Currency</th>
-						<th bk-table-header-cell>Reason</th>
-						<th bk-table-header-cell>Description</th>
-						<th bk-table-header-cell>Company</th>
-						<th bk-table-header-cell>PaymentRecordDirection</th>
-						<th bk-table-header-cell>PaymentStatus</th>
-						<th bk-table-header-cell>PaymentType</th>
-						<th bk-table-header-cell>UUID</th>
-						<th bk-table-header-cell>Reference</th>
-						<th bk-table-header-cell>Deleted</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DATE' | t:'Date' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_VALOR' | t:'Valor' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN' | t:'CompanyIBAN' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN' | t:'CounterpartyIBAN' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYNAME' | t:'CounterpartyName' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT' | t:'Amount' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY' | t:'Currency' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REASON' | t:'Reason' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DESCRIPTION' | t:'Description' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANY' | t:'Company' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTRECORDDIRECTION' | t:'PaymentRecordDirection' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTSTATUS' | t:'PaymentStatus' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE' | t:'PaymentType' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UUID' | t:'UUID' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REFERENCE' | t:'Reference' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETED' | t:'Deleted' }}</th>
                     </tr>
                 </thead>
                 <tbody bk-table-body>
                     <tr bk-table-row hoverable="true" ng-show="data.length == 0">
-                        <td bk-table-cell no-data="true">No data available.</td>
+                        <td bk-table-cell no-data="true">{{'codbex-payments:codbex-payments-model.messages.noData' | t}}</td>
                     </tr>
-                    <tr bk-table-row hoverable="true" ng-repeat="next in data">
+                    <tr bk-table-row hoverable="true" ng-repeat="next in data track by $index">
 						<td bk-table-cell hoverable="true" activable="true">
 							<bk-input type="date" ng-model="next.Date" ng-readonly="true"></bk-input>
 						</td>
