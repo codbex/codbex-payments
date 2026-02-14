@@ -6,6 +6,9 @@
 const viewData = {
     id: "SupplierPayment-details",
     label: "SupplierPayment",
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT',
+    },
     path: "/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/dialog-window/index.html",
     perspectiveName: "SupplierPayment",
     roles: [

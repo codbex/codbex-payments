@@ -6,6 +6,12 @@
 const viewData = {
     id: 'PaymentRecord-Report-filter',
     label: 'PaymentRecord Report Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD) $t(codbex-payments:codbex-payments-model.defaults.reportFilter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/Reports/PaymentRecord/dialog-filter/index.html',
     perspectiveName: 'Reports'
 };

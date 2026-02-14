@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'PaymentAdjustment',
 	label: 'PaymentAdjustment',
+	translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT',
+    },
 	path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentAdjustment/index.html',
 	groupId: 'sales-navigation-group',
 	order: 700,

@@ -6,6 +6,9 @@
 const viewData = {
     id: "CustomerPayment-details",
     label: "CustomerPayment",
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT',
+    },
     path: "/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/dialog-window/index.html",
     perspectiveName: "CustomerPayment",
     roles: [

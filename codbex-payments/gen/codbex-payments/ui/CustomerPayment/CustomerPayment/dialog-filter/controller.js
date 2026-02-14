@@ -1,4 +1,4 @@
-angular.module('page', ['blimpKit', 'platformView']).controller('PageController', ($scope, ViewParameters) => {
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controller('PageController', ($scope, ViewParameters) => {
 	const Dialogs = new DialogHub();
 	$scope.entity = {};
 	$scope.forms = {
@@ -32,75 +32,83 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		let entity = $scope.entity;
 		const filter = {
 			$filter: {
-				equals: {
-				},
-				notEquals: {
-				},
-				contains: {
-				},
-				greaterThan: {
-				},
-				greaterThanOrEqual: {
-				},
-				lessThan: {
-				},
-				lessThanOrEqual: {
-				}
-			},
+				conditions: [],
+				sorts: [],
+				limit: 20,
+				offset: 0
+			}
 		};
 		if (entity.Id !== undefined) {
-			filter.$filter.equals.Id = entity.Id;
+			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Customer !== undefined) {
-			filter.$filter.equals.Customer = entity.Customer;
+			const condition = { propertyName: 'Customer', operator: 'EQ', value: entity.Customer };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DateFrom) {
-			filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
+			const condition = { propertyName: 'Date', operator: 'GE', value: entity.DateFrom };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DateTo) {
-			filter.$filter.lessThanOrEqual.Date = entity.DateTo;
+			const condition = { propertyName: 'Date', operator: 'LE', value: entity.DateTo };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.ValorFrom) {
-			filter.$filter.greaterThanOrEqual.Valor = entity.ValorFrom;
+			const condition = { propertyName: 'Valor', operator: 'GE', value: entity.ValorFrom };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.ValorTo) {
-			filter.$filter.lessThanOrEqual.Valor = entity.ValorTo;
+			const condition = { propertyName: 'Valor', operator: 'LE', value: entity.ValorTo };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CompanyIBAN) {
-			filter.$filter.contains.CompanyIBAN = entity.CompanyIBAN;
+			const condition = { propertyName: 'CompanyIBAN', operator: 'LIKE', value: `%${entity.CompanyIBAN}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CounterpartyIBAN) {
-			filter.$filter.contains.CounterpartyIBAN = entity.CounterpartyIBAN;
+			const condition = { propertyName: 'CounterpartyIBAN', operator: 'LIKE', value: `%${entity.CounterpartyIBAN}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CounterpartyName) {
-			filter.$filter.contains.CounterpartyName = entity.CounterpartyName;
+			const condition = { propertyName: 'CounterpartyName', operator: 'LIKE', value: `%${entity.CounterpartyName}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Amount !== undefined) {
-			filter.$filter.equals.Amount = entity.Amount;
+			const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Currency !== undefined) {
-			filter.$filter.equals.Currency = entity.Currency;
+			const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Reason) {
-			filter.$filter.contains.Reason = entity.Reason;
+			const condition = { propertyName: 'Reason', operator: 'LIKE', value: `%${entity.Reason}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Description) {
-			filter.$filter.contains.Description = entity.Description;
+			const condition = { propertyName: 'Description', operator: 'LIKE', value: `%${entity.Description}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Company !== undefined) {
-			filter.$filter.equals.Company = entity.Company;
+			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Name) {
-			filter.$filter.contains.Name = entity.Name;
+			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.UUID) {
-			filter.$filter.contains.UUID = entity.UUID;
+			const condition = { propertyName: 'UUID', operator: 'LIKE', value: `%${entity.UUID}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Reference) {
-			filter.$filter.contains.Reference = entity.Reference;
+			const condition = { propertyName: 'Reference', operator: 'LIKE', value: `%${entity.Reference}%` };
+			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PaymentMethod !== undefined) {
-			filter.$filter.equals.PaymentMethod = entity.PaymentMethod;
+			const condition = { propertyName: 'PaymentMethod', operator: 'EQ', value: entity.PaymentMethod };
+			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-payments.CustomerPayment.CustomerPayment.entitySearch', data: {
 			entity: entity,

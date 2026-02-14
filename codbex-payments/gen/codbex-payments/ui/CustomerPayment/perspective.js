@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'CustomerPayment',
 	label: 'CustomerPayment',
+	translation: {
+        key: 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT',
+    },
 	path: '/services/web/codbex-payments/gen/codbex-payments/ui/CustomerPayment/index.html',
 	groupId: 'sales-navigation-group',
 	order: 300,

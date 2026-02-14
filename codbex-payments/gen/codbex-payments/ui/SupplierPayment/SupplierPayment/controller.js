@@ -1,9 +1,22 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete SupplierPayment? This action cannot be undone.',
+			deleteTitle: 'Delete SupplierPayment?'
+		};
+
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-payments:codbex-payments-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-payments:codbex-payments-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-payments:codbex-payments-model.defaults.deleteTitle', { name: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT)' });
+			translated.deleteConfirm = LocaleService.t('codbex-payments:codbex-payments-model.messages.deleteConfirm', { name: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT)' });
+		});
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataOffset = 0;
@@ -18,8 +31,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -65,7 +80,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				filter = $scope.filter;
 			}
 			if (!filter) {
-				filter = {};
+				filter = {
+					$filter: {}
+				};
 			}
 			$scope.selectedEntity = null;
 			EntityService.count(filter).then((resp) => {
@@ -73,11 +90,11 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					$scope.dataCount = resp.data.count;
 				}
 				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
-				filter.$limit = $scope.dataLimit;
+				filter.$filter.offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$filter.limit = $scope.dataLimit;
 				if ($scope.dataReset) {
-					filter.$offset = 0;
-					filter.$limit = $scope.dataPage * $scope.dataLimit;
+					filter.$filter.offset = 0;
+					filter.$filter.limit = $scope.dataPage * $scope.dataLimit;
 				}
 
 				EntityService.search(filter).then((response) => {
@@ -99,8 +116,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'SupplierPayment',
-						message: `Unable to list/filter SupplierPayment: '${message}'`,
+						title: LocaleService.t('codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT'),
+						message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLF', { name: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -108,8 +125,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'SupplierPayment',
-					message: `Unable to count SupplierPayment: '${message}'`,
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT'),
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToCount', { name: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -153,15 +170,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.deleteEntity = () => {
 			let id = $scope.selectedEntity.Id;
 			Dialogs.showDialog({
-				title: 'Delete SupplierPayment?',
-				message: `Are you sure you want to delete SupplierPayment? This action cannot be undone.`,
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: 'Yes',
+					label: translated.yes,
 				}, {
 					id: 'delete-btn-no',
-					label: 'No',
+					label: translated.no,
 				}],
 				closeButton: false
 			}).then((buttonId) => {
@@ -173,8 +190,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: 'SupplierPayment',
-							message: `Unable to delete SupplierPayment: '${message}'`,
+							title: LocaleService.t('codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT'),
+							message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToDelete', { name: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);
@@ -201,7 +218,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.optionsCompany = [];
 
 
-		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts').then((response) => {
+		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts').then((response) => {
 			$scope.optionsSupplier = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -211,12 +228,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Supplier',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
 				value: e.Id,
 				text: e.Code
@@ -226,12 +243,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Currency',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
 			$scope.optionsCompany = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -241,7 +258,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Company',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});

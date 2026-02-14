@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface PaymentAdjustmentEntity {
@@ -106,9 +106,10 @@ export interface PaymentAdjustmentEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface PaymentAdjustmentEntityEvent {
+export interface PaymentAdjustmentEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PaymentAdjustmentEntity>;
@@ -119,7 +120,7 @@ interface PaymentAdjustmentEntityEvent {
     }
 }
 
-interface PaymentAdjustmentUpdateEntityEvent extends PaymentAdjustmentEntityEvent {
+export interface PaymentAdjustmentUpdateEntityEvent extends PaymentAdjustmentEntityEvent {
     readonly previousEntity: PaymentAdjustmentEntity;
 }
 
@@ -180,14 +181,15 @@ export class PaymentAdjustmentRepository {
     }
 
     public findAll(options: PaymentAdjustmentEntityOptions = {}): PaymentAdjustmentEntity[] {
-        return this.dao.list(options).map((e: PaymentAdjustmentEntity) => {
+        let list = this.dao.list(options).map((e: PaymentAdjustmentEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): PaymentAdjustmentEntity | undefined {
+    public findById(id: number, options: PaymentAdjustmentEntityOptions = {}): PaymentAdjustmentEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         EntityUtils.setDate(entity, "Valor");

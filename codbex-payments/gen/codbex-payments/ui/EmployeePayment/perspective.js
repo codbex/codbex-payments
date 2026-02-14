@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'EmployeePayment',
 	label: 'EmployeePayment',
+	translation: {
+        key: 'codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT',
+    },
 	path: '/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/index.html',
 	groupId: 'salaries-navigation-group',
 	order: 300,

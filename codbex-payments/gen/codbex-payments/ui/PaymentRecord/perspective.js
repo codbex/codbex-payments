@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'PaymentRecord',
 	label: 'PaymentRecord',
+	translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD',
+    },
 	path: '/services/web/codbex-payments/gen/codbex-payments/ui/PaymentRecord/index.html',
 	groupId: 'accounting-navigation-group',
 	order: 40,

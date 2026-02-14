@@ -6,6 +6,12 @@
 const viewData = {
     id: 'SupplierPayment-filter',
     label: 'SupplierPayment Filter',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.extName',
+        options: {
+            content: '$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-payments/gen/codbex-payments/ui/SupplierPayment/SupplierPayment/dialog-filter/index.html',
     perspectiveName: 'SupplierPayment'
 };

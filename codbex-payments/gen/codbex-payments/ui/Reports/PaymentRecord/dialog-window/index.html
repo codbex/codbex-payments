@@ -15,10 +15,10 @@
     <body class="bk-vbox">
         <bk-scrollbar class="bk-full-height">
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="formFieldset">
-                <bk-form-group label="PaymentRecord Details" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                <bk-form-group label="{{ 'codbex-payments:codbex-payments-model.defaults.formHeadSelect' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idDate" ng-required="true" colon="true">Date</bk-form-label>
+                        	<bk-form-label for="idDate" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DATE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--2 ">
 	                        <bk-input id="idDate"
@@ -32,7 +32,7 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idValor" ng-required="true" colon="true">Valor</bk-form-label>
+                        	<bk-form-label for="idValor" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_VALOR' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--2 ">
 	                        <bk-input id="idValor"
@@ -46,7 +46,7 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">CompanyIBAN</bk-form-label>
+                        	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idCompanyIBAN"
@@ -55,13 +55,13 @@
 	                            ng-model="entity.CompanyIBAN"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter CompanyIBAN">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">CounterpartyIBAN</bk-form-label>
+                        	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idCounterpartyIBAN"
@@ -70,13 +70,13 @@
 	                            ng-model="entity.CounterpartyIBAN"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter CounterpartyIBAN">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyName" ng-required="false" colon="true">CounterpartyName</bk-form-label>
+                        	<bk-form-label for="idCounterpartyName" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYNAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idCounterpartyName"
@@ -85,13 +85,13 @@
 	                            ng-model="entity.CounterpartyName"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter CounterpartyName">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYNAME)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idAmount" ng-required="false" colon="true">Amount</bk-form-label>
+                        	<bk-form-label for="idAmount" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
 	                        <bk-step-input input-id="idAmount"
@@ -100,13 +100,13 @@
 								ng-required="false"
 								ng-model="entity.Amount"
 								is-readonly="true"
-								placeholder="Enter Amount">
+								placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT)'} }}">
 							</bk-step-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCurrency" ng-required="false" colon="true">Currency</bk-form-label>
+                        	<bk-form-label for="idCurrency" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idCurrency"
@@ -115,14 +115,14 @@
 	                            ng-model="entity.Currency"
 	                            is-readonly="true"
 	                            dropdown-items="optionsCurrency"
-	                            placeholder="Search Currency ..."
-								btn-aria-label="show/hide Currency options" list-aria-label="Currency options">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY)'} }}"
+								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Currency'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Currency'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idReason" ng-required="false" colon="true">Reason</bk-form-label>
+                        	<bk-form-label for="idReason" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REASON' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idReason"
@@ -131,13 +131,13 @@
 	                            ng-model="entity.Reason"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter Reason">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REASON)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idDescription" ng-required="false" colon="true">Description</bk-form-label>
+                        	<bk-form-label for="idDescription" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DESCRIPTION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idDescription"
@@ -146,13 +146,13 @@
 	                            ng-model="entity.Description"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter Description">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DESCRIPTION)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompany" ng-required="false" colon="true">Company</bk-form-label>
+                        	<bk-form-label for="idCompany" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idCompany"
@@ -161,14 +161,14 @@
 	                            ng-model="entity.Company"
 	                            is-readonly="true"
 	                            dropdown-items="optionsCompany"
-	                            placeholder="Search Company ..."
-								btn-aria-label="show/hide Company options" list-aria-label="Company options">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANY)'} }}"
+								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Company'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentRecordDirection" ng-required="false" colon="true">PaymentRecordDirection</bk-form-label>
+                        	<bk-form-label for="idPaymentRecordDirection" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTRECORDDIRECTION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idPaymentRecordDirection"
@@ -177,14 +177,14 @@
 	                            ng-model="entity.PaymentRecordDirection"
 	                            is-readonly="true"
 	                            dropdown-items="optionsPaymentRecordDirection"
-	                            placeholder="Search PaymentRecordDirection ..."
-								btn-aria-label="show/hide PaymentRecordDirection options" list-aria-label="PaymentRecordDirection options">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTRECORDDIRECTION)'} }}"
+								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'PaymentRecordDirection'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'PaymentRecordDirection'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentStatus" ng-required="false" colon="true">PaymentStatus</bk-form-label>
+                        	<bk-form-label for="idPaymentStatus" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTSTATUS' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idPaymentStatus"
@@ -193,14 +193,14 @@
 	                            ng-model="entity.PaymentStatus"
 	                            is-readonly="true"
 	                            dropdown-items="optionsPaymentStatus"
-	                            placeholder="Search PaymentStatus ..."
-								btn-aria-label="show/hide PaymentStatus options" list-aria-label="PaymentStatus options">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTSTATUS)'} }}"
+								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'PaymentStatus'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'PaymentStatus'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentType" ng-required="false" colon="true">PaymentType</bk-form-label>
+                        	<bk-form-label for="idPaymentType" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idPaymentType"
@@ -209,14 +209,14 @@
 	                            ng-model="entity.PaymentType"
 	                            is-readonly="true"
 	                            dropdown-items="optionsPaymentType"
-	                            placeholder="Search PaymentType ..."
-								btn-aria-label="show/hide PaymentType options" list-aria-label="PaymentType options">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE)'} }}"
+								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'PaymentType'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'PaymentType'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idUUID" ng-required="false" colon="true">UUID</bk-form-label>
+                        	<bk-form-label for="idUUID" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UUID' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idUUID"
@@ -225,13 +225,13 @@
 	                            ng-model="entity.UUID"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter UUID">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UUID)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idReference" ng-required="false" colon="true">Reference</bk-form-label>
+                        	<bk-form-label for="idReference" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REFERENCE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idReference"
@@ -240,7 +240,7 @@
 	                            ng-model="entity.Reference"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter Reference">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REFERENCE)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
@@ -248,7 +248,7 @@
                     	<div class="fd-col fd-col-md--2"></div>
                         <div class="fd-col  fd-col-md--8 ">
 							<bk-checkbox id="idDeleted" compact="false" ng-required="false" ng-readonly="true" ng-model="entity.Deleted"></bk-checkbox>
-                        	<bk-checkbox-label for="idDeleted" ng-required="false">Deleted</bk-checkbox-label>
+                        	<bk-checkbox-label for="idDeleted" ng-required="false">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETED' | t }}</bk-checkbox-label>
                         </div>
                     </bk-form-item>
 				</bk-form-group>

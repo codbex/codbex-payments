@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface PaymentRecordEntity {
@@ -187,9 +187,10 @@ export interface PaymentRecordEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface PaymentRecordEntityEvent {
+export interface PaymentRecordEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PaymentRecordEntity>;
@@ -200,7 +201,7 @@ interface PaymentRecordEntityEvent {
     }
 }
 
-interface PaymentRecordUpdateEntityEvent extends PaymentRecordEntityEvent {
+export interface PaymentRecordUpdateEntityEvent extends PaymentRecordEntityEvent {
     readonly previousEntity: PaymentRecordEntity;
 }
 
@@ -313,15 +314,16 @@ export class PaymentRecordRepository {
             options.$sort = "Date";
             options.$order = "DESC";
         }
-        return this.dao.list(options).map((e: PaymentRecordEntity) => {
+        let list = this.dao.list(options).map((e: PaymentRecordEntity) => {
             EntityUtils.setDate(e, "Date");
             EntityUtils.setDate(e, "Valor");
             EntityUtils.setBoolean(e, "Deleted");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): PaymentRecordEntity | undefined {
+    public findById(id: number, options: PaymentRecordEntityOptions = {}): PaymentRecordEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         EntityUtils.setDate(entity, "Valor");

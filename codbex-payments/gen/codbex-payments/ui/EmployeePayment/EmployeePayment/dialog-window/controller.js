@@ -1,9 +1,13 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/EmployeePayment/EmployeePaymentService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/EmployeePayment/EmployeePaymentController.ts';
 	}])
-	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'EmployeePayment successfully created';
+		let propertySuccessfullyUpdated = 'EmployeePayment successfully updated';
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -14,6 +18,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			update: 'Update EmployeePayment'
 		};
 		$scope.action = 'select';
+
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-payments:codbex-payments-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-payments:codbex-payments-model.defaults.formHeadSelect', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-payments:codbex-payments-model.defaults.formHeadCreate', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-payments:codbex-payments-model.defaults.formHeadUpdate', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-payments:codbex-payments-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-payments:codbex-payments-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)' });
+		});
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
@@ -36,16 +49,16 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-payments.EmployeePayment.EmployeePayment.entityCreated', data: response.data });
-				Dialogs.showAlert({
-					title: 'EmployeePayment',
-					message: 'EmployeePayment successfully created',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to create EmployeePayment: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToCreate', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
@@ -58,25 +71,25 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-payments.EmployeePayment.EmployeePayment.entityUpdated', data: response.data });
 				$scope.cancel();
-				Dialogs.showAlert({
-					title: 'EmployeePayment',
-					message: 'EmployeePayment successfully updated',
-					type: AlertTypes.Success
+				Notifications.show({
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				$scope.$evalAsync(() => {
-					$scope.errorMessage = `Unable to update EmployeePayment: '${message}'`;
+					$scope.errorMessage = LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToUpdate', { name: '$t(codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT)', message: message });
 				});
 				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts';
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
 		
 		$scope.optionsCurrency = [];
 		
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
 				value: e.Id,
 				text: e.Code
@@ -86,15 +99,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Currency',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
 		
 		$scope.optionsCompany = [];
 		
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
 			$scope.optionsCompany = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -104,14 +117,14 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Company',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({
-				title: 'Description',
+				title: description,
 				message: message,
 				type: AlertTypes.Information,
 				preformatted: true,

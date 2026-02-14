@@ -6,6 +6,9 @@
 const viewData = {
     id: 'PaymentStatus',
     label: 'PaymentStatus',
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTSTATUS',
+    },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,

@@ -6,6 +6,9 @@
 const viewData = {
     id: "EmployeePayment-details",
     label: "EmployeePayment",
+    translation: {
+        key: 'codbex-payments:codbex-payments-model.t.EMPLOYEEPAYMENT',
+    },
     path: "/services/web/codbex-payments/gen/codbex-payments/ui/EmployeePayment/EmployeePayment/dialog-window/index.html",
     perspectiveName: "EmployeePayment",
     roles: [

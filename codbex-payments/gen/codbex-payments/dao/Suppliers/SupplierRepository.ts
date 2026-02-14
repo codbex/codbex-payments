@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface SupplierEntity {
     readonly Id: number;
@@ -133,9 +133,10 @@ export interface SupplierEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface SupplierEntityEvent {
+export interface SupplierEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<SupplierEntity>;
@@ -146,7 +147,7 @@ interface SupplierEntityEvent {
     }
 }
 
-interface SupplierUpdateEntityEvent extends SupplierEntityEvent {
+export interface SupplierUpdateEntityEvent extends SupplierEntityEvent {
     readonly previousEntity: SupplierEntity;
 }
 
@@ -222,10 +223,11 @@ export class SupplierRepository {
     }
 
     public findAll(options: SupplierEntityOptions = {}): SupplierEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): SupplierEntity | undefined {
+    public findById(id: number, options: SupplierEntityOptions = {}): SupplierEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
