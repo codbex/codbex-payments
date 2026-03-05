@@ -13,11 +13,11 @@ export interface PaymentRecordEntity {
     CounterpartyName?: string;
     Amount?: number;
     Currency?: number;
+    PaymentDirection?: number;
+    PaymentType?: number;
     Reason?: string;
     Description?: string;
     Company?: number;
-    PaymentRecordDirection?: number;
-    PaymentType?: number;
     UUID: string;
     Reference?: string;
     Deleted?: boolean;
@@ -31,11 +31,11 @@ export interface PaymentRecordCreateEntity {
     readonly CounterpartyName?: string;
     readonly Amount?: number;
     readonly Currency?: number;
+    readonly PaymentDirection?: number;
+    readonly PaymentType?: number;
     readonly Reason?: string;
     readonly Description?: string;
     readonly Company?: number;
-    readonly PaymentRecordDirection?: number;
-    readonly PaymentType?: number;
     readonly Reference?: string;
     readonly Deleted?: boolean;
 }
@@ -55,11 +55,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
+            PaymentDirection?: number | number[];
+            PaymentType?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
-            PaymentRecordDirection?: number | number[];
-            PaymentType?: number | number[];
             UUID?: string | string[];
             Reference?: string | string[];
             Deleted?: boolean | boolean[];
@@ -73,11 +73,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string | string[];
             Amount?: number | number[];
             Currency?: number | number[];
+            PaymentDirection?: number | number[];
+            PaymentType?: number | number[];
             Reason?: string | string[];
             Description?: string | string[];
             Company?: number | number[];
-            PaymentRecordDirection?: number | number[];
-            PaymentType?: number | number[];
             UUID?: string | string[];
             Reference?: string | string[];
             Deleted?: boolean | boolean[];
@@ -91,11 +91,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
+            PaymentDirection?: number;
+            PaymentType?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
-            PaymentRecordDirection?: number;
-            PaymentType?: number;
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
@@ -109,11 +109,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
+            PaymentDirection?: number;
+            PaymentType?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
-            PaymentRecordDirection?: number;
-            PaymentType?: number;
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
@@ -127,11 +127,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
+            PaymentDirection?: number;
+            PaymentType?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
-            PaymentRecordDirection?: number;
-            PaymentType?: number;
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
@@ -145,11 +145,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
+            PaymentDirection?: number;
+            PaymentType?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
-            PaymentRecordDirection?: number;
-            PaymentType?: number;
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
@@ -163,11 +163,11 @@ export interface PaymentRecordEntityOptions {
             CounterpartyName?: string;
             Amount?: number;
             Currency?: number;
+            PaymentDirection?: number;
+            PaymentType?: number;
             Reason?: string;
             Description?: string;
             Company?: number;
-            PaymentRecordDirection?: number;
-            PaymentType?: number;
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
@@ -246,6 +246,16 @@ export class PaymentRecordRepository {
                 type: "INTEGER",
             },
             {
+                name: "PaymentDirection",
+                column: "PAYMENTRECORD_PAYMENTDIRECTION",
+                type: "INTEGER",
+            },
+            {
+                name: "PaymentType",
+                column: "PAYMENTRECORD_PAYMENTTYPE",
+                type: "INTEGER",
+            },
+            {
                 name: "Reason",
                 column: "PAYMENTRECORD_REASON",
                 type: "VARCHAR",
@@ -258,16 +268,6 @@ export class PaymentRecordRepository {
             {
                 name: "Company",
                 column: "PAYMENTRECORD_COMPANY",
-                type: "INTEGER",
-            },
-            {
-                name: "PaymentRecordDirection",
-                column: "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
-                type: "INTEGER",
-            },
-            {
-                name: "PaymentType",
-                column: "PAYMENTRECORD_PAYMENTTYPE",
                 type: "INTEGER",
             },
             {

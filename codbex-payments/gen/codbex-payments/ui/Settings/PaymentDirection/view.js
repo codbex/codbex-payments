@@ -4,15 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'PaymentRecordDirection',
-    label: 'PaymentRecordDirection',
+    id: 'PaymentDirection',
+    label: 'PaymentDirection',
     translation: {
-        key: 'codbex-payments:codbex-payments-model.t.PAYMENTRECORDDIRECTION',
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION',
     },
     region: 'center',
     lazyLoad: true,
 	autoFocusTab: false,
-    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentRecordDirection/index.html',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentDirection/index.html',
     perspectiveName: 'Settings'
 };
 if (typeof exports !== 'undefined') {

@@ -41,9 +41,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsCurrency = params.optionsCurrency;
-			$scope.optionsCompany = params.optionsCompany;
-			$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
+			$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 			$scope.optionsPaymentType = params.optionsPaymentType;
+			$scope.optionsCompany = params.optionsCompany;
 		}
 
 		$scope.create = () => {
@@ -105,12 +105,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		$scope.servicePaymentDirection = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts';
 		
-		$scope.optionsCompany = [];
+		$scope.optionsPaymentDirection = [];
 		
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
-			$scope.optionsCompany = response.data.map(e => ({
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts').then((response) => {
+			$scope.optionsPaymentDirection = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
 			}));
@@ -118,25 +118,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			console.error(error);
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
-				title: 'Company',
-				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
-		$scope.servicePaymentRecordDirection = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts';
-		
-		$scope.optionsPaymentRecordDirection = [];
-		
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts').then((response) => {
-			$scope.optionsPaymentRecordDirection = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'PaymentRecordDirection',
+				title: 'PaymentDirection',
 				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
@@ -155,6 +137,24 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PaymentType',
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		
+		$scope.optionsCompany = [];
+		
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+			$scope.optionsCompany = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Company',
 				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});

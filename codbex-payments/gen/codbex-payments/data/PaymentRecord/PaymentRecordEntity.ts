@@ -73,6 +73,22 @@ export class PaymentRecordEntity {
     })
     public Currency?: number;
 
+    @Documentation('PaymentDirection')
+    @Column({
+        name: 'PAYMENTRECORD_PAYMENTDIRECTION',
+        type: 'integer',
+        nullable: true,
+    })
+    public PaymentDirection?: number;
+
+    @Documentation('PaymentType')
+    @Column({
+        name: 'PAYMENTRECORD_PAYMENTTYPE',
+        type: 'integer',
+        nullable: true,
+    })
+    public PaymentType?: number;
+
     @Documentation('Reason')
     @Column({
         name: 'PAYMENTRECORD_REASON',
@@ -98,22 +114,6 @@ export class PaymentRecordEntity {
         nullable: true,
     })
     public Company?: number;
-
-    @Documentation('PaymentRecordDirection')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTRECORDDIRECTION',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentRecordDirection?: number;
-
-    @Documentation('PaymentType')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTTYPE',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentType?: number;
 
     @Documentation('UUID')
     @Column({

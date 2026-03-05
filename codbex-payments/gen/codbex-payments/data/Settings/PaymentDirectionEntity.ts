@@ -1,28 +1,27 @@
 import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
-@Entity('PaymentRecordDirectionEntity')
-@Table('CODBEX_PAYMENTRECORDDIRECTION')
-@Documentation('PaymentRecordDirection entity mapping')
-export class PaymentRecordDirectionEntity {
+@Entity('PaymentDirectionEntity')
+@Table('CODBEX_PAYMENTDIRECTION')
+@Documentation('PaymentDirection entity mapping')
+export class PaymentDirectionEntity {
 
     @Id()
     @Generated('sequence')
     @Documentation('Id')
     @Column({
-        name: 'PAYMENTRECORDDIRECTION_ID',
+        name: 'PAYMENTDIRECTION_ID',
         type: 'integer',
     })
     public Id?: number;
 
     @Documentation('Name')
     @Column({
-        name: 'PAYMENTRECORDDIRECTION_NAME',
+        name: 'PAYMENTDIRECTION_NAME',
         type: 'string',
         length: 20,
-        nullable: true,
     })
-    public Name?: string;
+    public Name!: string;
 
 }
 
-(new PaymentRecordDirectionEntity());
+(new PaymentDirectionEntity());
