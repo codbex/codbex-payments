@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/dialog-filter/view.js",
-    "extensionPoint": "application-windows",
-    "description": "codbex-payments - Application Dialog Window",
-    "role": "codbex-payments.Settings.PaymentStatusReadOnly,codbex-payments.Settings.PaymentStatusFullAccess"
-}

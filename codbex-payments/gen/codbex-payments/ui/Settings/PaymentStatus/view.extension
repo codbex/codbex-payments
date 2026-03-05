@@ -1,6 +1,0 @@
-{
-    "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentStatus/view.js",
-    "extensionPoint": "application-settings",
-    "description": "codbex-payments - Application View",
-    "role": "codbex-payments.Settings.PaymentStatusReadOnly,codbex-payments.Settings.PaymentStatusFullAccess"
-}

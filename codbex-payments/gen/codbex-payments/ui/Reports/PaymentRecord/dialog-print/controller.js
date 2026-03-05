@@ -72,10 +72,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const condition = { propertyName: 'PaymentRecordDirection', operator: 'EQ', value: entity.PaymentRecordDirection };
 				filter.$filter.conditions.push(condition);
 			}
-			if (entity.PaymentStatus !== undefined) {
-				const condition = { propertyName: 'PaymentStatus', operator: 'EQ', value: entity.PaymentStatus };
-				filter.$filter.conditions.push(condition);
-			}
 			if (entity.PaymentType !== undefined) {
 				const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
 				filter.$filter.conditions.push(condition);
@@ -98,7 +94,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-			$scope.optionsPaymentStatus = params.optionsPaymentStatus;
 			$scope.optionsPaymentType = params.optionsPaymentType;
 		}
 
@@ -158,14 +153,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsPaymentRecordDirection.length; i++) {
 				if ($scope.optionsPaymentRecordDirection[i].value === optionKey) {
 					return $scope.optionsPaymentRecordDirection[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentStatusValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentStatus.length; i++) {
-				if ($scope.optionsPaymentStatus[i].value === optionKey) {
-					return $scope.optionsPaymentStatus[i].text;
 				}
 			}
 			return null;

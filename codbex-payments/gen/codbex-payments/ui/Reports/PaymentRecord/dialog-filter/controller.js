@@ -25,7 +25,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsCompany = params.optionsCompany;
 		$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-		$scope.optionsPaymentStatus = params.optionsPaymentStatus;
 		$scope.optionsPaymentType = params.optionsPaymentType;
 	}
 
@@ -93,10 +92,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.PaymentRecordDirection !== undefined) {
 			const condition = { propertyName: 'PaymentRecordDirection', operator: 'EQ', value: entity.PaymentRecordDirection };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.PaymentStatus !== undefined) {
-			const condition = { propertyName: 'PaymentStatus', operator: 'EQ', value: entity.PaymentStatus };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.PaymentType !== undefined) {

@@ -43,7 +43,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-			$scope.optionsPaymentStatus = params.optionsPaymentStatus;
 			$scope.optionsPaymentType = params.optionsPaymentType;
 		}
 
@@ -138,24 +137,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'PaymentRecordDirection',
-				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
-		$scope.servicePaymentStatus = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts';
-		
-		$scope.optionsPaymentStatus = [];
-		
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts').then((response) => {
-			$scope.optionsPaymentStatus = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'PaymentStatus',
 				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});

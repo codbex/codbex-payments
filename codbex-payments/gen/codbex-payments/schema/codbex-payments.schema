@@ -343,11 +343,6 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PAYMENTRECORD_PAYMENTSTATUS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTRECORD_PAYMENTTYPE"
                     },
                     {
@@ -385,25 +380,6 @@
                         "length": 20,
                         "nullable": true,
                         "name": "PAYMENTRECORDDIRECTION_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTSTATUS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTSTATUS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PAYMENTSTATUS_NAME"
                     }
                 ]
             },
@@ -657,15 +633,6 @@
                 "columns": "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
                 "referencedTable": "CODBEX_PAYMENTRECORDDIRECTION",
                 "referencedColumns": "PAYMENTRECORDDIRECTION_ID"
-            },
-            {
-                "name": "PaymentRecord_PaymentStatus",
-                "type": "foreignKey",
-                "table": "CODBEX_PAYMENTRECORD",
-                "constraintName": "PaymentRecord_PaymentStatus",
-                "columns": "PAYMENTRECORD_PAYMENTSTATUS",
-                "referencedTable": "CODBEX_PAYMENTSTATUS",
-                "referencedColumns": "PAYMENTSTATUS_ID"
             },
             {
                 "name": "PaymentRecord_PaymentType",

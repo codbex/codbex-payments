@@ -31,7 +31,6 @@
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DESCRIPTION' | t:'Description' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANY' | t:'Company' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTRECORDDIRECTION' | t:'PaymentRecordDirection' }}</th>
-						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTSTATUS' | t:'PaymentStatus' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE' | t:'PaymentType' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UUID' | t:'UUID' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REFERENCE' | t:'Reference' }}</th>
@@ -58,7 +57,6 @@
 						<td bk-table-cell hoverable="true" activable="true">{{next.Description}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{optionsCompanyValue(next.Company)}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentRecordDirectionValue(next.PaymentRecordDirection)}}</td>
-						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentStatusValue(next.PaymentStatus)}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{optionsPaymentTypeValue(next.PaymentType)}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{next.UUID}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{next.Reference}}</td>

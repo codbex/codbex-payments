@@ -17,7 +17,6 @@ export interface PaymentRecordEntity {
     Description?: string;
     Company?: number;
     PaymentRecordDirection?: number;
-    PaymentStatus?: number;
     PaymentType?: number;
     UUID: string;
     Reference?: string;
@@ -36,7 +35,6 @@ export interface PaymentRecordCreateEntity {
     readonly Description?: string;
     readonly Company?: number;
     readonly PaymentRecordDirection?: number;
-    readonly PaymentStatus?: number;
     readonly PaymentType?: number;
     readonly Reference?: string;
     readonly Deleted?: boolean;
@@ -61,7 +59,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string | string[];
             Company?: number | number[];
             PaymentRecordDirection?: number | number[];
-            PaymentStatus?: number | number[];
             PaymentType?: number | number[];
             UUID?: string | string[];
             Reference?: string | string[];
@@ -80,7 +77,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string | string[];
             Company?: number | number[];
             PaymentRecordDirection?: number | number[];
-            PaymentStatus?: number | number[];
             PaymentType?: number | number[];
             UUID?: string | string[];
             Reference?: string | string[];
@@ -99,7 +95,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string;
             Company?: number;
             PaymentRecordDirection?: number;
-            PaymentStatus?: number;
             PaymentType?: number;
             UUID?: string;
             Reference?: string;
@@ -118,7 +113,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string;
             Company?: number;
             PaymentRecordDirection?: number;
-            PaymentStatus?: number;
             PaymentType?: number;
             UUID?: string;
             Reference?: string;
@@ -137,7 +131,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string;
             Company?: number;
             PaymentRecordDirection?: number;
-            PaymentStatus?: number;
             PaymentType?: number;
             UUID?: string;
             Reference?: string;
@@ -156,7 +149,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string;
             Company?: number;
             PaymentRecordDirection?: number;
-            PaymentStatus?: number;
             PaymentType?: number;
             UUID?: string;
             Reference?: string;
@@ -175,7 +167,6 @@ export interface PaymentRecordEntityOptions {
             Description?: string;
             Company?: number;
             PaymentRecordDirection?: number;
-            PaymentStatus?: number;
             PaymentType?: number;
             UUID?: string;
             Reference?: string;
@@ -272,11 +263,6 @@ export class PaymentRecordRepository {
             {
                 name: "PaymentRecordDirection",
                 column: "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
-                type: "INTEGER",
-            },
-            {
-                name: "PaymentStatus",
-                column: "PAYMENTRECORD_PAYMENTSTATUS",
                 type: "INTEGER",
             },
             {

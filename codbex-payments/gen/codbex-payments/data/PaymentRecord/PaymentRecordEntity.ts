@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('PaymentRecordEntity')
 @Table('CODBEX_PAYMENTRECORD')
@@ -106,14 +106,6 @@ export class PaymentRecordEntity {
         nullable: true,
     })
     public PaymentRecordDirection?: number;
-
-    @Documentation('PaymentStatus')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTSTATUS',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentStatus?: number;
 
     @Documentation('PaymentType')
     @Column({
