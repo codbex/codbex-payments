@@ -23,10 +23,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
 		$scope.optionsCurrency = params.optionsCurrency;
-		$scope.optionsCompany = params.optionsCompany;
-		$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-		$scope.optionsPaymentStatus = params.optionsPaymentStatus;
+		$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 		$scope.optionsPaymentType = params.optionsPaymentType;
+		$scope.optionsCompany = params.optionsCompany;
 	}
 
 	$scope.filter = () => {
@@ -79,6 +78,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
 			filter.$filter.conditions.push(condition);
 		}
+		if (entity.PaymentDirection !== undefined) {
+			const condition = { propertyName: 'PaymentDirection', operator: 'EQ', value: entity.PaymentDirection };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.PaymentType !== undefined) {
+			const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
+			filter.$filter.conditions.push(condition);
+		}
 		if (entity.Reason) {
 			const condition = { propertyName: 'Reason', operator: 'LIKE', value: `%${entity.Reason}%` };
 			filter.$filter.conditions.push(condition);
@@ -89,18 +96,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Company !== undefined) {
 			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.PaymentRecordDirection !== undefined) {
-			const condition = { propertyName: 'PaymentRecordDirection', operator: 'EQ', value: entity.PaymentRecordDirection };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.PaymentStatus !== undefined) {
-			const condition = { propertyName: 'PaymentStatus', operator: 'EQ', value: entity.PaymentStatus };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.PaymentType !== undefined) {
-			const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.UUID) {

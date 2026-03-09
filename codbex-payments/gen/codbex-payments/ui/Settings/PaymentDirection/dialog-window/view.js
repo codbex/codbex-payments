@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'PaymentRecordDirection-details',
-    label: 'PaymentRecordDirection',
+    id: 'PaymentDirection-details',
+    label: 'PaymentDirection',
     translation: {
-        key: 'codbex-payments:codbex-payments-model.t.PAYMENTRECORDDIRECTION',
+        key: 'codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION',
     },
-    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentRecordDirection/dialog-window/index.html',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentDirection/dialog-window/index.html',
     perspectiveName: 'Settings'
 };
 if (typeof exports !== 'undefined') {

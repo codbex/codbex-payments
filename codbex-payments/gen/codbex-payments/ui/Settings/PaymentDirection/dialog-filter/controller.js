@@ -35,7 +35,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		Dialogs.postMessage({ topic: 'codbex-payments.Settings.PaymentRecordDirection.entitySearch', data: {
+		Dialogs.postMessage({ topic: 'codbex-payments.Settings.PaymentDirection.entitySearch', data: {
 			entity: entity,
 			filter: filter
 		}});
@@ -57,7 +57,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	};
 
 	$scope.cancel = () => {
-		Dialogs.closeWindow({ id: 'PaymentRecordDirection-filter' });
+		Dialogs.closeWindow({ id: 'PaymentDirection-filter' });
 	};
 
 	$scope.clearErrorMessage = () => {

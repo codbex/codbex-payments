@@ -1,21 +1,21 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
 		let translated = {
 			yes: 'Yes',
 			no: 'No',
-			deleteConfirm: 'Are you sure you want to delete PaymentStatus? This action cannot be undone.',
-			deleteTitle: 'Delete PaymentStatus?'
+			deleteConfirm: 'Are you sure you want to delete PaymentDirection? This action cannot be undone.',
+			deleteTitle: 'Delete PaymentDirection?'
 		};
 
 		LocaleService.onInit(() => {
 			translated.yes = LocaleService.t('codbex-payments:codbex-payments-model.defaults.yes');
 			translated.no = LocaleService.t('codbex-payments:codbex-payments-model.defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-payments:codbex-payments-model.defaults.deleteTitle', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTSTATUS)' });
-			translated.deleteConfirm = LocaleService.t('codbex-payments:codbex-payments-model.messages.deleteConfirm', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTSTATUS)' });
+			translated.deleteTitle = LocaleService.t('codbex-payments:codbex-payments-model.defaults.deleteTitle', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION)' });
+			translated.deleteConfirm = LocaleService.t('codbex-payments:codbex-payments-model.messages.deleteConfirm', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION)' });
 		});
 
 		$scope.dataPage = 1;
@@ -24,8 +24,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-payments-custom-action']).then((response) => {
-			$scope.pageActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentStatus' && (e.type === 'page' || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentStatus' && e.type === 'entity');
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentDirection' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PaymentDirection' && e.type === 'entity');
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -60,13 +60,13 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		resetPagination();
 
 		//-----------------Events-------------------//
-		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entityCreated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentDirection.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entityUpdated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentDirection.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentStatus.entitySearch', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-payments.Settings.PaymentDirection.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -101,8 +101,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTSTATUS'),
-						message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLF', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTSTATUS)', message: message }),
+						title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION'),
+						message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLF', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -110,8 +110,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTSTATUS'),
-					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToCount', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTSTATUS)', message: message }),
+					title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION'),
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToCount', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -126,7 +126,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
 			Dialogs.showWindow({
-				id: 'PaymentStatus-details',
+				id: 'PaymentDirection-details',
 				params: {
 					action: 'select',
 					entity: entity,
@@ -137,7 +137,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.openFilter = () => {
 			Dialogs.showWindow({
-				id: 'PaymentStatus-filter',
+				id: 'PaymentDirection-filter',
 				params: {
 					entity: $scope.filterEntity,
 				},
@@ -148,7 +148,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.createEntity = () => {
 			$scope.selectedEntity = null;
 			Dialogs.showWindow({
-				id: 'PaymentStatus-details',
+				id: 'PaymentDirection-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -159,7 +159,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.updateEntity = (entity) => {
 			Dialogs.showWindow({
-				id: 'PaymentStatus-details',
+				id: 'PaymentDirection-details',
 				params: {
 					action: 'update',
 					entity: entity,
@@ -185,12 +185,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (buttonId === 'delete-btn-yes') {
 					EntityService.delete(id).then((response) => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-payments.Settings.PaymentStatus.clearDetails');
+						Dialogs.triggerEvent('codbex-payments.Settings.PaymentDirection.clearDetails');
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTSTATUS'),
-							message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToDelete', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTSTATUS)', message: message }),
+							title: LocaleService.t('codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION'),
+							message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToDelete', { name: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);

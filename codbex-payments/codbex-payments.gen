@@ -139,17 +139,16 @@
     "Settings": {
       "views": [
         "Currency",
-        "PaymentRecordDirection",
-        "PaymentStatus",
         "PaymentType",
-        "PaymentMethod"
+        "PaymentMethod",
+        "PaymentDirection"
       ],
       "name": "Settings",
       "label": "Settings",
       "header": "",
       "order": "100",
       "navId": "",
-      "icon": "/services/web/resources/unicons/archive.svg",
+      "icon": "/services/web/resources/unicons/copy.svg",
       "role": ""
     },
     "Companies": {
@@ -242,16 +241,6 @@
       "roleWrite": "codbex-payments.PaymentRecord.PaymentRecordFullAccess"
     },
     {
-      "entityName": "PaymentRecordDirection",
-      "roleRead": "codbex-payments.Settings.PaymentRecordDirectionReadOnly",
-      "roleWrite": "codbex-payments.Settings.PaymentRecordDirectionFullAccess"
-    },
-    {
-      "entityName": "PaymentStatus",
-      "roleRead": "codbex-payments.Settings.PaymentStatusReadOnly",
-      "roleWrite": "codbex-payments.Settings.PaymentStatusFullAccess"
-    },
-    {
       "entityName": "PaymentType",
       "roleRead": "codbex-payments.Settings.PaymentTypeReadOnly",
       "roleWrite": "codbex-payments.Settings.PaymentTypeFullAccess"
@@ -267,6 +256,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "CUSTOMERPAYMENT_ID",
           "dataNullable": true,
@@ -283,6 +273,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -291,6 +282,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_CUSTOMER",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -313,6 +305,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Customer",
           "widgetDropdownUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts",
@@ -321,6 +314,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -338,6 +332,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -347,6 +342,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_VALOR",
           "dataNullable": false,
           "dataType": "DATE",
@@ -363,6 +359,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Valor",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -372,6 +369,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "CUSTOMERPAYMENT_COMPANYIBAN",
           "dataNullable": true,
@@ -389,6 +387,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CompanyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -399,6 +398,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
           "dataNullable": true,
@@ -416,6 +416,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -426,6 +427,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "CUSTOMERPAYMENT_COUNTERPARTYNAME",
           "dataNullable": true,
@@ -443,6 +445,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyName",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -453,6 +456,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "16",
           "dataName": "CUSTOMERPAYMENT_AMOUNT",
           "dataNullable": false,
@@ -472,6 +476,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -480,6 +485,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_CURRENCY",
           "dataNullable": false,
           "dataType": "INTEGER",
@@ -502,6 +508,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Currency",
           "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -510,6 +517,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "CUSTOMERPAYMENT_REASON",
           "dataNullable": false,
@@ -527,6 +535,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reason",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -537,6 +546,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "CUSTOMERPAYMENT_DESCRIPTION",
           "dataNullable": true,
@@ -554,6 +564,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Description",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -564,6 +575,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_COMPANY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -586,6 +598,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Company",
           "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -594,6 +607,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
@@ -612,6 +626,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -622,6 +637,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
           "dataLength": "36",
           "dataName": "CUSTOMERPAYMENT_UUID",
@@ -640,6 +656,7 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "UUID",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -650,6 +667,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "CUSTOMERPAYMENT_REFERENCE",
           "dataNullable": true,
@@ -667,6 +685,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reference",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -677,6 +696,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_PAYMENTMETHOD",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -699,6 +719,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "PaymentMethod",
           "widgetDropdownUrl": "/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts",
@@ -722,6 +743,7 @@
       "menuIndex": "100",
       "menuKey": "customerpayment",
       "menuLabel": "CustomerPayment",
+      "multilingual": "false",
       "name": "CustomerPayment",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/usd-square.svg",
@@ -766,6 +788,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
+          "auditType": "NONE",
           "dataName": "CUSTOMERPAYMENT_CUSTOMER",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -788,6 +811,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Customer",
           "widgetDropdownUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts",
@@ -797,6 +821,7 @@
         },
         "properties": [
           {
+            "auditType": "NONE",
             "dataName": "CUSTOMERPAYMENT_DATE",
             "dataNullable": false,
             "dataOrderBy": "DESC",
@@ -814,6 +839,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Date",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -823,6 +849,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "CUSTOMERPAYMENT_VALOR",
             "dataNullable": false,
             "dataType": "DATE",
@@ -839,6 +866,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Valor",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -848,6 +876,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "CUSTOMERPAYMENT_COMPANYIBAN",
             "dataNullable": true,
@@ -865,6 +894,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CompanyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -875,6 +905,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
             "dataNullable": true,
@@ -892,6 +923,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -902,6 +934,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "CUSTOMERPAYMENT_COUNTERPARTYNAME",
             "dataNullable": true,
@@ -919,6 +952,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyName",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -929,6 +963,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "16",
             "dataName": "CUSTOMERPAYMENT_AMOUNT",
             "dataNullable": false,
@@ -948,6 +983,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -956,6 +992,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "CUSTOMERPAYMENT_CURRENCY",
             "dataNullable": false,
             "dataType": "INTEGER",
@@ -978,6 +1015,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Currency",
             "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -986,6 +1024,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "CUSTOMERPAYMENT_REASON",
             "dataNullable": false,
@@ -1003,6 +1042,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reason",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1013,6 +1053,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "CUSTOMERPAYMENT_DESCRIPTION",
             "dataNullable": true,
@@ -1030,6 +1071,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Description",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1040,6 +1082,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "CUSTOMERPAYMENT_COMPANY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -1062,6 +1105,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Company",
             "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -1070,6 +1114,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
             "dataLength": "20",
             "dataName": "CUSTOMERPAYMENT_NAME",
@@ -1088,6 +1133,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Name",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1098,6 +1144,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "CUSTOMERPAYMENT_PAYMENTMETHOD",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -1120,6 +1167,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "PaymentMethod",
             "widgetDropdownUrl": "/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts",
@@ -1135,6 +1183,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "SUPPLIERPAYMENT_ID",
           "dataNullable": true,
@@ -1151,6 +1200,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1159,6 +1209,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_SUPPLIER",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -1181,6 +1232,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Supplier",
           "widgetDropdownUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts",
@@ -1189,6 +1241,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -1206,6 +1259,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1215,6 +1269,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_VALOR",
           "dataNullable": false,
           "dataType": "DATE",
@@ -1231,6 +1286,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Valor",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1240,6 +1296,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "SUPPLIERPAYMENT_COMPANYIBAN",
           "dataNullable": true,
@@ -1257,6 +1314,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CompanyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1267,6 +1325,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
           "dataNullable": true,
@@ -1284,6 +1343,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1294,6 +1354,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "SUPPLIERPAYMENT_COUNTERPARTYNAME",
           "dataNullable": true,
@@ -1311,6 +1372,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyName",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1321,6 +1383,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "16",
           "dataName": "SUPPLIERPAYMENT_AMOUNT",
           "dataNullable": false,
@@ -1340,6 +1403,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1348,6 +1412,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_CURRENCY",
           "dataNullable": false,
           "dataType": "INTEGER",
@@ -1370,6 +1435,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Currency",
           "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -1378,6 +1444,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "SUPPLIERPAYMENT_REASON",
           "dataNullable": false,
@@ -1395,6 +1462,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reason",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1405,6 +1473,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "SUPPLIERPAYMENT_DESCRIPTION",
           "dataNullable": true,
@@ -1422,6 +1491,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Description",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1432,6 +1502,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_COMPANY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -1454,6 +1525,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Company",
           "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -1462,6 +1534,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
@@ -1480,6 +1553,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1490,6 +1564,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
           "dataLength": "36",
           "dataName": "SUPPLIERPAYMENT_UUID",
@@ -1508,6 +1583,7 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "UUID",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1518,6 +1594,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "SUPPLIERPAYMENT_REFERENCE",
           "dataNullable": true,
@@ -1535,6 +1612,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reference",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -1560,6 +1638,7 @@
       "menuIndex": "100",
       "menuKey": "supplierpayment",
       "menuLabel": "SupplierPayment",
+      "multilingual": "false",
       "name": "SupplierPayment",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/box.svg",
@@ -1599,6 +1678,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
+          "auditType": "NONE",
           "dataName": "SUPPLIERPAYMENT_SUPPLIER",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -1621,6 +1701,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Supplier",
           "widgetDropdownUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts",
@@ -1630,6 +1711,7 @@
         },
         "properties": [
           {
+            "auditType": "NONE",
             "dataName": "SUPPLIERPAYMENT_DATE",
             "dataNullable": false,
             "dataOrderBy": "DESC",
@@ -1647,6 +1729,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Date",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1656,6 +1739,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "SUPPLIERPAYMENT_VALOR",
             "dataNullable": false,
             "dataType": "DATE",
@@ -1672,6 +1756,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Valor",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1681,6 +1766,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "SUPPLIERPAYMENT_COMPANYIBAN",
             "dataNullable": true,
@@ -1698,6 +1784,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CompanyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1708,6 +1795,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
             "dataNullable": true,
@@ -1725,6 +1813,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1735,6 +1824,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "SUPPLIERPAYMENT_COUNTERPARTYNAME",
             "dataNullable": true,
@@ -1752,6 +1842,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyName",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1762,6 +1853,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "16",
             "dataName": "SUPPLIERPAYMENT_AMOUNT",
             "dataNullable": false,
@@ -1781,6 +1873,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1789,6 +1882,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "SUPPLIERPAYMENT_CURRENCY",
             "dataNullable": false,
             "dataType": "INTEGER",
@@ -1811,6 +1905,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Currency",
             "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -1819,6 +1914,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "SUPPLIERPAYMENT_REASON",
             "dataNullable": false,
@@ -1836,6 +1932,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reason",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1846,6 +1943,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "SUPPLIERPAYMENT_DESCRIPTION",
             "dataNullable": true,
@@ -1863,6 +1961,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Description",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1873,6 +1972,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "SUPPLIERPAYMENT_COMPANY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -1895,6 +1995,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Company",
             "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -1903,6 +2004,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
             "dataLength": "20",
             "dataName": "SUPPLIERPAYMENT_NAME",
@@ -1921,6 +2023,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Name",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1931,6 +2034,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
             "dataLength": "36",
             "dataName": "SUPPLIERPAYMENT_UUID",
@@ -1949,6 +2053,7 @@
             "dataAutoIncrement": false,
             "dataPrimaryKey": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "UUID",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1959,6 +2064,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "36",
             "dataName": "SUPPLIERPAYMENT_REFERENCE",
             "dataNullable": true,
@@ -1976,6 +2082,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reference",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -1993,6 +2100,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "EMPLOYEEPAYMENT_ID",
           "dataNullable": true,
@@ -2009,6 +2117,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2017,6 +2126,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "EMPLOYEEPAYMENT_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -2034,6 +2144,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2043,6 +2154,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "EMPLOYEEPAYMENT_VALOR",
           "dataNullable": false,
           "dataType": "DATE",
@@ -2059,6 +2171,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Valor",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2068,6 +2181,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "EMPLOYEEPAYMENT_COMPANYIBAN",
           "dataNullable": true,
@@ -2085,6 +2199,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CompanyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2095,6 +2210,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN",
           "dataNullable": true,
@@ -2112,6 +2228,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2122,6 +2239,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "EMPLOYEEPAYMENT_COUNTERPARTYNAME",
           "dataNullable": true,
@@ -2139,6 +2257,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyName",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2149,6 +2268,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "16",
           "dataName": "EMPLOYEEPAYMENT_AMOUNT",
           "dataNullable": false,
@@ -2168,6 +2288,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2176,6 +2297,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "EMPLOYEEPAYMENT_CURRENCY",
           "dataNullable": false,
           "dataType": "INTEGER",
@@ -2198,6 +2320,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Currency",
           "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -2206,6 +2329,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "EMPLOYEEPAYMENT_REASON",
           "dataNullable": false,
@@ -2223,6 +2347,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reason",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2233,6 +2358,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "EMPLOYEEPAYMENT_DESCRIPTION",
           "dataNullable": true,
@@ -2250,6 +2376,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Description",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2260,6 +2387,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "EMPLOYEEPAYMENT_COMPANY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -2282,6 +2410,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Company",
           "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -2290,6 +2419,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
           "dataLength": "20",
           "dataName": "EMPLOYEEPAYMENT_NAME",
@@ -2308,6 +2438,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2318,6 +2449,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
           "dataLength": "36",
           "dataName": "EMPLOYEEPAYMENT_UUID",
@@ -2336,6 +2468,7 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "UUID",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2346,6 +2479,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "EMPLOYEEPAYMENT_REFERENCE",
           "dataNullable": true,
@@ -2363,6 +2497,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reference",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2388,6 +2523,7 @@
       "menuIndex": "100",
       "menuKey": "employeepayment",
       "menuLabel": "EmployeePayment",
+      "multilingual": "false",
       "name": "EmployeePayment",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/folder-check.svg",
@@ -2422,6 +2558,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
+          "auditType": "NONE",
           "dataName": "EMPLOYEEPAYMENT_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -2439,6 +2576,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2449,6 +2587,7 @@
         },
         "properties": [
           {
+            "auditType": "NONE",
             "dataName": "EMPLOYEEPAYMENT_VALOR",
             "dataNullable": false,
             "dataType": "DATE",
@@ -2465,6 +2604,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Valor",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2474,6 +2614,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "EMPLOYEEPAYMENT_COMPANYIBAN",
             "dataNullable": true,
@@ -2491,6 +2632,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CompanyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2501,6 +2643,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN",
             "dataNullable": true,
@@ -2518,6 +2661,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2528,6 +2672,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "EMPLOYEEPAYMENT_COUNTERPARTYNAME",
             "dataNullable": true,
@@ -2545,6 +2690,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyName",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2555,6 +2701,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "16",
             "dataName": "EMPLOYEEPAYMENT_AMOUNT",
             "dataNullable": false,
@@ -2574,6 +2721,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2582,6 +2730,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "EMPLOYEEPAYMENT_CURRENCY",
             "dataNullable": false,
             "dataType": "INTEGER",
@@ -2604,6 +2753,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Currency",
             "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -2612,6 +2762,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "EMPLOYEEPAYMENT_REASON",
             "dataNullable": false,
@@ -2629,6 +2780,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reason",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2639,6 +2791,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "EMPLOYEEPAYMENT_DESCRIPTION",
             "dataNullable": true,
@@ -2656,6 +2809,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Description",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2666,6 +2820,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "EMPLOYEEPAYMENT_COMPANY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -2688,6 +2843,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Company",
             "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -2696,6 +2852,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
             "dataLength": "20",
             "dataName": "EMPLOYEEPAYMENT_NAME",
@@ -2714,6 +2871,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Name",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2724,6 +2882,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
             "dataLength": "36",
             "dataName": "EMPLOYEEPAYMENT_UUID",
@@ -2742,6 +2901,7 @@
             "dataAutoIncrement": false,
             "dataPrimaryKey": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "UUID",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2752,6 +2912,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "36",
             "dataName": "EMPLOYEEPAYMENT_REFERENCE",
             "dataNullable": true,
@@ -2769,6 +2930,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reference",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -2786,6 +2948,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "PAYMENTRECORD_ID",
           "dataNullable": true,
@@ -2802,6 +2965,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2810,6 +2974,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -2827,6 +2992,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2836,6 +3002,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_VALOR",
           "dataNullable": false,
           "dataType": "DATE",
@@ -2852,6 +3019,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Valor",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2861,6 +3029,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "PAYMENTRECORD_COMPANYIBAN",
           "dataNullable": true,
@@ -2878,6 +3047,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CompanyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2888,6 +3058,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "34",
           "dataName": "PAYMENTRECORD_COUNTERPARTYIBAN",
           "dataNullable": true,
@@ -2905,6 +3076,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyIBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2915,6 +3087,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "PAYMENTRECORD_COUNTERPARTYNAME",
           "dataNullable": true,
@@ -2932,6 +3105,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "CounterpartyName",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2942,6 +3116,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "16",
           "dataName": "PAYMENTRECORD_AMOUNT",
           "dataNullable": true,
@@ -2961,6 +3136,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -2969,6 +3145,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_CURRENCY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -2991,6 +3168,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Currency",
           "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -2999,65 +3177,12 @@
           "inputRule": ""
         },
         {
-          "dataLength": "100",
-          "dataName": "PAYMENTRECORD_REASON",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "name": "Reason",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Reason",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        },
-        {
-          "dataLength": "100",
-          "dataName": "PAYMENTRECORD_DESCRIPTION",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "name": "Description",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Description",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        },
-        {
-          "dataName": "PAYMENTRECORD_COMPANY",
+          "auditType": "NONE",
+          "dataName": "PAYMENTRECORD_PAYMENTDIRECTION",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
-          "name": "Company",
+          "name": "PaymentDirection",
           "tooltip": "",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
@@ -3065,84 +3190,26 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "PaymentRecord_Company",
-          "relationshipEntityName": "Company",
-          "relationshipEntityPerspectiveName": "Companies",
-          "relationshipEntityPerspectiveLabel": "Entities",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Company",
-          "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
-          "inputRule": ""
-        },
-        {
-          "dataName": "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
-          "dataNullable": true,
-          "dataType": "INTEGER",
-          "description": "",
-          "name": "PaymentRecordDirection",
-          "tooltip": "",
-          "widgetDropDownKey": "Id",
-          "widgetDropDownValue": "Name",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "DROPDOWN",
-          "relationshipName": "PaymentRecord_PaymentRecordDirection",
-          "relationshipEntityName": "PaymentRecordDirection",
+          "relationshipName": "PaymentRecord_PaymentDirection",
+          "relationshipEntityName": "PaymentDirection",
           "relationshipEntityPerspectiveName": "Settings",
-          "relationshipEntityPerspectiveLabel": "Entities",
+          "relationshipEntityPerspectiveLabel": "",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
-          "widgetLabel": "PaymentRecordDirection",
-          "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts",
+          "isReadOnlyProperty": false,
+          "widgetLabel": "PaymentDirection",
+          "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionService.ts",
+          "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
         },
         {
-          "dataName": "PAYMENTRECORD_PAYMENTSTATUS",
-          "dataNullable": true,
-          "dataType": "INTEGER",
-          "description": "",
-          "name": "PaymentStatus",
-          "tooltip": "",
-          "widgetDropDownKey": "Id",
-          "widgetDropDownValue": "Name",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "DROPDOWN",
-          "relationshipName": "PaymentRecord_PaymentStatus",
-          "relationshipEntityName": "PaymentStatus",
-          "relationshipEntityPerspectiveName": "Settings",
-          "relationshipEntityPerspectiveLabel": "Entities",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "PaymentStatus",
-          "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts",
-          "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
-          "inputRule": ""
-        },
-        {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_PAYMENTTYPE",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -3165,6 +3232,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "PaymentType",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts",
@@ -3173,6 +3241,97 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
+          "dataLength": "100",
+          "dataName": "PAYMENTRECORD_REASON",
+          "dataNullable": true,
+          "dataType": "VARCHAR",
+          "description": "",
+          "name": "Reason",
+          "tooltip": "",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
+          "widgetLabel": "Reason",
+          "widgetDropdownUrl": "",
+          "widgetDropdownControllerUrl": "",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
+          "inputRule": ""
+        },
+        {
+          "auditType": "NONE",
+          "dataLength": "100",
+          "dataName": "PAYMENTRECORD_DESCRIPTION",
+          "dataNullable": true,
+          "dataType": "VARCHAR",
+          "description": "",
+          "name": "Description",
+          "tooltip": "",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
+          "widgetLabel": "Description",
+          "widgetDropdownUrl": "",
+          "widgetDropdownControllerUrl": "",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
+          "inputRule": ""
+        },
+        {
+          "auditType": "NONE",
+          "dataName": "PAYMENTRECORD_COMPANY",
+          "dataNullable": true,
+          "dataType": "INTEGER",
+          "description": "",
+          "name": "Company",
+          "tooltip": "",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DROPDOWN",
+          "relationshipName": "PaymentRecord_Company",
+          "relationshipEntityName": "Company",
+          "relationshipEntityPerspectiveName": "Companies",
+          "relationshipEntityPerspectiveLabel": "Entities",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
+          "widgetLabel": "Company",
+          "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
+          "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
+        },
+        {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
           "dataLength": "36",
           "dataName": "PAYMENTRECORD_UUID",
@@ -3191,6 +3350,7 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "UUID",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3201,6 +3361,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "PAYMENTRECORD_REFERENCE",
           "dataNullable": true,
@@ -3218,6 +3379,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reference",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3228,6 +3390,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_DELETED",
           "dataNullable": true,
           "dataType": "BOOLEAN",
@@ -3244,6 +3407,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Deleted",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3266,6 +3430,7 @@
       "menuIndex": "100",
       "menuKey": "paymentrecord",
       "menuLabel": "PaymentRecord",
+      "multilingual": "false",
       "name": "PaymentRecord",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/align-justify.svg",
@@ -3300,6 +3465,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
+          "auditType": "NONE",
           "dataName": "PAYMENTRECORD_DATE",
           "dataNullable": false,
           "dataOrderBy": "DESC",
@@ -3317,6 +3483,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3327,6 +3494,7 @@
         },
         "properties": [
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTRECORD_VALOR",
             "dataNullable": false,
             "dataType": "DATE",
@@ -3343,6 +3511,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Valor",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3352,6 +3521,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "PAYMENTRECORD_COMPANYIBAN",
             "dataNullable": true,
@@ -3369,6 +3539,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CompanyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3379,6 +3550,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "34",
             "dataName": "PAYMENTRECORD_COUNTERPARTYIBAN",
             "dataNullable": true,
@@ -3396,6 +3568,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyIBAN",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3406,6 +3579,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "PAYMENTRECORD_COUNTERPARTYNAME",
             "dataNullable": true,
@@ -3423,6 +3597,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "CounterpartyName",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3433,6 +3608,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "16",
             "dataName": "PAYMENTRECORD_AMOUNT",
             "dataNullable": true,
@@ -3452,6 +3628,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3460,6 +3637,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTRECORD_CURRENCY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -3482,6 +3660,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Currency",
             "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -3490,65 +3669,12 @@
             "inputRule": ""
           },
           {
-            "dataLength": "100",
-            "dataName": "PAYMENTRECORD_REASON",
-            "dataNullable": true,
-            "dataType": "VARCHAR",
-            "description": "",
-            "name": "Reason",
-            "tooltip": "",
-            "widgetIsMajor": true,
-            "widgetLength": "20",
-            "widgetSize": "",
-            "widgetType": "TEXTBOX",
-            "dataNotNull": false,
-            "dataAutoIncrement": false,
-            "dataPrimaryKey": false,
-            "dataUnique": false,
-            "isRequiredProperty": false,
-            "isCalculatedProperty": false,
-            "widgetLabel": "Reason",
-            "widgetDropdownUrl": "",
-            "widgetDropdownControllerUrl": "",
-            "dataTypeJava": "string",
-            "dataTypeTypescript": "string",
-            "minLength": 0,
-            "maxLength": 20,
-            "inputRule": ""
-          },
-          {
-            "dataLength": "100",
-            "dataName": "PAYMENTRECORD_DESCRIPTION",
-            "dataNullable": true,
-            "dataType": "VARCHAR",
-            "description": "",
-            "name": "Description",
-            "tooltip": "",
-            "widgetIsMajor": true,
-            "widgetLength": "20",
-            "widgetSize": "",
-            "widgetType": "TEXTBOX",
-            "dataNotNull": false,
-            "dataAutoIncrement": false,
-            "dataPrimaryKey": false,
-            "dataUnique": false,
-            "isRequiredProperty": false,
-            "isCalculatedProperty": false,
-            "widgetLabel": "Description",
-            "widgetDropdownUrl": "",
-            "widgetDropdownControllerUrl": "",
-            "dataTypeJava": "string",
-            "dataTypeTypescript": "string",
-            "minLength": 0,
-            "maxLength": 20,
-            "inputRule": ""
-          },
-          {
-            "dataName": "PAYMENTRECORD_COMPANY",
+            "auditType": "NONE",
+            "dataName": "PAYMENTRECORD_PAYMENTDIRECTION",
             "dataNullable": true,
             "dataType": "INTEGER",
             "description": "",
-            "name": "Company",
+            "name": "PaymentDirection",
             "tooltip": "",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
@@ -3556,84 +3682,26 @@
             "widgetLength": "20",
             "widgetSize": "",
             "widgetType": "DROPDOWN",
-            "relationshipName": "PaymentRecord_Company",
-            "relationshipEntityName": "Company",
-            "relationshipEntityPerspectiveName": "Companies",
-            "relationshipEntityPerspectiveLabel": "Entities",
-            "dataNotNull": false,
-            "dataAutoIncrement": false,
-            "dataPrimaryKey": false,
-            "dataUnique": false,
-            "isRequiredProperty": false,
-            "isCalculatedProperty": false,
-            "widgetLabel": "Company",
-            "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
-            "dataTypeJava": "int",
-            "dataTypeTypescript": "number",
-            "inputRule": ""
-          },
-          {
-            "dataName": "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
-            "dataNullable": true,
-            "dataType": "INTEGER",
-            "description": "",
-            "name": "PaymentRecordDirection",
-            "tooltip": "",
-            "widgetDropDownKey": "Id",
-            "widgetDropDownValue": "Name",
-            "widgetIsMajor": true,
-            "widgetLength": "20",
-            "widgetSize": "",
-            "widgetType": "DROPDOWN",
-            "relationshipName": "PaymentRecord_PaymentRecordDirection",
-            "relationshipEntityName": "PaymentRecordDirection",
+            "relationshipName": "PaymentRecord_PaymentDirection",
+            "relationshipEntityName": "PaymentDirection",
             "relationshipEntityPerspectiveName": "Settings",
-            "relationshipEntityPerspectiveLabel": "Entities",
+            "relationshipEntityPerspectiveLabel": "",
             "dataNotNull": false,
             "dataAutoIncrement": false,
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
-            "widgetLabel": "PaymentRecordDirection",
-            "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts",
+            "isReadOnlyProperty": false,
+            "widgetLabel": "PaymentDirection",
+            "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionService.ts",
+            "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts",
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
             "inputRule": ""
           },
           {
-            "dataName": "PAYMENTRECORD_PAYMENTSTATUS",
-            "dataNullable": true,
-            "dataType": "INTEGER",
-            "description": "",
-            "name": "PaymentStatus",
-            "tooltip": "",
-            "widgetDropDownKey": "Id",
-            "widgetDropDownValue": "Name",
-            "widgetIsMajor": true,
-            "widgetLength": "20",
-            "widgetSize": "",
-            "widgetType": "DROPDOWN",
-            "relationshipName": "PaymentRecord_PaymentStatus",
-            "relationshipEntityName": "PaymentStatus",
-            "relationshipEntityPerspectiveName": "Settings",
-            "relationshipEntityPerspectiveLabel": "Entities",
-            "dataNotNull": false,
-            "dataAutoIncrement": false,
-            "dataPrimaryKey": false,
-            "dataUnique": false,
-            "isRequiredProperty": false,
-            "isCalculatedProperty": false,
-            "widgetLabel": "PaymentStatus",
-            "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusService.ts",
-            "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts",
-            "dataTypeJava": "int",
-            "dataTypeTypescript": "number",
-            "inputRule": ""
-          },
-          {
+            "auditType": "NONE",
             "dataName": "PAYMENTRECORD_PAYMENTTYPE",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -3656,6 +3724,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "PaymentType",
             "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts",
@@ -3664,6 +3733,97 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
+            "dataLength": "100",
+            "dataName": "PAYMENTRECORD_REASON",
+            "dataNullable": true,
+            "dataType": "VARCHAR",
+            "description": "",
+            "name": "Reason",
+            "tooltip": "",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "TEXTBOX",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isRequiredProperty": false,
+            "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
+            "widgetLabel": "Reason",
+            "widgetDropdownUrl": "",
+            "widgetDropdownControllerUrl": "",
+            "dataTypeJava": "string",
+            "dataTypeTypescript": "string",
+            "minLength": 0,
+            "maxLength": 20,
+            "inputRule": ""
+          },
+          {
+            "auditType": "NONE",
+            "dataLength": "100",
+            "dataName": "PAYMENTRECORD_DESCRIPTION",
+            "dataNullable": true,
+            "dataType": "VARCHAR",
+            "description": "",
+            "name": "Description",
+            "tooltip": "",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "TEXTBOX",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isRequiredProperty": false,
+            "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
+            "widgetLabel": "Description",
+            "widgetDropdownUrl": "",
+            "widgetDropdownControllerUrl": "",
+            "dataTypeJava": "string",
+            "dataTypeTypescript": "string",
+            "minLength": 0,
+            "maxLength": 20,
+            "inputRule": ""
+          },
+          {
+            "auditType": "NONE",
+            "dataName": "PAYMENTRECORD_COMPANY",
+            "dataNullable": true,
+            "dataType": "INTEGER",
+            "description": "",
+            "name": "Company",
+            "tooltip": "",
+            "widgetDropDownKey": "Id",
+            "widgetDropDownValue": "Name",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "DROPDOWN",
+            "relationshipName": "PaymentRecord_Company",
+            "relationshipEntityName": "Company",
+            "relationshipEntityPerspectiveName": "Companies",
+            "relationshipEntityPerspectiveLabel": "Entities",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isRequiredProperty": false,
+            "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
+            "widgetLabel": "Company",
+            "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
+            "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
+            "dataTypeJava": "int",
+            "dataTypeTypescript": "number",
+            "inputRule": ""
+          },
+          {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
             "dataLength": "36",
             "dataName": "PAYMENTRECORD_UUID",
@@ -3682,6 +3842,7 @@
             "dataAutoIncrement": false,
             "dataPrimaryKey": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "UUID",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3692,6 +3853,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "36",
             "dataName": "PAYMENTRECORD_REFERENCE",
             "dataNullable": true,
@@ -3709,6 +3871,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reference",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3719,6 +3882,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTRECORD_DELETED",
             "dataNullable": true,
             "dataType": "BOOLEAN",
@@ -3735,6 +3899,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Deleted",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -3750,6 +3915,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataAutoIncrement": true,
@@ -3768,6 +3934,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3776,6 +3943,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "3",
@@ -3795,6 +3963,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Code",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3805,6 +3974,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "127",
@@ -3824,6 +3994,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3834,6 +4005,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "3",
@@ -3853,6 +4025,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Numeric",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3863,6 +4036,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataName": "CURRENCY_ROUNDING",
@@ -3881,6 +4055,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Rounding",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3889,6 +4064,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataName": "CURRENCY_BASE",
@@ -3907,6 +4083,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Base",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3915,6 +4092,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataName": "CURRENCY_RATE",
@@ -3933,6 +4111,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Rate",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -3953,6 +4132,7 @@
       "menuIndex": "100",
       "menuKey": "currency",
       "menuLabel": "Currency",
+      "multilingual": "false",
       "name": "Currency",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/dollar-alt.svg",
@@ -3976,6 +4156,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataAutoIncrement": true,
@@ -3994,6 +4175,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4002,6 +4184,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "100",
@@ -4021,6 +4204,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4031,6 +4215,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "50",
@@ -4050,6 +4235,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Manager",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4060,6 +4246,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "100",
@@ -4079,6 +4266,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Email",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4089,6 +4277,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "20",
@@ -4108,6 +4297,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Phone",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4118,6 +4308,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "200",
@@ -4137,6 +4328,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Address",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4147,6 +4339,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "20",
@@ -4166,6 +4359,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "PostCode",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4176,6 +4370,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataName": "COMPANY_CITY",
@@ -4198,6 +4393,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "City",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedController.ts",
@@ -4206,6 +4402,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataName": "COMPANY_COUNTRY",
@@ -4228,6 +4425,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Country",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedController.ts",
@@ -4236,6 +4434,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "20",
@@ -4255,6 +4454,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "TIN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4265,6 +4465,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataLength": "22",
@@ -4284,6 +4485,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "IBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4306,6 +4508,7 @@
       "menuIndex": "100",
       "menuKey": "company",
       "menuLabel": "Company",
+      "multilingual": "false",
       "name": "Company",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/university.svg",
@@ -4330,178 +4533,7 @@
     {
       "properties": [
         {
-          "dataAutoIncrement": true,
-          "dataName": "PAYMENTRECORDDIRECTION_ID",
-          "dataNullable": true,
-          "dataPrimaryKey": true,
-          "dataType": "INTEGER",
-          "description": "",
-          "name": "Id",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Id",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
-          "inputRule": ""
-        },
-        {
-          "dataLength": "20",
-          "dataName": "PAYMENTRECORDDIRECTION_NAME",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "name": "Name",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Name",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        }
-      ],
-      "caption": "Manage entity PaymentRecordDirection",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_PAYMENTRECORDDIRECTION\"",
-      "dataName": "PAYMENTRECORDDIRECTION",
-      "dataQuery": "",
-      "description": "Manage entity PaymentRecordDirection",
-      "feedPassword": "YWRtaW4=",
-      "feedUsername": "YWRtaW4=",
-      "generateDefaultRoles": "true",
-      "generateReport": "false",
-      "icon": "/services/web/resources/unicons/file.svg",
-      "menuIndex": "100",
-      "menuKey": "paymentrecorddirection",
-      "menuLabel": "PaymentRecordDirection",
-      "name": "PaymentRecordDirection",
-      "perspectiveHeader": "",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveName": "Settings",
-      "perspectiveNavId": "",
-      "perspectiveOrder": "100",
-      "perspectiveRole": "",
-      "roleRead": "codbex-payments.Settings.PaymentRecordDirectionReadOnly",
-      "roleWrite": "codbex-payments.Settings.PaymentRecordDirectionFullAccess",
-      "title": "PaymentRecordDirection",
-      "tooltip": "PaymentRecordDirection",
-      "type": "SETTING",
-      "dataSource": "DefaultDB",
-      "referencedProjections": [],
-      "primaryKeys": [
-        "Id"
-      ],
-      "primaryKeysString": "Id"
-    },
-    {
-      "properties": [
-        {
-          "dataAutoIncrement": true,
-          "dataName": "PAYMENTSTATUS_ID",
-          "dataNullable": true,
-          "dataPrimaryKey": true,
-          "dataType": "INTEGER",
-          "description": "",
-          "name": "Id",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Id",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
-          "inputRule": ""
-        },
-        {
-          "dataLength": "20",
-          "dataName": "PAYMENTSTATUS_NAME",
-          "dataNullable": true,
-          "dataType": "VARCHAR",
-          "description": "",
-          "name": "Name",
-          "tooltip": "",
-          "widgetIsMajor": true,
-          "widgetLength": "20",
-          "widgetSize": "",
-          "widgetType": "TEXTBOX",
-          "dataNotNull": false,
-          "dataAutoIncrement": false,
-          "dataPrimaryKey": false,
-          "dataUnique": false,
-          "isRequiredProperty": false,
-          "isCalculatedProperty": false,
-          "widgetLabel": "Name",
-          "widgetDropdownUrl": "",
-          "widgetDropdownControllerUrl": "",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
-          "inputRule": ""
-        }
-      ],
-      "caption": "Manage entity PaymentStatus",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_PAYMENTSTATUS\"",
-      "dataName": "PAYMENTSTATUS",
-      "dataQuery": "",
-      "description": "Manage entity PaymentStatus",
-      "feedPassword": "YWRtaW4=",
-      "feedUsername": "YWRtaW4=",
-      "generateDefaultRoles": "true",
-      "generateReport": "false",
-      "icon": "/services/web/resources/unicons/file.svg",
-      "menuIndex": "100",
-      "menuKey": "paymentstatus",
-      "menuLabel": "PaymentStatus",
-      "name": "PaymentStatus",
-      "perspectiveHeader": "",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveName": "Settings",
-      "perspectiveNavId": "",
-      "perspectiveOrder": "100",
-      "perspectiveRole": "",
-      "roleRead": "codbex-payments.Settings.PaymentStatusReadOnly",
-      "roleWrite": "codbex-payments.Settings.PaymentStatusFullAccess",
-      "title": "PaymentStatus",
-      "tooltip": "PaymentStatus",
-      "type": "SETTING",
-      "dataSource": "DefaultDB",
-      "referencedProjections": [],
-      "primaryKeys": [
-        "Id"
-      ],
-      "primaryKeysString": "Id"
-    },
-    {
-      "properties": [
-        {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "PAYMENTTYPE_ID",
           "dataNullable": true,
@@ -4518,6 +4550,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4526,6 +4559,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "PAYMENTTYPE_NAME",
           "dataNullable": true,
@@ -4543,6 +4577,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4566,6 +4601,7 @@
       "menuIndex": "100",
       "menuKey": "paymenttype",
       "menuLabel": "PaymentType",
+      "multilingual": "false",
       "name": "PaymentType",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
@@ -4588,6 +4624,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "PAYMENTMETHOD_ID",
           "dataNullable": true,
@@ -4604,6 +4641,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4612,6 +4650,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "PAYMENTMETHOD_NAME",
           "dataNullable": true,
@@ -4629,6 +4668,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4651,6 +4691,7 @@
       "menuIndex": "100",
       "menuKey": "paymentmethod",
       "menuLabel": "PaymentMethod",
+      "multilingual": "false",
       "name": "PaymentMethod",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/archive.svg",
@@ -4674,6 +4715,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "CUSTOMER_ID",
           "dataNullable": true,
@@ -4690,6 +4732,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4698,6 +4741,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "CUSTOMER_NAME",
           "dataNullable": true,
@@ -4715,6 +4759,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4725,6 +4770,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "200",
           "dataName": "CUSTOMER_ADDRESS",
           "dataNullable": true,
@@ -4742,6 +4788,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Address",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4752,6 +4799,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "CUSTOMER_POSTALCODE",
           "dataNullable": true,
@@ -4769,6 +4817,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "PostalCode",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4779,6 +4828,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "CUSTOMER_EMAIL",
           "dataNullable": true,
@@ -4796,6 +4846,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Email",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4806,6 +4857,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "CUSTOMER_PHONE",
           "dataNullable": true,
@@ -4823,6 +4875,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Phone",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4833,6 +4886,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "CUSTOMER_FAX",
           "dataNullable": true,
@@ -4850,6 +4904,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Fax",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4860,6 +4915,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMER_COUNTRY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -4881,6 +4937,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Country",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedController.ts",
@@ -4889,6 +4946,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "CUSTOMER_CITY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -4910,6 +4968,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "City",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedController.ts",
@@ -4918,6 +4977,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "CUSTOMER_TIN",
           "dataNullable": true,
@@ -4935,6 +4995,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "TIN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4945,6 +5006,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "CUSTOMER_IBAN",
           "dataNullable": true,
@@ -4962,6 +5024,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "IBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -4984,6 +5047,7 @@
       "menuIndex": "100",
       "menuKey": "customer",
       "menuLabel": "Customer",
+      "multilingual": "false",
       "name": "Customer",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/user-plus.svg",
@@ -5008,6 +5072,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "PAYMENTADJUSTMENT_ID",
           "dataNullable": true,
@@ -5024,6 +5089,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5032,6 +5098,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTADJUSTMENT_DATE",
           "dataNullable": true,
           "dataType": "DATE",
@@ -5048,6 +5115,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5057,6 +5125,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTADJUSTMENT_VALOR",
           "dataNullable": true,
           "dataType": "DATE",
@@ -5073,6 +5142,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Valor",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5082,6 +5152,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "16",
           "dataName": "PAYMENTADJUSTMENT_AMOUNT",
           "dataNullable": true,
@@ -5101,6 +5172,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5109,6 +5181,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTADJUSTMENT_CURRENCY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -5131,6 +5204,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Currency",
           "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -5139,6 +5213,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "PAYMENTADJUSTMENT_COMPANY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -5161,6 +5236,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Company",
           "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -5169,6 +5245,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "PAYMENTADJUSTMENT_REASON",
           "dataNullable": true,
@@ -5186,6 +5263,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Reason",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5196,6 +5274,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
           "dataLength": "36",
           "dataName": "PAYMENTADJUSTMENT_UUID",
@@ -5214,6 +5293,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isRequiredProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "UUID",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5238,6 +5318,7 @@
       "menuIndex": "100",
       "menuKey": "paymentadjustment",
       "menuLabel": "PaymentAdjustment",
+      "multilingual": "false",
       "name": "PaymentAdjustment",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/paypal.svg",
@@ -5270,6 +5351,7 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
+          "auditType": "NONE",
           "dataName": "PAYMENTADJUSTMENT_DATE",
           "dataNullable": true,
           "dataType": "DATE",
@@ -5286,6 +5368,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Date",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5296,6 +5379,7 @@
         },
         "properties": [
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTADJUSTMENT_VALOR",
             "dataNullable": true,
             "dataType": "DATE",
@@ -5312,6 +5396,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Valor",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -5321,6 +5406,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "16",
             "dataName": "PAYMENTADJUSTMENT_AMOUNT",
             "dataNullable": true,
@@ -5340,6 +5426,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -5348,6 +5435,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTADJUSTMENT_CURRENCY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -5370,6 +5458,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Currency",
             "widgetDropdownUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts",
@@ -5378,6 +5467,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataName": "PAYMENTADJUSTMENT_COMPANY",
             "dataNullable": true,
             "dataType": "INTEGER",
@@ -5400,6 +5490,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Company",
             "widgetDropdownUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts",
             "widgetDropdownControllerUrl": "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts",
@@ -5408,6 +5499,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "dataLength": "100",
             "dataName": "PAYMENTADJUSTMENT_REASON",
             "dataNullable": true,
@@ -5425,6 +5517,7 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "Reason",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -5435,6 +5528,7 @@
             "inputRule": ""
           },
           {
+            "auditType": "NONE",
             "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
             "dataLength": "36",
             "dataName": "PAYMENTADJUSTMENT_UUID",
@@ -5453,6 +5547,7 @@
             "dataPrimaryKey": false,
             "dataUnique": false,
             "isRequiredProperty": false,
+            "isReadOnlyProperty": false,
             "widgetLabel": "UUID",
             "widgetDropdownUrl": "",
             "widgetDropdownControllerUrl": "",
@@ -5470,6 +5565,7 @@
     {
       "properties": [
         {
+          "auditType": "NONE",
           "dataAutoIncrement": true,
           "dataName": "SUPPLIER_ID",
           "dataNullable": true,
@@ -5486,6 +5582,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Id",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5494,6 +5591,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "SUPPLIER_NAME",
           "dataNullable": true,
@@ -5511,6 +5609,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Name",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5521,6 +5620,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "200",
           "dataName": "SUPPLIER_ADDRESS",
           "dataNullable": true,
@@ -5538,6 +5638,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Address",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5548,6 +5649,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "SUPPLIER_POSTALCODE",
           "dataNullable": true,
@@ -5565,6 +5667,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "PostalCode",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5575,6 +5678,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "100",
           "dataName": "SUPPLIER_EMAIL",
           "dataNullable": true,
@@ -5592,6 +5696,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Email",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5602,6 +5707,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "SUPPLIER_PHONE",
           "dataNullable": true,
@@ -5619,6 +5725,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Phone",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5629,6 +5736,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "SUPPLIER_FAX",
           "dataNullable": true,
@@ -5646,6 +5754,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Fax",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5656,6 +5765,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIER_COUNTRY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -5677,6 +5787,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "Country",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Countries/undefinedController.ts",
@@ -5685,6 +5796,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataName": "SUPPLIER_CITY",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -5706,6 +5818,7 @@
           "dataPrimaryKey": false,
           "dataUnique": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "City",
           "widgetDropdownUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedService.ts",
           "widgetDropdownControllerUrl": "/services/ts/codbex-payments/gen/codbex-payments/api/Cities/undefinedController.ts",
@@ -5714,6 +5827,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "20",
           "dataName": "SUPPLIER_TIN",
           "dataNullable": true,
@@ -5731,6 +5845,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "TIN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5741,6 +5856,7 @@
           "inputRule": ""
         },
         {
+          "auditType": "NONE",
           "dataLength": "36",
           "dataName": "SUPPLIER_IBAN",
           "dataNullable": true,
@@ -5758,6 +5874,7 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
           "widgetLabel": "IBAN",
           "widgetDropdownUrl": "",
           "widgetDropdownControllerUrl": "",
@@ -5780,6 +5897,7 @@
       "menuIndex": "100",
       "menuKey": "supplier",
       "menuLabel": "Supplier",
+      "multilingual": "false",
       "name": "Supplier",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/user-minus.svg",
@@ -5800,6 +5918,93 @@
       ],
       "primaryKeysString": "Id",
       "hasDropdowns": true
+    },
+    {
+      "properties": [
+        {
+          "auditType": "NONE",
+          "dataAutoIncrement": true,
+          "dataName": "PAYMENTDIRECTION_ID",
+          "dataNullable": true,
+          "dataPrimaryKey": true,
+          "dataType": "INTEGER",
+          "description": "",
+          "name": "Id",
+          "tooltip": "",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
+          "widgetLabel": "Id",
+          "widgetDropdownUrl": "",
+          "widgetDropdownControllerUrl": "",
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
+        },
+        {
+          "auditType": "NONE",
+          "dataLength": "20",
+          "dataName": "PAYMENTDIRECTION_NAME",
+          "dataNullable": false,
+          "dataType": "VARCHAR",
+          "description": "",
+          "isRequiredProperty": true,
+          "name": "Name",
+          "tooltip": "",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": true,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isCalculatedProperty": false,
+          "isReadOnlyProperty": false,
+          "widgetLabel": "Name",
+          "widgetDropdownUrl": "",
+          "widgetDropdownControllerUrl": "",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
+          "inputRule": ""
+        }
+      ],
+      "caption": "Manage entity PaymentDirection",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX_PAYMENTDIRECTION\"",
+      "dataName": "PAYMENTDIRECTION",
+      "dataQuery": "",
+      "description": "Manage entity PaymentDirection",
+      "generateDefaultRoles": "false",
+      "generateReport": "false",
+      "icon": "/services/web/resources/unicons/file.svg",
+      "menuIndex": "100",
+      "menuKey": "paymentdirection",
+      "menuLabel": "PaymentDirection",
+      "multilingual": "false",
+      "name": "PaymentDirection",
+      "perspectiveHeader": "",
+      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+      "perspectiveName": "Settings",
+      "perspectiveNavId": "",
+      "perspectiveOrder": "100",
+      "perspectiveRole": "",
+      "title": "PaymentDirection",
+      "tooltip": "PaymentDirection",
+      "type": "SETTING",
+      "dataSource": "DefaultDB",
+      "referencedProjections": [],
+      "primaryKeys": [
+        "Id"
+      ],
+      "primaryKeysString": "Id"
     }
   ]
 }

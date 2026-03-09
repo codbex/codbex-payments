@@ -4,15 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'PaymentRecordDirection-filter',
-    label: 'PaymentRecordDirection Filter',
+    id: 'PaymentDirection-filter',
+    label: 'PaymentDirection Filter',
     translation: {
         key: 'codbex-payments:codbex-payments-model.extName',
         options: {
-            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORDDIRECTION) $t(codbex-payments:codbex-payments-model.defaults.filter)',
+            content: '$t(codbex-payments:codbex-payments-model.t.PAYMENTDIRECTION) $t(codbex-payments:codbex-payments-model.defaults.filter)',
         }
     },
-    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentRecordDirection/dialog-filter/index.html',
+    path: '/services/web/codbex-payments/gen/codbex-payments/ui/Settings/PaymentDirection/dialog-filter/index.html',
     perspectiveName: 'Settings'
 };
 if (typeof exports !== 'undefined') {

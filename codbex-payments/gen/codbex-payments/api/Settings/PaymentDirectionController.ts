@@ -1,29 +1,26 @@
 import { Controller, Get, Post, Put, Delete, Documentation, request, response } from '@aerokit/sdk/http'
 import { HttpUtils } from "@aerokit/sdk/http/utils";
 import { ValidationError } from '@aerokit/sdk/http/errors'
-import { ForbiddenError } from '@aerokit/sdk/http/errors'
-import { user } from '@aerokit/sdk/security'
 import { Options } from '@aerokit/sdk/db'
 import { Extensions } from "@aerokit/sdk/extensions"
 import { Injected, Inject } from '@aerokit/sdk/component'
-import { PaymentRecordDirectionRepository } from '../../data/Settings/PaymentRecordDirectionRepository'
-import { PaymentRecordDirectionEntity } from '../../data/Settings/PaymentRecordDirectionEntity'
+import { PaymentDirectionRepository } from '../../data/Settings/PaymentDirectionRepository'
+import { PaymentDirectionEntity } from '../../data/Settings/PaymentDirectionEntity'
 
-const validationModules = await Extensions.loadExtensionModules('codbex-payments-Settings-PaymentRecordDirection', ['validate']);
+const validationModules = await Extensions.loadExtensionModules('codbex-payments-Settings-PaymentDirection', ['validate']);
 
 @Controller
-@Documentation('codbex-payments - PaymentRecordDirection Controller')
+@Documentation('codbex-payments - PaymentDirection Controller')
 @Injected()
-class PaymentRecordDirectionController {
+class PaymentDirectionController {
 
-    @Inject('PaymentRecordDirectionRepository')
-    private readonly repository!: PaymentRecordDirectionRepository;
+    @Inject('PaymentDirectionRepository')
+    private readonly repository!: PaymentDirectionRepository;
 
     @Get('/')
-    @Documentation('Get All PaymentRecordDirection')
-    public getAll(_: any, ctx: any): PaymentRecordDirectionEntity[] {
+    @Documentation('Get All PaymentDirection')
+    public getAll(_: any, ctx: any): PaymentDirectionEntity[] {
         try {
-            this.checkPermissions('read');
             const options: Options = {
                 limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
                 offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
@@ -38,13 +35,12 @@ class PaymentRecordDirectionController {
     }
 
     @Post('/')
-    @Documentation('Create PaymentRecordDirection')
-    public create(entity: PaymentRecordDirectionEntity): PaymentRecordDirectionEntity {
+    @Documentation('Create PaymentDirection')
+    public create(entity: PaymentDirectionEntity): PaymentDirectionEntity {
         try {
-            this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionService.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -54,10 +50,9 @@ class PaymentRecordDirectionController {
     }
 
     @Get('/count')
-    @Documentation('Count PaymentRecordDirection')
+    @Documentation('Count PaymentDirection')
     public count(): { count: number } {
         try {
-            this.checkPermissions('read');
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
@@ -66,10 +61,9 @@ class PaymentRecordDirectionController {
     }
 
     @Post('/count')
-    @Documentation('Count PaymentRecordDirection with filter')
+    @Documentation('Count PaymentDirection with filter')
     public countWithFilter(filter: any): { count: number } {
         try {
-            this.checkPermissions('read');
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
@@ -78,10 +72,9 @@ class PaymentRecordDirectionController {
     }
 
     @Post('/search')
-    @Documentation('Search PaymentRecordDirection')
-    public search(filter: any): PaymentRecordDirectionEntity[] {
+    @Documentation('Search PaymentDirection')
+    public search(filter: any): PaymentDirectionEntity[] {
         try {
-            this.checkPermissions('read');
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -90,10 +83,9 @@ class PaymentRecordDirectionController {
     }
 
     @Get('/:id')
-    @Documentation('Get PaymentRecordDirection by id')
-    public getById(_: any, ctx: any): PaymentRecordDirectionEntity {
+    @Documentation('Get PaymentDirection by id')
+    public getById(_: any, ctx: any): PaymentDirectionEntity {
         try {
-            this.checkPermissions('read');
             const id = parseInt(ctx.pathParameters.id);
             const options: Options = {
                 language: request.getLocale().slice(0, 2)
@@ -102,7 +94,7 @@ class PaymentRecordDirectionController {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound('PaymentRecordDirection not found');
+                HttpUtils.sendResponseNotFound('PaymentDirection not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -111,10 +103,9 @@ class PaymentRecordDirectionController {
     }
 
     @Put('/:id')
-    @Documentation('Update PaymentRecordDirection by id')
-    public update(entity: PaymentRecordDirectionEntity, ctx: any): PaymentRecordDirectionEntity {
+    @Documentation('Update PaymentDirection by id')
+    public update(entity: PaymentDirectionEntity, ctx: any): PaymentDirectionEntity {
         try {
-            this.checkPermissions('write');
             const id = parseInt(ctx.pathParameters.id);
             entity.Id = id;
             this.validateEntity(entity);
@@ -127,17 +118,16 @@ class PaymentRecordDirectionController {
     }
 
     @Delete('/:id')
-    @Documentation('Delete PaymentRecordDirection by id')
+    @Documentation('Delete PaymentDirection by id')
     public deleteById(_: any, ctx: any): void {
         try {
-            this.checkPermissions('write');
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound('PaymentRecordDirection not found');
+                HttpUtils.sendResponseNotFound('PaymentDirection not found');
             }
         } catch (error: any) {
             this.handleError(error);
@@ -154,16 +144,10 @@ class PaymentRecordDirectionController {
         }
     }
 
-    private checkPermissions(operationType: string) {
-        if (operationType === 'read' && !(user.isInRole('codbex-payments.Settings.PaymentRecordDirectionReadOnly') || user.isInRole('codbex-payments.Settings.PaymentRecordDirectionFullAccess'))) {
-            throw new ForbiddenError();
-        }
-        if (operationType === 'write' && !user.isInRole('codbex-payments.Settings.PaymentRecordDirectionFullAccess')) {
-            throw new ForbiddenError();
-        }
-    }
-
     private validateEntity(entity: any): void {
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }

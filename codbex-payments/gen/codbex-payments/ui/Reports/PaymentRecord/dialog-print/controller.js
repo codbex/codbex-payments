@@ -56,6 +56,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
 				filter.$filter.conditions.push(condition);
 			}
+			if (entity.PaymentDirection !== undefined) {
+				const condition = { propertyName: 'PaymentDirection', operator: 'EQ', value: entity.PaymentDirection };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.PaymentType !== undefined) {
+				const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
+				filter.$filter.conditions.push(condition);
+			}
 			if (entity.Reason) {
 				const condition = { propertyName: 'Reason', operator: 'LIKE', value: `%${entity.Reason}%` };
 				filter.$filter.conditions.push(condition);
@@ -66,18 +74,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}
 			if (entity.Company !== undefined) {
 				const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
-				filter.$filter.conditions.push(condition);
-			}
-			if (entity.PaymentRecordDirection !== undefined) {
-				const condition = { propertyName: 'PaymentRecordDirection', operator: 'EQ', value: entity.PaymentRecordDirection };
-				filter.$filter.conditions.push(condition);
-			}
-			if (entity.PaymentStatus !== undefined) {
-				const condition = { propertyName: 'PaymentStatus', operator: 'EQ', value: entity.PaymentStatus };
-				filter.$filter.conditions.push(condition);
-			}
-			if (entity.PaymentType !== undefined) {
-				const condition = { propertyName: 'PaymentType', operator: 'EQ', value: entity.PaymentType };
 				filter.$filter.conditions.push(condition);
 			}
 			if (entity.UUID) {
@@ -96,10 +92,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
             $scope.filter = filter;
 
 			$scope.optionsCurrency = params.optionsCurrency;
-			$scope.optionsCompany = params.optionsCompany;
-			$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-			$scope.optionsPaymentStatus = params.optionsPaymentStatus;
+			$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 			$scope.optionsPaymentType = params.optionsPaymentType;
+			$scope.optionsCompany = params.optionsCompany;
 		}
 
         $scope.loadPage = (filter) => {
@@ -146,26 +141,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}
 			return null;
 		};
-		$scope.optionsCompanyValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsCompany.length; i++) {
-				if ($scope.optionsCompany[i].value === optionKey) {
-					return $scope.optionsCompany[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentRecordDirectionValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentRecordDirection.length; i++) {
-				if ($scope.optionsPaymentRecordDirection[i].value === optionKey) {
-					return $scope.optionsPaymentRecordDirection[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentStatusValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentStatus.length; i++) {
-				if ($scope.optionsPaymentStatus[i].value === optionKey) {
-					return $scope.optionsPaymentStatus[i].text;
+		$scope.optionsPaymentDirectionValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsPaymentDirection.length; i++) {
+				if ($scope.optionsPaymentDirection[i].value === optionKey) {
+					return $scope.optionsPaymentDirection[i].text;
 				}
 			}
 			return null;
@@ -174,6 +153,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsPaymentType.length; i++) {
 				if ($scope.optionsPaymentType[i].value === optionKey) {
 					return $scope.optionsPaymentType[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCompanyValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsCompany.length; i++) {
+				if ($scope.optionsCompany[i].value === optionKey) {
+					return $scope.optionsCompany[i].text;
 				}
 			}
 			return null;

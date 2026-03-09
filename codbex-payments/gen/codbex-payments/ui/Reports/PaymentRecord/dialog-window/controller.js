@@ -13,9 +13,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		$scope.entity = params.entity;
 		$scope.optionsCurrency = params.optionsCurrency;
-		$scope.optionsCompany = params.optionsCompany;
-		$scope.optionsPaymentRecordDirection = params.optionsPaymentRecordDirection;
-		$scope.optionsPaymentStatus = params.optionsPaymentStatus;
+		$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 		$scope.optionsPaymentType = params.optionsPaymentType;
+		$scope.optionsCompany = params.optionsCompany;
 	}
 });

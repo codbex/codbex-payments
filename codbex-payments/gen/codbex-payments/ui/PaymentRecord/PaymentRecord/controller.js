@@ -140,10 +140,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
+				optionsPaymentDirection: $scope.optionsPaymentDirection,
 				optionsPaymentType: $scope.optionsPaymentType,
+				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -154,10 +153,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.createEntity', data: {
 				entity: {},
 				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
+				optionsPaymentDirection: $scope.optionsPaymentDirection,
 				optionsPaymentType: $scope.optionsPaymentType,
+				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -166,10 +164,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.updateEntity', data: {
 				entity: $scope.selectedEntity,
 				optionsCurrency: $scope.optionsCurrency,
-				optionsCompany: $scope.optionsCompany,
-				optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-				optionsPaymentStatus: $scope.optionsPaymentStatus,
+				optionsPaymentDirection: $scope.optionsPaymentDirection,
 				optionsPaymentType: $scope.optionsPaymentType,
+				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -212,20 +209,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				params: {
 					entity: $scope.filterEntity,
 					optionsCurrency: $scope.optionsCurrency,
-					optionsCompany: $scope.optionsCompany,
-					optionsPaymentRecordDirection: $scope.optionsPaymentRecordDirection,
-					optionsPaymentStatus: $scope.optionsPaymentStatus,
+					optionsPaymentDirection: $scope.optionsPaymentDirection,
 					optionsPaymentType: $scope.optionsPaymentType,
+					optionsCompany: $scope.optionsCompany,
 				},
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsCurrency = [];
-		$scope.optionsCompany = [];
-		$scope.optionsPaymentRecordDirection = [];
-		$scope.optionsPaymentStatus = [];
+		$scope.optionsPaymentDirection = [];
 		$scope.optionsPaymentType = [];
+		$scope.optionsCompany = [];
 
 
 		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
@@ -243,8 +238,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
-			$scope.optionsCompany = response.data.map(e => ({
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts').then((response) => {
+			$scope.optionsPaymentDirection = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
 			}));
@@ -252,37 +247,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			console.error(error);
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
-				title: 'Company',
-				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
-
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentRecordDirectionController.ts').then((response) => {
-			$scope.optionsPaymentRecordDirection = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'PaymentRecordDirection',
-				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
-				type: AlertTypes.Error
-			});
-		});
-
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentStatusController.ts').then((response) => {
-			$scope.optionsPaymentStatus = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'PaymentStatus',
+				title: 'PaymentDirection',
 				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
@@ -303,6 +268,21 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+			$scope.optionsCompany = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Company',
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+
 		$scope.optionsCurrencyValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
@@ -311,26 +291,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}
 			return null;
 		};
-		$scope.optionsCompanyValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsCompany.length; i++) {
-				if ($scope.optionsCompany[i].value === optionKey) {
-					return $scope.optionsCompany[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentRecordDirectionValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentRecordDirection.length; i++) {
-				if ($scope.optionsPaymentRecordDirection[i].value === optionKey) {
-					return $scope.optionsPaymentRecordDirection[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPaymentStatusValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsPaymentStatus.length; i++) {
-				if ($scope.optionsPaymentStatus[i].value === optionKey) {
-					return $scope.optionsPaymentStatus[i].text;
+		$scope.optionsPaymentDirectionValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsPaymentDirection.length; i++) {
+				if ($scope.optionsPaymentDirection[i].value === optionKey) {
+					return $scope.optionsPaymentDirection[i].text;
 				}
 			}
 			return null;
@@ -339,6 +303,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsPaymentType.length; i++) {
 				if ($scope.optionsPaymentType[i].value === optionKey) {
 					return $scope.optionsPaymentType[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCompanyValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsCompany.length; i++) {
+				if ($scope.optionsCompany[i].value === optionKey) {
+					return $scope.optionsCompany[i].text;
 				}
 			}
 			return null;

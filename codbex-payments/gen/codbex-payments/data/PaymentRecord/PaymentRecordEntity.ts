@@ -1,4 +1,4 @@
-import { Entity, Table, Id, Generated, Column, Documentation } from '@aerokit/sdk/db'
+import { Entity, Table, Id, Generated, Column, Documentation, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy} from '@aerokit/sdk/db'
 
 @Entity('PaymentRecordEntity')
 @Table('CODBEX_PAYMENTRECORD')
@@ -73,6 +73,22 @@ export class PaymentRecordEntity {
     })
     public Currency?: number;
 
+    @Documentation('PaymentDirection')
+    @Column({
+        name: 'PAYMENTRECORD_PAYMENTDIRECTION',
+        type: 'integer',
+        nullable: true,
+    })
+    public PaymentDirection?: number;
+
+    @Documentation('PaymentType')
+    @Column({
+        name: 'PAYMENTRECORD_PAYMENTTYPE',
+        type: 'integer',
+        nullable: true,
+    })
+    public PaymentType?: number;
+
     @Documentation('Reason')
     @Column({
         name: 'PAYMENTRECORD_REASON',
@@ -98,30 +114,6 @@ export class PaymentRecordEntity {
         nullable: true,
     })
     public Company?: number;
-
-    @Documentation('PaymentRecordDirection')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTRECORDDIRECTION',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentRecordDirection?: number;
-
-    @Documentation('PaymentStatus')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTSTATUS',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentStatus?: number;
-
-    @Documentation('PaymentType')
-    @Column({
-        name: 'PAYMENTRECORD_PAYMENTTYPE',
-        type: 'integer',
-        nullable: true,
-    })
-    public PaymentType?: number;
 
     @Documentation('UUID')
     @Column({

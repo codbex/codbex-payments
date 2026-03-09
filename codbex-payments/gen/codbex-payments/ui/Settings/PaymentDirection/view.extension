@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/Settings/PaymentDirection/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-payments - Application View"
+}

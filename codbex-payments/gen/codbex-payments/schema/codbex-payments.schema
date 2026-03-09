@@ -319,6 +319,16 @@
                         "name": "PAYMENTRECORD_CURRENCY"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_PAYMENTDIRECTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_PAYMENTTYPE"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
@@ -336,21 +346,6 @@
                         "name": "PAYMENTRECORD_COMPANY"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PAYMENTRECORD_PAYMENTRECORDDIRECTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PAYMENTRECORD_PAYMENTSTATUS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PAYMENTRECORD_PAYMENTTYPE"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 36,
                         "unique": true,
@@ -366,44 +361,6 @@
                         "type": "BOOLEAN",
                         "nullable": true,
                         "name": "PAYMENTRECORD_DELETED"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTRECORDDIRECTION",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTRECORDDIRECTION_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PAYMENTRECORDDIRECTION_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PAYMENTSTATUS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "PAYMENTSTATUS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "PAYMENTSTATUS_NAME"
                     }
                 ]
             },
@@ -551,6 +508,24 @@
                 ]
             },
             {
+                "name": "CODBEX_PAYMENTDIRECTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYMENTDIRECTION_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "PAYMENTDIRECTION_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "CustomerPayment_Customer",
                 "type": "foreignKey",
                 "table": "CODBEX_CUSTOMERPAYMENT",
@@ -641,31 +616,13 @@
                 "referencedColumns": "CURRENCY_ID"
             },
             {
-                "name": "PaymentRecord_Company",
+                "name": "PaymentRecord_PaymentDirection",
                 "type": "foreignKey",
                 "table": "CODBEX_PAYMENTRECORD",
-                "constraintName": "PaymentRecord_Company",
-                "columns": "PAYMENTRECORD_COMPANY",
-                "referencedTable": "CODBEX_COMPANY",
-                "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "PaymentRecord_PaymentRecordDirection",
-                "type": "foreignKey",
-                "table": "CODBEX_PAYMENTRECORD",
-                "constraintName": "PaymentRecord_PaymentRecordDirection",
-                "columns": "PAYMENTRECORD_PAYMENTRECORDDIRECTION",
-                "referencedTable": "CODBEX_PAYMENTRECORDDIRECTION",
-                "referencedColumns": "PAYMENTRECORDDIRECTION_ID"
-            },
-            {
-                "name": "PaymentRecord_PaymentStatus",
-                "type": "foreignKey",
-                "table": "CODBEX_PAYMENTRECORD",
-                "constraintName": "PaymentRecord_PaymentStatus",
-                "columns": "PAYMENTRECORD_PAYMENTSTATUS",
-                "referencedTable": "CODBEX_PAYMENTSTATUS",
-                "referencedColumns": "PAYMENTSTATUS_ID"
+                "constraintName": "PaymentRecord_PaymentDirection",
+                "columns": "PAYMENTRECORD_PAYMENTDIRECTION",
+                "referencedTable": "CODBEX_PAYMENTDIRECTION",
+                "referencedColumns": "PAYMENTDIRECTION_ID"
             },
             {
                 "name": "PaymentRecord_PaymentType",
@@ -675,6 +632,15 @@
                 "columns": "PAYMENTRECORD_PAYMENTTYPE",
                 "referencedTable": "CODBEX_PAYMENTTYPE",
                 "referencedColumns": "PAYMENTTYPE_ID"
+            },
+            {
+                "name": "PaymentRecord_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYMENTRECORD",
+                "constraintName": "PaymentRecord_Company",
+                "columns": "PAYMENTRECORD_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
             },
             {
                 "name": "PaymentAdjustment_Currency",
