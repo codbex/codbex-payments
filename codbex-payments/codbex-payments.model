@@ -1084,6 +1084,33 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "CHECKBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataName": "PAYMENTRECORD_DELETEDAT",
+                        "dataNullable": "true",
+                        "dataType": "TIMESTAMP",
+                        "description": "",
+                        "name": "DeletedAt",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "auditType": "NONE",
+                        "dataLength": "255",
+                        "dataName": "PAYMENTRECORD_DELETEDREASON",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "DeletedReason",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "255",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity PaymentRecord",

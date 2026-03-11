@@ -191,6 +191,9 @@ class PaymentRecordController {
         if (entity.Reference?.length > 36) {
             throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
         }
+        if (entity.DeletedReason?.length > 255) {
+            throw new ValidationError(`The 'DeletedReason' exceeds the maximum length of [255] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

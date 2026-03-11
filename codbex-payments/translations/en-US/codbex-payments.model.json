@@ -132,6 +132,8 @@
       "PAYMENTRECORD_UUID": "UUID",
       "PAYMENTRECORD_REFERENCE": "Reference",
       "PAYMENTRECORD_DELETED": "Deleted",
+      "PAYMENTRECORD_DELETEDAT": "DeletedAt",
+      "PAYMENTRECORD_DELETEDREASON": "DeletedReason",
       "CURRENCY": "Currency",
       "CURRENCY_ID": "Id",
       "CURRENCY_CODE": "Code",

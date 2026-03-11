@@ -363,6 +363,17 @@
                         "type": "BOOLEAN",
                         "nullable": true,
                         "name": "PAYMENTRECORD_DELETED"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_DELETEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_DELETEDREASON"
                     }
                 ]
             },

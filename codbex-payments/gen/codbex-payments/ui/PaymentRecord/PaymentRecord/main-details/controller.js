@@ -65,6 +65,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (data.entity.Valor) {
 					data.entity.Valor = new Date(data.entity.Valor);
 				}
+				if (data.entity.DeletedAt) {
+					data.entity.DeletedAt = new Date(data.entity.DeletedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsCurrency = data.optionsCurrency;
 				$scope.optionsPaymentDirection = data.optionsPaymentDirection;
@@ -90,6 +93,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 				if (data.entity.Valor) {
 					data.entity.Valor = new Date(data.entity.Valor);
+				}
+				if (data.entity.DeletedAt) {
+					data.entity.DeletedAt = new Date(data.entity.DeletedAt);
 				}
 				$scope.entity = data.entity;
 				$scope.optionsCurrency = data.optionsCurrency;

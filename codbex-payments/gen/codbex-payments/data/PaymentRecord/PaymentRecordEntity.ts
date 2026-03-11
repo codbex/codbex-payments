@@ -140,6 +140,23 @@ export class PaymentRecordEntity {
     })
     public Deleted?: boolean;
 
+    @Documentation('DeletedAt')
+    @Column({
+        name: 'PAYMENTRECORD_DELETEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    public DeletedAt?: Date;
+
+    @Documentation('DeletedReason')
+    @Column({
+        name: 'PAYMENTRECORD_DELETEDREASON',
+        type: 'string',
+        length: 255,
+        nullable: true,
+    })
+    public DeletedReason?: string;
+
 }
 
 (new PaymentRecordEntity());
