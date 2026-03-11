@@ -139,6 +139,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			Dialogs.postMessage({ topic: 'codbex-payments.EmployeePayment.EmployeePayment.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsEmployee: $scope.optionsEmployee,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 			}});
@@ -150,6 +151,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 			Dialogs.postMessage({ topic: 'codbex-payments.EmployeePayment.EmployeePayment.createEntity', data: {
 				entity: {},
+				optionsEmployee: $scope.optionsEmployee,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 			}});
@@ -159,6 +161,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.action = 'update';
 			Dialogs.postMessage({ topic: 'codbex-payments.EmployeePayment.EmployeePayment.updateEntity', data: {
 				entity: $scope.selectedEntity,
+				optionsEmployee: $scope.optionsEmployee,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
 			}});
@@ -202,6 +205,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				id: 'EmployeePayment-filter',
 				params: {
 					entity: $scope.filterEntity,
+					optionsEmployee: $scope.optionsEmployee,
 					optionsCurrency: $scope.optionsCurrency,
 					optionsCompany: $scope.optionsCompany,
 				},
@@ -209,9 +213,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsEmployee = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsCompany = [];
 
+
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
+			$scope.optionsEmployee = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Employee',
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
 
 		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
@@ -243,6 +263,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
+		$scope.optionsEmployeeValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
+				if ($scope.optionsEmployee[i].value === optionKey) {
+					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsCurrencyValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {

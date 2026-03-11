@@ -19,6 +19,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (params?.entity?.ValorTo) {
 			params.entity.ValorTo = new Date(params.entity.ValorTo);
 		}
+		if (params?.entity?.DeletedAtFrom) {
+			params.entity.DeletedAtFrom = new Date(params.entity.DeletedAtFrom);
+		}
+		if (params?.entity?.DeletedAtTo) {
+			params.entity.DeletedAtTo = new Date(params.entity.DeletedAtTo);
+		}
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
@@ -108,6 +114,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Deleted !== undefined && entity.isDeletedIndeterminate === false) {
 			const condition = { propertyName: 'Deleted', operator: 'EQ', value: entity.Deleted };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.DeletedAtFrom) {
+			const condition = { propertyName: 'DeletedAt', operator: 'GE', value: entity.DeletedAtFrom };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.DeletedAtTo) {
+			const condition = { propertyName: 'DeletedAt', operator: 'LE', value: entity.DeletedAtTo };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.DeletedReason) {
+			const condition = { propertyName: 'DeletedReason', operator: 'LIKE', value: `%${entity.DeletedReason}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-payments.PaymentRecord.PaymentRecord.entitySearch', data: {

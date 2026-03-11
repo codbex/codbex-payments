@@ -8,6 +8,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface EmployeePaymentEntity {
     readonly Id: number;
+    Employee: number;
     Date: Date;
     Valor: Date;
     CompanyIBAN?: string;
@@ -24,6 +25,7 @@ export interface EmployeePaymentEntity {
 }
 
 export interface EmployeePaymentCreateEntity {
+    readonly Employee: number;
     readonly Date: Date;
     readonly Valor: Date;
     readonly CompanyIBAN?: string;
@@ -45,6 +47,7 @@ export interface EmployeePaymentEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Employee?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -61,6 +64,7 @@ export interface EmployeePaymentEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            Employee?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
             CompanyIBAN?: string | string[];
@@ -77,6 +81,7 @@ export interface EmployeePaymentEntityOptions {
         };
         contains?: {
             Id?: number;
+            Employee?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -93,6 +98,7 @@ export interface EmployeePaymentEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            Employee?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -109,6 +115,7 @@ export interface EmployeePaymentEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Employee?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -125,6 +132,7 @@ export interface EmployeePaymentEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            Employee?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -141,6 +149,7 @@ export interface EmployeePaymentEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            Employee?: number;
             Date?: Date;
             Valor?: Date;
             CompanyIBAN?: string;
@@ -190,6 +199,12 @@ export class EmployeePaymentRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Employee",
+                column: "EMPLOYEEPAYMENT_EMPLOYEE",
+                type: "INTEGER",
+                required: true
             },
             {
                 name: "Date",

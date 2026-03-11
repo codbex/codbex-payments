@@ -35,6 +35,8 @@
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UUID' | t:'UUID' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_REFERENCE' | t:'Reference' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETED' | t:'Deleted' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETEDAT' | t:'DeletedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETEDREASON' | t:'DeletedReason' }}</th>
                     </tr>
                 </thead>
                 <tbody bk-table-body>
@@ -64,6 +66,8 @@
 							<bk-checkbox id="idDeleted" compact="false" ng-readonly="true" ng-model="next.Deleted"></bk-checkbox>
 							<bk-checkbox-label for="idDeleted" empty="true"></bk-checkbox-label>
 						</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.DeletedAt}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.DeletedReason}}</td>
                     </tr>
                 </tbody>
             </table>

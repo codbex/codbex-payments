@@ -21,6 +21,8 @@ export interface PaymentRecordEntity {
     UUID: string;
     Reference?: string;
     Deleted?: boolean;
+    DeletedAt?: Date;
+    DeletedReason?: string;
 }
 
 export interface PaymentRecordCreateEntity {
@@ -38,6 +40,8 @@ export interface PaymentRecordCreateEntity {
     readonly Company?: number;
     readonly Reference?: string;
     readonly Deleted?: boolean;
+    readonly DeletedAt?: Date;
+    readonly DeletedReason?: string;
 }
 
 export interface PaymentRecordUpdateEntity extends PaymentRecordCreateEntity {
@@ -63,6 +67,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string | string[];
             Reference?: string | string[];
             Deleted?: boolean | boolean[];
+            DeletedAt?: Date | Date[];
+            DeletedReason?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -81,6 +87,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string | string[];
             Reference?: string | string[];
             Deleted?: boolean | boolean[];
+            DeletedAt?: Date | Date[];
+            DeletedReason?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -99,6 +107,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
+            DeletedAt?: Date;
+            DeletedReason?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -117,6 +127,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
+            DeletedAt?: Date;
+            DeletedReason?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -135,6 +147,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
+            DeletedAt?: Date;
+            DeletedReason?: string;
         };
         lessThan?: {
             Id?: number;
@@ -153,6 +167,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
+            DeletedAt?: Date;
+            DeletedReason?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -171,6 +187,8 @@ export interface PaymentRecordEntityOptions {
             UUID?: string;
             Reference?: string;
             Deleted?: boolean;
+            DeletedAt?: Date;
+            DeletedReason?: string;
         };
     },
     $select?: (keyof PaymentRecordEntity)[],
@@ -285,6 +303,16 @@ export class PaymentRecordRepository {
                 name: "Deleted",
                 column: "PAYMENTRECORD_DELETED",
                 type: "BOOLEAN",
+            },
+            {
+                name: "DeletedAt",
+                column: "PAYMENTRECORD_DELETEDAT",
+                type: "TIMESTAMP",
+            },
+            {
+                name: "DeletedReason",
+                column: "PAYMENTRECORD_DELETEDREASON",
+                type: "VARCHAR",
             }
         ]
     };

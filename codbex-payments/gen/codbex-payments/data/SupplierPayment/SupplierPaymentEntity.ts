@@ -18,9 +18,8 @@ export class SupplierPaymentEntity {
     @Column({
         name: 'SUPPLIERPAYMENT_SUPPLIER',
         type: 'integer',
-        nullable: true,
     })
-    public Supplier?: number;
+    public Supplier!: number;
 
     @Documentation('Date')
     @Column({

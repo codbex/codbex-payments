@@ -109,6 +109,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 						if (e.Valor) {
 							e.Valor = new Date(e.Valor);
 						}
+						if (e.DeletedAt) {
+							e.DeletedAt = new Date(e.DeletedAt);
+						}
 					});
 
 					$scope.data = $scope.data.concat(response.data);

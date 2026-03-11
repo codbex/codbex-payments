@@ -37,6 +37,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			if (params.entity.Valor) {
 				params.entity.Valor = new Date(params.entity.Valor);
 			}
+			if (params.entity.DeletedAt) {
+				params.entity.DeletedAt = new Date(params.entity.DeletedAt);
+			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;

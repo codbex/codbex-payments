@@ -88,6 +88,18 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const condition = { propertyName: 'Deleted', operator: 'EQ', value: entity.Deleted };
 				filter.$filter.conditions.push(condition);
 			}
+			if (entity.DeletedAtFrom) {
+				const condition = { propertyName: 'DeletedAt', operator: 'GE', value: entity.DeletedAtFrom };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.DeletedAtTo) {
+				const condition = { propertyName: 'DeletedAt', operator: 'LE', value: entity.DeletedAtTo };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.DeletedReason) {
+				const condition = { propertyName: 'DeletedReason', operator: 'LIKE', value: `%${entity.DeletedReason}%` };
+				filter.$filter.conditions.push(condition);
+			}
 
             $scope.filter = filter;
 
@@ -114,6 +126,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 						}
 						if (e.Valor) {
 							e.Valor = new Date(e.Valor);
+						}
+						if (e.DeletedAt) {
+							e.DeletedAt = new Date(e.DeletedAt);
 						}
 					});
 

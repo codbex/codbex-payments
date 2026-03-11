@@ -14,6 +14,13 @@ export class EmployeePaymentEntity {
     })
     public Id?: number;
 
+    @Documentation('Employee')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_EMPLOYEE',
+        type: 'integer',
+    })
+    public Employee!: number;
+
     @Documentation('Date')
     @Column({
         name: 'EMPLOYEEPAYMENT_DATE',
