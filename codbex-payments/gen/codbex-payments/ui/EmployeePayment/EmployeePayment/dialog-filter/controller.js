@@ -22,6 +22,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
+		$scope.optionsEmployee = params.optionsEmployee;
 		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsCompany = params.optionsCompany;
 	}
@@ -38,6 +39,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		};
 		if (entity.Id !== undefined) {
 			const condition = { propertyName: 'Id', operator: 'EQ', value: entity.Id };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.Employee !== undefined) {
+			const condition = { propertyName: 'Employee', operator: 'EQ', value: entity.Employee };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.DateFrom) {

@@ -38,8 +38,9 @@
 						navigated="next.Id === selectedEntity.Id"
 						ng-click="action == 'select' ? selectEntity(next) : ''">
 						<bk-list-content
-							item-title="{{next.Date | date: 'dd/MMM/yyyy'}}">
+							item-title="{{optionsEmployeeValue(next.Employee)}}">
 							<bk-list-byline align="left">
+								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Valor | date: "dd/MMM/yyyy"}} |
 								{{next.CompanyIBAN}} |
 								{{next.CounterpartyIBAN}} |

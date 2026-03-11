@@ -8,7 +8,7 @@ import { NumberGeneratorService } from "/codbex-number-generator/service/generat
 
 export interface CustomerPaymentEntity {
     readonly Id: number;
-    Customer?: number;
+    Customer: number;
     Date: Date;
     Valor: Date;
     CompanyIBAN?: string;
@@ -26,7 +26,7 @@ export interface CustomerPaymentEntity {
 }
 
 export interface CustomerPaymentCreateEntity {
-    readonly Customer?: number;
+    readonly Customer: number;
     readonly Date: Date;
     readonly Valor: Date;
     readonly CompanyIBAN?: string;
@@ -213,6 +213,7 @@ export class CustomerPaymentRepository {
                 name: "Customer",
                 column: "CUSTOMERPAYMENT_CUSTOMER",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Date",

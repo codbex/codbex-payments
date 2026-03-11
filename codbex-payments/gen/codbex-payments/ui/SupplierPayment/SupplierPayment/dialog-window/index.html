@@ -20,13 +20,13 @@
                 <bk-form-group label="{{formHeaders[action]}}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idSupplier" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_SUPPLIER' | t }}</bk-form-label>
+                        	<bk-form-label for="idSupplier" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_SUPPLIER' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idSupplier"
 	                            name="Supplier"
 	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Supplier"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsSupplier"
@@ -74,7 +74,9 @@
                         	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COMPANYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'34.0'} }}">
 								<bk-input id="idCompanyIBAN"
 	                                name="CompanyIBAN"
 	                                state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}"
@@ -82,7 +84,6 @@
 	                                ng-model="entity.CompanyIBAN"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COMPANYIBAN)'} }}">
 	                            </bk-input>
@@ -94,7 +95,9 @@
                         	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COUNTERPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'34.0'} }}">
 								<bk-input id="idCounterpartyIBAN"
 	                                name="CounterpartyIBAN"
 	                                state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}"
@@ -102,7 +105,6 @@
 	                                ng-model="entity.CounterpartyIBAN"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COUNTERPARTYIBAN)'} }}">
 	                            </bk-input>
@@ -114,7 +116,9 @@
                         	<bk-form-label for="idCounterpartyName" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COUNTERPARTYNAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'100.0'} }}">
 								<bk-input id="idCounterpartyName"
 	                                name="CounterpartyName"
 	                                state="{{ forms.details['CounterpartyName'].$valid ? '' : 'error' }}"
@@ -122,7 +126,6 @@
 	                                ng-model="entity.CounterpartyName"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="100.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COUNTERPARTYNAME)'} }}">
 	                            </bk-input>
@@ -166,7 +169,9 @@
                         	<bk-form-label for="idReason" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_REASON' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Reason'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Reason'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'100.0'} }}">
 								<bk-input id="idReason"
 	                                name="Reason"
 	                                state="{{ forms.details['Reason'].$valid ? '' : 'error' }}"
@@ -174,7 +179,6 @@
 	                                ng-model="entity.Reason"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="100.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_REASON)'} }}">
 	                            </bk-input>
@@ -186,7 +190,9 @@
                         	<bk-form-label for="idDescription" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_DESCRIPTION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Description'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'100.0'} }}">
 								<bk-input id="idDescription"
 	                                name="Description"
 	                                state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
@@ -194,7 +200,6 @@
 	                                ng-model="entity.Description"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="100.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_DESCRIPTION)'} }}">
 	                            </bk-input>
@@ -251,7 +256,9 @@
                         	<bk-form-label for="idReference" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_REFERENCE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Reference'].$valid ? '' : 'error' }}" text="{{ 'codbex-payments:codbex-payments-model.messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message
+								state="{{ forms.details['Reference'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
 								<bk-input id="idReference"
 	                                name="Reference"
 	                                state="{{ forms.details['Reference'].$valid ? '' : 'error' }}"
@@ -259,7 +266,6 @@
 	                                ng-model="entity.Reference"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_REFERENCE)'} }}">
 	                            </bk-input>

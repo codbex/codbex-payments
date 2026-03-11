@@ -14,7 +14,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "CUSTOMERPAYMENT_CUSTOMER"
                     },
                     {
@@ -108,7 +107,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "SUPPLIERPAYMENT_SUPPLIER"
                     },
                     {
@@ -194,6 +192,10 @@
                         "identity": true,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEEPAYMENT_EMPLOYEE"
                     },
                     {
                         "type": "DATE",
@@ -437,77 +439,6 @@
                 ]
             },
             {
-                "name": "CODBEX_SUPPLIER",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SUPPLIER_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "SUPPLIER_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "SUPPLIER_ADDRESS"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SUPPLIER_POSTALCODE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "SUPPLIER_EMAIL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SUPPLIER_PHONE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SUPPLIER_FAX"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SUPPLIER_COUNTRY"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SUPPLIER_CITY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "SUPPLIER_TIN"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 36,
-                        "nullable": true,
-                        "name": "SUPPLIER_IBAN"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_PAYMENTDIRECTION",
                 "type": "TABLE",
                 "columns": [
@@ -587,6 +518,15 @@
                 "columns": "SUPPLIERPAYMENT_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "EmployeePayment_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEPAYMENT",
+                "constraintName": "EmployeePayment_Employee",
+                "columns": "EMPLOYEEPAYMENT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "EmployeePayment_Currency",

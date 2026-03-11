@@ -18,7 +18,6 @@ export class CustomerPaymentEntity {
     @Column({
         name: 'CUSTOMERPAYMENT_CUSTOMER',
         type: 'integer',
-        nullable: true,
     })
     public Customer!: number;
 
