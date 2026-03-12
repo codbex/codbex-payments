@@ -11,8 +11,8 @@ export interface CustomerPaymentEntity {
     Customer: number;
     Date: Date;
     Valor: Date;
-    CompanyIBAN?: string;
-    CounterpartyIBAN?: string;
+    OurPartyIBAN: string;
+    CounterpartyIBAN: string;
     CounterpartyName?: string;
     Amount: number;
     Currency: number;
@@ -22,15 +22,15 @@ export interface CustomerPaymentEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
-    PaymentMethod?: number;
+    PaymentMethod: number;
 }
 
 export interface CustomerPaymentCreateEntity {
     readonly Customer: number;
     readonly Date: Date;
     readonly Valor: Date;
-    readonly CompanyIBAN?: string;
-    readonly CounterpartyIBAN?: string;
+    readonly OurPartyIBAN: string;
+    readonly CounterpartyIBAN: string;
     readonly CounterpartyName?: string;
     readonly Amount: number;
     readonly Currency: number;
@@ -38,7 +38,7 @@ export interface CustomerPaymentCreateEntity {
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
-    readonly PaymentMethod?: number;
+    readonly PaymentMethod: number;
 }
 
 export interface CustomerPaymentUpdateEntity extends CustomerPaymentCreateEntity {
@@ -52,7 +52,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -70,7 +70,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -88,7 +88,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -106,7 +106,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -124,7 +124,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -142,7 +142,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -160,7 +160,7 @@ export interface CustomerPaymentEntityOptions {
             Customer?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -228,14 +228,16 @@ export class CustomerPaymentRepository {
                 required: true
             },
             {
-                name: "CompanyIBAN",
-                column: "CUSTOMERPAYMENT_COMPANYIBAN",
+                name: "OurPartyIBAN",
+                column: "CUSTOMERPAYMENT_OURPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyIBAN",
                 column: "CUSTOMERPAYMENT_COUNTERPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyName",
@@ -290,6 +292,7 @@ export class CustomerPaymentRepository {
                 name: "PaymentMethod",
                 column: "CUSTOMERPAYMENT_PAYMENTMETHOD",
                 type: "INTEGER",
+                required: true
             }
         ]
     };

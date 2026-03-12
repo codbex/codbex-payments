@@ -18,7 +18,6 @@ export class PaymentAdjustmentEntity {
     @Column({
         name: 'PAYMENTADJUSTMENT_DATE',
         type: 'date',
-        nullable: true,
     })
     public Date!: Date;
 
@@ -26,7 +25,6 @@ export class PaymentAdjustmentEntity {
     @Column({
         name: 'PAYMENTADJUSTMENT_VALOR',
         type: 'date',
-        nullable: true,
     })
     public Valor!: Date;
 
@@ -36,7 +34,6 @@ export class PaymentAdjustmentEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
     public Amount!: number;
 
@@ -44,7 +41,6 @@ export class PaymentAdjustmentEntity {
     @Column({
         name: 'PAYMENTADJUSTMENT_CURRENCY',
         type: 'integer',
-        nullable: true,
     })
     public Currency!: number;
 
@@ -52,7 +48,6 @@ export class PaymentAdjustmentEntity {
     @Column({
         name: 'PAYMENTADJUSTMENT_COMPANY',
         type: 'integer',
-        nullable: true,
     })
     public Company!: number;
 

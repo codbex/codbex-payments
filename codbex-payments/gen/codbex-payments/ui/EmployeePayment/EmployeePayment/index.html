@@ -42,7 +42,7 @@
 							<bk-list-byline align="left">
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Valor | date: "dd/MMM/yyyy"}} |
-								{{next.CompanyIBAN}} |
+								{{next.OurPartyIBAN}} |
 								{{next.CounterpartyIBAN}} |
 								{{next.CounterpartyName}} |
 								{{next.Amount}} |
@@ -52,7 +52,8 @@
 								{{optionsCompanyValue(next.Company)}} |
 								{{next.Name}} |
 								{{next.UUID}} |
-								{{next.Reference}}
+								{{next.Reference}} |
+								{{next.PaymentMethod}}
 							</bk-list-byline>
 						</bk-list-content>
 					</bk-list-link>

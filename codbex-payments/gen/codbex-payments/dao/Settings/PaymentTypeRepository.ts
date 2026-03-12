@@ -5,11 +5,11 @@ import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface PaymentTypeEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
 }
 
 export interface PaymentTypeCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
 }
 
 export interface PaymentTypeUpdateEntity extends PaymentTypeCreateEntity {
@@ -86,6 +86,7 @@ export class PaymentTypeRepository {
                 name: "Name",
                 column: "PAYMENTTYPE_NAME",
                 type: "VARCHAR",
+                required: true
             }
         ]
     };

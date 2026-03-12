@@ -61,8 +61,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Valor', operator: 'LE', value: entity.ValorTo };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.CompanyIBAN) {
-			const condition = { propertyName: 'CompanyIBAN', operator: 'LIKE', value: `%${entity.CompanyIBAN}%` };
+		if (entity.OurPartyIBAN) {
+			const condition = { propertyName: 'OurPartyIBAN', operator: 'LIKE', value: `%${entity.OurPartyIBAN}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CounterpartyIBAN) {
@@ -103,6 +103,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Reference) {
 			const condition = { propertyName: 'Reference', operator: 'LIKE', value: `%${entity.Reference}%` };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.PaymentMethod !== undefined) {
+			const condition = { propertyName: 'PaymentMethod', operator: 'EQ', value: entity.PaymentMethod };
 			filter.$filter.conditions.push(condition);
 		}
 		Dialogs.postMessage({ topic: 'codbex-payments.SupplierPayment.SupplierPayment.entitySearch', data: {

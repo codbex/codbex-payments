@@ -175,8 +175,14 @@ class SupplierPaymentController {
         if (entity.Valor === null || entity.Valor === undefined) {
             throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
         }
-        if (entity.CompanyIBAN?.length > 34) {
-            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [34] characters`);
+        if (entity.OurPartyIBAN === null || entity.OurPartyIBAN === undefined) {
+            throw new ValidationError(`The 'OurPartyIBAN' property is required, provide a valid value`);
+        }
+        if (entity.OurPartyIBAN?.length > 34) {
+            throw new ValidationError(`The 'OurPartyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (entity.CounterpartyIBAN === null || entity.CounterpartyIBAN === undefined) {
+            throw new ValidationError(`The 'CounterpartyIBAN' property is required, provide a valid value`);
         }
         if (entity.CounterpartyIBAN?.length > 34) {
             throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [34] characters`);
@@ -207,6 +213,9 @@ class SupplierPaymentController {
         }
         if (entity.Reference?.length > 36) {
             throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
+        }
+        if (entity.PaymentMethod === null || entity.PaymentMethod === undefined) {
+            throw new ValidationError(`The 'PaymentMethod' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

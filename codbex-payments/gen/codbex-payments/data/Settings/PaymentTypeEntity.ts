@@ -19,9 +19,8 @@ export class PaymentTypeEntity {
         name: 'PAYMENTTYPE_NAME',
         type: 'string',
         length: 20,
-        nullable: true,
     })
-    public Name?: string;
+    public Name!: string;
 
 }
 

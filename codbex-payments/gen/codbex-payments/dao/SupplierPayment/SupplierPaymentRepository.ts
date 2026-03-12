@@ -11,8 +11,8 @@ export interface SupplierPaymentEntity {
     Supplier: number;
     Date: Date;
     Valor: Date;
-    CompanyIBAN?: string;
-    CounterpartyIBAN?: string;
+    OurPartyIBAN: string;
+    CounterpartyIBAN: string;
     CounterpartyName?: string;
     Amount: number;
     Currency: number;
@@ -22,14 +22,15 @@ export interface SupplierPaymentEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
+    PaymentMethod: number;
 }
 
 export interface SupplierPaymentCreateEntity {
     readonly Supplier: number;
     readonly Date: Date;
     readonly Valor: Date;
-    readonly CompanyIBAN?: string;
-    readonly CounterpartyIBAN?: string;
+    readonly OurPartyIBAN: string;
+    readonly CounterpartyIBAN: string;
     readonly CounterpartyName?: string;
     readonly Amount: number;
     readonly Currency: number;
@@ -37,6 +38,7 @@ export interface SupplierPaymentCreateEntity {
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
+    readonly PaymentMethod: number;
 }
 
 export interface SupplierPaymentUpdateEntity extends SupplierPaymentCreateEntity {
@@ -50,7 +52,7 @@ export interface SupplierPaymentEntityOptions {
             Supplier?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -61,13 +63,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Supplier?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -78,13 +81,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         contains?: {
             Id?: number;
             Supplier?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -95,13 +99,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThan?: {
             Id?: number;
             Supplier?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -112,13 +117,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Supplier?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -129,13 +135,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThan?: {
             Id?: number;
             Supplier?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -146,13 +153,14 @@ export interface SupplierPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Supplier?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -163,6 +171,7 @@ export interface SupplierPaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
     },
     $select?: (keyof SupplierPaymentEntity)[],
@@ -219,14 +228,16 @@ export class SupplierPaymentRepository {
                 required: true
             },
             {
-                name: "CompanyIBAN",
-                column: "SUPPLIERPAYMENT_COMPANYIBAN",
+                name: "OurPartyIBAN",
+                column: "SUPPLIERPAYMENT_OURPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyIBAN",
                 column: "SUPPLIERPAYMENT_COUNTERPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyName",
@@ -276,6 +287,12 @@ export class SupplierPaymentRepository {
                 name: "Reference",
                 column: "SUPPLIERPAYMENT_REFERENCE",
                 type: "VARCHAR",
+            },
+            {
+                name: "PaymentMethod",
+                column: "SUPPLIERPAYMENT_PAYMENTMETHOD",
+                type: "INTEGER",
+                required: true
             }
         ]
     };
