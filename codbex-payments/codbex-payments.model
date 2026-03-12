@@ -196,7 +196,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Customer Payment')",
                         "dataLength": "20",
                         "dataName": "CUSTOMERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -486,7 +486,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Supplier Payment')",
                         "dataLength": "20",
                         "dataName": "SUPPLIERPAYMENT_NAME",
                         "dataNullable": "true",
@@ -757,7 +757,7 @@
                     },
                     {
                         "auditType": "NONE",
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Employee Payment')",
                         "dataLength": "20",
                         "dataName": "EMPLOYEEPAYMENT_NAME",
                         "dataNullable": "true",

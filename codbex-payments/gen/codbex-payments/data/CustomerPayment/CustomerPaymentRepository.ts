@@ -14,13 +14,13 @@ export class CustomerPaymentRepository extends Repository<CustomerPaymentEntity>
     }
 
     public override create(entity: CustomerPaymentEntity): string | number {
-        entity.Name = new NumberGeneratorService().generate(18);
+        entity.Name = new NumberGeneratorService().generateByType('Customer Payment');
         entity.UUID = require("sdk/utils/uuid").random();
         return super.create(entity);
     }
 
     public override upsert(entity: CustomerPaymentEntity): string | number {
-        entity.Name = new NumberGeneratorService().generate(18);
+        entity.Name = new NumberGeneratorService().generateByType('Customer Payment');
         entity.UUID = require("sdk/utils/uuid").random();
         return super.upsert(entity);
     }

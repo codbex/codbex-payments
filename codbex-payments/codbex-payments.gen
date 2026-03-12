@@ -4,13 +4,46 @@
   "brandUrl": "https://www.codbex.com/",
   "title": "Payments Management Module",
   "description": "Managing Payments Data",
+  "fileName": "codbex-payments",
+  "genFolderName": "codbex-payments",
+  "dataSource": "DefaultDB",
+  "roles": [
+    {
+      "entityName": "CustomerPayment",
+      "roleRead": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly",
+      "roleWrite": "codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
+    },
+    {
+      "entityName": "SupplierPayment",
+      "roleRead": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly",
+      "roleWrite": "codbex-payments.SupplierPayment.SupplierPaymentFullAccess"
+    },
+    {
+      "entityName": "EmployeePayment",
+      "roleRead": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly",
+      "roleWrite": "codbex-payments.EmployeePayment.EmployeePaymentFullAccess"
+    },
+    {
+      "entityName": "PaymentRecord",
+      "roleRead": "codbex-payments.PaymentRecord.PaymentRecordReadOnly",
+      "roleWrite": "codbex-payments.PaymentRecord.PaymentRecordFullAccess"
+    },
+    {
+      "entityName": "PaymentType",
+      "roleRead": "codbex-payments.Settings.PaymentTypeReadOnly",
+      "roleWrite": "codbex-payments.Settings.PaymentTypeFullAccess"
+    },
+    {
+      "entityName": "PaymentAdjustment",
+      "roleRead": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly",
+      "roleWrite": "codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess"
+    }
+  ],
+  "tprefix": "codbex-payments-model",
   "projectName": "codbex-payments",
   "workspaceName": "workspace",
   "filePath": "codbex-payments.model",
   "templateId": "template-application-angular-v2/template/template.js",
-  "fileName": "codbex-payments",
-  "genFolderName": "codbex-payments",
-  "dataSource": "DefaultDB",
   "perspectives": {
     "CustomerPayment": {
       "views": [
@@ -231,39 +264,6 @@
       "role": ""
     }
   },
-  "roles": [
-    {
-      "entityName": "CustomerPayment",
-      "roleRead": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly",
-      "roleWrite": "codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
-    },
-    {
-      "entityName": "SupplierPayment",
-      "roleRead": "codbex-payments.SupplierPayment.SupplierPaymentReadOnly",
-      "roleWrite": "codbex-payments.SupplierPayment.SupplierPaymentFullAccess"
-    },
-    {
-      "entityName": "EmployeePayment",
-      "roleRead": "codbex-payments.EmployeePayment.EmployeePaymentReadOnly",
-      "roleWrite": "codbex-payments.EmployeePayment.EmployeePaymentFullAccess"
-    },
-    {
-      "entityName": "PaymentRecord",
-      "roleRead": "codbex-payments.PaymentRecord.PaymentRecordReadOnly",
-      "roleWrite": "codbex-payments.PaymentRecord.PaymentRecordFullAccess"
-    },
-    {
-      "entityName": "PaymentType",
-      "roleRead": "codbex-payments.Settings.PaymentTypeReadOnly",
-      "roleWrite": "codbex-payments.Settings.PaymentTypeFullAccess"
-    },
-    {
-      "entityName": "PaymentAdjustment",
-      "roleRead": "codbex-payments.PaymentAdjustment.PaymentAdjustmentReadOnly",
-      "roleWrite": "codbex-payments.PaymentAdjustment.PaymentAdjustmentFullAccess"
-    }
-  ],
-  "tprefix": "codbex-payments-model",
   "models": [
     {
       "properties": [
@@ -620,7 +620,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Customer Payment')",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
           "dataNullable": true,
@@ -1127,7 +1127,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(18)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Customer Payment')",
             "dataLength": "20",
             "dataName": "CUSTOMERPAYMENT_NAME",
             "dataNullable": true,
@@ -1547,7 +1547,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Supplier Payment')",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
           "dataNullable": true,
@@ -2017,7 +2017,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(19)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Supplier Payment')",
             "dataLength": "20",
             "dataName": "SUPPLIERPAYMENT_NAME",
             "dataNullable": true,
@@ -2464,7 +2464,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Employee Payment')",
           "dataLength": "20",
           "dataName": "EMPLOYEEPAYMENT_NAME",
           "dataNullable": true,
@@ -2934,7 +2934,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(20)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Employee Payment')",
             "dataLength": "20",
             "dataName": "EMPLOYEEPAYMENT_NAME",
             "dataNullable": true,
