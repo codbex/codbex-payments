@@ -35,23 +35,21 @@ export class EmployeePaymentEntity {
     })
     public Valor!: Date;
 
-    @Documentation('CompanyIBAN')
+    @Documentation('OurPartyIBAN')
     @Column({
-        name: 'EMPLOYEEPAYMENT_COMPANYIBAN',
+        name: 'EMPLOYEEPAYMENT_OURPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CompanyIBAN?: string;
+    public OurPartyIBAN!: string;
 
     @Documentation('CounterpartyIBAN')
     @Column({
         name: 'EMPLOYEEPAYMENT_COUNTERPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CounterpartyIBAN?: string;
+    public CounterpartyIBAN!: string;
 
     @Documentation('CounterpartyName')
     @Column({
@@ -128,6 +126,13 @@ export class EmployeePaymentEntity {
         nullable: true,
     })
     public Reference?: string;
+
+    @Documentation('PaymentMethod')
+    @Column({
+        name: 'EMPLOYEEPAYMENT_PAYMENTMETHOD',
+        type: 'integer',
+    })
+    public PaymentMethod!: number;
 
 }
 

@@ -27,13 +27,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
-                        "name": "CUSTOMERPAYMENT_COMPANYIBAN"
+                        "name": "CUSTOMERPAYMENT_OURPARTYIBAN"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
                         "name": "CUSTOMERPAYMENT_COUNTERPARTYIBAN"
                     },
                     {
@@ -89,7 +87,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
                     }
                 ]
@@ -120,13 +117,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
-                        "name": "SUPPLIERPAYMENT_COMPANYIBAN"
+                        "name": "SUPPLIERPAYMENT_OURPARTYIBAN"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
                         "name": "SUPPLIERPAYMENT_COUNTERPARTYIBAN"
                     },
                     {
@@ -179,6 +174,10 @@
                         "length": 36,
                         "nullable": true,
                         "name": "SUPPLIERPAYMENT_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "SUPPLIERPAYMENT_PAYMENTMETHOD"
                     }
                 ]
             },
@@ -208,13 +207,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
-                        "name": "EMPLOYEEPAYMENT_COMPANYIBAN"
+                        "name": "EMPLOYEEPAYMENT_OURPARTYIBAN"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
                         "name": "EMPLOYEEPAYMENT_COUNTERPARTYIBAN"
                     },
                     {
@@ -267,6 +264,10 @@
                         "length": 36,
                         "nullable": true,
                         "name": "EMPLOYEEPAYMENT_REFERENCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EMPLOYEEPAYMENT_PAYMENTMETHOD"
                     }
                 ]
             },
@@ -292,13 +293,11 @@
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
-                        "name": "PAYMENTRECORD_COMPANYIBAN"
+                        "name": "PAYMENTRECORD_OURPARTYIBAN"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
                         "name": "PAYMENTRECORD_COUNTERPARTYIBAN"
                     },
                     {
@@ -312,22 +311,18 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PAYMENTRECORD_AMOUNT"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTRECORD_CURRENCY"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTRECORD_PAYMENTDIRECTION"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTRECORD_PAYMENTTYPE"
                     },
                     {
@@ -391,7 +386,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "PAYMENTTYPE_NAME"
                     }
                 ]
@@ -409,12 +403,10 @@
                     },
                     {
                         "type": "DATE",
-                        "nullable": true,
                         "name": "PAYMENTADJUSTMENT_DATE"
                     },
                     {
                         "type": "DATE",
-                        "nullable": true,
                         "name": "PAYMENTADJUSTMENT_VALOR"
                     },
                     {
@@ -422,17 +414,14 @@
                         "length": 16,
                         "precision": "16",
                         "scale": "2",
-                        "nullable": true,
                         "name": "PAYMENTADJUSTMENT_AMOUNT"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTADJUSTMENT_CURRENCY"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "PAYMENTADJUSTMENT_COMPANY"
                     },
                     {
@@ -445,6 +434,7 @@
                         "type": "VARCHAR",
                         "length": 36,
                         "nullable": true,
+                        "unique": true,
                         "name": "PAYMENTADJUSTMENT_UUID"
                     }
                 ]
@@ -531,6 +521,15 @@
                 "referencedColumns": "COMPANY_ID"
             },
             {
+                "name": "SupplierPayment_PaymentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_SUPPLIERPAYMENT",
+                "constraintName": "SupplierPayment_PaymentMethod",
+                "columns": "SUPPLIERPAYMENT_PAYMENTMETHOD",
+                "referencedTable": "CODBEX_PAYMENTMETHOD",
+                "referencedColumns": "PAYMENTMETHOD_ID"
+            },
+            {
                 "name": "EmployeePayment_Employee",
                 "type": "foreignKey",
                 "table": "CODBEX_EMPLOYEEPAYMENT",
@@ -556,6 +555,15 @@
                 "columns": "EMPLOYEEPAYMENT_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "EmployeePayment_PaymentMethod",
+                "type": "foreignKey",
+                "table": "CODBEX_EMPLOYEEPAYMENT",
+                "constraintName": "EmployeePayment_PaymentMethod",
+                "columns": "EMPLOYEEPAYMENT_PAYMENTMETHOD",
+                "referencedTable": "CODBEX_PAYMENTMETHOD",
+                "referencedColumns": "PAYMENTMETHOD_ID"
             },
             {
                 "name": "PaymentRecord_Currency",

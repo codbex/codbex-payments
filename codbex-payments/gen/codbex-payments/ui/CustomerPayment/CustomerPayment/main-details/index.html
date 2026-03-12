@@ -73,28 +73,28 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_COMPANYIBAN' | t }}</bk-form-label>
+                        	<bk-form-label for="idOurPartyIBAN" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_OURPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 							<bk-form-input-message
-								state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}"
+								state="{{ forms.details['OurPartyIBAN'].$valid ? '' : 'error' }}"
 								text="{{ 'codbex-payments:codbex-payments-model.messages.error.lengthMax' | t:{'max':'34.0'} }}">
-								<bk-input id="idCompanyIBAN"
-	                                name="CompanyIBAN"
-	                                state="{{ forms.details['CompanyIBAN'].$valid ? '' : 'error' }}"
-									ng-required="false"
-	                                ng-model="entity.CompanyIBAN"
+								<bk-input id="idOurPartyIBAN"
+	                                name="OurPartyIBAN"
+	                                state="{{ forms.details['OurPartyIBAN'].$valid ? '' : 'error' }}"
+									ng-required="true"
+	                                ng-model="entity.OurPartyIBAN"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
 	                                type="text"
-	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_COMPANYIBAN)'} }}">
+	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_OURPARTYIBAN)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_COUNTERPARTYIBAN' | t }}</bk-form-label>
+                        	<bk-form-label for="idCounterpartyIBAN" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_COUNTERPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 							<bk-form-input-message
@@ -103,7 +103,7 @@
 								<bk-input id="idCounterpartyIBAN"
 	                                name="CounterpartyIBAN"
 	                                state="{{ forms.details['CounterpartyIBAN'].$valid ? '' : 'error' }}"
-									ng-required="false"
+									ng-required="true"
 	                                ng-model="entity.CounterpartyIBAN"
 	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
@@ -284,13 +284,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentMethod" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_PAYMENTMETHOD' | t }}</bk-form-label>
+                        	<bk-form-label for="idPaymentMethod" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.CUSTOMERPAYMENT_PAYMENTMETHOD' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--7 ">
 	                        <bk-combobox-input input-id="idPaymentMethod"
 	                            name="PaymentMethod"
 	                            state="{{ forms.details['PaymentMethod'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.PaymentMethod"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentMethod"

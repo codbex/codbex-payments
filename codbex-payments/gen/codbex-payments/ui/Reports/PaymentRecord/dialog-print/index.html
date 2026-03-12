@@ -22,7 +22,7 @@
                     <tr bk-table-row>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DATE' | t:'Date' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_VALOR' | t:'Valor' }}</th>
-						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN' | t:'CompanyIBAN' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_OURPARTYIBAN' | t:'OurPartyIBAN' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN' | t:'CounterpartyIBAN' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYNAME' | t:'CounterpartyName' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT' | t:'Amount' }}</th>
@@ -50,7 +50,7 @@
 						<td bk-table-cell hoverable="true" activable="true">
 							<bk-input type="date" ng-model="next.Valor" ng-readonly="true"></bk-input>
 						</td>
-						<td bk-table-cell hoverable="true" activable="true">{{next.CompanyIBAN}}</td>
+						<td bk-table-cell hoverable="true" activable="true">{{next.OurPartyIBAN}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{next.CounterpartyIBAN}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{next.CounterpartyName}}</td>
 						<td bk-table-cell hoverable="true" activable="true">{{next.Amount}}</td>
