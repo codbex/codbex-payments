@@ -35,23 +35,21 @@ export class CustomerPaymentEntity {
     })
     public Valor!: Date;
 
-    @Documentation('CompanyIBAN')
+    @Documentation('OurPartyIBAN')
     @Column({
-        name: 'CUSTOMERPAYMENT_COMPANYIBAN',
+        name: 'CUSTOMERPAYMENT_OURPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CompanyIBAN?: string;
+    public OurPartyIBAN!: string;
 
     @Documentation('CounterpartyIBAN')
     @Column({
         name: 'CUSTOMERPAYMENT_COUNTERPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CounterpartyIBAN?: string;
+    public CounterpartyIBAN!: string;
 
     @Documentation('CounterpartyName')
     @Column({
@@ -133,9 +131,8 @@ export class CustomerPaymentEntity {
     @Column({
         name: 'CUSTOMERPAYMENT_PAYMENTMETHOD',
         type: 'integer',
-        nullable: true,
     })
-    public PaymentMethod?: number;
+    public PaymentMethod!: number;
 
 }
 

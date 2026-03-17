@@ -6,21 +6,21 @@ import { EntityUtils } from "../utils/EntityUtils";
 
 export interface PaymentAdjustmentEntity {
     readonly Id: number;
-    Date?: Date;
-    Valor?: Date;
-    Amount?: number;
-    Currency?: number;
-    Company?: number;
+    Date: Date;
+    Valor: Date;
+    Amount: number;
+    Currency: number;
+    Company: number;
     Reason?: string;
     UUID?: string;
 }
 
 export interface PaymentAdjustmentCreateEntity {
-    readonly Date?: Date;
-    readonly Valor?: Date;
-    readonly Amount?: number;
-    readonly Currency?: number;
-    readonly Company?: number;
+    readonly Date: Date;
+    readonly Valor: Date;
+    readonly Amount: number;
+    readonly Currency: number;
+    readonly Company: number;
     readonly Reason?: string;
 }
 
@@ -140,26 +140,31 @@ export class PaymentAdjustmentRepository {
                 name: "Date",
                 column: "PAYMENTADJUSTMENT_DATE",
                 type: "DATE",
+                required: true
             },
             {
                 name: "Valor",
                 column: "PAYMENTADJUSTMENT_VALOR",
                 type: "DATE",
+                required: true
             },
             {
                 name: "Amount",
                 column: "PAYMENTADJUSTMENT_AMOUNT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
                 column: "PAYMENTADJUSTMENT_CURRENCY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Company",
                 column: "PAYMENTADJUSTMENT_COMPANY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Reason",

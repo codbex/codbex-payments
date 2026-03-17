@@ -11,8 +11,8 @@ export interface EmployeePaymentEntity {
     Employee: number;
     Date: Date;
     Valor: Date;
-    CompanyIBAN?: string;
-    CounterpartyIBAN?: string;
+    OurPartyIBAN: string;
+    CounterpartyIBAN: string;
     CounterpartyName?: string;
     Amount: number;
     Currency: number;
@@ -22,14 +22,15 @@ export interface EmployeePaymentEntity {
     Name?: string;
     UUID: string;
     Reference?: string;
+    PaymentMethod: number;
 }
 
 export interface EmployeePaymentCreateEntity {
     readonly Employee: number;
     readonly Date: Date;
     readonly Valor: Date;
-    readonly CompanyIBAN?: string;
-    readonly CounterpartyIBAN?: string;
+    readonly OurPartyIBAN: string;
+    readonly CounterpartyIBAN: string;
     readonly CounterpartyName?: string;
     readonly Amount: number;
     readonly Currency: number;
@@ -37,6 +38,7 @@ export interface EmployeePaymentCreateEntity {
     readonly Description?: string;
     readonly Company?: number;
     readonly Reference?: string;
+    readonly PaymentMethod: number;
 }
 
 export interface EmployeePaymentUpdateEntity extends EmployeePaymentCreateEntity {
@@ -50,7 +52,7 @@ export interface EmployeePaymentEntityOptions {
             Employee?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -61,13 +63,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Employee?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -78,13 +81,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string | string[];
             UUID?: string | string[];
             Reference?: string | string[];
+            PaymentMethod?: number | number[];
         };
         contains?: {
             Id?: number;
             Employee?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -95,13 +99,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThan?: {
             Id?: number;
             Employee?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -112,13 +117,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Employee?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -129,13 +135,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThan?: {
             Id?: number;
             Employee?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -146,13 +153,14 @@ export interface EmployeePaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Employee?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -163,6 +171,7 @@ export interface EmployeePaymentEntityOptions {
             Name?: string;
             UUID?: string;
             Reference?: string;
+            PaymentMethod?: number;
         };
     },
     $select?: (keyof EmployeePaymentEntity)[],
@@ -219,14 +228,16 @@ export class EmployeePaymentRepository {
                 required: true
             },
             {
-                name: "CompanyIBAN",
-                column: "EMPLOYEEPAYMENT_COMPANYIBAN",
+                name: "OurPartyIBAN",
+                column: "EMPLOYEEPAYMENT_OURPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyIBAN",
                 column: "EMPLOYEEPAYMENT_COUNTERPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyName",
@@ -276,6 +287,12 @@ export class EmployeePaymentRepository {
                 name: "Reference",
                 column: "EMPLOYEEPAYMENT_REFERENCE",
                 type: "VARCHAR",
+            },
+            {
+                name: "PaymentMethod",
+                column: "EMPLOYEEPAYMENT_PAYMENTMETHOD",
+                type: "INTEGER",
+                required: true
             }
         ]
     };

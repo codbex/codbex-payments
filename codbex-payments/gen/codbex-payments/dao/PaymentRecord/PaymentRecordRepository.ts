@@ -8,13 +8,13 @@ export interface PaymentRecordEntity {
     readonly Id: number;
     Date: Date;
     Valor: Date;
-    CompanyIBAN?: string;
-    CounterpartyIBAN?: string;
+    OurPartyIBAN: string;
+    CounterpartyIBAN: string;
     CounterpartyName?: string;
-    Amount?: number;
-    Currency?: number;
-    PaymentDirection?: number;
-    PaymentType?: number;
+    Amount: number;
+    Currency: number;
+    PaymentDirection: number;
+    PaymentType: number;
     Reason?: string;
     Description?: string;
     Company?: number;
@@ -28,13 +28,13 @@ export interface PaymentRecordEntity {
 export interface PaymentRecordCreateEntity {
     readonly Date: Date;
     readonly Valor: Date;
-    readonly CompanyIBAN?: string;
-    readonly CounterpartyIBAN?: string;
+    readonly OurPartyIBAN: string;
+    readonly CounterpartyIBAN: string;
     readonly CounterpartyName?: string;
-    readonly Amount?: number;
-    readonly Currency?: number;
-    readonly PaymentDirection?: number;
-    readonly PaymentType?: number;
+    readonly Amount: number;
+    readonly Currency: number;
+    readonly PaymentDirection: number;
+    readonly PaymentType: number;
     readonly Reason?: string;
     readonly Description?: string;
     readonly Company?: number;
@@ -54,7 +54,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -74,7 +74,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number | number[];
             Date?: Date | Date[];
             Valor?: Date | Date[];
-            CompanyIBAN?: string | string[];
+            OurPartyIBAN?: string | string[];
             CounterpartyIBAN?: string | string[];
             CounterpartyName?: string | string[];
             Amount?: number | number[];
@@ -94,7 +94,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -114,7 +114,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -134,7 +134,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -154,7 +154,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -174,7 +174,7 @@ export interface PaymentRecordEntityOptions {
             Id?: number;
             Date?: Date;
             Valor?: Date;
-            CompanyIBAN?: string;
+            OurPartyIBAN?: string;
             CounterpartyIBAN?: string;
             CounterpartyName?: string;
             Amount?: number;
@@ -239,14 +239,16 @@ export class PaymentRecordRepository {
                 required: true
             },
             {
-                name: "CompanyIBAN",
-                column: "PAYMENTRECORD_COMPANYIBAN",
+                name: "OurPartyIBAN",
+                column: "PAYMENTRECORD_OURPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyIBAN",
                 column: "PAYMENTRECORD_COUNTERPARTYIBAN",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "CounterpartyName",
@@ -257,21 +259,25 @@ export class PaymentRecordRepository {
                 name: "Amount",
                 column: "PAYMENTRECORD_AMOUNT",
                 type: "DECIMAL",
+                required: true
             },
             {
                 name: "Currency",
                 column: "PAYMENTRECORD_CURRENCY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "PaymentDirection",
                 column: "PAYMENTRECORD_PAYMENTDIRECTION",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "PaymentType",
                 column: "PAYMENTRECORD_PAYMENTTYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Reason",
