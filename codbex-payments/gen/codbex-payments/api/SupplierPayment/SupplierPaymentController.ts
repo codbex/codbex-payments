@@ -46,7 +46,7 @@ class SupplierPaymentController {
             this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -181,11 +181,17 @@ class SupplierPaymentController {
         if (entity.OurPartyIBAN?.length > 34) {
             throw new ValidationError(`The 'OurPartyIBAN' exceeds the maximum length of [34] characters`);
         }
+        if (!RegExp(/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/).test(entity.OurPartyIBAN)) {
+            throw new ValidationError(`The value provided for the 'OurPartyIBAN' property ('[${entity.OurPartyIBAN}]') doesn't match the required pattern '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'`);
+        }
         if (entity.CounterpartyIBAN === null || entity.CounterpartyIBAN === undefined) {
             throw new ValidationError(`The 'CounterpartyIBAN' property is required, provide a valid value`);
         }
         if (entity.CounterpartyIBAN?.length > 34) {
             throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (!RegExp(/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/).test(entity.CounterpartyIBAN)) {
+            throw new ValidationError(`The value provided for the 'CounterpartyIBAN' property ('[${entity.CounterpartyIBAN}]') doesn't match the required pattern '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'`);
         }
         if (entity.CounterpartyName?.length > 100) {
             throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
