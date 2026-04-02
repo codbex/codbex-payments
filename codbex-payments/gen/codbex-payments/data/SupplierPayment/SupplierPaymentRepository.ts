@@ -32,13 +32,13 @@ export class SupplierPaymentRepository extends Repository<SupplierPaymentEntity>
     }
 
     public override create(entity: SupplierPaymentEntity): string | number {
-        entity.Name = new NumberGeneratorService().generate(19);
+        entity.Name = new NumberGeneratorService().generateByType('Supplier Payment');
         entity.UUID = require("sdk/utils/uuid").random();
         return super.create(entity);
     }
 
     public override upsert(entity: SupplierPaymentEntity): string | number {
-        entity.Name = new NumberGeneratorService().generate(19);
+        entity.Name = new NumberGeneratorService().generateByType('Supplier Payment');
         entity.UUID = require("sdk/utils/uuid").random();
         return super.upsert(entity);
     }
