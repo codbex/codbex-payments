@@ -62,8 +62,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Valor', operator: 'LE', value: entity.ValorTo };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.CompanyIBAN) {
-			const condition = { propertyName: 'CompanyIBAN', operator: 'LIKE', value: `%${entity.CompanyIBAN}%` };
+		if (entity.OurPartyIBAN) {
+			const condition = { propertyName: 'OurPartyIBAN', operator: 'LIKE', value: `%${entity.OurPartyIBAN}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CounterpartyIBAN) {

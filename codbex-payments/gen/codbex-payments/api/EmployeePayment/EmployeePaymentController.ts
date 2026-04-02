@@ -175,11 +175,23 @@ class EmployeePaymentController {
         if (entity.Valor === null || entity.Valor === undefined) {
             throw new ValidationError(`The 'Valor' property is required, provide a valid value`);
         }
-        if (entity.CompanyIBAN?.length > 34) {
-            throw new ValidationError(`The 'CompanyIBAN' exceeds the maximum length of [34] characters`);
+        if (entity.OurPartyIBAN === null || entity.OurPartyIBAN === undefined) {
+            throw new ValidationError(`The 'OurPartyIBAN' property is required, provide a valid value`);
+        }
+        if (entity.OurPartyIBAN?.length > 34) {
+            throw new ValidationError(`The 'OurPartyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (!RegExp(/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/).test(entity.OurPartyIBAN)) {
+            throw new ValidationError(`The value provided for the 'OurPartyIBAN' property ('[${entity.OurPartyIBAN}]') doesn't match the required pattern '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'`);
+        }
+        if (entity.CounterpartyIBAN === null || entity.CounterpartyIBAN === undefined) {
+            throw new ValidationError(`The 'CounterpartyIBAN' property is required, provide a valid value`);
         }
         if (entity.CounterpartyIBAN?.length > 34) {
             throw new ValidationError(`The 'CounterpartyIBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (!RegExp(/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/).test(entity.CounterpartyIBAN)) {
+            throw new ValidationError(`The value provided for the 'CounterpartyIBAN' property ('[${entity.CounterpartyIBAN}]') doesn't match the required pattern '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'`);
         }
         if (entity.CounterpartyName?.length > 100) {
             throw new ValidationError(`The 'CounterpartyName' exceeds the maximum length of [100] characters`);
@@ -207,6 +219,9 @@ class EmployeePaymentController {
         }
         if (entity.Reference?.length > 36) {
             throw new ValidationError(`The 'Reference' exceeds the maximum length of [36] characters`);
+        }
+        if (entity.PaymentMethod === null || entity.PaymentMethod === undefined) {
+            throw new ValidationError(`The 'PaymentMethod' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

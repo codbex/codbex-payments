@@ -28,23 +28,21 @@ export class PaymentRecordEntity {
     })
     public Valor!: Date;
 
-    @Documentation('CompanyIBAN')
+    @Documentation('OurPartyIBAN')
     @Column({
-        name: 'PAYMENTRECORD_COMPANYIBAN',
+        name: 'PAYMENTRECORD_OURPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CompanyIBAN?: string;
+    public OurPartyIBAN!: string;
 
     @Documentation('CounterpartyIBAN')
     @Column({
         name: 'PAYMENTRECORD_COUNTERPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CounterpartyIBAN?: string;
+    public CounterpartyIBAN!: string;
 
     @Documentation('CounterpartyName')
     @Column({
@@ -61,33 +59,29 @@ export class PaymentRecordEntity {
         type: 'big_decimal',
         precision: 16,
         scale: 2,
-        nullable: true,
     })
-    public Amount?: number;
+    public Amount!: number;
 
     @Documentation('Currency')
     @Column({
         name: 'PAYMENTRECORD_CURRENCY',
         type: 'integer',
-        nullable: true,
     })
-    public Currency?: number;
+    public Currency!: number;
 
     @Documentation('PaymentDirection')
     @Column({
         name: 'PAYMENTRECORD_PAYMENTDIRECTION',
         type: 'integer',
-        nullable: true,
     })
-    public PaymentDirection?: number;
+    public PaymentDirection!: number;
 
     @Documentation('PaymentType')
     @Column({
         name: 'PAYMENTRECORD_PAYMENTTYPE',
         type: 'integer',
-        nullable: true,
     })
-    public PaymentType?: number;
+    public PaymentType!: number;
 
     @Documentation('Reason')
     @Column({

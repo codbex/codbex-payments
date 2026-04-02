@@ -35,23 +35,21 @@ export class SupplierPaymentEntity {
     })
     public Valor!: Date;
 
-    @Documentation('CompanyIBAN')
+    @Documentation('OurPartyIBAN')
     @Column({
-        name: 'SUPPLIERPAYMENT_COMPANYIBAN',
+        name: 'SUPPLIERPAYMENT_OURPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CompanyIBAN?: string;
+    public OurPartyIBAN!: string;
 
     @Documentation('CounterpartyIBAN')
     @Column({
         name: 'SUPPLIERPAYMENT_COUNTERPARTYIBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public CounterpartyIBAN?: string;
+    public CounterpartyIBAN!: string;
 
     @Documentation('CounterpartyName')
     @Column({
@@ -128,6 +126,13 @@ export class SupplierPaymentEntity {
         nullable: true,
     })
     public Reference?: string;
+
+    @Documentation('PaymentMethod')
+    @Column({
+        name: 'SUPPLIERPAYMENT_PAYMENTMETHOD',
+        type: 'integer',
+    })
+    public PaymentMethod!: number;
 
 }
 

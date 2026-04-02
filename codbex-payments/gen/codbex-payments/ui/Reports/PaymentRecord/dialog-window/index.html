@@ -45,27 +45,27 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompanyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN' | t }}</bk-form-label>
+                        	<bk-form-label for="idOurPartyIBAN" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_OURPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <bk-input id="idCompanyIBAN"
-	                            name="CompanyIBAN"
-	                            ng-required="false"
-	                            ng-model="entity.CompanyIBAN"
+	                        <bk-input id="idOurPartyIBAN"
+	                            name="OurPartyIBAN"
+	                            ng-required="true"
+	                            ng-model="entity.OurPartyIBAN"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANYIBAN)'} }}">
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_OURPARTYIBAN)'} }}">
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCounterpartyIBAN" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN' | t }}</bk-form-label>
+                        	<bk-form-label for="idCounterpartyIBAN" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COUNTERPARTYIBAN' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-input id="idCounterpartyIBAN"
 	                            name="CounterpartyIBAN"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.CounterpartyIBAN"
 	                            ng-readonly="true"
 	                            type="text"
@@ -90,13 +90,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idAmount" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT' | t }}</bk-form-label>
+                        	<bk-form-label for="idAmount" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
 	                        <bk-step-input input-id="idAmount"
 								class="right-align"
 								name="Amount"
-								ng-required="false"
+								ng-required="true"
 								ng-model="entity.Amount"
 								is-readonly="true"
 								placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_AMOUNT)'} }}">
@@ -105,12 +105,12 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCurrency" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY' | t }}</bk-form-label>
+                        	<bk-form-label for="idCurrency" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idCurrency"
 	                            name="Currency"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Currency"
 	                            is-readonly="true"
 	                            dropdown-items="optionsCurrency"
@@ -121,12 +121,12 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentDirection" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTDIRECTION' | t }}</bk-form-label>
+                        	<bk-form-label for="idPaymentDirection" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTDIRECTION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idPaymentDirection"
 	                            name="PaymentDirection"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.PaymentDirection"
 	                            is-readonly="true"
 	                            dropdown-items="optionsPaymentDirection"
@@ -137,12 +137,12 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPaymentType" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE' | t }}</bk-form-label>
+                        	<bk-form-label for="idPaymentType" ng-required="true" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idPaymentType"
 	                            name="PaymentType"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.PaymentType"
 	                            is-readonly="true"
 	                            dropdown-items="optionsPaymentType"
