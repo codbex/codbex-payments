@@ -88,6 +88,28 @@
                     {
                         "type": "INTEGER",
                         "name": "CUSTOMERPAYMENT_PAYMENTMETHOD"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "CUSTOMERPAYMENT_UPDATEDBY"
                     }
                 ]
             },
@@ -178,6 +200,28 @@
                     {
                         "type": "INTEGER",
                         "name": "SUPPLIERPAYMENT_PAYMENTMETHOD"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "SUPPLIERPAYMENT_UPDATEDBY"
                     }
                 ]
             },
@@ -268,6 +312,28 @@
                     {
                         "type": "INTEGER",
                         "name": "EMPLOYEEPAYMENT_PAYMENTMETHOD"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "EMPLOYEEPAYMENT_UPDATEDBY"
                     }
                 ]
             },
@@ -369,6 +435,28 @@
                         "length": 255,
                         "nullable": true,
                         "name": "PAYMENTRECORD_DELETEDREASON"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTRECORD_UPDATEDBY"
                     }
                 ]
             },

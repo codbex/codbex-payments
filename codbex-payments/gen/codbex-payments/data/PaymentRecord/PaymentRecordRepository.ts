@@ -17,6 +17,8 @@ export class PaymentRecordRepository extends Repository<PaymentRecordEntity> {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Valor = entity.Valor ? new Date(entity.Valor) : undefined;
             entity.DeletedAt = entity.DeletedAt ? new Date(entity.DeletedAt) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         }
         return entity;
     }
@@ -27,6 +29,8 @@ export class PaymentRecordRepository extends Repository<PaymentRecordEntity> {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Valor = entity.Valor ? new Date(entity.Valor) : undefined;
             entity.DeletedAt = entity.DeletedAt ? new Date(entity.DeletedAt) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         });
         return entities;
     }
