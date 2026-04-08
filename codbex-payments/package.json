@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@codbex/codbex-partners": "^1.0.0",
+        "@codbex/codbex-companies": "^1.1.0",
         "@codbex/codbex-employees": "^1.0.0",
         "@codbex/codbex-currencies": "^1.2.0",
         "@codbex/codbex-number-generator": "^1.1.0",

@@ -69,6 +69,44 @@ export class PaymentAdjustmentEntity {
     })
     public UUID?: string;
 
+    @Documentation('CreatedAt')
+    @Column({
+        name: 'PAYMENTADJUSTMENT_CREATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @CreatedAt()
+    public CreatedAt?: Date;
+
+    @Documentation('CreatedBy')
+    @Column({
+        name: 'PAYMENTADJUSTMENT_CREATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @CreatedBy()
+    public CreatedBy?: string;
+
+    @Documentation('UpdatedAt')
+    @Column({
+        name: 'PAYMENTADJUSTMENT_UPDATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @UpdatedAt()
+    public UpdatedAt?: Date;
+
+    @Documentation('UpdatedBy')
+    @Column({
+        name: 'PAYMENTADJUSTMENT_UPDATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @UpdatedBy()
+    public UpdatedBy?: string;
+
 }
 
 (new PaymentAdjustmentEntity());

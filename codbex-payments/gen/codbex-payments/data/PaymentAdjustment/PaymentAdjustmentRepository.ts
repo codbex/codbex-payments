@@ -16,6 +16,8 @@ export class PaymentAdjustmentRepository extends Repository<PaymentAdjustmentEnt
         if (entity) {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Valor = entity.Valor ? new Date(entity.Valor) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         }
         return entity;
     }
@@ -25,6 +27,8 @@ export class PaymentAdjustmentRepository extends Repository<PaymentAdjustmentEnt
         entities.forEach(entity => {
             entity.Date = entity.Date ? new Date(entity.Date) : undefined;
             entity.Valor = entity.Valor ? new Date(entity.Valor) : undefined;
+            entity.CreatedAt = entity.CreatedAt ? new Date(entity.CreatedAt) : undefined;
+            entity.UpdatedAt = entity.UpdatedAt ? new Date(entity.UpdatedAt) : undefined;
         });
         return entities;
     }

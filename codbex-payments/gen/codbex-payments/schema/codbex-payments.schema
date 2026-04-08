@@ -524,6 +524,28 @@
                         "nullable": true,
                         "unique": true,
                         "name": "PAYMENTADJUSTMENT_UUID"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYMENTADJUSTMENT_UPDATEDBY"
                     }
                 ]
             },
