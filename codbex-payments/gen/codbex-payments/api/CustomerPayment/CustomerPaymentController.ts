@@ -223,6 +223,12 @@ class CustomerPaymentController {
         if (entity.PaymentMethod === null || entity.PaymentMethod === undefined) {
             throw new ValidationError(`The 'PaymentMethod' property is required, provide a valid value`);
         }
+        if (entity.CreatedBy?.length > 20) {
+            throw new ValidationError(`The 'CreatedBy' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.UpdatedBy?.length > 20) {
+            throw new ValidationError(`The 'UpdatedBy' exceeds the maximum length of [20] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

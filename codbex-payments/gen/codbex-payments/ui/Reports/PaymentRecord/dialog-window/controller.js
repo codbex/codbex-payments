@@ -14,6 +14,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (params.entity.DeletedAt) {
 			params.entity.DeletedAt = new Date(params.entity.DeletedAt);
 		}
+		if (params.entity.CreatedAt) {
+			params.entity.CreatedAt = new Date(params.entity.CreatedAt);
+		}
+		if (params.entity.UpdatedAt) {
+			params.entity.UpdatedAt = new Date(params.entity.UpdatedAt);
+		}
 		$scope.entity = params.entity;
 		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsPaymentDirection = params.optionsPaymentDirection;

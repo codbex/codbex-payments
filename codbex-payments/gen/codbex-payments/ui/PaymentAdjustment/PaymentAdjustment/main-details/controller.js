@@ -63,6 +63,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (data.entity.Valor) {
 					data.entity.Valor = new Date(data.entity.Valor);
 				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsCurrency = data.optionsCurrency;
 				$scope.optionsCompany = data.optionsCompany;
@@ -84,6 +90,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 				if (data.entity.Valor) {
 					data.entity.Valor = new Date(data.entity.Valor);
+				}
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
 				}
 				$scope.entity = data.entity;
 				$scope.optionsCurrency = data.optionsCurrency;

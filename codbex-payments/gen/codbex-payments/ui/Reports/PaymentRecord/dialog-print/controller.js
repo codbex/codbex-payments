@@ -100,6 +100,30 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const condition = { propertyName: 'DeletedReason', operator: 'LIKE', value: `%${entity.DeletedReason}%` };
 				filter.$filter.conditions.push(condition);
 			}
+			if (entity.CreatedAtFrom) {
+				const condition = { propertyName: 'CreatedAt', operator: 'GE', value: entity.CreatedAtFrom };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.CreatedAtTo) {
+				const condition = { propertyName: 'CreatedAt', operator: 'LE', value: entity.CreatedAtTo };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.CreatedBy) {
+				const condition = { propertyName: 'CreatedBy', operator: 'LIKE', value: `%${entity.CreatedBy}%` };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.UpdatedAtFrom) {
+				const condition = { propertyName: 'UpdatedAt', operator: 'GE', value: entity.UpdatedAtFrom };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.UpdatedAtTo) {
+				const condition = { propertyName: 'UpdatedAt', operator: 'LE', value: entity.UpdatedAtTo };
+				filter.$filter.conditions.push(condition);
+			}
+			if (entity.UpdatedBy) {
+				const condition = { propertyName: 'UpdatedBy', operator: 'LIKE', value: `%${entity.UpdatedBy}%` };
+				filter.$filter.conditions.push(condition);
+			}
 
             $scope.filter = filter;
 
@@ -129,6 +153,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 						}
 						if (e.DeletedAt) {
 							e.DeletedAt = new Date(e.DeletedAt);
+						}
+						if (e.CreatedAt) {
+							e.CreatedAt = new Date(e.CreatedAt);
+						}
+						if (e.UpdatedAt) {
+							e.UpdatedAt = new Date(e.UpdatedAt);
 						}
 					});
 

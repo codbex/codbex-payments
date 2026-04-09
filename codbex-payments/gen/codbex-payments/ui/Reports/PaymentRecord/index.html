@@ -41,6 +41,10 @@
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETED' | t:'Deleted' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETEDAT' | t:'DeletedAt' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_DELETEDREASON' | t:'DeletedReason' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDAT' | t:'CreatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDBY' | t:'CreatedBy' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDAT' | t:'UpdatedAt' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDBY' | t:'UpdatedBy' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -82,6 +86,10 @@
 						</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.DeletedAt}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.DeletedReason}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CreatedBy}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedAt}}</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.UpdatedBy}}</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>

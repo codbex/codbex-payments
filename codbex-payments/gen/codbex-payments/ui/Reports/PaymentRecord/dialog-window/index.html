@@ -264,6 +264,66 @@
 	                        </bk-input>
 	                    </div>
                     </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idCreatedAt" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDAT' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-input id="idCreatedAt"
+	                            name="CreatedAt"
+	                            ng-required="false"
+	                            ng-model="entity.CreatedAt"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDAT)'} }}">
+	                        </bk-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idCreatedBy" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDBY' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-input id="idCreatedBy"
+	                            name="CreatedBy"
+	                            ng-required="false"
+	                            ng-model="entity.CreatedBy"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CREATEDBY)'} }}">
+	                        </bk-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idUpdatedAt" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDAT' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-input id="idUpdatedAt"
+	                            name="UpdatedAt"
+	                            ng-required="false"
+	                            ng-model="entity.UpdatedAt"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDAT)'} }}">
+	                        </bk-input>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idUpdatedBy" ng-required="false" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDBY' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <bk-input id="idUpdatedBy"
+	                            name="UpdatedBy"
+	                            ng-required="false"
+	                            ng-model="entity.UpdatedBy"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_UPDATEDBY)'} }}">
+	                        </bk-input>
+	                    </div>
+                    </bk-form-item>
 				</bk-form-group>
             </bk-fieldset>
         </bk-scrollbar>
