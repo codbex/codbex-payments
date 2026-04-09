@@ -14,7 +14,7 @@ export const trigger = (event: EntityEvent<PaymentRecordEntity>): void => {
         const record = {
             Date: item.Date!,
             Valor: item.Valor!,
-            CompanyIBAN: item.CompanyIBAN,
+            CompanyIBAN: item.OurPartyIBAN,
             CounterpartyIBAN: item.CounterpartyIBAN,
             CounterpartyName: item.CounterpartyName,
             Amount: item.Amount,
