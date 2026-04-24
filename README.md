@@ -31,12 +31,12 @@
 | Company          | INTEGER   | FK, Nullable            | Company reference.        |
 | Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
 | UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
-| Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
+| Reference        | VARCHAR   | Length: 36, Nullable    | External reference( e.g. to Invoice) .       |
 | PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.               |
 
 ### Entity: `SupplierPayment`
 
@@ -56,12 +56,12 @@
 | Company          | INTEGER   | FK, Nullable            | Company reference.        |
 | Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
 | UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
-| Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
+| Reference        | VARCHAR   | Length: 36, Nullable    | External reference (e.g. to Invoice)       |
 | PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.              |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.             |
 
 ### Entity `EmployeePayment`
 
@@ -83,10 +83,10 @@
 | UUID             | VARCHAR   | Calculated, Length: 36, Unique      | UUID.                     |
 | Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
 | PaymentMethod    | INTEGER   | FK, Nullable                     | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.               |
 
 ### Entity `PaymentRecord`
 
@@ -110,10 +110,10 @@
 | Deleted          | BOOLEAN   | Nullable                | Soft delete flag.    |
 | DeletedAt        | TIMESTAMP | Nullable                | Deletion timestamp.  |
 | DeletedReason    | VARCHAR   | Length: 255, Nullable   | Reason for deletion. |
-| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.          |
-| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.          |
-| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.          |
-| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.          |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.          |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.          |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.          |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.          |
 
 ### Entity `PaymentType`
 
@@ -141,10 +141,10 @@
 | Company   | INTEGER   | FK, Not Null                          | Company reference.  |
 | Reason    | VARCHAR   | Length: 100, Nullable        | Reason.             |
 | UUID      | VARCHAR   | Calculated, Length: 36, Unique | UUID.               |
-| CreatedAt | TIMESTAMP | Audit, Nullable                     | Created at.         |
-| CreatedBy | VARCHAR   | Audit, Length: 20, Nullable         | Created by.         |
-| UpdatedAt | TIMESTAMP | Audit, Nullable                     | Updated at.         |
-| UpdatedBy | VARCHAR   | Audit, Length: 20, Nullable         | Updated by.         |
+| CreatedAt | TIMESTAMP | Audit, Nullable                     | Timestamp when the entry was created.         |
+| CreatedBy | VARCHAR   | Audit, Length: 20, Nullable         | User who created the entry.         |
+| UpdatedAt | TIMESTAMP | Audit, Nullable                     | Timestamp when the entry was updated.        |
+| UpdatedBy | VARCHAR   | Audit, Length: 20, Nullable         | User who updated the entry.         |
 
 
 
