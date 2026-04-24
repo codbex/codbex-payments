@@ -18,133 +18,133 @@
 | Field            | Type      | Details                 | Description               |
 | ---------------- | --------- | ----------------------- | ------------------------- |
 | Id               | INTEGER   | PK, Identity            | Unique identifier.        |
-| Customer         | INTEGER   | FK                      | Reference to customer.    |
-| Date             | DATE      |                         | Payment date.             |
-| Valor            | DATE      |                         | Value date.               |
-| OurPartyIban     | VARCHAR   | Length: 34              | Our IBAN.                 |
-| CounterpartyIban | VARCHAR   | Length: 34              | Counterparty IBAN.        |
+| Customer         | INTEGER   | FK, Not Null                      | Reference to customer.    |
+| Date             | DATE      | Not Null                        | Payment date.             |
+| Valor            | DATE      | Not Null                       | Value date.               |
+| OurPartyIBAN     | VARCHAR   | Length: 34, Not Null               | Our IBAN.                 |
+| CounterpartyIBAN | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.        |
 | CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
-| Amount           | DECIMAL   | Precision: 16, Scale: 2 | Payment amount.           |
-| Currency         | INTEGER   | FK                      | Currency reference.       |
-| Reason           | VARCHAR   | Length: 100             | Payment reason.           |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Payment amount.           |
+| Currency         | INTEGER   | FK , Not Null                      | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null              | Payment reason.           |
 | Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
 | Company          | INTEGER   | FK, Nullable            | Company reference.        |
-| Name             | VARCHAR   | Length: 20, Nullable    | Payment name.             |
-| Uuid             | VARCHAR   | Length: 36, Unique      | Unique identifier (UUID). |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
 | Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
-| PaymentMethod    | INTEGER   | FK                      | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Length: 20, Nullable    | Updated by.               |
+| PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
 
 ### Entity: `SupplierPayment`
 
 | Field            | Type      | Details                 | Description               |
 | ---------------- | --------- | ----------------------- | ------------------------- |
 | Id               | INTEGER   | PK, Identity            | Unique identifier.        |
-| Supplier         | INTEGER   | FK                      | Reference to supplier.    |
-| Date             | DATE      |                         | Payment date.             |
-| Valor            | DATE      |                         | Value date.               |
-| OurPartyIban     | VARCHAR   | Length: 34              | Our IBAN.                 |
-| CounterpartyIban | VARCHAR   | Length: 34              | Counterparty IBAN.        |
+| Supplier         | INTEGER   | FK, Not Null                       | Reference to supplier.    |
+| Date             | DATE      | Not Null                         | Payment date.             |
+| Valor            | DATE      | Not Null                         | Value date.               |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null               | Our IBAN.                 |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.        |
 | CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
-| Amount           | DECIMAL   | Precision: 16, Scale: 2 | Payment amount.           |
-| Currency         | INTEGER   | FK                      | Currency reference.       |
-| Reason           | VARCHAR   | Length: 100             | Payment reason.           |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Payment amount.           |
+| Currency         | INTEGER   | FK, Not Null                       | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null              | Payment reason.           |
 | Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
 | Company          | INTEGER   | FK, Nullable            | Company reference.        |
-| Name             | VARCHAR   | Length: 20, Nullable    | Payment name.             |
-| Uuid             | VARCHAR   | Length: 36, Unique      | Unique identifier (UUID). |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
 | Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
-| PaymentMethod    | INTEGER   | FK                      | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Length: 20, Nullable    | Updated by.               |
+| PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
 
 ### Entity `EmployeePayment`
 
 | Field            | Type      | Details                 | Description               |
 | ---------------- | --------- | ----------------------- | ------------------------- |
 | Id               | INTEGER   | PK, Identity            | Unique identifier.        |
-| Employee         | INTEGER   | FK                      | Reference to employee.    |
-| Date             | DATE      |                         | Payment date.             |
-| Valor            | DATE      |                         | Value date.               |
-| OurPartyIban     | VARCHAR   | Length: 34              | Our IBAN.                 |
-| CounterpartyIban | VARCHAR   | Length: 34              | Counterparty IBAN.        |
+| Employee         | INTEGER   | FK, Not Null                      | Reference to employee.    |
+| Date             | DATE      | Not Null                        | Payment date.             |
+| Valor            | DATE      | Not Null                        | Value date.               |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null              | Our IBAN.                 |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null              | Counterparty IBAN.        |
 | CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
-| Amount           | DECIMAL   | Precision: 16, Scale: 2 | Payment amount.           |
-| Currency         | INTEGER   | FK                      | Currency reference.       |
-| Reason           | VARCHAR   | Length: 100             | Payment reason.           |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null | Payment amount.           |
+| Currency         | INTEGER   | FK, Not Null                      | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null             | Payment reason.           |
 | Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
 | Company          | INTEGER   | FK, Nullable            | Company reference.        |
-| Name             | VARCHAR   | Length: 20, Nullable    | Payment name.             |
-| Uuid             | VARCHAR   | Length: 36, Unique      | UUID.                     |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | UUID.                     |
 | Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
-| PaymentMethod    | INTEGER   | FK                      | Payment method reference. |
-| CreatedAt        | TIMESTAMP | Nullable                | Created at.               |
-| CreatedBy        | VARCHAR   | Length: 20, Nullable    | Created by.               |
-| UpdatedAt        | TIMESTAMP | Nullable                | Updated at.               |
-| UpdatedBy        | VARCHAR   | Length: 20, Nullable    | Updated by.               |
+| PaymentMethod    | INTEGER   | FK, Nullable                     | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.               |
 
 ### Entity `PaymentRecord`
 
 | Field            | Type      | Details                 | Description          |
 | ---------------- | --------- | ----------------------- | -------------------- |
 | Id               | INTEGER   | PK, Identity            | Unique identifier.   |
-| Date             | DATE      |                         | Payment date.        |
-| Valor            | DATE      |                         | Value date.          |
-| OurPartyIban     | VARCHAR   | Length: 34              | Our IBAN.            |
-| CounterpartyIban | VARCHAR   | Length: 34              | Counterparty IBAN.   |
+| Date             | DATE      | Not Null                        | Payment date.        |
+| Valor            | DATE      | Not Null                         | Value date.          |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null               | Our IBAN.            |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.   |
 | CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.   |
-| Amount           | DECIMAL   | Precision: 16, Scale: 2 | Amount.              |
-| Currency         | INTEGER   | FK                      | Currency reference.  |
-| PaymentDirection | INTEGER   | FK                      | Payment direction.   |
-| PaymentType      | INTEGER   | FK                      | Payment type.        |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Amount.              |
+| Currency         | INTEGER   | FK, Not Null                       | Currency reference.  |
+| PaymentDirection | INTEGER   | FK, Not Null                       | Payment direction.   |
+| PaymentType      | INTEGER   | FK, Not Null                       | Payment type.        |
 | Reason           | VARCHAR   | Length: 100, Nullable   | Reason.              |
 | Description      | VARCHAR   | Length: 100, Nullable   | Description.         |
 | Company          | INTEGER   | FK, Nullable            | Company reference.   |
-| Uuid             | VARCHAR   | Length: 36, Unique      | UUID.                |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | UUID.                |
 | Reference        | VARCHAR   | Length: 36, Nullable    | Reference.           |
 | Deleted          | BOOLEAN   | Nullable                | Soft delete flag.    |
 | DeletedAt        | TIMESTAMP | Nullable                | Deletion timestamp.  |
 | DeletedReason    | VARCHAR   | Length: 255, Nullable   | Reason for deletion. |
-| CreatedAt        | TIMESTAMP | Nullable                | Created at.          |
-| CreatedBy        | VARCHAR   | Length: 20, Nullable    | Created by.          |
-| UpdatedAt        | TIMESTAMP | Nullable                | Updated at.          |
-| UpdatedBy        | VARCHAR   | Length: 20, Nullable    | Updated by.          |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Created at.          |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Created by.          |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Updated at.          |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | Updated by.          |
 
 ### Entity `PaymentType`
 
 | Field | Type    | Details      | Description        |
 | ----- | ------- | ------------ | ------------------ |
 | Id    | INTEGER | PK, Identity | Unique identifier. |
-| Name  | VARCHAR | Length: 20   | Payment type name. |
+| Name  | VARCHAR | Length: 20, Not Null   | Payment type name. |
 
 ### Entity `PaymentDirection`
 
 | Field | Type    | Details      | Description             |
 | ----- | ------- | ------------ | ----------------------- |
 | Id    | INTEGER | PK, Identity | Unique identifier.      |
-| Name  | VARCHAR | Length: 20   | Payment direction name. |
+| Name  | VARCHAR | Length: 20, Not Null   | Payment direction name. |
 
 ### Entity `PaymentAdjustment`
 
 | Field     | Type      | Details                      | Description         |
 | --------- | --------- | ---------------------------- | ------------------- |
 | Id        | INTEGER   | PK, Identity                 | Unique identifier.  |
-| Date      | DATE      |                              | Adjustment date.    |
-| Valor     | DATE      |                              | Value date.         |
-| Amount    | DECIMAL   | Precision: 16, Scale: 2      | Adjustment amount.  |
-| Currency  | INTEGER   | FK                           | Currency reference. |
-| Company   | INTEGER   | FK                           | Company reference.  |
+| Date      | DATE      | Not Null                             | Adjustment date.    |
+| Valor     | DATE      | Not Null                             | Value date.         |
+| Amount    | DECIMAL   | Precision: 16, Scale: 2, Not Null      | Adjustment amount.  |
+| Currency  | INTEGER   | FK, Not Null                           | Currency reference. |
+| Company   | INTEGER   | FK, Not Null                          | Company reference.  |
 | Reason    | VARCHAR   | Length: 100, Nullable        | Reason.             |
-| Uuid      | VARCHAR   | Length: 36, Unique, Nullable | UUID.               |
-| CreatedAt | TIMESTAMP | Nullable                     | Created at.         |
-| CreatedBy | VARCHAR   | Length: 20, Nullable         | Created by.         |
-| UpdatedAt | TIMESTAMP | Nullable                     | Updated at.         |
-| UpdatedBy | VARCHAR   | Length: 20, Nullable         | Updated by.         |
+| UUID      | VARCHAR   | Calculated, Length: 36, Unique | UUID.               |
+| CreatedAt | TIMESTAMP | Audit, Nullable                     | Created at.         |
+| CreatedBy | VARCHAR   | Audit, Length: 20, Nullable         | Created by.         |
+| UpdatedAt | TIMESTAMP | Audit, Nullable                     | Updated at.         |
+| UpdatedBy | VARCHAR   | Audit, Length: 20, Nullable         | Updated by.         |
 
 
 
