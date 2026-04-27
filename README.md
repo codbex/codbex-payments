@@ -1,28 +1,168 @@
-# codbex-payments
-## Payments Management Applications
+# <img src="https://www.codbex.com/icon.svg" width="32" style="vertical-align: middle;"> codbex-payments
 
-### Model
+## 📖 Table of Contents
+* [🗺️ Entity Data Model (EDM)](#️-entity-data-model-edm)
+* [🧩 Core Entities](#-core-entities)
+* [📦 Dependencies](#-dependencies)
+* [🔗 Sample Data Modules](#-sample-data-modules)
+* [🐳 Local Development with Docker](#-local-development-with-docker)
 
-![payments](images/payments-model.png)
-### Application
+## 🗺️ Entity Data Model (EDM)
 
-#### Launchpad
+![model](images/model.png)
 
-![launchpad](images/payments-launchpad.png)
+## 🧩 Core Entities
 
-#### Management
+### Entity: `CustomerPayment`
 
-![customer](images/payments-customer-payment.png)
+| Field            | Type      | Details                 | Description               |
+| ---------------- | --------- | ----------------------- | ------------------------- |
+| Id               | INTEGER   | PK, Identity            | Unique identifier.        |
+| Customer         | INTEGER   | FK, Not Null                      | Reference to customer.    |
+| Date             | DATE      | Not Null                        | Payment date.             |
+| Valor            | DATE      | Not Null                       | Value date.               |
+| OurPartyIBAN     | VARCHAR   | Length: 34, Not Null               | Our IBAN.                 |
+| CounterpartyIBAN | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.        |
+| CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Payment amount.           |
+| Currency         | INTEGER   | FK , Not Null                      | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null              | Payment reason.           |
+| Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
+| Company          | INTEGER   | FK, Nullable            | Company reference.        |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
+| Reference        | VARCHAR   | Length: 36, Nullable    | External reference( e.g. to Invoice) .       |
+| PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.               |
 
-![supplier](images/payments-supplier-payment.png)
+### Entity: `SupplierPayment`
 
-![employee](images/payments-employee-payment.png)
+| Field            | Type      | Details                 | Description               |
+| ---------------- | --------- | ----------------------- | ------------------------- |
+| Id               | INTEGER   | PK, Identity            | Unique identifier.        |
+| Supplier         | INTEGER   | FK, Not Null                       | Reference to supplier.    |
+| Date             | DATE      | Not Null                         | Payment date.             |
+| Valor            | DATE      | Not Null                         | Value date.               |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null               | Our IBAN.                 |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.        |
+| CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Payment amount.           |
+| Currency         | INTEGER   | FK, Not Null                       | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null              | Payment reason.           |
+| Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
+| Company          | INTEGER   | FK, Nullable            | Company reference.        |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | Unique identifier (UUID). |
+| Reference        | VARCHAR   | Length: 36, Nullable    | External reference (e.g. to Invoice)       |
+| PaymentMethod    | INTEGER   | FK, Not Null                       | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.              |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.             |
 
-![settings](images/payments-settings.png)
+### Entity `EmployeePayment`
 
-![report](images/payments-payment-record-report.png)
+| Field            | Type      | Details                 | Description               |
+| ---------------- | --------- | ----------------------- | ------------------------- |
+| Id               | INTEGER   | PK, Identity            | Unique identifier.        |
+| Employee         | INTEGER   | FK, Not Null                      | Reference to employee.    |
+| Date             | DATE      | Not Null                        | Payment date.             |
+| Valor            | DATE      | Not Null                        | Value date.               |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null              | Our IBAN.                 |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null              | Counterparty IBAN.        |
+| CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.        |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null | Payment amount.           |
+| Currency         | INTEGER   | FK, Not Null                      | Currency reference.       |
+| Reason           | VARCHAR   | Length: 100, Not Null             | Payment reason.           |
+| Description      | VARCHAR   | Length: 100, Nullable   | Description.              |
+| Company          | INTEGER   | FK, Nullable            | Company reference.        |
+| Name             | VARCHAR   | Calculated, Length: 20, Nullable    | Payment name.             |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | UUID.                     |
+| Reference        | VARCHAR   | Length: 36, Nullable    | External reference.       |
+| PaymentMethod    | INTEGER   | FK, Nullable                     | Payment method reference. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.               |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.               |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.               |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.               |
 
-## Local Development with Docker
+### Entity `PaymentRecord`
+
+| Field            | Type      | Details                 | Description          |
+| ---------------- | --------- | ----------------------- | -------------------- |
+| Id               | INTEGER   | PK, Identity            | Unique identifier.   |
+| Date             | DATE      | Not Null                        | Payment date.        |
+| Valor            | DATE      | Not Null                         | Value date.          |
+| OurPartyIban     | VARCHAR   | Length: 34, Not Null               | Our IBAN.            |
+| CounterpartyIban | VARCHAR   | Length: 34, Not Null               | Counterparty IBAN.   |
+| CounterpartyName | VARCHAR   | Length: 100, Nullable   | Counterparty name.   |
+| Amount           | DECIMAL   | Precision: 16, Scale: 2, Not Null  | Amount.              |
+| Currency         | INTEGER   | FK, Not Null                       | Currency reference.  |
+| PaymentDirection | INTEGER   | FK, Not Null                       | Payment direction.   |
+| PaymentType      | INTEGER   | FK, Not Null                       | Payment type.        |
+| Reason           | VARCHAR   | Length: 100, Nullable   | Reason.              |
+| Description      | VARCHAR   | Length: 100, Nullable   | Description.         |
+| Company          | INTEGER   | FK, Nullable            | Company reference.   |
+| UUID             | VARCHAR   | Calculated, Length: 36, Unique      | UUID.                |
+| Reference        | VARCHAR   | Length: 36, Nullable    | Reference.           |
+| Deleted          | BOOLEAN   | Nullable                | Soft delete flag.    |
+| DeletedAt        | TIMESTAMP | Nullable                | Deletion timestamp.  |
+| DeletedReason    | VARCHAR   | Length: 255, Nullable   | Reason for deletion. |
+| CreatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was created.          |
+| CreatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who created the entry.          |
+| UpdatedAt        | TIMESTAMP | Audit, Nullable                | Timestamp when the entry was updated.          |
+| UpdatedBy        | VARCHAR   | Audit, Length: 20, Nullable    | User who updated the entry.          |
+
+### Entity `PaymentType`
+
+| Field | Type    | Details      | Description        |
+| ----- | ------- | ------------ | ------------------ |
+| Id    | INTEGER | PK, Identity | Unique identifier. |
+| Name  | VARCHAR | Length: 20, Not Null   | Payment type name. |
+
+### Entity `PaymentDirection`
+
+| Field | Type    | Details      | Description             |
+| ----- | ------- | ------------ | ----------------------- |
+| Id    | INTEGER | PK, Identity | Unique identifier.      |
+| Name  | VARCHAR | Length: 20, Not Null   | Payment direction name. |
+
+### Entity `PaymentAdjustment`
+
+| Field     | Type      | Details                      | Description         |
+| --------- | --------- | ---------------------------- | ------------------- |
+| Id        | INTEGER   | PK, Identity                 | Unique identifier.  |
+| Date      | DATE      | Not Null                             | Adjustment date.    |
+| Valor     | DATE      | Not Null                             | Value date.         |
+| Amount    | DECIMAL   | Precision: 16, Scale: 2, Not Null      | Adjustment amount.  |
+| Currency  | INTEGER   | FK, Not Null                           | Currency reference. |
+| Company   | INTEGER   | FK, Not Null                          | Company reference.  |
+| Reason    | VARCHAR   | Length: 100, Nullable        | Reason.             |
+| UUID      | VARCHAR   | Calculated, Length: 36, Unique | UUID.               |
+| CreatedAt | TIMESTAMP | Audit, Nullable                     | Timestamp when the entry was created.         |
+| CreatedBy | VARCHAR   | Audit, Length: 20, Nullable         | User who created the entry.         |
+| UpdatedAt | TIMESTAMP | Audit, Nullable                     | Timestamp when the entry was updated.        |
+| UpdatedBy | VARCHAR   | Audit, Length: 20, Nullable         | User who updated the entry.         |
+
+
+
+## 📦 Dependencies
+
+- [codbex-partners](https://github.com/codbex/codbex-partners)
+- [codbex-companies](https://github.com/codbex/codbex-companies)
+- [codbex-employees](https://github.com/codbex/codbex-employees)
+- [codbex-currencies](https://github.com/codbex/codbex-currencies)
+- [codbex-number-generator](https://github.com/codbex/codbex-number-generator)
+- [codbex-number-generator-data](https://github.com/codbex/codbex-number-generator-data)
+- [codbex-navigation-groups](https://github.com/codbex/codbex-navigation-groups)
+
+## 🔗 Sample Data Modules
+
+- [codbex-payments-data](https://github.com/codbex/codbex-payments-data)
+
+## 🐳 Local Development with Docker
 
 When running this project inside the codbex Atlas Docker image, you must provide authentication for installing dependencies from GitHub Packages.
 1. Create a GitHub Personal Access Token (PAT) with `read:packages` scope.
