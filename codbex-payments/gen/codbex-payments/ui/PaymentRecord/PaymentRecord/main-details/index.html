@@ -142,8 +142,14 @@
 	                            ng-model="entity.Currency"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCurrency"
+								ng-keyup="onOptionsCurrencyChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_CURRENCY)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Currency'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Currency'} }}">
+								    <bk-list-action-item ng-if="optionsCurrencyHasMore" ng-click="loadMoreOptionsCurrency()">
+										<bk-busy-indicator ng-if="optionsCurrencyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCurrencyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCurrencyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -163,8 +169,14 @@
 	                            ng-model="entity.PaymentDirection"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentDirection"
+								ng-keyup="onOptionsPaymentDirectionChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTDIRECTION)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'PaymentDirection'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'PaymentDirection'} }}">
+								    <bk-list-action-item ng-if="optionsPaymentDirectionHasMore" ng-click="loadMoreOptionsPaymentDirection()">
+										<bk-busy-indicator ng-if="optionsPaymentDirectionLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsPaymentDirectionLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsPaymentDirectionLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -184,8 +196,14 @@
 	                            ng-model="entity.PaymentType"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsPaymentType"
+								ng-keyup="onOptionsPaymentTypeChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_PAYMENTTYPE)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'PaymentType'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'PaymentType'} }}">
+								    <bk-list-action-item ng-if="optionsPaymentTypeHasMore" ng-click="loadMoreOptionsPaymentType()">
+										<bk-busy-indicator ng-if="optionsPaymentTypeLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsPaymentTypeLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsPaymentTypeLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -247,8 +265,14 @@
 	                            ng-model="entity.Company"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCompany"
+								ng-keyup="onOptionsCompanyChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTRECORD_COMPANY)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Company'} }}">
+								    <bk-list-action-item ng-if="optionsCompanyHasMore" ng-click="loadMoreOptionsCompany()">
+										<bk-busy-indicator ng-if="optionsCompanyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCompanyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCompanyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
