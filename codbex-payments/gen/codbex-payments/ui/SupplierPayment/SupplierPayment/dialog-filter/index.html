@@ -27,8 +27,14 @@
 	                            state="{{ forms.details['Supplier'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Supplier"
 	                            dropdown-items="optionsSupplier"
+								ng-keyup="onOptionsSupplierChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_SUPPLIER)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Supplier'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Supplier'} }}">
+								    <bk-list-action-item ng-if="optionsSupplierHasMore" ng-click="loadMoreOptionsSupplier()">
+										<bk-busy-indicator ng-if="optionsSupplierLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsSupplierLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsSupplierLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -162,8 +168,14 @@
 	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Currency"
 	                            dropdown-items="optionsCurrency"
+								ng-keyup="onOptionsCurrencyChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_CURRENCY)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Currency'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Currency'} }}">
+								    <bk-list-action-item ng-if="optionsCurrencyHasMore" ng-click="loadMoreOptionsCurrency()">
+										<bk-busy-indicator ng-if="optionsCurrencyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCurrencyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCurrencyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -211,8 +223,14 @@
 	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Company"
 	                            dropdown-items="optionsCompany"
+								ng-keyup="onOptionsCompanyChange($event)"
 	                            placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputSearch' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.SUPPLIERPAYMENT_COMPANY)'} }}"
 								btn-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.showHide' | t:{'name':'Company'} }}" list-aria-label="{{ 'codbex-payments:codbex-payments-model.aria.options' | t:{'name':'Company'} }}">
+								    <bk-list-action-item ng-if="optionsCompanyHasMore" ng-click="loadMoreOptionsCompany()">
+										<bk-busy-indicator ng-if="optionsCompanyLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCompanyLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCompanyLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>

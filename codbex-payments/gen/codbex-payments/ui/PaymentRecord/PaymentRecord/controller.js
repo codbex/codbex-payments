@@ -102,6 +102,98 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 						$scope.data = [];
 						$scope.dataReset = false;
 					}
+					if (optionsCurrencyHasMore) {
+						const optionsCurrencySearchValues = Array.from(new Set(response.data.map(e => e.Currency)));
+						if (optionsCurrencySearchValues.length > 0) {
+							$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsCurrencySearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsCurrency.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Code
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'Currency',
+									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsPaymentDirectionHasMore) {
+						const optionsPaymentDirectionSearchValues = Array.from(new Set(response.data.map(e => e.PaymentDirection)));
+						if (optionsPaymentDirectionSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsPaymentDirectionSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsPaymentDirection.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'PaymentDirection',
+									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsPaymentTypeHasMore) {
+						const optionsPaymentTypeSearchValues = Array.from(new Set(response.data.map(e => e.PaymentType)));
+						if (optionsPaymentTypeSearchValues.length > 0) {
+							$http.post('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsPaymentTypeSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsPaymentType.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'PaymentType',
+									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsCompanyHasMore) {
+						const optionsCompanySearchValues = Array.from(new Set(response.data.map(e => e.Company)));
+						if (optionsCompanySearchValues.length > 0) {
+							$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsCompanySearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsCompany.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'Company',
+									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
 					response.data.forEach(e => {
 						if (e.Date) {
 							e.Date = new Date(e.Date);
@@ -231,12 +323,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsPaymentType = [];
 		$scope.optionsCompany = [];
 
+		let optionsCurrencyHasMore = true;
 
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
-			$scope.optionsCurrency = response.data.map(e => ({
-				value: e.Id,
-				text: e.Code
-			}));
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/count').then((response) => {
+			const optionsCurrencyCount = response.data.count;
+			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
+				$scope.optionsCurrency = response.data.map(e => ({
+					value: e.Id,
+					text: e.Code
+				}));
+				optionsCurrencyHasMore = optionsCurrencyCount > $scope.optionsCurrency.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Currency',
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -246,12 +351,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsPaymentDirectionHasMore = true;
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts').then((response) => {
-			$scope.optionsPaymentDirection = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts/count').then((response) => {
+			const optionsPaymentDirectionCount = response.data.count;
+			$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentDirectionController.ts').then((response) => {
+				$scope.optionsPaymentDirection = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsPaymentDirectionHasMore = optionsPaymentDirectionCount > $scope.optionsPaymentDirection.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PaymentDirection',
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -261,12 +379,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsPaymentTypeHasMore = true;
 
-		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts').then((response) => {
-			$scope.optionsPaymentType = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts/count').then((response) => {
+			const optionsPaymentTypeCount = response.data.count;
+			$http.get('/services/ts/codbex-payments/gen/codbex-payments/api/Settings/PaymentTypeController.ts').then((response) => {
+				$scope.optionsPaymentType = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsPaymentTypeHasMore = optionsPaymentTypeCount > $scope.optionsPaymentType.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PaymentType',
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
@@ -276,12 +407,25 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
+		let optionsCompanyHasMore = true;
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
-			$scope.optionsCompany = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/count').then((response) => {
+			const optionsCompanyCount = response.data.count;
+			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+				$scope.optionsCompany = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsCompanyHasMore = optionsCompanyCount > $scope.optionsCompany.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Company',
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
 		}, (error) => {
 			console.error(error);
 			const message = error.data ? error.data.message : '';
