@@ -109,6 +109,23 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idReason" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT_REASON' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Reason'].$valid ? '' : 'error' }}" text="{{'codbex-payments:codbex-payments-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idReason"
+	                                name="Reason"
+	                                state="{{ forms.details['Reason'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Reason"
+									ng-maxlength="20.0"
+	                                type="text"
+	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT_REASON)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idCompany" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT_COMPANY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -126,23 +143,6 @@
 										<span ng-if="!optionsCompanyLoading">More Options</span>
 									</bk-list-action-item>
 	                        </bk-combobox-input>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idReason" colon="true">{{ 'codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT_REASON' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-							<bk-form-input-message state="{{ forms.details['Reason'].$valid ? '' : 'error' }}" text="{{'codbex-payments:codbex-payments-model.messages.error.incorrectInput' | t}}">
-								<bk-input id="idReason"
-	                                name="Reason"
-	                                state="{{ forms.details['Reason'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Reason"
-									ng-maxlength="20.0"
-	                                type="text"
-	                                placeholder="{{ 'codbex-payments:codbex-payments-model.messages.inputEnter' | t:{'name':'$t(codbex-payments:codbex-payments-model.t.PAYMENTADJUSTMENT_REASON)'} }}">
-	                            </bk-input>
-							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">

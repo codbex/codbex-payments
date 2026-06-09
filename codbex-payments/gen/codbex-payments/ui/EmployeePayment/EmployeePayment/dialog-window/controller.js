@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/EmployeePayment/EmployeePaymentController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-payments/gen/codbex_payments/api/employeepayment/EmployeePaymentController';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -98,11 +98,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceEmployee = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
+		$scope.serviceEmployee = '/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController';
 		
 		$scope.optionsEmployee = [];
 		
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
+		$http.get('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController').then((response) => {
 			$scope.optionsEmployee = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -126,7 +126,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsEmployee = () => {
 			const limit = 20;
 			$scope.optionsEmployeeLoading = true;
-			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts?$limit=${limit}&$offset=${++loadMoreOptionsEmployeeCounter * limit}`)
+			$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController?$limit=${limit}&$offset=${++loadMoreOptionsEmployeeCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesEmployee.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -176,7 +176,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts/search', {
+					$http.post('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -205,11 +205,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 			}
 		};
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
+		$scope.serviceCurrency = '/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController';
 		
 		$scope.optionsCurrency = [];
 		
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
+		$http.get('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController').then((response) => {
 			$scope.optionsCurrency = response.data.map(e => ({
 				value: e.Id,
 				text: e.Code
@@ -233,7 +233,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCurrency = () => {
 			const limit = 20;
 			$scope.optionsCurrencyLoading = true;
-			$http.get(`/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
+			$http.get(`/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCurrency.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -283,7 +283,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+					$http.post('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/search', {
 						conditions: [
 							{ propertyName: 'Code', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -312,11 +312,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 			}
 		};
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		$scope.serviceCompany = '/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController';
 		
 		$scope.optionsCompany = [];
 		
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+		$http.get('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController').then((response) => {
 			$scope.optionsCompany = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -340,7 +340,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCompany = () => {
 			const limit = 20;
 			$scope.optionsCompanyLoading = true;
-			$http.get(`/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
+			$http.get(`/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCompany.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -390,7 +390,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+					$http.post('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]

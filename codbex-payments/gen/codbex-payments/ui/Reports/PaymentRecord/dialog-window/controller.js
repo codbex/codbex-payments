@@ -21,9 +21,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			params.entity.UpdatedAt = new Date(params.entity.UpdatedAt);
 		}
 		$scope.entity = params.entity;
+		$scope.optionsCompany = params.optionsCompany;
 		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 		$scope.optionsPaymentType = params.optionsPaymentType;
-		$scope.optionsCompany = params.optionsCompany;
 	}
 });

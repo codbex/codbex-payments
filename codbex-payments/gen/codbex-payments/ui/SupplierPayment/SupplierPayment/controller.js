@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/SupplierPayment/SupplierPaymentController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-payments/gen/codbex_payments/api/supplierpayment/SupplierPaymentController';
 	}])
 	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -105,7 +105,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsSupplierHasMore) {
 						const optionsSupplierSearchValues = Array.from(new Set(response.data.map(e => e.Supplier)));
 						if (optionsSupplierSearchValues.length > 0) {
-							$http.post('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts/search', {
+							$http.post('/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsSupplierSearchValues }
 								]
@@ -128,7 +128,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsCurrencyHasMore) {
 						const optionsCurrencySearchValues = Array.from(new Set(response.data.map(e => e.Currency)));
 						if (optionsCurrencySearchValues.length > 0) {
-							$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+							$http.post('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsCurrencySearchValues }
 								]
@@ -151,7 +151,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					if (optionsCompanyHasMore) {
 						const optionsCompanySearchValues = Array.from(new Set(response.data.map(e => e.Company)));
 						if (optionsCompanySearchValues.length > 0) {
-							$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+							$http.post('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/search', {
 								conditions: [
 									{ propertyName: 'Id', operator: 'IN', value: optionsCompanySearchValues }
 								]
@@ -165,6 +165,29 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 								const message = error.data ? error.data.message : '';
 								Dialogs.showAlert({
 									title: 'Company',
+									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+									type: AlertTypes.Error
+								});
+							});
+						}
+					}
+					if (optionsPaymentMethodHasMore) {
+						const optionsPaymentMethodSearchValues = Array.from(new Set(response.data.map(e => e.PaymentMethod)));
+						if (optionsPaymentMethodSearchValues.length > 0) {
+							$http.post('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController/search', {
+								conditions: [
+									{ propertyName: 'Id', operator: 'IN', value: optionsPaymentMethodSearchValues }
+								]
+							}).then((response) => {
+								$scope.optionsPaymentMethod.push(...response.data.map(e => ({
+									value: e.Id,
+									text: e.Name
+								})));
+							}, (error) => {
+								console.error(error);
+								const message = error.data ? error.data.message : '';
+								Dialogs.showAlert({
+									title: 'PaymentMethod',
 									message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 									type: AlertTypes.Error
 								});
@@ -217,6 +240,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			}});
 		};
 
@@ -229,6 +253,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			}});
 		};
 
@@ -239,6 +264,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				optionsSupplier: $scope.optionsSupplier,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsCompany: $scope.optionsCompany,
+				optionsPaymentMethod: $scope.optionsPaymentMethod,
 			}});
 		};
 
@@ -283,6 +309,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					optionsSupplier: $scope.optionsSupplier,
 					optionsCurrency: $scope.optionsCurrency,
 					optionsCompany: $scope.optionsCompany,
+					optionsPaymentMethod: $scope.optionsPaymentMethod,
 				},
 			});
 		};
@@ -291,12 +318,13 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsSupplier = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsCompany = [];
+		$scope.optionsPaymentMethod = [];
 
 		let optionsSupplierHasMore = true;
 
-		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController/count').then((response) => {
 			const optionsSupplierCount = response.data.count;
-			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Suppliers/SupplierController.ts').then((response) => {
+			$http.get('/services/java/codbex-partners/gen/codbex_partners/api/suppliers/SupplierController').then((response) => {
 				$scope.optionsSupplier = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -322,9 +350,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		});
 		let optionsCurrencyHasMore = true;
 
-		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/count').then((response) => {
 			const optionsCurrencyCount = response.data.count;
-			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
+			$http.get('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController').then((response) => {
 				$scope.optionsCurrency = response.data.map(e => ({
 					value: e.Id,
 					text: e.Code
@@ -350,9 +378,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		});
 		let optionsCompanyHasMore = true;
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/count').then((response) => {
+		$http.get('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/count').then((response) => {
 			const optionsCompanyCount = response.data.count;
-			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+			$http.get('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController').then((response) => {
 				$scope.optionsCompany = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name
@@ -372,6 +400,34 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Company',
+				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+		let optionsPaymentMethodHasMore = true;
+
+		$http.get('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController/count').then((response) => {
+			const optionsPaymentMethodCount = response.data.count;
+			$http.get('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController').then((response) => {
+				$scope.optionsPaymentMethod = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				optionsPaymentMethodHasMore = optionsPaymentMethodCount > $scope.optionsPaymentMethod.length;
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'PaymentMethod',
+					message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'PaymentMethod',
 				message: LocaleService.t('codbex-payments:codbex-payments-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
@@ -397,6 +453,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsCompany.length; i++) {
 				if ($scope.optionsCompany[i].value === optionKey) {
 					return $scope.optionsCompany[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsPaymentMethodValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsPaymentMethod.length; i++) {
+				if ($scope.optionsPaymentMethod[i].value === optionKey) {
+					return $scope.optionsPaymentMethod[i].text;
 				}
 			}
 			return null;
