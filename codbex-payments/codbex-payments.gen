@@ -669,7 +669,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Customer Payment')",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Customer Payment\")",
           "dataLength": "20",
           "dataName": "CUSTOMERPAYMENT_NAME",
           "dataNullable": true,
@@ -700,7 +700,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "CUSTOMERPAYMENT_UUID",
           "dataNullable": false,
@@ -886,7 +886,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import { NumberGeneratorService } from \"/codbex-number-generator/service/generator\";",
+      "importsCode": "import codbex-number-generator.service.Generator;\nimport org.eclipse.dirigible.sdk.utils;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "customerpayment",
@@ -1310,7 +1310,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Customer Payment')",
+            "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Customer Payment\")",
             "dataLength": "20",
             "dataName": "CUSTOMERPAYMENT_NAME",
             "dataNullable": true,
@@ -1862,7 +1862,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Supplier Payment')",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Employee Payment\")",
           "dataLength": "20",
           "dataName": "SUPPLIERPAYMENT_NAME",
           "dataNullable": true,
@@ -1893,7 +1893,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "SUPPLIERPAYMENT_UUID",
           "dataNullable": false,
@@ -2079,7 +2079,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import { NumberGeneratorService } from \"/codbex-number-generator/service/generator\";",
+      "importsCode": "import codbex-number-generator.service.Generator;\nimport org.eclipse.dirigible.sdk.utils;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "supplierpayment",
@@ -2503,7 +2503,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Supplier Payment')",
+            "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Employee Payment\")",
             "dataLength": "20",
             "dataName": "SUPPLIERPAYMENT_NAME",
             "dataNullable": true,
@@ -2534,7 +2534,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "SUPPLIERPAYMENT_UUID",
             "dataNullable": false,
@@ -3083,7 +3083,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Employee Payment')",
+          "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Employee Payment\")",
           "dataLength": "20",
           "dataName": "EMPLOYEEPAYMENT_NAME",
           "dataNullable": true,
@@ -3114,7 +3114,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "EMPLOYEEPAYMENT_UUID",
           "dataNullable": false,
@@ -3300,7 +3300,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "importsCode": "import { NumberGeneratorService } from \"/codbex-number-generator/service/generator\";",
+      "importsCode": "import codbex-number-generator.service.Generator;\nimport org.eclipse.dirigible.sdk.utils;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "employeepayment",
@@ -3686,7 +3686,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Employee Payment')",
+            "calculatedPropertyExpressionCreate": "new Generator().generateByType(\"Employee Payment\")",
             "dataLength": "20",
             "dataName": "EMPLOYEEPAYMENT_NAME",
             "dataNullable": true,
@@ -3717,7 +3717,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "EMPLOYEEPAYMENT_UUID",
             "dataNullable": false,
@@ -4299,7 +4299,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "PAYMENTRECORD_UUID",
           "dataNullable": false,
@@ -4570,6 +4570,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "true",
       "icon": "/services/web/resources/unicons/file.svg",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "paymentrecord",
@@ -4983,7 +4984,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "PAYMENTRECORD_UUID",
             "dataNullable": false,
@@ -5555,7 +5556,7 @@
         },
         {
           "auditType": "NONE",
-          "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+          "calculatedPropertyExpressionCreate": "Uuid.random()",
           "dataLength": "36",
           "dataName": "PAYMENTADJUSTMENT_UUID",
           "dataNullable": true,
@@ -5711,6 +5712,7 @@
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
+      "importsCode": "import org.eclipse.dirigible.sdk.utils;",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "paymentadjustment",
@@ -5933,7 +5935,7 @@
           },
           {
             "auditType": "NONE",
-            "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
+            "calculatedPropertyExpressionCreate": "Uuid.random()",
             "dataLength": "36",
             "dataName": "PAYMENTADJUSTMENT_UUID",
             "dataNullable": true,

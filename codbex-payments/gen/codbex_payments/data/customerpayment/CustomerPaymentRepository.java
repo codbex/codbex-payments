@@ -12,8 +12,8 @@ public class CustomerPaymentRepository extends JavaRepository<CustomerPaymentEnt
 
     @Override
     public CustomerPaymentEntity save(CustomerPaymentEntity entity) {
-        entity.Name = new NumberGeneratorService().generateByType('Customer Payment');
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = new Generator().generateByType("Customer Payment");
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 }

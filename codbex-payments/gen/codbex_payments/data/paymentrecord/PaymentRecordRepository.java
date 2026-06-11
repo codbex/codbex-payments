@@ -12,7 +12,7 @@ public class PaymentRecordRepository extends JavaRepository<PaymentRecordEntity>
 
     @Override
     public PaymentRecordEntity save(PaymentRecordEntity entity) {
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 }

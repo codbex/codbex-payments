@@ -12,8 +12,8 @@ public class EmployeePaymentRepository extends JavaRepository<EmployeePaymentEnt
 
     @Override
     public EmployeePaymentEntity save(EmployeePaymentEntity entity) {
-        entity.Name = new NumberGeneratorService().generateByType('Employee Payment');
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = new Generator().generateByType("Employee Payment");
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 }

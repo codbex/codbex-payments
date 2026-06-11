@@ -12,8 +12,8 @@ public class SupplierPaymentRepository extends JavaRepository<SupplierPaymentEnt
 
     @Override
     public SupplierPaymentEntity save(SupplierPaymentEntity entity) {
-        entity.Name = new NumberGeneratorService().generateByType('Supplier Payment');
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.Name = new Generator().generateByType("Employee Payment");
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 }

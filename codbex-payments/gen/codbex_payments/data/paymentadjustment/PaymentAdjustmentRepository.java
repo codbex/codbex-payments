@@ -12,7 +12,7 @@ public class PaymentAdjustmentRepository extends JavaRepository<PaymentAdjustmen
 
     @Override
     public PaymentAdjustmentEntity save(PaymentAdjustmentEntity entity) {
-        entity.UUID = require("sdk/utils/uuid").random();
+        entity.UUID = Uuid.random();
         return super.save(entity);
     }
 }
