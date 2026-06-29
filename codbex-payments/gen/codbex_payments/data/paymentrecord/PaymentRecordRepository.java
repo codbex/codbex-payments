@@ -1,7 +1,7 @@
 package gen.codbex_payments.data.paymentrecord;
 
 import org.eclipse.dirigible.components.data.store.java.repository.JavaRepository;
-import org.eclipse.dirigible.engine.java.annotations.Repository;
+import org.eclipse.dirigible.sdk.component.Repository;
 
 @Repository
 public class PaymentRecordRepository extends JavaRepository<PaymentRecordEntity> {
