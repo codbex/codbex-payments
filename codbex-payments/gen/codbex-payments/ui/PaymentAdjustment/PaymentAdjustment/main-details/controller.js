@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(["EntityServiceProvider", (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentAdjustment/PaymentAdjustmentController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-payments/gen/codbex_payments/api/paymentadjustment/PaymentAdjustmentController';
 	}])
 	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -104,8 +104,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		}});
 
-		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts';
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		$scope.serviceCurrency = '/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController';
+		$scope.serviceCompany = '/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController';
 
 		//-----------------Events-------------------//
 
@@ -199,12 +199,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCurrency = () => {
 			const limit = 20;
 			$scope.optionsCurrencyLoading = true;
-			$http.get(`/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
+			$http.get(`/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCurrency.map(e => e.value);
 				const resultValues = response.data.map(e => ({
 					value: e.Id,
-					text: e.Name
+					text: e.Code
 				}));
 				const newValues = [];
 				resultValues.forEach(e => {
@@ -249,15 +249,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+					$http.post('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/search', {
 						conditions: [
-							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+							{ propertyName: 'Code', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
 					}).then((response) => {
 						const optionValues = allValuesCurrency.map(e => e.value);
 						const searchResult = response.data.map(e => ({
 							value: e.Id,
-							text: e.Name
+							text: e.Code
 						}));
 						searchResult.forEach(e => {
 							if (!optionValues.includes(e.value)) {
@@ -281,10 +281,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshCurrency = () => {
 			$scope.optionsCurrency = [];
-			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts').then((response) => {
+			$http.get('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController').then((response) => {
 				$scope.optionsCurrency = response.data.map(e => ({
 					value: e.Id,
-					text: e.Name
+					text: e.Code
 				}));
 				allValuesCurrency.length === 0;
 			}, (error) => {
@@ -306,7 +306,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCompany = () => {
 			const limit = 20;
 			$scope.optionsCompanyLoading = true;
-			$http.get(`/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
+			$http.get(`/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCompany.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -356,7 +356,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+					$http.post('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -388,7 +388,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.refreshCompany = () => {
 			$scope.optionsCompany = [];
-			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts').then((response) => {
+			$http.get('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController').then((response) => {
 				$scope.optionsCompany = response.data.map(e => ({
 					value: e.Id,
 					text: e.Name

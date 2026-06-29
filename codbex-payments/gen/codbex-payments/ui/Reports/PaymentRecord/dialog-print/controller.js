@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
     .config(['EntityServiceProvider', (EntityServiceProvider) => {
-        EntityServiceProvider.baseUrl = '/services/ts/codbex-payments/gen/codbex-payments/api/PaymentRecord/PaymentRecordController.ts';
+        EntityServiceProvider.baseUrl = '/services/java/codbex-payments/gen/codbex_payments/api/paymentrecord/PaymentRecordController';
     }])
     .controller('PageController', ($scope, EntityService, LocaleService, ViewParameters) => {
         const Dialogs = new DialogHub();
@@ -52,6 +52,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
 				filter.$filter.conditions.push(condition);
 			}
+			if (entity.Company !== undefined) {
+				const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+				filter.$filter.conditions.push(condition);
+			}
 			if (entity.Currency !== undefined) {
 				const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
 				filter.$filter.conditions.push(condition);
@@ -70,10 +74,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}
 			if (entity.Description) {
 				const condition = { propertyName: 'Description', operator: 'LIKE', value: `%${entity.Description}%` };
-				filter.$filter.conditions.push(condition);
-			}
-			if (entity.Company !== undefined) {
-				const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
 				filter.$filter.conditions.push(condition);
 			}
 			if (entity.UUID) {
@@ -127,10 +127,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
             $scope.filter = filter;
 
+			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 			$scope.optionsPaymentType = params.optionsPaymentType;
-			$scope.optionsCompany = params.optionsCompany;
 		}
 
         $scope.loadPage = (filter) => {
@@ -178,6 +178,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
         };
         $scope.loadPage($scope.filter);
 
+		$scope.optionsCompanyValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsCompany.length; i++) {
+				if ($scope.optionsCompany[i].value === optionKey) {
+					return $scope.optionsCompany[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsCurrencyValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
 				if ($scope.optionsCurrency[i].value === optionKey) {
@@ -198,14 +206,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			for (let i = 0; i < $scope.optionsPaymentType.length; i++) {
 				if ($scope.optionsPaymentType[i].value === optionKey) {
 					return $scope.optionsPaymentType[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsCompanyValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsCompany.length; i++) {
-				if ($scope.optionsCompany[i].value === optionKey) {
-					return $scope.optionsCompany[i].text;
 				}
 			}
 			return null;

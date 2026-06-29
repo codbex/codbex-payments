@@ -102,6 +102,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
 			filter.$filter.conditions.push(condition);
 		}
+		if (entity.Company !== undefined) {
+			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+			filter.$filter.conditions.push(condition);
+		}
 		if (entity.Reason) {
 			const condition = { propertyName: 'Reason', operator: 'LIKE', value: `%${entity.Reason}%` };
 			filter.$filter.conditions.push(condition);
@@ -110,8 +114,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Description', operator: 'LIKE', value: `%${entity.Description}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Company !== undefined) {
-			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+		if (entity.PaymentMethod !== undefined) {
+			const condition = { propertyName: 'PaymentMethod', operator: 'EQ', value: entity.PaymentMethod };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Name) {
@@ -124,10 +128,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Reference) {
 			const condition = { propertyName: 'Reference', operator: 'LIKE', value: `%${entity.Reference}%` };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.PaymentMethod !== undefined) {
-			const condition = { propertyName: 'PaymentMethod', operator: 'EQ', value: entity.PaymentMethod };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.CreatedAtFrom) {
@@ -192,7 +192,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsCustomer = () => {
 		const limit = 20;
 		$scope.optionsCustomerLoading = true;
-		$http.get(`/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCustomerCounter * limit}`)
+		$http.get(`/services/java/codbex-partners/gen/codbex_partners/api/customers/CustomerController?$limit=${limit}&$offset=${++loadMoreOptionsCustomerCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesCustomer.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -242,7 +242,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerController.ts/search', {
+				$http.post('/services/java/codbex-partners/gen/codbex_partners/api/customers/CustomerController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -281,7 +281,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsCurrency = () => {
 		const limit = 20;
 		$scope.optionsCurrencyLoading = true;
-		$http.get(`/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
+		$http.get(`/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController?$limit=${limit}&$offset=${++loadMoreOptionsCurrencyCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesCurrency.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -331,7 +331,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyController.ts/search', {
+				$http.post('/services/java/codbex-currencies/gen/codbex_currencies/api/settings/CurrencyController/search', {
 					conditions: [
 						{ propertyName: 'Code', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -370,7 +370,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsCompany = () => {
 		const limit = 20;
 		$scope.optionsCompanyLoading = true;
-		$http.get(`/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
+		$http.get(`/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController?$limit=${limit}&$offset=${++loadMoreOptionsCompanyCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesCompany.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -420,7 +420,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/search', {
+				$http.post('/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]
@@ -459,7 +459,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	$scope.loadMoreOptionsPaymentMethod = () => {
 		const limit = 20;
 		$scope.optionsPaymentMethodLoading = true;
-		$http.get(`/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts?$limit=${limit}&$offset=${++loadMoreOptionsPaymentMethodCounter * limit}`)
+		$http.get(`/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController?$limit=${limit}&$offset=${++loadMoreOptionsPaymentMethodCounter * limit}`)
 		.then((response) => {
 			const optionValues = allValuesPaymentMethod.map(e => e.value);
 			const resultValues = response.data.map(e => ({
@@ -509,7 +509,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 				}
 			})
 			if (!cacheHit) {
-				$http.post('/services/ts/codbex-methods/gen/codbex-methods/api/Settings/PaymentMethodController.ts/search', {
+				$http.post('/services/java/codbex-methods/gen/codbex_methods/api/settings/PaymentMethodController/search', {
 					conditions: [
 						{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 					]

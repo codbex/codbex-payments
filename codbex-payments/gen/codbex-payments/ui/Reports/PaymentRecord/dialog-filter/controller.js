@@ -40,10 +40,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
+		$scope.optionsCompany = params.optionsCompany;
 		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsPaymentDirection = params.optionsPaymentDirection;
 		$scope.optionsPaymentType = params.optionsPaymentType;
-		$scope.optionsCompany = params.optionsCompany;
 	}
 
 	$scope.filter = () => {
@@ -92,6 +92,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Amount', operator: 'EQ', value: entity.Amount };
 			filter.$filter.conditions.push(condition);
 		}
+		if (entity.Company !== undefined) {
+			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
+			filter.$filter.conditions.push(condition);
+		}
 		if (entity.Currency !== undefined) {
 			const condition = { propertyName: 'Currency', operator: 'EQ', value: entity.Currency };
 			filter.$filter.conditions.push(condition);
@@ -110,10 +114,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Description) {
 			const condition = { propertyName: 'Description', operator: 'LIKE', value: `%${entity.Description}%` };
-			filter.$filter.conditions.push(condition);
-		}
-		if (entity.Company !== undefined) {
-			const condition = { propertyName: 'Company', operator: 'EQ', value: entity.Company };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.UUID) {
