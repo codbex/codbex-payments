@@ -5,7 +5,6 @@ import gen.codbex_payments.data.settings.PaymentDirectionRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class PaymentDirectionController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Name");
 
-    @Inject
-    private PaymentDirectionRepository repository;
+    private final PaymentDirectionRepository repository;
+
+    public PaymentDirectionController(PaymentDirectionRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List PaymentDirection")

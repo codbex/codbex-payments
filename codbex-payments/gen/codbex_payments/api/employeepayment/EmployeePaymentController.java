@@ -5,7 +5,6 @@ import gen.codbex_payments.data.employeepayment.EmployeePaymentRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class EmployeePaymentController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Employee", "Date", "Valor", "OurPartyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Currency", "Company", "Reason", "Description", "Name", "UUID", "Reference", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private EmployeePaymentRepository repository;
+    private final EmployeePaymentRepository repository;
+
+    public EmployeePaymentController(EmployeePaymentRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List EmployeePayment")

@@ -5,7 +5,6 @@ import gen.codbex_payments.data.paymentadjustment.PaymentAdjustmentRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class PaymentAdjustmentController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Date", "Valor", "Amount", "Currency", "Reason", "Company", "UUID", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private PaymentAdjustmentRepository repository;
+    private final PaymentAdjustmentRepository repository;
+
+    public PaymentAdjustmentController(PaymentAdjustmentRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List PaymentAdjustment")
