@@ -1,0 +1,6 @@
+{
+    "module": "codbex-payments/gen/codbex-payments/ui/CustomerPayment/CustomerPayment/view.js",
+    "extensionPoint": "application-views",
+    "description": "codbex-payments - Application View",
+    "role": "codbex-payments.CustomerPayment.CustomerPaymentReadOnly,codbex-payments.CustomerPayment.CustomerPaymentFullAccess"
+}

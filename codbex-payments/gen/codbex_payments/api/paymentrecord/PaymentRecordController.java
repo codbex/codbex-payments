@@ -5,7 +5,6 @@ import gen.codbex_payments.data.paymentrecord.PaymentRecordRepository;
 
 import org.eclipse.dirigible.components.api.security.UserFacade;
 import org.eclipse.dirigible.sdk.platform.Documentation;
-import org.eclipse.dirigible.sdk.component.Inject;
 import org.eclipse.dirigible.sdk.http.Body;
 import org.eclipse.dirigible.sdk.http.Controller;
 import org.eclipse.dirigible.sdk.http.Delete;
@@ -30,8 +29,11 @@ public class PaymentRecordController {
 
     private static final Set<String> FILTER_FIELDS = Set.of("Id", "Date", "Valor", "OurPartyIBAN", "CounterpartyIBAN", "CounterpartyName", "Amount", "Company", "Currency", "PaymentDirection", "PaymentType", "Reason", "Description", "UUID", "Reference", "Deleted", "DeletedAt", "DeletedReason", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
-    @Inject
-    private PaymentRecordRepository repository;
+    private final PaymentRecordRepository repository;
+
+    public PaymentRecordController(PaymentRecordRepository repository) {
+        this.repository = repository;
+    }
 
     @Get
     @Documentation("List PaymentRecord")
